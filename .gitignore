@@ -1,0 +1,49 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+*.venv
+*.env
+
+# Django-specific files
+db.sqlite3
+*.log
+*.pot
+*.pyc
+media/
+staticfiles/
+static/
+migrations/
+
+# Ignore secrets and environment variables
+.env
+config/settings/local.py
+
+# Ignore JetBrains, VSCode, and other editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Ignore Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Ignore compiled files
+*.egg-info/
+*.manifest
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore node_modules if using frontend with Django
+node_modules/
+
+# Ignore Docker & CI/CD files
+docker-compose.override.yml
+.envrc
+Pipfile
+Pipfile.lock
