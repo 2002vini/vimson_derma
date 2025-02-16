@@ -1,80 +1,30 @@
+# Vimson Derma - Django Project
 
-dgango cheetsheet:
-1. to run server: python manage.py runserver
-2. to create new app: python manage.py startapp appname
+## 📌 Project Overview
+Vimson Derma is a Django-based web application that serves as a **landing page** for a dermatology-related business. It includes **product listings, a blog system, a contact form, and an API** for blog posts and product categories.
 
-steps for rest api:
-1. install drf
-2. setup models
-3. setup serializaers
-4. set up views
-5. set up - urls
-6. test api
+---
 
-#to do
---> add read only permissions for api for unauthenticated users, that way only admin will be creating the api
--->turn off browsable api
+## 🚀 Features
+- **Dynamic Product Catalog** with attributes stored in JSON format.
+- **Blog System** with **tag-based filtering** and **REST API support**.
+- **Testimonials, FAQs, and Clients sections** for business credibility.
+- **Contact Us Form** with email notifications (no database storage required).
+- **Admin-only API access**, allowing only authenticated users to create content.
+- **Read-only API for unauthenticated users**.
+- **Django Admin Panel** for easy management.
 
-------------------------------------BACKENDDETAILS---------------------------------
-1. Contact Us Form
-- [ ] Contact us section form:
-    - [ ] Name
-    - [ ] Email
-    - [ ] Company name
-    - [ ] Phone number
-    - [ ] Message/inquiry
-    - [ ] Product interest
-    - [ ] Trigger event for firing mail in Vinson derma with relevant details ——> no need to make any models for this
+---
 
+## 🛠️ Installation Guide
+### **1️⃣ Clone the Repository**
+```sh
+git clone https://github.com/your-username/vimson-derma.git
+cd vimson-derma
+```
 
-Tables
-
-1. Category
-- id:primary key
-- type:skincare,haircare etc
-- description: 
-- isActive: true/false
-
-2.Product
--id
--name:
--descr: descr of the product
--attributes: json field for display certain fields in tabular manner in 
--category: fk to category table
--image:
--is_featured:
--created_at:
-
-3.Clients
--id: pk
--name: name of client
--descr: descr required if any
--logo/image: image of client if present
--isActive: false/true
-
-4.Faq
--id: pk
--que: question
--ans: answer of corresponding que
--isActive: boolean
-
-5.Testimonials
--id
--customer name:
--feedback:
--created_at:
-
-6.Tags
--id/slug
--name
-
-
-7.BlogPost:
--id/slug
--title:
--content
--tags: one to many fields
--image
--created_at
--updated_at
+### **2️⃣ Install Dependencies**
+```sh
+pip install -r requirements.txt
+```
 
