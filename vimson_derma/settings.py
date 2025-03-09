@@ -11,10 +11,22 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+# * MEDIA FILE CONFIGURATIONS *
+MEDIA_URL = 'media/'
+# MEDIA_ROOT = '/mnt/SolvifyHub/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+CONTENT_TYPES = ['image/svg+xml']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -31,6 +43,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'import_export',
+    'jet',
+    'jet.dashboard',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -46,7 +61,33 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.AllowAny",
     ],
 }
+JET_SIDE_MENU_COMPACT = True
+JET_THEMES = [
+    {
+        'theme': 'default',  # Default Jet theme
+        'color': '#009688',  # Teal
+        'title': 'Default Theme'
+    },
+    {
+        'theme': 'light-gray',  # Light gray theme
+        'color': '#9E9E9E',  # Gray
+        'title': 'Light Gray Theme'
+    },
+    {
+        'theme': 'green',  # Green theme
+        'color': '#4CAF50',  # Green
+        'title': 'Green Theme'
+    },
+    {
+        'theme': 'dark-blue',  # Dark blue theme
+        'color': '#3F51B5',  # Blue
+        'title': 'Dark Blue Theme'
+    },
 
+]
+
+# Optional: Set a default theme
+JET_DEFAULT_THEME = 'default'
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",

@@ -2,8 +2,8 @@ from urllib import request
 from django.shortcuts import render
 from django.db.models import Q
 from rest_framework import viewsets
-from .models import Category, Product, Client, FAQ, Testimonial, Tag, BlogPost
-from .serializers import CategorySerializer, ProductSerializer, ClientSerializer, FAQSerializer, TestimonialSerializer, TagSerializer, BlogPostSerializer
+from ..models import Category, Product, Client, FAQ, Testimonial, Tag, BlogPost
+from ..serializers import CategorySerializer, ProductSerializer, ClientSerializer, FAQSerializer, TestimonialSerializer, TagSerializer, BlogPostSerializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView
@@ -121,4 +121,6 @@ class BlogPostViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+
+
 

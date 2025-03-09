@@ -4,10 +4,9 @@ from django.utils.text import slugify
 
 class Category(models.Model):
     """Model representing product categories in the system."""
-
-    id = models.AutoField(primary_key=True)
     type = models.CharField(max_length=200)
     description = models.TextField()
+    svg_file = models.FileField(upload_to='svgs/',blank=True)  # Store in /media/svgs/
 
     def __str__(self):
         """String representation of the Category model."""
@@ -15,8 +14,6 @@ class Category(models.Model):
 
 class Product(models.Model):
     """Model representing products in the system."""
-
-    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)
     description = models.TextField()
     attributes = models.JSONField()
@@ -33,8 +30,6 @@ class Product(models.Model):
 
 class Client(models.Model):
     """Model representing clients in the system."""
-
-    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
     image = models.ImageField(upload_to='clients/', null=True, blank=True)
@@ -48,8 +43,6 @@ class Client(models.Model):
     
 class FAQ(models.Model):
     """Model representing frequently asked questions in the system."""
-
-    id = models.AutoField(primary_key=True)
     question = models.CharField(max_length=200)
     answer = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -61,8 +54,6 @@ class FAQ(models.Model):
     
 class Testimonial(models.Model):
     """Model representing testimonials in the system."""
-
-    id = models.AutoField(primary_key=True)
     customer_name = models.CharField(max_length=200)
     feedback = models.TextField()
     image = models.ImageField(upload_to='testimonials/', null=True, blank=True)
@@ -76,7 +67,6 @@ class Testimonial(models.Model):
 
 class Tag(models.Model):
     """Model representing tags in the system."""
-
     slug = models.SlugField(unique=True,blank=True)
     name = models.CharField(max_length=200)
 
@@ -92,11 +82,9 @@ class Tag(models.Model):
     
 class BlogPost(models.Model):
     """Model representing blog posts in the system."""
-
-    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
     content = models.TextField()
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True)
     image = models.ImageField(upload_to='blog_posts/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
