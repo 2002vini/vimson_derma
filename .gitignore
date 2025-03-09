@@ -14,9 +14,7 @@ db.sqlite3
 *.log
 *.pot
 *.pyc
-media/
-staticfiles/
-static/
+
 migrations/
 
 # Ignore secrets and environment variables

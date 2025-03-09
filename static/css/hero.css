@@ -1,0 +1,91 @@
+
+.bg-image{
+  background-image: url('/static/images/hero.png');
+  width: 100%;
+  height:88vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
+.hero-text{
+    font-size: 1rem;
+    color: rgba(20,32,97,0.8);
+    font-family: 'Roboto', sans-serif;
+}
+.about-us-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height:40vh;
+    gap:40px;
+    color: rgba(77,84,127,1);
+    padding:8.5rem;
+}
+.about-us-container text{
+    line-height: 1.5;
+}
+
+.service-box-card{
+    font-size: 1.5rem;
+    font-weight: 500;
+    border:1px solid rgba(245,130,31,1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.service-box-card .logo{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+}
+.service-box-card img{
+    object-fit: cover;
+    max-width: 30%;
+    max-height:30%
+}
+.service-box{
+    gap:0;
+
+}
+.logo-text{
+    font-family: 'Be Vietnam Pro', 'Helvetica Neue';
+    font-weight: 400;
+    font-size:16px;
+    color: rgba(77,84,127,1);
+}
+.logo-heading{
+    font-size: 24px;
+    font-weight: 400;
+    font-size:16px;
+    color: rgba(77,84,127,1);
+}
+
+.brand-section {
+    background: url('/static/images/background.png') no-repeat center;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    min-height: 20vh;
+    padding: 80px 0;
+    margin-top:0;
+}
+
+/* Number Styling */
+.counter-number {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: bold;
+}
+
+.intro-video{
+    background-image: url('/static/images/frame-40.png');
+    width: 100%;
+    height:70vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+
+}

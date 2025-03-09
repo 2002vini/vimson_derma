@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam:wght@700&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.custom-navbar {
+    background-color: rgba(20,32,97,1);
+    max-width: 1440px;
+    min-height:84px;
+    margin: 0 auto; /* Centers the navbar */
+    padding: 0 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(60px);
+    position: sticky;
+    top:0;
+    z-index:1000;
+
+
+}
+
+.navbar-brand img {
+    height: 100%; /* Keep the image responsive */
+    width: 100%; /* Ensures it stretches to fill the space */
+    object-fit: cover; /* Ensures image fills its container */
+}
+
+.navbar-nav {
+    margin: auto; /* Center navbar items */
+    display: flex;
+    gap: 30px;
+}
+
+.navbar-nav .nav-item {
+    padding: 0 15px; /* Spacing between menu items */
+}
+
+.btn-custom {
+    /* Contact Us Button */
+    color: white;
+    border-radius: 2px;
+    border: 1px solid white;
+    padding: 8px 15px;
+}
+
+
+.btn-custom:hover {
+    background-color: #E68900;
+    background-color: white;
+}
+.navbar-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 16px;
+    gap:16px;
+    margin-right: 16px;
+
+}
+/* Mobile Responsive */
+@media (max-width: 992px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-collapse {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-buttons {
+        margin-top: 10px;
+        display: flex;
+        
+    }
+}
+
+.heading{
+    font-family: 'Inria Serif', serif;
+    font-weight: 400;
+    line-height: 100%; /* Same as 1.0 */
+    letter-spacing: -0.02em; /* -2% converted to em */
+    color:rgba(20,32,97,1);
+}
+.text{
+    font-family: 'Be Vietnam Pro';
+    font-weight: 400;
+}
+/* h1{
+    font-size: 8rem;
+}
+
+h2{
+    font-size: 6rem;
+}
+h3{
+    font-size: 4.5rem;
+}
+h4{
+    font-size: 4rem;
+}
+h5{
+    font-size: 3rem;
+}
+h6{
+    font-size: 2.25rem;
+}
+.p1{
+    font-size: 6rem;
+}
+.p2{
+    font-size: 4rem;
+}
+.p3{
+    font-size: 3rem;
+}
+.p4{
+    font-size: 2.25rem;
+}
+.p5{
+    font-size:2rem;
+}
+.p6{
+    font-size: 1rem;
+} */
+/* Footer Top Section */
+
+h1 {
+    font-size: clamp(3rem, 7vw, 8rem);
+    line-height: clamp(3.5rem, 8vw, 9rem); /* Slightly larger than font size */
+}
+
+h2 {
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    line-height: clamp(3rem, 7vw, 7rem);
+}
+
+h3 {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    line-height: clamp(2.5rem, 6vw, 5rem);
+}
+
+h4 {
+    font-size: clamp(1.8rem, 4.5vw, 4rem);
+    line-height: clamp(2.2rem, 5.5vw, 4.5rem);
+}
+
+h5 {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    line-height: clamp(2rem, 5vw, 3.5rem);
+}
+
+h6 {
+    font-size: clamp(1.2rem, 3vw, 2.25rem);
+    line-height: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+/* Paragraphs */
+.p1 {
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    line-height: clamp(3rem, 7vw, 7.5rem);
+}
+
+.p2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: clamp(2.5rem, 6vw, 5rem);
+}
+
+.p3 {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    line-height: clamp(2rem, 5vw, 3.5rem);
+}
+
+.p4 {
+    font-size: clamp(1.25rem, 3.5vw, 2.25rem);
+    line-height: clamp(1.8rem, 4.5vw, 3rem);
+}
+
+.p5 {
+    font-size: clamp(1rem, 3vw, 2rem);
+    line-height: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.p6 {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    line-height: clamp(1.2rem, 3vw, 1.8rem);
+}
+
+.footer-top {
+    background-color: rgba(239,240,245,1); /* Light background */
+    text-align: center;
+}
+
+.footer-logo {
+    max-width: 280px; /* Adjust logo size */
+}
+
+.footer-heading {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(245,130,31,1); /* Orange heading */
+}
+
+.footer-top p, .footer-top a {
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+}
+
+.footer-top a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+    background-color: #14162C; /* Dark background */
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 14px;
+    color: white;
+    margin: 0;
+}
+
+/* Social Media Icons */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: white;
+    color: #14162C;
+}
+
+
