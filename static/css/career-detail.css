@@ -1,0 +1,239 @@
+
+  .container {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .job-detail, .current-openings {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .job-detail {
+    flex: 2;
+  }
+  
+  .current-openings {
+    flex: 1;
+  }
+  
+  .job-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: center;
+  }
+  
+  
+  .icon, .opening-icon {
+    width: 50px;
+    height: 50px;
+    background: #eef0f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 24px;
+  }
+  .job-overview table{
+    background-color: rgba(254, 242, 250, 1);
+}
+  .job-title{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    color: #0b1d57;
+    gap: 2px;
+  }
+  .job-overview {
+    margin-top: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .job-description ul {
+    margin-top: 10px;
+    padding-left: 20px;
+  }
+  
+  .job-description li {
+    margin-bottom: 8px;
+  }
+  
+  .apply-now {
+    margin-top: 20px;
+    padding: 12px;
+    width: 100%;
+    background: #0b1d57;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .apply-now:hover {
+    background: #0d256d;
+  }
+  
+  .opening-card {
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .opening-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .opening-text h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: #0b1d57;
+  }
+  
+  .opening-text p {
+    margin: 3px 0 0;
+    font-size: 0.9rem;
+  }
+  
+  .apply-btn {
+    background: #0b1d57;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .apply-btn:hover {
+    background: #0d256d;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  }
+  
+  .icon-box {
+    width: 80px;
+    height: 80px;
+  background-color: rgba(228, 231, 244, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.icon-box i {
+  font-size: 24px;
+  color: #1c2a4b;
+}
+.job-card {
+    border: 1px solid #dcdcdc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    background-color: #ffffff;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width:100%;
+    height:30%;
+
+  }
+  .job-card:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .job-card h5{
+    font-size: 24px;
+  }
+
+  .job-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:5px;
+  }
+
+  .job-card .icon-box {
+    width: 50px;
+    height: 50px;
+  }
+
+  
+  .submit-btn {
+    background-color: #0b1d57;
+    color: #fff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-end;
+    transition: background 0.3s;
+    width:100%;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0d256d;
+  }
+
+  #applyModal{
+    z-index: 1000;
+  }
+
+  #jobForm{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+  #jobForm .row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    flex-direction: row;
+  }
+  #jobForm input,select,textarea{
+    padding: 12px;
+    border: 1px solid #c2c2c2;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 45%;
+  }
+    #jobForm textarea,select{
+        width: 100%;
+    }

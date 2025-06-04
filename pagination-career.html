@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Process Flow with Animated Arrows</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      background: #fff;
+      color: #1a1a5e;
+      font-family: sans-serif;
+    }
+
+    .process-container {
+      position: relative;
+      padding: 100px 0;
+    }
+
+    .stage {
+      text-align: center;
+      z-index: 2;
+    }
+
+    .stage-icon {
+      width: 100px;
+      height: 100px;
+      border: 2px solid #1a1a5e;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin: 0 auto 15px;
+      color: #1a1a5e;
+      background: #fff;
+    }
+
+    svg.arrow-path {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    path.curved-arrow {
+      fill: none;
+      stroke: #1a1a5e;
+      stroke-width: 2;
+      stroke-dasharray: 300;
+      stroke-dashoffset: 300;
+      animation: drawArrow 1s ease forwards;
+    }
+
+    .arrow-1 {
+      animation-delay: 0.5s;
+    }
+
+    .arrow-2 {
+      animation-delay: 1.5s;
+    }
+
+    .arrow-3 {
+      animation-delay: 2.5s;
+    }
+
+    @keyframes drawArrow {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container process-container" data-aos="fade-up">
+  <div class="row justify-content-center">
+    <div class="col-md-3 stage">
+      <div class="stage-icon">👥</div>
+      <p><strong>Client Consultation</strong></p>
+    </div>
+
+    <div class="col-md-3 stage">
+      <div class="stage-icon">💡</div>
+      <p><strong>Concept Ideation</strong></p>
+    </div>
+
+    <div class="col-md-3 stage">
+      <div class="stage-icon">🧪</div>
+      <p><strong>Prototype Formulation</strong></p>
+    </div>
+
+    <div class="col-md-3 stage">
+      <div class="stage-icon">✅</div>
+      <p><strong>Testing and Refinement</strong></p>
+    </div>
+  </div>
+
+  <!-- SVG Arrow Paths -->
+  <svg class="arrow-path">
+    <path class="curved-arrow arrow-1" d="M140,50 C200,0 280,0 340,50" />
+    <path class="curved-arrow arrow-2" d="M460,50 C520,0 600,0 660,50" />
+    <path class="curved-arrow arrow-3" d="M780,50 C840,0 920,0 980,50" />
+  </svg>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    once: true // ensures it only runs once
+  });
+</script>
+</body>
+</html>

@@ -9,7 +9,7 @@
 }
 .custom-navbar {
     background-color: rgba(20,32,97,1);
-    max-width: 1440px;
+    max-width: 100%;
     min-height:84px;
     margin: 0 auto; /* Centers the navbar */
     padding: 0 36px;
@@ -39,6 +39,14 @@
 .navbar-nav .nav-item {
     padding: 0 15px; /* Spacing between menu items */
 }
+@media (max-width: 768px) {
+    .navbar-nav .nav-item {
+        padding: 0; /* Reduced spacing for mobile */
+    }
+    .navbar-nav {
+        gap: 10px; /* Reduced gap for mobile */
+    }
+}
 
 .btn-custom {
     /* Contact Us Button */
@@ -46,6 +54,9 @@
     border-radius: 2px;
     border: 1px solid white;
     padding: 8px 15px;
+    white-space: nowrap; /* Prevent text wrapping */
+
+    
 }
 
 
@@ -62,6 +73,13 @@
     gap:16px;
     margin-right: 16px;
 
+}
+.request-quote-inputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 }
 /* Mobile Responsive */
 @media (max-width: 992px) {
@@ -83,7 +101,7 @@
 }
 
 .heading{
-    font-family: 'Inria Serif', serif;
+    font-family: 'Inria Serif';
     font-weight: 400;
     line-height: 100%; /* Same as 1.0 */
     letter-spacing: -0.02em; /* -2% converted to em */
@@ -153,12 +171,12 @@ h4 {
 }
 
 h5 {
-    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-size: clamp(0.75rem, 4vw, 1.3rem);
     line-height: clamp(2rem, 5vw, 3.5rem);
 }
 
 h6 {
-    font-size: clamp(1.2rem, 3vw, 2.25rem);
+    font-size: clamp(0.75rem, 3vw, 1.25rem);
     line-height: clamp(1.8rem, 4vw, 2.5rem);
 }
 
@@ -199,7 +217,7 @@ h6 {
 }
 
 .footer-logo {
-    max-width: 280px; /* Adjust logo size */
+    max-width: 240px; /* Adjust logo size */
 }
 
 .footer-heading {
@@ -256,3 +274,583 @@ h6 {
 }
 
 
+
+  #testimonialCarousel img {
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+    margin-right: 1rem;
+    overflow: hidden;
+  }
+  .carousel-inner.testimonial {
+    padding: 3.5rem;
+  }
+  
+  @media screen and (min-width: 576px) {
+    .carousel-inner.testimonial {
+      display: flex;
+      width: 90%;
+      margin-inline: auto;
+      padding: 3.5rem;
+      overflow: hidden;
+    }
+    .testimonial .carousel-item {
+      display: block;
+      margin-right: 0;
+      flex: 0 0 calc(100% / 2);
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .testimonial .carousel-item {
+      display: block;
+      margin-right: 0;
+      flex: 0 0 calc(100% / 3);
+    }
+  }
+  #testimonialCarousel .card {
+    margin: 0 0.5em;
+    background: white;
+    padding: 20px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 300px;
+    height:100%;
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 3rem;
+    height: 3rem;
+    background-color: grey;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .testimonial-container{
+    background-color: rgb(245,130,31);
+    min-width: 100% !important;
+    
+ 
+  }
+  #testimonialCarousel {
+    width: 100% !important;
+  }
+
+  .testimonial-card {
+    background: white;
+    padding: 20px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 300px;
+    height:100%;
+    margin:10px;
+    
+}
+.quote-icon {
+    font-size: 2rem;
+    color: #333;
+}
+
+.testimonial-text {
+    font-size: 1rem;
+    color: #333;
+ 
+}
+
+.testimonial-author {
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.testimonial-author-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:2px;
+    margin-left: 20px;
+}
+.quote-icon img{
+    max-width:30px;
+    height:28px;
+}
+
+.banner{
+    background-image: url('/static/images/blue\ banner.png');
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height:50vh;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover; 
+      align-items: center;
+      justify-content: center;
+  
+  }
+  .banner-heading h5{
+    color:rgba(245,130,31,1);
+  }
+  .banner-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    gap:20px;
+  }
+  .banner-body p{
+    color:white;
+    font-family: 'Be Vietnam Pro';
+    font-weight: 400;
+    line-height: 1.75rem;
+  }
+  
+  .banner-contact-us button{
+    background-color: #0b1957;
+  }
+  .banner-contact-us button:hover{
+    background-color: white !important;
+    color: #0b1957;
+  }
+
+  .modal{
+    overflow-y: visible !important;
+    overflow-x: visible !important;
+    z-index:1040;
+  } 
+
+  .modal-content{
+    z-index: 1020;
+    position:relative;
+    top:50px;
+  }
+  .modal-body .form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .modal-backdrop{
+    z-index:20;
+  }
+  .dropdown .btn{
+    background-color: white;
+  }
+  .dropdown-menu {
+    width:150px;
+    overflow-x: auto; 
+  }
+  .dropdown-item {
+    white-space: normal; /* Allow text to wrap */
+  
+    min-width: 100%; /* Ensure the text stays within the container */
+    border: 1 px solid #0b1957;
+    padding: 10px; /* Add padding for better spacing */
+
+}
+  .dropdown-menu a:hover {
+    background-color: #f1f1f1;
+}
+.show {
+    display: block;
+
+}
+.dropdown button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px; /* Adjust width */
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    border-color: rgb(19,39,97);
+}
+.dropdown-toggle::after {
+    position: absolute;
+    right: 10px; /* Moves the arrow to the right */
+    top: 50%;
+}
+
+.dropdown-placeholder {
+    color: #999; /* Gray color like placeholder */
+    font-family: 'Be Vietname Pro';
+}
+
+.dropdown-menu {
+    min-width: 100%;
+}
+.modal-footer button{
+    width:100%;
+    background-color: rgb(19,39,97);
+}
+
+.modal input{
+    border-color: rgb(19,39,97);
+    font-family: 'Be Vietnam Pro';
+    font-size: 16px;
+    color: #999 !important;
+}
+.modal textarea{
+    border-color: rgb(19,39,97);
+}
+.modal-header {
+    border-bottom: none !important; /* Removes the horizontal line */
+}
+
+/* PreLoader css */
+/* Fullscreen overlay */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #ffffff; /* or any background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+  }
+  
+  /* Optional: smooth fade-out */
+  #preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+
+  #dropdownMenuButton{
+    width: 100%;
+  }
+
+  #error_data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .modal-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  #dropdownMenuButtonRequest{
+    width: 100%;
+  }
+
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+#accordionExample{
+    margin:6.25rem;
+}
+@media (max-width: 768px) {
+  .about-us-container {
+      margin: 2rem; /* Reduced padding for mobile */
+  }
+}
+
+.accordion-button{
+    color: rgba(210,103,10,1);
+    padding: 0;
+    height:12px;
+    padding: 1.75rem;
+    justify-content: space-between;
+}
+.accordion-header{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin:0;
+    border: none;
+}
+.accordion-button:not(.collapsed),
+.accordion-button:focus {
+    background-color: rgba(239,240,245,1);
+    color: rgba(210,103,10,1);
+    border:none;
+    box-shadow: none;
+    padding:1.75rem;
+}
+.accordian-heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Remove default Bootstrap arrow */
+.accordion-button::after {
+    content: none !important;
+}
+.accordion-button .icon {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: auto; /* Pushes the icon to the right */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Change to minus (-) when expanded */
+.accordion-button:not(.collapsed) .icon {
+    content: "-";
+}
+
+
+#accordionExample{
+    margin:6.25rem;
+  }
+  .accordion-button{
+    color: rgba(210,103,10,1);
+    padding: 0;
+    height:12px;
+    padding: 1.75rem;
+    justify-content: space-between;
+  }
+  .accordion-header{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin:0;
+    border: none;
+  
+  
+  }
+  .accordion-button:not(.collapsed),
+  .accordion-button:focus {
+    background-color: rgba(239,240,245,1);
+    color: rgba(210,103,10,1);
+    border:none;
+    box-shadow: none;
+    padding:1.75rem;
+  }
+  .accordian-heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Remove default Bootstrap arrow */
+  .accordion-button::after {
+    content: none !important;
+  }
+  .accordion-button .icon {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: auto; /* Pushes the icon to the right */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Change to minus (-) when expanded */
+  .accordion-button:not(.collapsed) .icon {
+    content: "-";
+  }
+
+  /* Timeline CSS */
+  .project-name {
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  .success {
+    background: #78AD42 !important;
+  }
+  
+  .timeline-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  #timeline .timeline-item:after, #timeline .timeline-item:before {
+    content: '';
+    display: block;
+    width: 100%;
+    clear: both;
+  }
+  
+  #timeline {
+    width: 100%;
+    margin: 30px auto;
+    position: relative;
+    padding: 0 20px;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+  }
+  #timeline:before {
+    content: "";
+    width: 3px;
+    height: 100%;
+    background: #0b1957;
+    left: 50%;
+    top: -25px;
+    position: absolute;
+  }
+  #timeline:after {
+    content: "";
+    clear: both;
+    display: table;
+    width: 100%;
+  }
+  #timeline .timeline-item {
+    position: relative;
+    height:250px;
+
+  }
+  #timeline .timeline-item .timeline-icon {
+    background-color: #fff;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    overflow: hidden;
+    margin-left: -23px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    border: 1px solid #0b1957;
+  }
+  #timeline .timeline-item .timeline-icon svg, #timeline .timeline-item .timeline-icon .fa {
+    position: relative;
+    top: 13px;
+    left: 14px;
+    font-size: 24px;
+    color: #fff;
+  }
+  #timeline .timeline-item .timeline-content {
+    width: 45%;
+    /* background-color: #0b1957; */
+    /* color: white; */
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+    /* border-radius: 15px 0 15px 0; */
+    /* border-radius: 100%; */
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #0b1957;
+    box-shadow:  0.5rem 1rem rgba(0,0,0,0.1);
+    border-radius: 1rem;
+
+
+  }
+  .timeline-item:first-child {
+    top: 0; /* override for the first item */
+    margin-top: 0;
+  }
+  .timeline-item{
+    /* top:-100px; */
+    margin-top: -40px;
+  }
+  @media (max-width: 768px) {
+    .timeline-item {
+        margin-top: 0; /* Reset margin-top for mobile view */
+    }
+}
+  #timeline .timeline-item .timeline-content .heading {
+    /* color: #fff; */
+    color: #0b1957;
+    font-size: 20px;
+   
+  }
+  #timeline .timeline-item .timeline-content p {
+    padding:15px;
+    color: right;
+    font-family: 'Be Vietnam Pro';
+  }
+  /* #timeline .timeline-item .timeline-content:before {
+    content: '';
+    position: absolute;
+    left: 45%;
+    top: 20px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 7px solid #1C71A4;
+  } */
+  #timeline .timeline-item .timeline-content.right {
+    float: right;
+    /* background: #E68900; */
+  }
+  /* #timeline .timeline-item .timeline-content.right:before {
+    content: '';
+    right: 45%;
+    left: inherit;
+    border-left: 0;
+    border-right: 7px solid #1C71A4;
+  } */
+  
+  
+  @media screen and (max-width: 768px) {
+    #timeline {
+      margin: 30px;
+      padding: 0px;
+      width: 90%;
+    }
+    #timeline:before {
+      left: 0;
+    }
+    #timeline .timeline-item .timeline-content {
+      width: 90%;
+      float: right;
+    }
+    #timeline .timeline-item .timeline-content:before, #timeline .timeline-item .timeline-content.right:before {
+      left: 10%;
+      margin-left: -6px;
+      border-left: 0;
+      border-right: 7px solid #1C71A4;
+    }
+    #timeline .timeline-item .timeline-icon {
+      left: 0;
+    }
+  }
+
+  .icon-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: white;
+    font-size: 32px;
+  }
+  .timeline-icon .icon-circle {
+    background-color: #0b1957;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top:9px;
+
+  }
+  .icon-yellow { background-color: #f5b041; }
+  .icon-red { background-color: #cd5c5c; }
+  .icon-teal { background-color: #117a8b; }
+  .icon-blue { background-color: #2e86c1; }
+  
+  /* #customDropdownProductMenu{
+    width: auto;
+    max-width: 300px;
+    min-width: 200px;
+    
+  } */

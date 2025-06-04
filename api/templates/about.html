@@ -1,11 +1,279 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'temp_base.html' %}
+{% load static %}
 
-</head>
-<body>
-    <h1>About</h1>
-</body>
-</html>
+{% block title %}Home Page{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Passion+One:wght@400;700;900&family=Roboto:wght@600&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+{% endblock %}
+
+̦
+
+{% block content %}
+
+
+<div class="bg-image">
+
+<div class="row h-100 p-2">
+  <div class="col-md-6 d-flex flex-column col-sm-12">
+    <div class="flex-grow-1"></div>
+    <div class="p-5 mb-5">
+      <!-- <p class="text about-text mb-5">About</h4> -->
+      <h4 class="heading mb-5">About</h4>
+      <h4 class="heading">Vimson Derma</h4>
+      <p class="about-text">Your Trusted Partner in Private Label & Third-Party Cosmetic Manufacturing
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="container-fluid one-stop-solution">
+<div class="row w-100 p-0 m-0">
+    <div class="col-md-6 col-sm-12">
+      <img src="{% static 'images/one-stop-solution.png'%}" alt="Slide 1" class="w-100 h-100 object-fit-cover"/>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <div class="one-stop-text" id="AboutUsText">
+        <h6 class="heading mb-5" data-aos="zoom-in">Crafting Beauty, Delivering Trust</h6>
+        <p class="text">
+          Welcome to <strong>Vimson Derma</strong>, a name trusted by Cosmeceutical Company, skincare entrepreneurs, and global cosmetic brands. As a <strong>leading third-party manufacturer of cosmetic and medicated products in India</strong>, we offer custom skincare solutions, private label manufacturing, and end-to-end product development services, all under one roof.
+          <br><br>
+          Founded in <strong>2014</strong> by <strong>Mr. Vimal Bachhawat</strong> and <strong>Mr. Kalpesh Bachhawat</strong>, Vimson Derma was built on a vision to combine <strong>science, beauty, and business</strong> and today, we are proud to be ranked among the <strong>Top 30 Contract Manufacturers and Suppliers of Medicated Products</strong> in India.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row w-100 p-0 m-0">
+    <div class="col-md-6 col-sm-12">
+      <div class="one-stop-text" id="AboutUsText">
+        <h6 class="heading mb-5" data-aos="zoom-in">Backed by <strong>50+ years of industry experience,</strong> </h6>
+        <p class="text">
+          we specialize in <strong>skincare, haircare, dermatology </strong> and <strong>pharma-cosmetic product</strong>s that are trusted across markets. From <strong>low MOQs</strong> for startups to <strong>scalable production</strong> for global brands, we make launching and growing your brand <strong>easy, efficient, and profitable.</strong>
+          <br><br>
+          Whether you're a dermatologist creating your signature line, a beauty startup entering the market, or an established label looking for reliable manufacturing — <strong>Vimson Derma is your one-stop destination for high-quality, innovative, and regulatory-compliant solutions. </strong>
+          <br><br>
+          <i> Explore our full <a href="#">product catalog</a> or download our mini catalog to get started</i>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <img src="{% static 'images/one-stop-solution.png'%}" alt="Slide 1" class="w-100 h-100 object-fit-cover"/>
+    </div>
+  </div>
+
+</div>
+
+<div class="expertise container-fluid p-0 m-0">
+    <h2 class="section-title text-center">Our Expertise</h2>
+    <div class="row justify-content-center h-100">
+      <div class="col-md-3 expertise-card">
+        <div class="expertise-icon">
+          <img src="{% static 'images/private_labeling.svg' %}" alt="Dermatology" class="expertise-icon-img">
+        </div>
+        <h5 data-aos="zoom-in">Private Label</h5>
+        <p>To deliver the most effective and quick dermatological and cosmeceutical solutions.</p>
+      </div>
+  
+      <div class="col-md-3 expertise-card">
+        <div class="expertise-icon">
+          <img src="{% static 'images/third_party.svg' %}" alt="Third-Party Manufacturing" class="img-fluid">
+        </div>
+        <h5 data-aos="zoom-in">Third-Party Manufacturing</h5>
+        <p>To deliver the most effective and quick dermatological and cosmeceutical solutions.</p>
+      </div>
+  
+      <div class="col-md-3 expertise-card">
+        <div class="expertise-icon">
+          <img src="{% static 'images/custom packaging.svg' %}" alt="Custom Packaging" class="img-fluid">
+        </div>
+        <h5 data-aos="zoom-in">Custom Packaging</h5>
+        <p>To deliver the most effective and quick dermatological and cosmeceutical solutions.</p>
+      </div>
+      <div class="col-md-3 expertise-card">
+        <div class="expertise-icon">
+          <img src="{% static 'images/branding.svg' %}" alt="Quality Assurance" class="img-fluid">
+        </div>
+        <h5 data-aos="zoom-in">Product Range & innovation</h5>
+        <p>To deliver the most effective and quick dermatological and cosmeceutical solutions.</p>
+      </div>
+  
+    </div>
+  </div>
+
+
+
+<section class="core-values">
+  <p class="heading text-center">Our Core Values</p>
+  <h5 class="heading text-center mb-3">What Drives Us</h5>
+
+  <div class="container">
+    <div class="value-grid">
+      <div class="value-card"><div class="value-icon">💡</div><div class="value-title">Innovation-First Approach</div></div>
+      <div class="value-card"><div class="value-icon">🛡️</div><div class="value-title">Quality Without Compromise</div></div>
+      <div class="value-card"><div class="value-icon">👩‍🔬</div><div class="value-title">Customer-Centric Solutions</div></div>
+      <div class="value-card"><div class="value-icon">🌱</div><div class="value-title">Sustainability & Responsibility</div></div>
+      <div class="value-card"><div class="value-icon">🔍</div><div class="value-title">Transparency & Trust</div></div>
+      <div class="value-card"><div class="value-icon">📈</div><div class="value-title">Scalability & Growth Support</div></div>
+      <div class="value-card"><div class="value-icon">🔬</div><div class="value-title">Scientific Excellence</div></div>
+      <div class="value-card"><div class="value-icon">⚡</div><div class="value-title">Speed & Efficiency</div></div>
+      <div class="value-card"><div class="value-icon">🌍</div><div class="value-title">Global Standards, Local Expertise</div></div>
+      <div class="value-card"><div class="value-icon">📊</div><div class="value-title">Data-Driven Market Insights</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="clientele-section container-fluid">
+  <div class="container">
+      <div class="row">
+          <!-- Left Side Banner -->
+          <div class="col-lg-6 clientele-carousel-banner">
+              <div class="clientele-text-accent">
+                  Trusted By Great Companies
+              </div>
+              <h3 class="clientele-primary-heading heading">Our Expertise is Proven Through</h3>
+              <h6 class="clientele-custom-text mt-3" data-aos="fade-left" data-aos-once="true" data-offset="200">Consistent Performance And Result</h6>
+             
+          </div>
+
+          <!-- Carousel Logos -->
+          <div class="clientele-custom-carousel col-lg-6">
+              <!-- Left-moving carousel -->
+              <!-- <div class="clientele-carousel-horizontal" fb-carousel="true" fb-carousel-direction="left" fb-carousel-speed="20000" fb-carousel-delay="200" fb-carousel-pauseable="true">
+                  <div class="clientele-carousel-content" fb-carousel-content="true">
+                      <img class="img-fluid" src="/static/images/logo/24c_derma_labs_logo.jfif" alt="24c Derma Labs" />
+                      <img class="img-fluid" src="/static/images/logo/ACME PHARMACEUTICALS.png" alt="ACME" />
+                      <img class="img-fluid" src="/static/images/logo/Ajanta Pharma Limited.jfif" alt="Ajanta" />
+                      <img class="img-fluid" src="/static/images/logo/Alyxia.png" alt="Alyxia" />
+                      <img class="img-fluid" src="/static/images/logo/Ambit Bio Medix.webp" alt="Ambit Bio Medix" />
+                      <img class="img-fluid" src="/static/images/logo/AMERICAN PHARMA REMEDIES.png" alt="American Pharma Remedies" />
+                      <img class="img-fluid" src="/static/images/logo/Aptus pharma.png" alt="Aptus Pharma" />
+                  </div>
+              </div> -->
+
+              <!-- Right-moving carousel -->
+              <div class="clientele-carousel-horizontal" fb-carousel="true" fb-carousel-direction="right" fb-carousel-speed="30000" fb-carousel-delay="200" fb-carousel-pauseable="true" data-aos="fade-up">
+                  <div class="clientele-carousel-content" fb-carousel-content="true">
+                    <img src="/static/images/logo/renee.jfif" alt="Derma Essentia" />
+                      <img src="/static/images/logo/Ardent Life Sciences.png" alt="Ardent Life Sciences" />
+                      <img src="/static/images/logo/AURA PHARMACEUTICALS PVT LTD.jfif" alt="Aura Pharmaceuticals" />
+                      <img src="/static/images/logo/bionova_pharmaceutical_ltd_logo.jfif" alt="Bionova Pharmaceutical" />
+                      <img src="/static/images/logo/Cloud Wellness Private Limited (DERMATOUCH).png" alt="Dermatouch" />
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<div class="container text-center vision-container mt-5">
+  <!-- Core Values Section -->
+  <div class="core-values row justify-content-center text-center text-white">
+    <div class="row" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">
+      <div class="icon-display col-6 col-md-3 mb-3">
+        <div class="icon" >
+          <img src="{% static 'images/vm-consistency.png' %}" alt="Consistency" class="img-fluid white-image">
+        </div>
+        <h6>Consistency</h6>
+      </div>
+      <div class="icon-display col-6 col-md-3 mb-3">
+        <div class="icon">
+          <img src="{% static 'images/vm-innovation.png' %}" alt="Innovation" class="img-fluid white-image">
+        </div>
+        <h6 >Innovation</h6>
+      </div>
+      <div class="icon-display col-6 col-md-3 mb-3">
+        <div class="icon">
+          <img src="{% static 'images/vm-service.png' %}" alt="Service" class="img-fluid white-image">
+        </div>
+        <h6 >Service</h6>
+      </div>
+      <div class="icon-display col-md-3 col-6 mb-3">
+        <div class="icon">
+          <img src="{% static 'images/vm-trust.png' %}" alt="Trust" class="img-fluid white-image">
+        </div>
+        <h6>Trust</h6>
+      </div>
+    </div>
+   
+  </div>
+
+  <!-- Vision & Mission Section -->
+  <div class="vm-section row mb-5">
+    <div class="col-md-6 mb-4 mb-md-0 border-end">
+      <div class="row vision-card">
+        <h5 mb-5 >👁️ Vision</h5>
+        <p mt-4>
+          To lead the way in chemical manufacturing by delivering innovative, sustainable, and cost-effective solutions.
+        </p>
+      </div>
+    
+    </div>
+    <div class="col-md-6">
+      <div class="row vision-card">
+        <h5 mb-5>🛡️ Mission</h5>
+        <p mt-4>
+          To leverage our expertise, resources, and technology to manufacture chemical products that exceed industry standards.
+        </p>
+      </div>
+     
+    </div>
+    <div class="col-12 text-center">
+      <button class="btn vision-btn-custom">Know More About Us</button>
+    </div>
+  </div>
+</div>
+  <div class="container-fluid text-center my-4">
+    <h2 class="heading text-center">Our Certifications</h2>
+    <img src="/static/images/cerificate section.png" usemap="#image-map" class="img-fluid">
+  
+    <map name="image-map">
+        <area href="#" data-bs-toggle="modal" data-bs-target="#modalImage" data-img="/static/images/gmp_certificate.jpeg" alt="certificate1" title="GMP Certificate" coords="464,165,710,522" shape="rect">
+        <area href="#" data-bs-toggle="modal" data-bs-target="#modalImage" data-img="/static/images/iso_2.jpg" alt="certificate2" title="ISO Certificate" coords="1084,160,1332,516" shape="rect">
+        <area href="#" data-bs-toggle="modal" data-bs-target="#modalImage" data-img="/static/images/iso_2.jpg" alt="certificate3" title="ISO Certificate" coords="1704,165,1958,522" shape="rect">
+        <area href="#" data-bs-toggle="modal" data-bs-target="#modalImage" data-img="/static/images/ukcert.jpg" alt="certificate4" title="UKCERT Certificate" coords="464,665,712,1020" shape="rect">
+        <area href="#" data-bs-toggle="modal" data-bs-target="#modalImage" data-img="/static/images/iso_certificate.jpg" alt="certificate5" title="ISO Latest Certificate" coords="1082,665,1336,1027" shape="rect">
+        <area href="#" data-bs-toggle="modal" data-bs-target="#modalImage" data-img="/static/images/iso_halal.jpg" alt="certificate6" title="ISO Halal Certificate" coords="1704,663,1950,1027" shape="rect">
+    </map>
+  </div>
+
+  <!-- Our Team-->
+  <div class="container-fluid w-100 py-5">
+    <h4 class="text-center text-orange-team mb-5">Our Team</h4>
+
+    <div class="card team-card mx-auto">
+      <img src="/static/images/our-team.jpg" class="card-img-top img-fluid team-img" alt="Team Member">
+      <div class="card-body-team text-center">
+        <h5 class="card-title-team mb-1">Vimson Derma</h5>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="modalImage" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title heading text-center" id="modal-title">Certificate</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="" id="popup-img" class="img-fluid" alt="Certificate">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="/static/js/about.js"></script>
+  
+{% endblock %}

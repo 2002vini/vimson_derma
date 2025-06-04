@@ -1,16 +1,10 @@
 
-.bg-image{
-  background-image: url('/static/images/hero.png');
-  width: 100%;
-  height:88vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; 
-}
+
 .hero-text{
     font-size: 1rem;
     color: rgba(20,32,97,0.8);
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Be Vietnam Pro', 'Helvetica Neue';
+    font-weight: 400;
 }
 .about-us-container{
     display: flex;
@@ -22,6 +16,17 @@
     gap:40px;
     color: rgba(77,84,127,1);
     padding:8.5rem;
+}
+@media (max-width: 768px) {
+  .about-us-container {
+      padding: 2rem; /* Reduced padding for mobile */
+  }
+}
+
+.service-row{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
 }
 .about-us-container text{
     line-height: 1.5;
@@ -35,29 +40,32 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height:100%;
 }
 .service-box-card .logo{
    display: flex;
    justify-content: center;
    align-items: center;
-
+   height: 200px;
+   width:200px;
+   
 }
 .service-box-card img{
     object-fit: cover;
-    max-width: 30%;
-    max-height:30%
+    max-width: 80%;
+    max-height:80%
 }
 .service-box{
     gap:0;
 
 }
 .logo-text{
-    font-family: 'Be Vietnam Pro', 'Helvetica Neue';
     font-weight: 400;
     font-size:16px;
     color: rgba(77,84,127,1);
 }
 .logo-heading{
+  font-family: 'Be Vietnam', 'Helvetica Neue';
     font-size: 24px;
     font-weight: 400;
     font-size:16px;
@@ -89,3 +97,342 @@
     background-size: cover; 
 
 }
+
+/* css for products section */
+.scrollable-column {
+    max-height: 500px; /* Controls max height for scrolling */
+    overflow-y: auto;
+}
+.product-card {
+    background-color: #0b1a52;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    height:150px;
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    
+}
+.product-image {
+    width: 100%;
+    max-height: 80%; /* Ensures image takes up most space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Keeps full image visible inside container */
+    border-radius: 8px;
+}
+.product-card .text{
+    color:white;
+}
+/* Responsive Fixes */
+@media (max-width: 991px) {  /* For Tablets */
+    .scrollable-column {
+        max-height: 300px;
+    }
+}
+@media (max-width: 768px) {  /* For Mobile */
+    .scrollable-column {
+        max-height: 250px;
+    }
+    .product-card {
+        padding: 15px;
+        font-size: 14px;
+    }
+}
+
+
+.carousel-control-prev, .carousel-control-next {
+    width: 5%; /* Adjust arrow size */
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: black; /* Change arrow color */
+    border-radius: 50%;
+    padding: 10px;
+}
+
+/* Card Styling */
+/* Move Next Arrow to the Top */
+.carousel-control-next {
+    top: -40px; /* Move the next button above the carousel */
+    right: 10px; /* Keep it aligned to the right */
+    width: auto;
+}
+
+/* Move Previous Arrow to the Top */
+.carousel-control-prev {
+    top: -40px; /* Move the previous button above the carousel */
+    left: 10px; /* Keep it aligned to the left */
+    width: auto;
+}
+
+/* Customize Arrow Icons */
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    background-color: rgba(20,32,97,1) !important; /* Change arrow color to blue */
+    border-radius: 50%;
+    padding: 10px;
+}
+
+/* Optional: Adjust Size */
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    width: 40px;
+    height: 40px;
+}
+/* hero section css */
+
+.carousel-inner.hero {
+    position: relative;
+    overflow: hidden;
+    height: 85vh;
+  }
+
+  .carousel-item.hero {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    display: block;
+    /* transition: opacity 2s ease-in-out; */
+  }
+
+.carousel-item.hero.active {
+opacity: 1;
+clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+animation: slideInFromLeft 1.5s ease-in-out forwards;
+z-index: 2;
+}
+.hero-introduction{
+    position:absolute;
+    top:20px;
+    left:10px;
+    width:50%;
+    font-family: 'Vietnam Pro', sans-serif;
+}
+.hero-introduction-loader{
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  animation: slideInFromLeft 3s ease-in-out forwards;
+}
+.text-overlay{
+  z-index: 5;
+  margin-top: 80px;
+  margin-left: 50px;
+  transform: translateX(-50px);
+}
+.carousel-item.hero.active .text-overlay {
+    animation: textFadeIn 1.5s ease-in-out forwards;
+  }
+  @media (max-width: 768px) {
+    .text-overlay {
+        margin-top: 50px;
+        margin-left: 20px;
+        transform: translateX(-20px);
+    }
+}
+
+  
+.carousel-item.hero.prev-active .text-overlay {
+    animation: textFadeOut 1.5s ease-in-out forwards;
+}
+
+.carousel-item.hero.prev-active {
+  opacity: 1;
+clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+animation: slideOutToRight 1.5s ease-in-out forwards;
+z-index: 2;
+}
+
+@keyframes slideInFromLeft {
+from {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+}
+to {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+}
+
+@keyframes slideOutToRight {
+from {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+to {
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+}
+}
+
+  .carousel-control-prev.hero{
+      z-index: 5;
+  }
+  .carousel-control-next.hero{
+      z-index: 5;
+  }
+
+  @keyframes textFadeIn {
+    from { opacity: 0; transform: translateX(-50px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  
+  @keyframes textFadeOut {
+    from { opacity: 1; transform: translateX(0); }
+    to   { opacity: 0; transform: translateX(50px); }
+  }
+
+  /* Testimonial Styling */
+
+
+#testimonialCarousel img {
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+    margin-right: 1rem;
+    overflow: hidden;
+  }
+  .carousel-inner.testimonial {
+    padding: 1em;
+  }
+  
+  @media screen and (min-width: 576px) {
+    .carousel-inner.testimonial {
+      display: flex;
+      width: 90%;
+      margin-inline: auto;
+      padding: 1em 0;
+      overflow: hidden;
+    }
+    .testimonial .carousel-item {
+      display: block;
+      margin-right: 0;
+      flex: 0 0 calc(100% / 2);
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .testimonial .carousel-item {
+      display: block;
+      margin-right: 0;
+      flex: 0 0 calc(100% / 3);
+    }
+  }
+  #testimonialCarousel .card {
+    margin: 0 0.5em;
+    background: white;
+    padding: 20px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 300px;
+    height:100%;
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 3rem;
+    height: 3rem;
+    background-color: grey;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .testimonial-container{
+    background-color: rgb(245,130,31);
+    min-width: 100% !important;
+    padding-bottom: 2rem;
+ 
+  }
+  #testimonialCarousel {
+    width: 100% !important;
+  }
+
+  .testimonial-card {
+    background: white;
+    padding: 20px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 300px;
+    height:100%;
+    margin:10px;
+    
+}
+.quote-icon {
+    font-size: 2rem;
+    color: #333;
+}
+
+.testimonial-text {
+    font-size: 1rem;
+    color: #142061;
+    font-family: 'Be Vietnam Pro', 'Helvetica Neue';
+    font-weight: 400;
+ 
+}
+
+.testimonial-author {
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.testimonial-author-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:2px;
+    margin-left: 20px;
+}
+.quote-icon img{
+    max-width:30px;
+    height:28px;
+}
+.product-text{
+  color:#F5821F;
+  font-family: 'Be Vietnam Pro', 'Helvetica Neue';
+}
+
+dropdown-toggle::after {
+  /* display: inline-block; */
+  margin-left: 4px;
+  vertical-align: .255em;
+  content: "";
+  border-top: 5px solid;
+  border-right: 5px solid transparent;
+  border-bottom: 0;
+  border-left: .3em solid transparent;
+  margin-top: 3px;
+}
+
+.five-col {
+  width: 20%;
+  padding: 0;
+}
+
+@media (max-width: 992px) {
+  .five-col {
+    width: 50%; /* 2 per row on tablets */
+  }
+}
+
+@media (max-width: 576px) {
+  .five-col {
+    width: 100%; /* 1 per row on mobile */
+  }
+}
+

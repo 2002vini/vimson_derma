@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "api",
     "debug_toolbar",
     "rest_framework",
+    "tinymce"
 ]
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
@@ -175,3 +176,21 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+EMAIL_HOST = 'live.smtp.mailtrap.io'
+EMAIL_HOST_USER = 'api'
+EMAIL_HOST_PASSWORD = 'ad0bd2f3543f7375bb7dc34bd84a933b'
+EMAIL_PORT = '587'
+
+TINYMCE_DEFAULT_CONFIG = {
+    'height': 360,
+    'width': 800,
+    'plugins': 'image link media code',
+    'toolbar': 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | '
+               'bullist numlist outdent indent | link image media | code',
+    'image_title': True,
+    'automatic_uploads': True,
+    'file_picker_types': 'image',
+    'images_upload_url': '/upload_image/',
+}
+

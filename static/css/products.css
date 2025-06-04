@@ -1,0 +1,310 @@
+.products-display{
+    background-image: url('/static/images/face_care_hero.png');
+    border-radius: 50px 0px 50px 0px;
+    display: flex;
+    width: 100%;
+    height:88vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    align-items: center;
+    justify-content: center;
+}
+.product-heading{
+    background-color: rgba(239, 240, 245, 1);
+    color: rgba(20, 32, 97, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.choice{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    font-family: 'Be Vietnam Pro';
+    transition: background 0.2s ease;
+}
+.choice:hover{
+    background-color: rgba(20, 32, 97, 0.1);
+    color: rgba(20, 32, 97, 1);
+    cursor: pointer;
+}
+.choice.active{
+    background-color: rgba(20, 32, 97, 1);
+    color: white;
+}
+
+  .left-sidebar {
+    max-height: 100vh;
+    overflow-y: auto;
+    border-right: 1px solid #dee2e6;
+    padding: 1rem;
+    background-color: white;
+    gap: 12px;
+  }
+  .right-content {
+    padding: 1rem;
+  }
+  @media (min-width: 768px) {
+    .right-content {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+  }
+  .category-tags{
+    background-color: rgba(211, 213, 228, 1);
+
+  }
+  .product-tags{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(254, 242, 250, 1);
+    padding: 0.5rem;
+  }
+  .product-card {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+    height: auto;
+  }
+  .product-img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.25rem;
+    object-fit: cover;
+  }
+  .category-item {
+    padding: 1.125rem 2rem;
+    margin-bottom: 1.25rem;
+    border: 1.5px solid rgba(20, 32, 97, 1);
+    cursor: pointer;
+    transition: background 0.2s ease;
+    font-family: 'Be Vietnam Pro';
+    font-weight: 500;
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .subcategory-list .sub-category-item{
+    padding: 0.5rem 0.5rem;
+    border: none;
+    border-bottom: 1px solid rgba(20, 32, 97, 0.5);
+    margin: none;
+    transition: background 0.2s ease;
+
+
+  }
+  .category-item img {
+    width: 28px;
+    height: 32px;
+    color: black;
+    filter: brightness(0) saturate(100%);
+
+  }
+  .category-item:hover,
+  .sub-category-item:hover,
+  .category-item.active {
+    background-color: #e0e0ff;
+  }
+
+  .subcategory-list {
+    margin-left: 1rem;
+    display: none;
+    transition: all 0.3s ease;
+    margin-bottom: 0.5rem;
+  }
+  .subcategory-list.show {
+    display: block;
+  }
+
+  .blog-card {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background: white;
+    transition: transform 0.3s ease;
+    background-color: #FDEBF8;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    cursor:pointer;
+}
+
+.blog-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.blog-content {
+    padding: 15px;
+    background: #FDECE4;
+    background-color: #FDEBF8;
+  
+}
+
+.tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.tag {
+    background-color: #E58D60;
+    color: white;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    max-width: 100px;
+}
+
+#selectedTagsContainer{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap:8px;
+}
+
+.product-card-title {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'Inria Serif', serif;
+
+    color: #1C1C4D;
+    margin-bottom: 5px;
+}
+
+.product-card-description {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-weight: 400;
+    color: #4D547F;
+}
+
+.date {
+    font-size: 12px;
+    color: #888;
+}
+
+.blog-display{
+    display:flex;
+    flex-direction: column;
+    gap:12px;
+}
+.filter-class{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap:12px;
+
+}
+
+.blog-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    gap: 5px;
+}
+
+.facecare-section-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)), 
+  url('/static/images/face_care_info.png');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 60px;
+  min-height: 625px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.facecare-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 23, 97, 0.3);
+  z-index: 1;
+}
+
+.facecare-text-left {
+  position: relative;
+  z-index: 2;
+  max-width: 40%;
+}
+
+.facecare-text-left h4 {
+  font-size: 48px;
+  color: #f89b24;
+  margin: 0 0 20px;
+  font-weight: 700;
+  font-family: 'Inria Serif', serif;
+}
+
+.facecare-text-left p {
+  font-size: 1rem;
+  color: #e0e0e0;
+  font-family: 'Inria Serif', serif;
+  font-weight: 400;
+}
+
+.facecare-text-right {
+  position: relative;
+  z-index: 2;
+  max-width: 55%;
+  color: #dcdcdc;
+  line-height: 1.7;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .facecare-section-container {
+    flex-direction: column;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .facecare-text-left, .facecare-text-right {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+}
+.category-item{
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+}
+.product-display-list{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

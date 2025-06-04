@@ -1,0 +1,160 @@
+.career-about{
+    background-image: url('/static/images/career.png');
+    display: flex;
+    width: 100%;
+    height:88vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    align-items: center;
+    justify-content: center;
+}
+.career-about .heading,.p-5{
+  color: white;
+}
+.heading {
+    color: #1c2a4b;
+    font-weight: bold;
+  }
+  .job-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  .job-card {
+    border: 1px solid #dcdcdc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    background-color: #ffffff;
+    padding: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width:100%;
+    margin:20px;
+
+  }
+  .job-card:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .job-card h5{
+    font-size: 24px;
+  }
+  .job-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .icon-box {
+      width: 50px;
+      height: 50px;
+    background-color: #e8edf6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+  }
+  
+  .icon-box i {
+    font-size: 24px;
+    color: #1c2a4b;
+  }
+  
+  .apply-btn {
+    background-color: #1c2a4b;
+    border: none;
+  }
+  
+  .apply-btn:hover {
+    background-color: #163060;
+  }
+  .jobCarousel .row{
+    gap:5px;
+  }
+ @media(max-width:768px){
+  .job-card{
+    width:100%;
+  }
+ }
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .card-col {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+  .form-section {
+    margin: 50px auto;
+    padding: 20px;
+    background: #fdf1f7;
+    text-align: center;
+  }
+  
+  .form-section h2 {
+    font-size: 2rem;
+    color: #0b1d57;
+    margin-bottom: 30px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .form-grid input,
+  .form-grid select,
+  .form-grid textarea {
+    padding: 12px;
+    border: 1px solid #c2c2c2;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .form-grid textarea {
+    grid-column: span 2;
+    resize: none;
+  }
+  
+  .submit-btn {
+    background-color: #0b1d57;
+    color: #fff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-end;
+    transition: background 0.3s;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0d256d;
+  }
+  
+  @media (max-width: 600px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .job-container a:hover{
+    cursor: pointer;
+  }

@@ -1,0 +1,159 @@
+{% extends 'temp_base.html' %}
+{% load static %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/products.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Passion+One:wght@400;700;900&family=Roboto:wght@600&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid products-display">
+</div>
+
+
+<div class="container mb-5 p-2">
+
+  <div class="blog-title">
+      <h4 class="heading text-center mt-5 mb-5">New Product</h4>
+  </div>         
+  <div class="row ">
+    {% for product in featured_products %}
+      <div class="col-md-4 col-sm-12">
+          <div class="blog-card">
+              <img src="{{product.image}}" alt="Skincare Image">
+              <div class="blog-content">
+                  <div class="tags">
+                      {% for sub in product.subcategory %}
+                      <span class="tag">{{sub}}</span>
+                      {%endfor%}
+                  </div>
+                  <div class="product-card-title">{{product.name}}</div>
+                  <div class="product-card-description">{{product.description}}</div>
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+  </div> 
+  
+</div>
+
+
+<section class="facecare-section-container container">
+
+  <div class="facecare-overlay"></div>
+  
+  <div class="facecare-text-left">
+    <h4>Face Care Product<br>Manufacturers</h4>
+    <p>Healthy and Strong hair from the root to the tip</p>
+  </div>
+
+  <div class="facecare-text-right">
+    <p>
+      Welcome to HCP Wellness, your trusted partner in premium hair care products. As a leading hair care products manufacturer in India, we pride ourselves on delivering innovative and high-quality solutions for all hair types. Our comprehensive range includes everything from hair oils and shampoos to serums and gels, all crafted to meet the diverse needs of our clients.
+    </p>
+    <p>
+      At HCP Wellness, we specialize in creating a wide array of hair care products that cater to different market segments. As renowned hair care product suppliers, we ensure that our products are made with the finest ingredients and cutting-edge technology.
+    </p>
+    <p>
+      Harnessing the power of ancient Ayurveda, we produce hair care solutions that are both effective and gentle. Our Ayurvedic hair care products are designed to promote healthy hair growth, reduce hair fall, and enhance the natural beauty of your hair.
+    </p>
+  </div>
+</section>
+
+<div class="container-fluid mt-5 mb-5 p-2">
+    <div class="row">
+      <!-- Left Sidebar (on top for mobile, side for desktop) -->
+      <div class="col-12 col-md-3 left-sidebar mb-3 mb-md-0">
+        {% for category in subcategory %}
+        <div class="category-item" data-toggle="subcategory" data-target="#{{category.type}}">
+          <span>{{category.type}}</span>
+        </div>
+        {% endfor %}
+      </div>
+  
+      
+  
+      <!-- Right Content -->
+      <div class="col-12 col-md-9 right-content">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
+          <!-- <h6 class="heading choice">Cosmetics</h6> -->
+          <!-- <h6 class="heading choice active">Medicated</h6> -->
+           <h5 class="heading text-center">Products</h5>
+        </div>
+        <div class="product-display-list">
+            {% for product in products %}
+            {% if forloop.first or forloop.counter0|divisibleby:3 %}
+            <div class="row g-3">
+            {% endif %}
+                    <div class="col-sm-12 col-md-4">
+                        <div class="product-card {{product.category}} {{product.subcategory}}" id="{{product.id}}">
+                          <div class="image-container mb-2">
+                            <img src="{{product.image}}" alt="Product" class="product-img " />
+                          </div>
+                          <h6 class="heading">{{product.name}}</h6>
+                          <div class="product-tags">
+                            {% for tag in product.subcategory %}
+                            <small class="text-muted">
+                               {{tag}}
+                              </small>
+                            {% endfor %}
+                        </div>
+                        </div>
+                      </div>
+        
+            {% if forloop.counter|divisibleby:3 or forloop.last %}
+            </div> <!-- close row -->
+            {% endif %}
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- JS to toggle subcategories -->
+  <script>
+    document.querySelectorAll('[data-toggle="subcategory"]').forEach(item => {
+      item.addEventListener('click', () => {
+        const targetId = item.getAttribute('data-target');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.classList.toggle('show');
+        }
+      });
+    });
+
+    document.querySelectorAll('.heading.choice').forEach(item => {
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.heading.choice').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+
+    document.querySelectorAll('.product-card').forEach(item => {
+      item.addEventListener('click', () => {
+        const productId = item.getAttribute('id');
+        window.location.href = `/product/${productId}/`;
+      });
+    });
+
+    document.querySelectorAll('.sub-category-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const categoryClass = item.classList[1];
+        const subCategoryClass = item.textContent.trim();
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach(card => {
+          if (card.classList.contains(categoryClass) && card.classList.contains(subCategoryClass)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+{%endblock%}

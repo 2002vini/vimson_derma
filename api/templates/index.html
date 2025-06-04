@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Passion+One:wght@400;700;900&family=Roboto:wght@600&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 {% endblock %}
 
 
@@ -15,7 +17,7 @@
 {% block content %}
 
 
-<div class="bg-image">
+<!-- <div class="bg-image">
 
 <div class="row h-100 p-2">
   <div class="col-md-6 d-flex flex-column col-sm-12">
@@ -28,57 +30,139 @@
     </div>
   </div>
 </div>
+</div> -->
+
+
+<div id="carouselExample" class="carousel">
+  <div class="carousel-inner hero">
+       
+    <div class="carousel-item hero active">
+      <div class="hero-introduction" id="hero-intro-section">
+        <div class="text-overlay p-5">
+          <h4 class="heading">The Future of Skincare & Haircare </h4>
+          <h4 class="heading mb-3">Starts Here!</h4>
+          <p class="hero-text">
+            Your Trusted Partner in Private Label & Third-Party Manufacturing
+          </p>
+          <a href="{% url 'about' %}#AboutUsText" class="btn btn-custom mt-3">Learn More</a>
+        </div>
+      </div>
+      <img src="{% static 'images/hero1.png' %}" alt="Slide 1" class="w-100 h-100 object-fit-cover"/>
+    </div>
+    <div class="carousel-item hero">
+      <div class="hero-introduction">
+        <div class="text-overlay p-5">
+          <h4 class="heading">Your Brand, Our</h4>
+          <h4 class="heading mb-3">innovation</h4>
+          <p class="hero-text">At Vimson Derma, we prioritize quality and innovation in every product. Our FDA-approved facility and advanced R&D lab ensure safe, effective, and high-performance skincare and cosmetic solutions.</p>
+          <a href="{% url 'about' %}" class="btn btn-custom">Learn More</a>
+        </div>
+      </div>
+      <img src="{% static 'images/hero2.png'%}" alt="Slide 2" class="w-100 h-100 object-fit-cover"/>
+    </div>
+    <div class="carousel-item hero">
+      <div class="hero-introduction">
+        <div class="text-overlay p-5">
+          <h4 class="heading">Your Brand, Our</h4>
+          <h4 class="heading mb-3">innovation</h4>
+          <p class="hero-text">At Vimson Derma, we prioritize quality and innovation in every product. Our FDA-approved facility and advanced R&D lab ensure safe, effective, and high-performance skincare and cosmetic solutions.</p>
+          <a href="#" class="btn btn-custom">Learn More</a>
+        </div>
+      </div>
+      <img src="{% static 'images/hero3.png' %}" alt="Slide 3" class="w-100 h-100 object-fit-cover"/>
+    </div>
+  </div>
+
+  <button class="carousel-control-prev hero">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+
+  <button class="carousel-control-next hero">
+    <span class="carousel-control-next-icon"></span>
+  </button>
 </div>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+
 
 <div class="container">
   <div class="about-us-container">
-    <div class="heading h3">Why Choose Vimson Derma?</div>
-    <div class="text p-4">
-      At Vimson Derma, we offer end-to-end skincare and cosmetic manufacturing solutions, from research & development to high-quality production. With FDA-approved facilities, advanced formulations, and a commitment to safety and efficacy, we ensure premium, customized products tailored to your brand’s needs.
+    <div class="heading h3">Why Brands Choose Vimson Derma?</div>
+    <div class="text p-4" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+      Vimson Derma isn’t just another manufacturer – we are your <strong> hub for skincare, haircare, and derma solutions.</strong> From <strong>custom formulations </strong> to <strong>premium packaging</strong>, we handle everything so your brand stands out in the market. Whether you’re a startup or an established brand, our expertise ensures <strong>high-performance, compliant, and market-ready products</strong> with global standards.
     </div>
   </div>
 </div>
 
   <div class="row w-100 d-flex gx-0 gy-0 justify-content-center">
-    <div class="col-lg-4 col-md-6 col-sm-12 service-box">
-      <div class="service-box-card p-5">
-       <div class="logo mb-3">
-        <img src="{% static 'images/icon.png' %}" alt="Research & Development">
+    <div class="five-col service-box">
+      <div class="service-box-card p-2">
+       <div class="logo ">
+        <img src="{% static 'images/custom formula.svg' %}" alt="Custom Formulations">
        </div>
-       <div class="logo-heading">
-        <p class>FDA & GMP Certified Manufacturing</p>
+       <div class="logo-heading text-center">
+        <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">Custom Formulations, Backed by Science.</p>
         </div>
-       <div class="logo-text">
-        <p class> High-quality production with global safety standards.</p>
+       <div class="logo-text text-center">
+        <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true"> High-quality production with global safety standards.</p>
        </div>
       </div>
 
     </div>
-    <div class="col-lg-4 col-md-6 col-sm-12 service-box">
-      <div class="service-box-card p-5">
-        <div class="logo mb-3">
-          <img src="{% static 'images/icon.png' %}" alt="Research & Development">
+    <div class="five-col service-box">
+      <div class="service-box-card p-2">
+       <div class="logo ">
+        <img src="{% static 'images/support' %}" alt="End to End Support">
+       </div>
+       <div class="logo-heading text-center">
+        <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">
+          End-to-End Support: From Ideation to Execution
+        </p>
         </div>
-        <div class="logo-heading">
-          <p class>Custom & Private Label Solutions</p>
+       <div class="logo-text text-center">
+        <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true"> High-quality production with global safety standards.</p>
+       </div>
+      </div>
+
+    </div>
+    <div class="five-col service-box">
+      <div class="service-box-card p-2">
+       <div class="logo ">
+        <img src="{% static 'images/icon.png' %}" alt="FDA & GMP Certified Manufacturing">
+       </div>
+       <div class="logo-heading text-center">
+        <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">FDA & GMP Certified Manufacturing</p>
         </div>
-        <div class="logo-text">
-          <p class=>Tailored formulations for brands, dermatologists, and entrepreneurs.</p>
+       <div class="logo-text text-center">
+        <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true"> High-quality production with global safety standards.</p>
+       </div>
+      </div>
+
+    </div>
+    <div class="five-col service-box">
+      <div class="service-box-card p-2">
+        <div class="logo ">
+          <img src="{% static 'images/private_labeling.svg' %}" alt="Custom & Private Label Solutions">
+        </div>
+        <div class="logo-heading text-center">
+          <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">Custom & Private Label Solutions</p>
+        </div>
+        <div class="logo-text text-center">
+          <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">Tailored formulations for brands, dermatologists, and entrepreneurs.</p>
         </div>
       </div>
- 
-      
     </div>
-    <div class="col-lg-4 col-md-6 col-sm-12 service-box">
-      <div class="service-box-card p-5">
-        <div class="logo mb-3">
-          <img src="{% static 'images/icon.png' %}" alt="Research & Development">
+    <div class="five-col service-box">
+      <div class="service-box-card p-2">
+        <div class="logo ">
+          <img src="{% static 'images/third_party.svg' %}" alt="Cosmetic & Dermatology">
         </div>
-        <div class="logo-heading">
-          <p>Wide Range of  Products</p>
+        <div class="logo-heading text-center">
+          <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">Comprehensive Cosmetic & Dermatology Range
+          </p>
         </div>
-        <div class="logo-text">
-         <p>
+        <div class="logo-text text-center">
+         <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">
           From medicated skincare to luxury beauty products – all under one roof.</p>
         </div>
        </div>
@@ -91,22 +175,26 @@
       <div class="heading h3 mx-auto" style="color:white;">Facts & Figures</div>
         <div class="row mt-5">
             <!-- Column 1 -->
-            <div class="col-md-4">
-                <div class="counter-number" data-target="45">0</div>
+            <div class="col-md-3">
+                <div class="counter-number" data-target="50">0</div>
                 <div class="text">Years of Experience</div>
             </div>
 
             <!-- Column 2 -->
-            <div class="col-md-4">
-                <div class="counter-number" data-target="500">0</div>
-                <div class="text">Companies Served</div>
+            <div class="col-md-3">
+                <div class="counter-number" data-target="300">0</div>
+                <div class="text">Unique Formulations</div>
             </div>
 
             <!-- Column 3 -->
-            <div class="col-md-4">
-                <div class="counter-number" data-target="75">0</div>
+            <div class="col-md-3">
+                <div class="counter-number" data-target="200">0</div>
                 <div class="text">Product Permissions</div>
             </div>
+            <div class="col-md-3">
+              <div class="counter-number" data-target="1000">0</div>
+              <div class="text">Satified Companies</div>
+          </div>
         </div>
     </div>
 </section>
@@ -115,162 +203,381 @@
   <div class="intro-video"></div>
 </section>
 
- <div class="container mb-5">
-        <div class="grid-demo">
-            <p class="website-heading">Our Projects</p>
+<div class="container py-5">
+  <div class="row">
+      <!-- Left Scrollable Column -->
+      <div class="col-lg-4 col-md-6 order-2 order-lg-1 scrollable-column">
+        {% for category in category_section_1 %}
+          <div class="product-card">
+              <div class="product-image">
+                  <img src="{{category.svg_file}}" alt="Product Image">
+              </div>
+              <div class="text p-6">
+                  {{category.type}}
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Center Static Column -->
+      <div class="col-lg-4 col-md-12 order-1 order-lg-2 text-center d-flex flex-column justify-content-center">
+        <h6 class="heading">Explore Our</h6>
+          <h6 class="heading">Product Categories</h6>
+          <p class="text p-4 product-text">Got a Product Idea? We’ll Bring It to Life!
+          </p>
+      </div>
+
+      <!-- Right Scrollable Column -->
+      <div class="col-lg-4 col-md-6 order-3 scrollable-column">
+        {% for category in category_section_2%}
+          <div class="product-card">
+              <div class="product-image">
+                  <img src="{{category.svg_file}}" alt="Product Image">
+              </div>
+              <div class="text p-6">
+                  {{category.type}}
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+  </div>
+</div>
+<!--Testimonial Section-->
+<div class="container w-100 testimonial-container">
+  <div id="testimonialCarousel" class="carousel slide">
+      <h5 class="heading d-flex justify-content-center pt-4">Success Stories</h5>
+
+      <div class="carousel-inner testimonial">
+        {% for item in testimonials%}
+          <div class="carousel-item testimonial-item active">
+              <div class="testimonial-card">
+                  <div class="quote-icon">
+                      <img src="{% static 'images/testimonial.png'%}" alt="Testimonial">
+                  </div>
+                  <p class="testimonial-text">
+                      {{item.feedback}}
+                  </p>
+                  <div class="testimonial-author">
+                      <img src="{{item.image}}" alt="">
+                    <div class="testimonial-author-details">
+                      <small>{{item.customer_name}}</small>
+                      <small>{{item.updated_at}}</small>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+      <button class="carousel-control-prev testimonial-button" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next testimonial-button" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+      </button>
+  </div>
+</div>
+
+
+  <div class="container">
+    <div class="accordian-heading">
+      <h5 class="heading mt-5">FAQ</h5>
+    </div>
+  <!-- <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button d-flex justify-content-flex-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Accordion Item #1
+          <span class="icon">+</span>
+        </button>
+      </h2>
+  
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
         </div>
-      <div class="grid mt-5 gap-5">
-        <figure class="effect-sadie">
-            <img src="assets/images/hotel-booking.jpeg" alt="img02"/>
-            <figcaption>
-                <h2>Holy <span>Sadie</span></h2>
-                <p>Sadie never took her eyes off me. <br>She had a dark soul.</p>
-                <a href="#">View more</a>
-            </figcaption>			
-        </figure>
-        <figure class="effect-sadie">
-            <img src="assets/images/marketplace.jpeg" alt="img02"/>
-            <figcaption>
-                <h2>Holy <span>Sadie</span></h2>
-                <p>Sadie never took her eyes off me. <br>She had a dark soul.</p>
-                <a href="#">View more</a>
-            </figcaption>			
-        </figure>
-        <figure class="effect-sadie">
-            <img src="assets/images/lms.avif" alt="img02"/>
-            <figcaption>
-                <h2>Holy <span>Sadie</span></h2>
-                <p>Sadie never took her eyes off me. <br>She had a dark soul.</p>
-                <a href="#">View more</a>
-            </figcaption>			
-        </figure>
-        <figure class="effect-sadie">
-            <img src="assets/images/phone.webp" alt="img02"/>
-            <figcaption>
-                <h2>Holy <span>Sadie</span></h2>
-                <p>Sadie never took her eyes off me. <br>She had a dark soul.</p>
-                <a href="#">View more</a>
-            </figcaption>			
-        </figure>
-        <figure class="effect-sadie bg-color-dark">
-            <img src="assets/images/UI-UX.png" alt="img02"/>
-            <figcaption>
-                <h2>Holy <span>Sadie</span></h2>
-                <p>Sadie never took her eyes off me. <br>She had a dark soul.</p>
-                <a href="#">View more</a>
-            </figcaption>			
-        </figure>
       </div>
     </div>
-    
-     <section class="product-section">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Accordion Item #2
+          <span class="icon">+</span>
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Accordion Item #3
+          <span class="icon">+</span>
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+  </div>  -->
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button d-flex justify-content-flex-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Accordion Item #1
+          <span class="icon">+</span>
+        </button>
+      </h2>
+  
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Accordion Item #2
+          <span class="icon">+</span>
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Accordion Item #3
+          <span class="icon">+</span>
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+  </div> 
+  <!--Process timeline-->
+  <div class="timeline-container">
+    <h5 class="heading text-center mb-3">Our Processes</h1> 
+    <div id="timeline">
+  
+        <div class="timeline-item">
+          <div class="timeline-icon">
+            <div class="icon-circle">
+            </div>
+          </div>
+          <div class="timeline-content" data-aos="fade-right">
+            <div class="icon-circle icon-yellow">
+            <i class="fa fa-handshake" style=" font-size: 40px;" aria-hidden="true"></i>
+            </div>
+            <h5 class="heading mt-3">Client Inquiry and sampling</h5>
+
+            <p>
+              Discuss product requirements and specifications
+            </p>
+          </div>
+        </div>
+  
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-icon">
+            <div class="icon-circle"></div>
+
+          </div>
+          <div class="timeline-content right">
+            <div class="icon-circle icon-blue">
+              <i class="fa fa-envelope-open-o" aria-hidden="true" style="color: #ffffff; font-size: 40px;"></i>
+
+            </div>
+
+            <h5 class="heading mt-3">Sample Approval & Quotation</h5>
+            <p>
+              finalize the product samples based on agreed specifications.
+               </p>
+          </div>
+        </div>
+  
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-icon">
+            <div class="icon-circle"></div>
+
+          </div>
+          <div class="timeline-content">
+            <div class="icon-circle icon-red">
+              <i class="fa fa-credit-card" aria-hidden="true" style=" font-size: 40px;"></i>
+            </div>
+
+            <div class="heading mt-3">
+              <h5 class="heading mt-3">Purchase Order & Sales Order</h5>
+            </div>
+              <p>
+                Documents are shared with relevant parties for approval and records.
+              </p>
+          </div>
+        </div>
+  
+         <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-icon">
+            <div class="icon-circle"></div>
+          </div>
+          <div class="timeline-content right">
+            <div class="icon-circle icon-blue">
+              <i class="fa fa-boxes-packing" aria-hidden="true" style="color:#ffffff; font-size: 40px;"></i>
+            </div>
+            <h5 class="heading mt-3">Procurement of RM & PM</h5 class="heading">
+            <p>
+              Vendors are coordinated with to ensure timely delivery of all materials.
+            </p>
+          </div>
+        </div>
+  
+      <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-icon">
+            <div class="icon-circle"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="icon-circle icon-teal">
+              <i class="fa fa-palette"  aria-hidden="true" style="color: white; font-size: 40px;"></i>
+            </div>
+            <h5 class="heading mt-3">Artwork Approval</h5>
+            <p>
+              Design elements are reviewed for consistency, branding, and functionality.
+                          </p>
+          </div>
+    </div>
+  
+         <div class="timeline-item right" data-aos="fade-left">
+          <div class="timeline-icon">
+            <div class="icon-circle"></div>
+          </div>
+          <div class="timeline-content right">
+            <div class="icon-circle icon-red">
+              <i class="fa fa-box-open" aria-hidden="true" style="color: white; font-size: 40px;"></i>
+
+            </div>
+
+           <h5 class="heading mt-3">Batch Production</h5>
+              <p>
+                We manufacture the products according to finalized designs and specifications.
+              </p>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-icon ">
+            <div class="icon-circle">
+
+            </div>
+          </div>
+
+          <div class="timeline-content ">
+            <div class="icon-circle icon-teal">
+              <i class="fa fa-truck-fast" aria-hidden="true" style="color: #ffffff; font-size: 40px;"></i>         
+            </div>
+            <h5 class="heading mt-3">QA/QC Approval & Dispatch</h5>
+            <p>
+              We package the final products using approved materials and designs.
+            </p>
+        </div>
+
+        </div>
         
-        <div class="scroll-container">
-            <figure class="project-card">
-                <img src="assets/images/hotel-booking.jpeg" alt="Project 1">
-                <figcaption>
-                    <h2>Project 1</h2>
-                    <p>Project description goes here.</p>
-                    <a href="#">View more</a>
-                </figcaption>			
-            </figure>
-            <figure class="project-card">
-                <img src="assets/images/hotel-booking.jpeg" alt="Project 2">
-                <figcaption>
-                    <h2>Project 2</h2>
-                    <p>Project description goes here.</p>
-                    <a href="#">View more</a>
-                </figcaption>			
-            </figure>
-        </div>
-
-        <div class="center-text">
-            Projects
-        </div> -->
-
-         <div class="scroll-container">
-            <figure class="project-card">
-                <img src="assets/images/ecommerce.jpeg" alt="Project 3">
-                <figcaption>
-                    <h2>Project 3</h2>
-                    <p>Project description goes here.</p>
-                    <a href="#">View more</a>
-                </figcaption>			
-            </figure>
-            <figure class="project-card">
-                <img src="assets/images/card-background-2.jpg" alt="Project 4">
-                <figcaption>
-                    <h2>Project 4</h2>
-                    <p>Project description goes here.</p>
-                    <a href="#">View more</a>
-                </figcaption>			
-            </figure>
-            <figure class="project-card">
-                <img src="assets/images/phone.webp" alt="Project 4">
-                <figcaption>
-                    <h2>Project 4</h2>
-                    <p>Project description goes here.</p>
-                    <a href="#">View more</a>
-                </figcaption>			
-            </figure>
-            <figure class="project-card">
-                <img src="assets/images/hotel-booking.jpeg" alt="Project 4">
-                <figcaption>
-                    <h2>Project 4</h2>
-                    <p>Project description goes here.</p>
-                    <a href="#">View more</a>
-                </figcaption>			
-            </figure>
-        </div>
-
-    </section>   
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const counters = document.querySelectorAll(".counter-number");
-    const section = document.querySelector(".brand-section"); // Target section
-
-    let observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                resetCounters(); // Reset counters to 0 before starting again
-                startCounter(); // Run counter animation
-            }
-        });
-    }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
-
-    observer.observe(section);
-
-    function resetCounters() {
-        counters.forEach(counter => {
-            counter.innerText = "0"; // Reset to 0 every time section appears
-        });
-    }
-
-    function startCounter() {
-        counters.forEach(counter => {
-            let target = +counter.getAttribute("data-target"); // Fetch target value
-            let count = 0;
-            let step = Math.ceil(target / 100); // Adjust speed
-
-            function updateCounter() {
-                count += step;
-                if (count >= target) {
-                    counter.innerText = target + "+"; // Stop at final value
-                } else {
-                    counter.innerText = count;
-                    requestAnimationFrame(updateCounter);
-                }
-            }
-
-            updateCounter(); // Start animation
-        });
-    }
-});
-
-
-</script>
+        <!-- <div class="timeline-item right" data-aos="fade-left">
+            <div class="timeline-icon ">
+            </div>
+            <div class="timeline-content ">
+              <div class="icon-circle icon-teal">
+                <i class="fa fa-star" aria-hidden="true" style="font-size: 100px;"></i>
+              </div>
+              <h5 class="heading mt-3">QA/QC Approval & Dispatch</h5>
+              <p>
+                We conduct QA/QC checks to ensure the products meet all quality standards.
+              </p>
+            </div>
+          </div> -->
+  
+    </div>
+    </div>
 </div>
+  </div>
+  <!-- <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+          Accordion Item #1
+        </button>
+      </h2>
+      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+          Accordion Item #2
+        </button>
+      </h2>
+      <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+          Accordion Item #3
+        </button>
+      </h2>
+      <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+      </div>
+    </div>
+  </div> -->
+  <script src='https://cdn.jotfor.ms/s/umd/latest/for-embedded-agent.js'></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    window.addEventListener("DOMContentLoaded", function() {
+      window.AgentInitializer.init({
+        agentRenderURL: "https://agent.jotform.com/0196a1a066137b3381c2955125b45e6fcd77",
+        rootId: "JotformAgent-0196a1a066137b3381c2955125b45e6fcd77",
+        formID: "0196a1a066137b3381c2955125b45e6fcd77",
+        queryParams: ["skipWelcome=1", "maximizable=1"],
+        domain: "https://www.jotform.com",
+        isDraggable: true,
+        background: "linear-gradient(180deg, #6C73A8 0%, #6C73A8 100%)",
+        buttonBackgroundColor: "#0066C3",
+        buttonIconColor: "#FFFFFF",
+        variant: false,
+        customizations: {
+          "greeting": "Yes",
+          "greetingMessage": "Hi! How can I assist you?",
+          "openByDefault": "No",
+          "pulse": "Yes",
+          "position": "right",
+          "autoOpenChatIn": "0"
+        },
+        isVoice: false,
+      });
+    });
+  </script>
+
+   
+<script src="https://kit.fontawesome.com/300d51b9da.js" crossorigin="anonymous"></script>
+<script src="../../static/js/index.js"></script>
+
+
+
  
 {% endblock %}

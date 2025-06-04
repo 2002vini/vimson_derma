@@ -17,27 +17,167 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">About Us</a>
+                    <a class="nav-link text-white" href="{% url 'about' %}">About Us</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" id="nav-dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Services
+                    </a>
+                    <ul class="dropdown-menu" id="customDropdownMenu">
+                      <li><a class="dropdown-item" href="{% url 'research' %}">Research & Development</a></li>
+                      <li><a class="dropdown-item" href="{% url 'innovation' %}">Formulation & Customization</a></li>
+                      <li><a class="dropdown-item" href="{% url 'manafacturing' %}">Third Party Manafacturing</a></li>
+                      <li><a class="dropdown-item" href="{% url 'services'%}">Private Labeling</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item-dropdown">
+                    <a class="nav-link dropdown-toggle text-white" id="nav-dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Products
+                      </a>
+                      <ul class="dropdown-menu container" id="customDropdownProductMenu">
+                        <li><a class="dropdown-item" href="{% url 'facecare' %}">FaceCare</a></li>
+                        <li><a class="dropdown-item" href="{% url 'haircare' %}">HairCare</a></li>
+                        <li><a class="dropdown-item" href="{% url 'bodycare' %}">BodyCare</a></li>
+                      </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Our Services</a>
+                    <a class="nav-link text-white" href="{% url 'blogs' %}">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Product</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Career</a>
+                    <a class="nav-link text-white" href="{% url 'careers' %}">Career</a>
                 </li>
             </ul>
+            <div class="d-flex flex-column flex-lg-row gap-2 align-items-center">
+                <a href="#" class="btn btn-custom w-100 " data-bs-toggle="modal" data-bs-target="#center-modal">Contact Us</a>
+                <a href="#" class="btn btn-custom w-100 " data-bs-toggle="modal" data-bs-target="#request-quote-modal">Request a Quote</a>
+              </div>
         </div>
 
         <!-- Right Section: Buttons -->
-        <div class="navbar-buttons d-flex flex-column justify-content-center gap-3 flex-lg-row ">
-            <a href="#" class="btn btn-custom">Contact Us</a>
-            <a href="#" class="btn btn-custom">Request a Quote</a>
+        <!-- <div class="navbar-buttons d-flex flex-column justify-content-center gap-3 flex-lg-row ">
+            <a href="#" class="btn btn-custom" id="contact-us" data-bs-toggle="modal" data-bs-target="#center-modal">Contact Us</a>
+            <a href="#" class="btn btn-custom" id="request-quote" data-bs-toggle="modal" data-bs-target="#request-quote-modal">Request a Quote</a>
+        </div> -->
+</div>
+<div class="modal fade" id="center-modal">
+    <form id="Contact_Us" class="submit-form" method="POST" action="{% url 'contact_submit' %}">
+        {% csrf_token %}
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header mb-3">
+                <h5 class="modal-title heading text-center" id="exampleModalLongTitle">Contact Us</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeModalButton"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Name">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <input type="text" name="company" id="company" class="form-control" placeholder="Company Name">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <input type="number" id="phone" name="phone" class="form-control" placeholder="Phone">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" placeolder="Select Product">
+                                    Select Product
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdownMenu">
+                                    <li><a class="dropdown-item modal-item"  href="#">Option 1</a></li>
+                                    <li><a class="dropdown-item modal-item" href="#">Option 2</a></li>
+                                    <li><a class="dropdown-item modal-item" href="#">Option 3</a></li>
+                                </ul>
+                            </div>
+                         
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <textarea class="form-control" placeholder="Message"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div id="error_data" style="color: red;"></div>
+                <div id="form_process" style="visibility: hidden;">Processing...</div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
+    <script src="/static/js/contact.js"></script>
+    </form>
+</div>
+
+<div class="modal fade request-quote" id="request-quote-modal">
+    <form id="Request_Quote" class="submit-form" method="POST" action="{% url 'quote_submit' %}">
+        {% csrf_token %}
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header mb-3">
+                <h5 class="modal-title heading text-center" id="exampleModalLongTitle">Request A Quote</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeModalButtonRequest"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <input type="text" id="request-name" name="request-name" class="form-control" placeholder="Name">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <input type="email" name="request-email" id="request-email" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <input type="text" name="request-company" id="request-company" class="form-control" placeholder="Company Name">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <input type="number" id="request-phone" name="request-phone" class="form-control" placeholder="Phone">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group mt-3">
+                                <select class="form-select" name="request-product" id="request-product" required>
+                                  <option value="" disabled selected>Select Product</option>
+                                  <option value="option1">Option 1</option>
+                                  <option value="option2">Option 2</option>
+                                  <option value="option3">Option 3</option>
+                                </select>
+                              </div>
+                         
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 request-quote-inputs">
+                            <input type="number" id="request-quantity" name="request-quantity" class="form-control" placeholder="Quantity">
+                            <input type="text" id="request-customization" name="request-customization" class="form-control" placeholder="Customization">
+                            <textarea class="form-control" placeholder="Message" id="request-message" name="request-message"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div id="error_data_request" style="color: red;"></div>
+                <div id="form_process_request" style="visibility: hidden;">Processing...</div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+
 </nav>

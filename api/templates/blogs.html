@@ -1,0 +1,64 @@
+{% extends 'temp_base.html' %}
+{% load static %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Passion+One:wght@400;700;900&family=Roboto:wght@600&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/300d51b9da.js" crossorigin="anonymous"></script>
+
+
+
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid blogs-about">
+<div class="overlay-text">
+    <h1 class="heading">Blogs</h1>
+</div>
+</div>
+<div class="container">
+
+    <div class="blog-title">
+        <h5 class="heading mt-5 mb-5">Blogs</h5>
+    </div>
+    <div class="blog-display">
+           
+    {% for blog in blogs %}
+    {% if forloop.first or forloop.counter0|divisibleby:4 %}
+    <div class="row blog-row">
+    {% endif %}
+
+        <div class="col-md-3 col-sm-12">
+            <div class="blog-card">
+                <a href="{% url 'blog_detail' blog.id %}">
+                <img src="{{blog.image}}" alt="Skincare Image">
+                </a>
+                <div class="blog-content">
+                    <div class="tags">
+                        {% for tag in blog.tags%}
+                        <span class="tag">{{tag}}</span>
+                        {%endfor%}
+                    </div>
+                    <div class="title">
+                        <a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a>
+                    </div>
+                    <div class="description">{{blog.description}}</div>
+                    <div class="date">{{blog.updated_at}}</div>
+                </div>
+            </div>
+        </div>
+
+    {% if forloop.counter|divisibleby:4 or forloop.last %}
+    </div> <!-- close row -->
+    {% endif %}
+{% endfor %}
+    </div>
+    
+</div>
+{% endblock %}

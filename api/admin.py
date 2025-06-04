@@ -1,16 +1,19 @@
 from django.contrib import admin
-from .models import Category, Product, Client, FAQ, Testimonial, Tag, BlogPost
+from .models import Category, Product, Client, FAQ, Testimonial, Tag, BlogPost, SubCategory, Job, JobPosition
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
+from tinymce.widgets import TinyMCE
+
+
 class CategoryResource(resources.ModelResource):
     class Meta:
         model = Category
         fields = ('id', 'type', 'description')
 
 class CategoryAdmin(ImportExportModelAdmin):
-    list_display = ( 'type', 'description')
-    search_fields = ( 'type', 'description')
-    list_filter = ('type', 'description')
+    list_display = ( 'id','type', 'description')
+    search_fields = ( 'id','type', 'description')
+    list_filter = ('id','type', 'description')
     resource_class = CategoryResource
     list_per_page = 10
 
@@ -40,13 +43,13 @@ class ClientAdmin(ImportExportModelAdmin):
 
 class FAQResource(resources.ModelResource):
     class Meta:
-        fields = ('question', 'answer', 'created_at', 'updated_at')
+        fields = ('question', 'answer', 'created_at', 'updated_at','is_featured')
         model = FAQ
 
 class FAQAdmin(ImportExportModelAdmin):
-    list_display = ( 'question', 'answer', 'created_at', 'updated_at')
-    search_fields = ( 'question', 'answer', 'created_at', 'updated_at')
-    list_filter = ('question', 'answer', 'created_at', 'updated_at')
+    list_display = ( 'question', 'answer', 'created_at', 'updated_at','is_featured')
+    search_fields = ( 'question', 'answer', 'created_at', 'updated_at','is_featured')
+    list_filter = ('question', 'answer', 'created_at', 'updated_at','is_featured')
     resource_class = FAQResource
     list_per_page = 10
 
@@ -77,6 +80,11 @@ class TagAdmin(ImportExportModelAdmin):
 class BlogPostResource(resources.ModelResource):
     class Meta:
         fields = ('title', 'content', 'created_at', 'updated_at','tags_display')
+        formfield_overrides = {
+            'content': {
+                'widget': TinyMCE(attrs={'cols': 80, 'rows': 30}),
+            },
+        }
         model = BlogPost
 
 class BlogPostAdmin(ImportExportModelAdmin):
@@ -90,6 +98,42 @@ class BlogPostAdmin(ImportExportModelAdmin):
         return ", ".join([tag.name for tag in obj.tags.all()])
     tags_display.short_description = 'Tags'
 
+class SubCategoryResource(resources.ModelResource):
+    class Meta:
+        fields = ('type', 'description', 'category')
+        model = SubCategory
+class SubCategoryAdmin(ImportExportModelAdmin):
+    list_display = ('type', 'description', 'category')
+    search_fields = ('type', 'description', 'category')
+    list_filter = ('type', 'description', 'category')
+    resource_class = SubCategoryResource
+
+class JobResource(resources.ModelResource):
+    class Meta:
+        fields = ('title', 'description', 'created_at', 'experience', 'openings','location')
+        model = Job
+class JobAdmin(ImportExportModelAdmin):
+    list_display = ('title', 'description', 'created_at', 'experience', 'openings', 'location')
+    search_fields = ('title', 'description', 'created_at', 'experience', 'openings', 'location')
+    list_filter = ('title', 'description', 'created_at', 'experience', 'openings', 'location')
+    resource_class = JobResource
+    list_per_page = 10
+
+class JobPositionResource(resources.ModelResource):
+    class Meta:
+        fields = ('position',)
+        model = JobPosition
+
+# class JobPositionAdmin(ImportExportModelAdmin):
+#     list_display = ('position',)
+#     search_fields = ('position',)
+#     list_filter = ('position',)
+#     resource_class = JobPositionResource
+#     def __str__(self):
+#         return self.position
+
+
+# admin.site.register(JobPosition, JobPositionAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Client, ClientAdmin)
@@ -97,3 +141,6 @@ admin.site.register(FAQ, FAQAdmin)
 admin.site.register(Testimonial, TestimonialAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(BlogPost, BlogPostAdmin)
+admin.site.register(SubCategory, SubCategoryAdmin)
+admin.site.register(Job, JobAdmin)
+# admin.site.register(JobPosition, JobPositionAdmin)

@@ -1,0 +1,34 @@
+{% load static %}
+
+<div id="preloader">
+    <img src="/static/images/vimson_loader.gif" alt="Loading..." />
+  </div>
+
+<script>
+window.addEventListener("load", () => {
+  const preloader = document.getElementById("preloader");
+  const content = document.getElementById("main-content");
+
+  const minDisplayTime = 1000; // minimum time (in ms) to show preloader
+  const transitionDuration = 500; // match your CSS fade-out duration
+
+  const startTime = performance.timing.navigationStart;
+  const now = performance.now();
+  const elapsedTime = now;
+
+  const remainingTime = Math.max(minDisplayTime - elapsedTime, 0);
+
+  setTimeout(() => {
+    preloader.classList.add("fade-out");
+
+    setTimeout(() => {
+      preloader.style.display = "none";
+      content.style.display = "block";
+    }, transitionDuration);
+  }, remainingTime);
+});
+
+
+  
+</script>
+

@@ -1,0 +1,193 @@
+{% extends 'temp_base.html' %}
+{% load static %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/products.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Passion+One:wght@400;700;900&family=Roboto:wght@600&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<style>
+    .products-display {
+        background-image: url("{% static '/images/haircare_hero_bg.png' %}");     
+    }
+    .facecare-section-container {
+        background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)), 
+        url('/static/images/haircare_info.png');
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid products-display">
+</div>
+
+
+<div class="container mb-5 p-2">
+
+  <div class="blog-title">
+      <h4 class="heading text-center mt-5 mb-5">New Product</h4>
+  </div>         
+
+  <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      {% for product in featured_products %}
+        {% if forloop.first or forloop.counter0|divisibleby:3 %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <div class="row">
+        {% endif %}
+  
+        <div class="col-md-4 col-sm-12">
+          <div class="blog-card">
+            <img src="{{ product.image }}" alt="Skincare Image">
+            <div class="blog-content">
+              <div class="tags">
+                {% for sub in product.subcategory %}
+                  <span class="tag">{{ sub }}</span>
+                {% endfor %}
+              </div>
+              <div class="product-card-title">{{ product.name }}</div>
+              <div class="product-card-description">{{ product.description }}</div>
+            </div>
+          </div>
+        </div>
+  
+        {% if forloop.counter|divisibleby:3 or forloop.last %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  
+    {% if products|length > 3 %}
+      <!-- Carousel Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    {% endif %}
+  </div>
+  
+ 
+  
+  
+</div>
+
+
+<section class="facecare-section-container container">
+
+  <div class="facecare-overlay"></div>
+  
+  <div class="facecare-text-left">
+    <h4>Innovative Hair Care Manufacturing with Customizable Formulas</h4>
+  </div>
+
+  <div class="facecare-text-right">
+    <p>
+      Power your brand with Vimson Derma, one of the best hair care manufacturers in India where cutting-edge scalp science meets ingredient innovation. We specialize in crafting customizable, high-performance formulations for every hair and scalp concern. From anti-hair fall shampoos and dandruff-fighting conditioners to scalp-soothing serums, nourishing hair oils, and lightweight hair perfumes, our extensive portfolio covers it all. Whether your target audience struggles with dry scalp, oily scalp, frizz, breakage, dandruff, or color-treated hair, we offer science-backed solutions designed to deliver visible results and an exceptional user experience.
+    </p>
+    <p>
+      At Vimson Derma, we go beyond basic formulations to deliver salon-grade, sulfate-free, and silicone-free hair care using clinically proven ingredients like biotin, caffeine, peptides, plant ceramides, niacinamide, and more. Whether you’re building a clean beauty line, a luxury trichology-grade range, or trend-driven influencer products, we provide unmatched flexibility and proven efficacy. As a trusted private label and third-party hair care manufacturer, we bring to life premium formulations that address real-life concerns while aligning with evolving beauty and wellness standards. Partner with us to create standout products that are as effective as they are market-ready.
+    </p>
+   
+  </div>
+</section>
+
+<div class="container-fluid mt-5 mb-5 p-2">
+  <h4 class="heading text-center">Products</h4>
+
+    <div class="row">
+      <!-- Left Sidebar (on top for mobile, side for desktop) -->
+      <div class="col-12 col-md-3 left-sidebar mb-4 mb-md-0">
+        {% for sub in subcategory %}
+        <div class="category-item" onclick="window.location.href='?subcategory={{ sub.type }}'">
+          <span>{{sub.type}}</span>
+        </div>
+        {% endfor %}
+      </div>
+  
+      
+  
+      <!-- Right Content -->
+      <div class="col-12 col-md-9 right-content">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
+          <!-- <h6 class="heading choice">Cosmetics</h6> -->
+          <!-- <h6 class="heading choice active">Medicated</h6> -->
+        </div>
+        <div class="product-display-list">
+            {% for product in products %}
+            {% if forloop.first or forloop.counter0|divisibleby:4 %}
+            <div class="row g-3">
+            {% endif %}
+                    <div class="col-sm-12 col-md-4">
+                        <div class="product-card {{product.category}} {{product.subcategory}}" id="{{product.id}}">
+                          <img src="{{product.image}}" alt="Product" class="product-img mb-2" />
+                          <h6 class="heading">{{product.name}}</h6>
+                          <div class="product-tags">
+                            {% for tag in product.subcategory %}
+                            <small class="text-muted">
+                               {{tag}}
+                              </small>
+                            {% endfor %}
+                        </div>
+                        </div>
+                      </div>
+        
+            {% if forloop.counter|divisibleby:4 or forloop.last %}
+            </div> <!-- close row -->
+            {% endif %}
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- JS to toggle subcategories -->
+  <script>
+    document.querySelectorAll('[data-toggle="subcategory"]').forEach(item => {
+      item.addEventListener('click', () => {
+        const targetId = item.getAttribute('data-target');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.classList.toggle('show');
+        }
+      });
+    });
+
+    document.querySelectorAll('.heading.choice').forEach(item => {
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.heading.choice').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+
+    document.querySelectorAll('.product-card').forEach(item => {
+      item.addEventListener('click', () => {
+        const productId = item.getAttribute('id');
+        window.location.href = `/product/${productId}/`;
+      });
+    });
+
+    document.querySelectorAll('.sub-category-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const categoryClass = item.classList[1];
+        const subCategoryClass = item.textContent.trim();
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach(card => {
+          if (card.classList.contains(categoryClass) && card.classList.contains(subCategoryClass)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+{%endblock%}
