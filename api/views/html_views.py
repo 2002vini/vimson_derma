@@ -57,13 +57,22 @@ def blog_detail(request, id):
     return render(request, 'blog_detail.html', {'blog': blog_serailized})
 
 def facecare(request):
+    # Fetch all the products that need to be displayed
     products=Product.objects.all().filter(is_featured=False,category=4).order_by('updated_at')
+    selected_tag = request.GET.get('filter')
+    print("selected tag is: ", selected_tag)
+    if selected_tag:
+        products = products.filter(subcategory__type=selected_tag)  # Assuming 'tags' is a ManyToManyField in Product model
+        print(f"Filtering products by tag: {selected_tag}")
+    #Fetch the page number from the request 
+    page_number = request.GET.get('page', 1)
+    paginator = Paginator(products, 5)
+    page_obj = paginator.get_page(page_number)
     featured_products=Product.objects.all().filter(is_featured=True,category=4).order_by('updated_at')
-    serialized_products=ProductSerializer(products,many=True,context={'request':request}).data
+    serialized_products = ProductSerializer(page_obj.object_list, many=True, context={'request': request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category=4), many=True,context={'request':request}).data
-    print("serialized products are: ", serialized_products)
-    return render(request,'facecare.html',{'products':serialized_products,'subcategory':serialized_sub_categories,'featured_products':serialized_featured_products})
+    return render(request,'facecare.html',{'products':serialized_products,'page_obj':page_obj,'subcategory':serialized_sub_categories,'featured_products':serialized_featured_products})
 
 def haircare(request):
     selected_subcategory = request.GET.get('subcategory')
