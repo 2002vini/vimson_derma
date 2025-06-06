@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const dropdownBtn = document.getElementById("dropdownMenuButton");
     const dropdownMenu = document.getElementById("dropdownMenu");
     const contactUs = document.getElementById("contact-us");
-    const navbarDropDown = document.getElementById("nav-dropdown");
+    // const navbarDropDown = document.getElementsByClassName("nav-dropdown");
     const navbarDropdownMenu = document.getElementById("customDropdownMenu");
 
   
@@ -71,15 +71,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     
-      navbarDropDown.addEventListener("click", function () {
-          navbarDropdownMenu.classList.toggle("show");
-      });
-        // Close dropdown when clicking outside
-        document.addEventListener("click", function (event) {
-            if (!navbarDropDown.contains(event.target) && !navbarDropdownMenu.contains(event.target)) {
-                navbarDropdownMenu.classList.remove("show");
-            }
-        });       
+      // navbarDropDown.addEventListener("click", function () {
+      //     navbarDropdownMenu.classList.toggle("show");
+      // });
+      // // Close dropdown when clicking outside
+      // document.addEventListener("click", function (event) {
+      //     if (!navbarDropDown.contains(event.target) && !navbarDropdownMenu.contains(event.target)) {
+      //         navbarDropdownMenu.classList.remove("show");
+      //     }
+      // });       
     
       // Toggle dropdown on button click
       dropdownBtn.addEventListener("click", function () {
