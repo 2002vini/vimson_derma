@@ -1,0 +1,14 @@
+{% load static %}
+<div class="blog-card h-100">
+  <img src="{{ blog.image }}" alt="Skincare Image" class="d-block w-100">
+  <div class="blog-content">
+    <div class="tags">
+      {% for tag in blog.tags %}
+        <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    <div class="title">{{ blog.title }}</div>
+    <div class="description">{{ blog.description }}</div>
+    <div class="date">{{ blog.updated_at }}</div>
+  </div>
+</div>

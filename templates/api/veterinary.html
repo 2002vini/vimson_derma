@@ -1,0 +1,329 @@
+{% extends 'temp_base.html' %} {% load static %} {% block title %}Home Page{%endblock %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/products.css' %}" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Passion+One:wght@400;700;900&family=Roboto:wght@600&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+  .products-display {
+      background-image: url('/static/images/veterinary_hero.svg');     
+  }
+  .facecare-section-container {
+      background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)), 
+      url('/static/images/veterinary1.png');
+      background-size: cover;
+      background-position: center;
+  }
+</style>
+
+{% endblock %} {% block content %}
+<div class="container-fluid products-display"></div>
+
+<div class="container mb-5 p-2">
+  <div class="blog-title">
+    <h4 class="heading text-center mt-5 mb-5">Top Formulations</h4>
+  </div>
+ <!-- Desktop Carousel (group of 3 per slide) -->
+<div id="productCarouselDesktop" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    {% for product in featured_products %}
+      {% if forloop.first or forloop.counter0|divisibleby:3 %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+          <div class="row">
+      {% endif %}
+
+      <div class="col-md-4">
+        <div class="blog-card">
+          <img src="{{ product.image }}" alt="Skincare Image">
+          <div class="blog-content">
+            <div class="tags">
+              {% for sub in product.subcategory %}
+                <span class="tag">{{ sub }}</span>
+              {% endfor %}
+            </div>
+            <div class="product-card-title">{{ product.name }}</div>
+            <div class="product-card-description">{{ product.description }}</div>
+          </div>
+        </div>
+      </div>
+
+      {% if forloop.counter|divisibleby:3 or forloop.last %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% if featured_products|length > 3 %}
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#productCarouselDesktop" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#productCarouselDesktop" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  {% endif %}
+</div>
+
+<!-- Mobile Carousel (one card per slide) -->
+<div id="productCarouselMobile" class="carousel slide d-md-none" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    {% for product in featured_products %}
+    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+      <div class="col-12">
+        <div class="blog-card">
+          <img src="{{ product.image }}" alt="Skincare Image">
+          <div class="blog-content">
+            <div class="tags">
+              {% for sub in product.subcategory %}
+                <span class="tag">{{ sub }}</span>
+              {% endfor %}
+            </div>
+            <div class="product-card-title">{{ product.name }}</div>
+            <div class="product-card-description">{{ product.description }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% if featured_products|length > 1 %}
+    <button class="carousel-control-prev" type="button" data-bs-target="#productCarouselMobile" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#productCarouselMobile" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  {% endif %}
+</div>
+
+</div>
+
+<section class="facecare-section-container container">
+  <div class="facecare-overlay"></div>
+
+  <div class="facecare-text-left">
+    <h4>Veterinary Product<br />Manufacturers</h4>
+    <p>Most Reliable Manafacturers in India</p>
+  </div>
+
+  <div class="facecare-text-right">
+    <p>
+At Vimson Derma, we treat pet and livestock care with the same precision and compassion as human skincare. As a trusted veterinary shampoo manufacturer in India, we offer third-party manufacturing for a range of pet care products including medicated shampoos, ointments, oral supplements, and paw creams. Our solutions support skin health, parasite control, and hygiene with formulations tailored for pets and farm animals.
+    <p>
+All products are developed in collaboration with veterinary experts using safe and effective ingredients like chlorhexidine, neem, ketoconazole, and natural oils. We ensure each formula is gentle yet powerful, meeting strict safety standards while delivering visible results without irritation.
+
+    </p>
+    <p>
+Whether you’re launching custom pet grooming products, animal ointments, or livestock hygiene solutions, Vimson Derma offers scalable, customizable manufacturing. Our deep expertise in cosmeceuticals and dermatology makes us the ideal partner for creating medicated pet care products that brands and pet owners can trust.
+    </p>
+   
+  </div>
+</section>
+
+<div class="container-fluid mt-5 mb-5 p-2">
+  <div class="row">
+    <!-- Left Sidebar (on top for mobile, side for desktop) -->
+    <div class="d-md-none text-center mb-3">
+      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#mobileRightContent" style="background-color: #E58D60;">
+        Top Formulations
+      </button>
+    </div>
+    <div class="col-12 col-md-3 left-sidebar mb-3 mb-md-0 collapse d-md-block" id="mobileRightContent">
+      {% for sub in subcategory %}
+      <div
+        class="category-item" data-subcategory="{{ sub.type }}">
+        <span>{{sub.type}}</span>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Right Content -->
+   
+    <div class="col-12 col-md-9 right-content ">
+      <div
+        class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4"
+      >
+        <!-- <h6 class="heading choice">Cosmetics</h6> -->
+        <!-- <h6 class="heading choice active">Medicated</h6> -->
+        <h5 class="heading text-center">Products</h5>
+      </div>
+      <div class="product-display-list">
+        {% for product in products %} {% if forloop.first or forloop.counter0|divisibleby:3 %}
+        <div class="row g-3">
+          {% endif %}
+          <div class="col-sm-12 col-md-4">
+            <div
+              class="product-card {{product.category}} {{product.subcategory}}"
+              id="{{product.id}}"
+            >
+              <div class="image-container mb-2">
+                <img
+                  src="{{product.image}}"
+                  alt="Product"
+                  class="product-img"
+                />
+              </div>
+              <h6 class="heading">{{product.name}}</h6>
+              <div class="product-tags">
+                {% for tag in product.subcategory %}
+                <small class="text-muted"> {{tag}} </small>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          {% if forloop.counter|divisibleby:3 or forloop.last %}
+        </div>
+        <!-- close row -->
+        {% endif %} {% endfor %}
+      </div>
+      <div class="pagination d-flex justify-content-center mt-5">
+        {% if products|length == 0 %}
+        <h3 class="text-center heading">No products found!</h3>
+        {% endif %}
+        {% if products|length > 0 %}
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-flex-end">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+              <a
+                class="page-link"
+                href="?page={{ page_obj.previous_page_number }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}"
+                >Previous</a
+              >
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <span class="page-link">Previous</span>
+            </li>
+            {% endif %} {% for num in page_obj.paginator.page_range %} {% if page_obj.number == num %}
+            <li class="page-item active">
+              <span class="page-link">{{ num }}</span>
+            </li>
+            {% else %}
+            <li class="page-item">
+              <a
+                class="page-link"
+                href="?page={{ num }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}"
+                >{{ num }}</a
+              >
+            </li>
+            {% endif %} {% endfor %} {% if page_obj.has_next %}
+            <li class="page-item">
+              <a
+                class="page-link"
+                href="?page={{ page_obj.next_page_number }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}"
+                >Next</a
+              >
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <span class="page-link">Next</span>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+        {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="accordion mb-5" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button d-flex justify-content-flex-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+Do you offer third-party manufacturing for veterinary care products in India?
+      
+<span class="icon">+</span>
+      </button>
+    </h2>
+
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+Yes, we manufacture pet shampoos, skin sprays, antiseptic creams, and grooming solutions under private label. You can customize according to pet skin types, coat concerns, or breed-specific needs.
+
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+Can I choose ingredients and scents for pet products?      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+Definitely. You can select specific ingredients, textures, and fragrances suitable for sensitive pet skin, like neem, oatmeal, aloe vera, or essential oils.
+</div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+What is the minimum order quantity (MOQ) for veterinary products?
+        <span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+MOQ is typically 3,000 units per SKU, designed to be viable for both startups and established brands.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+Can I request samples of veterinary care products before placing an order?
+<span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+Yes, we provide free product samples to help you evaluate quality before committing to a full order.
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<!-- JS to toggle subcategories -->
+<script>
+  document.querySelectorAll('[data-toggle="subcategory"]').forEach((item) => {
+    item.addEventListener("click", () => {
+      const targetId = item.getAttribute("data-target");
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        targetElement.classList.toggle("show");
+      }
+    });
+  });
+
+  document.querySelectorAll(".heading.choice").forEach((item) => {
+    item.addEventListener("click", () => {
+      document
+        .querySelectorAll(".heading.choice")
+        .forEach((i) => i.classList.remove("active"));
+      item.classList.add("active");
+    });
+  });
+
+  document.querySelectorAll(".product-card").forEach((item) => {
+    item.addEventListener("click", () => {
+      const productId = item.getAttribute("id");
+      window.location.href = `/product/${productId}/`;
+    });
+  });
+
+  document.querySelectorAll('.category-item').forEach(item => {
+  item.addEventListener('click', function () {
+    const subcategory = this.dataset.subcategory;
+    const url = new URL(window.location.href);
+    url.searchParams.set('filter', subcategory);
+    window.location.href = url.toString();
+  });
+});
+</script>
+{%endblock%}

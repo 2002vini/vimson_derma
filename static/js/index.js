@@ -73,46 +73,46 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    // const accordionButtons = document.querySelectorAll(".accordion-button");
+    const accordionButtons = document.querySelectorAll(".accordion-button");
     const heroSection = document.getElementById("hero-intro-section");
     setTimeout(() => {
       if (heroSection) {
           heroSection.classList.add("hero-introduction-loader"); // Replace "new-class" with the desired class name
       }
-  }, 1400); // 1000ms = 1 second
+  }, 1400); 
 
-    // accordionButtons.forEach(button => {
-    //     button.addEventListener("click", function () {
-    //       event.preventDefault();
-    //         const icon = this.querySelector(".icon");
-    //         if ( this.classList.contains("collapsed")) {
-    //             icon.textContent = "+";
-    //         }
-    //         else {
-    //             icon.textContent = "-";
-    //         }
-    //         // Toggle between + and -
-    //         setTimeout(() => {
-    //             if (this.classList.contains("collapsed")) {
-    //                 icon.textContent = "+";
-    //             } else {
-    //                 icon.textContent = "-";
-    //             }
-    //         }, 100); // Small delay to sync with Bootstrap animation
-    //     });
-    // });
+    accordionButtons.forEach(button => {
+        button.addEventListener("click", function () {
+          event.preventDefault();
+            const icon = this.querySelector(".icon");
+            if ( this.classList.contains("collapsed")) {
+                icon.textContent = "+";
+            }
+            else {
+                icon.textContent = "-";
+            }
+            // Toggle between + and -
+            setTimeout(() => {
+                if (this.classList.contains("collapsed")) {
+                    icon.textContent = "+";
+                } else {
+                    icon.textContent = "-";
+                }
+            }, 100); // Small delay to sync with Bootstrap animation
+        });
+    });
 });
 
 
 
 const multipleItemCarousel = document.getElementById('testimonialCarousel');
 if (multipleItemCarousel && window.innerWidth >= 768) {
-  const carousel = new bootstrap.Carousel(multipleItemCarousel, {
-    interval: false,
-  });
+  // const carousel = new bootstrap.Carousel(multipleItemCarousel, {
+  //   interval: false,
+  // });
 
-  if(document.querySelector('.carousel-inner.testimonial') && document.querySelector('.testimonial-item.carousel-item') && carouselItem.getBoundingClientRect().width){
-
+  if(document.querySelector('.carousel-inner.testimonial') && document.querySelector('.testimonial-item.carousel-item') && document.querySelector('.testimonial-item.carousel-item').getBoundingClientRect().width){
+    console.log("inside if condition")
       const carouselInner = document.querySelector('.carousel-inner.testimonial');
       const carouselItem = document.querySelector('.testimonial-item.carousel-item');
       const cardWidth = carouselItem.getBoundingClientRect().width
@@ -123,6 +123,7 @@ if (multipleItemCarousel && window.innerWidth >= 768) {
         if (scrollPosition < carouselInner.scrollWidth - carouselInner.clientWidth) {
           scrollPosition += cardWidth;
           carouselInner.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+          console.log("auto scrolling");
         } else {
           scrollPosition = 0; // Reset to the beginning when reaching the end
           carouselInner.scrollTo({ left: scrollPosition, behavior: 'smooth' });

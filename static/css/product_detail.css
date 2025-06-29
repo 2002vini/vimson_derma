@@ -1,0 +1,92 @@
+
+
+  /* Primary Text/Buttons */
+  .text-primary,
+  .price-tag {
+    color:  rgba(245, 130, 31, 1) !important;
+  }
+
+  .text-muted-tagline {
+    color: rgba(20, 32, 97, 0.8);
+  }
+
+  .btn-primary {
+    background-color: rgba(245, 130, 31, 1);
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #e37300;
+  }
+
+  /* Secondary Buttons */
+  .btn-secondary {
+    background-color: rgba(20, 32, 97, 0.8);
+    border: none;
+    color: white;
+  }
+
+  .btn-secondary:hover {
+    opacity: 0.9;
+  }
+
+  /* Accordion Theme */
+  .accordion-button:not(.collapsed) {
+    background-color: rgba(20, 32, 97, 0.8);
+    color: #fff;
+  }
+
+  .accordion-button:focus {
+    box-shadow: none;
+  }
+
+  .accordion-button::after {
+    filter: invert(1);
+  }
+
+  /* Dot Buttons for Image Toggle */
+  .dot-btn {
+    font-size: 1.25rem;
+    color: rgba(245, 130, 31, 1);
+    background-color: transparent;
+    border: none;
+  }
+
+  .dot-btn:hover {
+    color: #e37300;
+  }
+
+  /* Card or Container Style (optional) */
+  .product-info-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    min-height: 400px;
+  }
+
+  #productImage {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    font-size: 36px;
+    font-weight: 700;
+    font-family: 'Inria Serif', serif;
+    color: rgba(20, 32, 97, 0.8);
+    line-height: normal;
+  }
+
+  p {
+    font-size: 18px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: rgba(20, 32, 97, 0.8);
+  }
+
+  .text-muted-tagline {
+    font-size: 16px;
+    color: rgba(20, 32, 97, 0.8);
+  }

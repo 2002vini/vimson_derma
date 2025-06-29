@@ -17,6 +17,7 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     background: white;
     transition: transform 0.3s ease;
+    height: 300px;
 }
 
 .blog-card:hover {
@@ -33,6 +34,7 @@
 .blog-content {
     padding: 15px;
     background: #FDECE4;
+    height: 100%;
 }
 
 .tags {
@@ -141,4 +143,12 @@ label{
     border: None;
     height: 25px;
     padding-left: 8px;
+}
+
+.title a{
+    text-decoration: none;         /* removes underline */
+    font-size: 16px;             /* adjust size as needed */
+    font-family: 'Be Vietnam Pro', sans-serif;  /* or any font you prefer */
+    color: #1C1C4D;              /* optional: custom color */
+    font-weight: 500; 
 }

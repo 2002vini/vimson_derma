@@ -29,6 +29,9 @@
     width: 100%; /* Ensures it stretches to fill the space */
     object-fit: cover; /* Ensures image fills its container */
 }
+.navbar-brand img:hover{
+  cursor: pointer;
+}
 
 .navbar-nav {
     margin: auto; /* Center navbar items */
@@ -155,10 +158,10 @@ h1 {
     line-height: clamp(3.5rem, 8vw, 9rem); /* Slightly larger than font size */
 }
 
-h2 {
+/* h2 {
     font-size: clamp(2.5rem, 6vw, 6rem);
     line-height: clamp(3rem, 7vw, 7rem);
-}
+} */
 
 h3 {
     font-size: clamp(2rem, 5vw, 4.5rem);
@@ -845,3 +848,26 @@ h6 {
     min-width: 200px;
     
   } */
+
+  @media (max-width: 576px) {
+  .accordion-button {
+    font-size: 1rem;
+    /* padding: 0.75rem 1rem; */
+  }
+  .accordion-body {
+    font-size: 0.95rem;
+  }
+  .accordion,.accodion-item {
+    width: 100%;
+    margin:0;
+
+  }
+  #accordionExample {
+    margin: 0;
+    width: 100%;
+  }
+  .accordion-item h2{
+    line-height: normal;
+  }
+
+}

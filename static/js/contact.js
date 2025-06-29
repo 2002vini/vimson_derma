@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const form = document.getElementById('Contact_Us');
     const request_quote= document.getElementById('Request_Quote');
+    const form_banner = document.getElementById('Contact_Us_banner');
 
   
     // Get CSRF token from cookie
@@ -87,6 +88,15 @@ document.addEventListener('DOMContentLoaded', function () {
         submitForm(request_quote,formData,errorBox,loading);
     }
     );
+
+    form_banner.addEventListener('submit', function (e) {
+        e.preventDefault();
+        console.log("form banner clicked")
+        const errorBox = document.getElementById('error_data_banner');
+        const loading = document.getElementById('form_process_banner');
+        const formData = new FormData(form_banner);
+        submitForm(form_banner,formData,errorBox,loading);
+    });
 
     const dropdownButton = document.getElementById('dropdownMenuButton');
         const dropdownItems = document.querySelectorAll('.modal-item');

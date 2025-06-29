@@ -465,3 +465,11 @@
 .white-image {
   filter: invert(100%); /* Makes the image white */
 }
+.expertise-card a{
+    text-decoration: none;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}

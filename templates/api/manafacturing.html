@@ -1,0 +1,316 @@
+{% extends 'temp_base.html' %}
+{% load static %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/manafacturing.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Passion+One:wght@400;700;900&family=Roboto:wght@600&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid manafacturing-about">
+    <div class="overlay-text">
+        <h1 class="heading">Third Party</h1>
+        <h1 class="heading">Manafacturing</h1>
+
+
+    </div>
+</div>
+
+<div class="container about-container text-center">
+    <h2 class="about-heading">About Third Party Manafacturing</h2>
+    <p class="about-text">
+        At Vimson Derma, we offer end-to-end skincare and cosmetic manufacturing solutions, from research & development to high-quality production. With FDA-approved facilities, advanced formulations, and a commitment to safety and efficacy, we ensure premium, customized products tailored to your brand’s needs.
+    </p>
+</div>
+
+<div class="container-fluid manafacturing-description">
+    <div class="description-heading mt-5 mb-5">
+        <h4 class="heading text-center">Why Choose our third party Manafacturing?</h4>
+    </div>
+    <div class="grid mt-5 mb-5">
+        <div class="row gx-0">
+            <div class="col-md-3 col-sm-6 description-card">
+                <div class="row-img">
+                    <img src="{% static 'images/manafacturing1.png' %}" alt="Manafacturing 1" >
+                </div>
+                <div class="row-text">
+                    Custom formulations tailored to your brand’s vision
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 description-card alternate-card">
+                <div class="row-text">
+                    Full control over ingredients and product design                </div>
+                <div class="row-img">
+                    <img src="{% static 'images/manafacturing2.png' %}" alt="Manafacturing 1" >
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 description-card ">
+                <div class="row-img">
+                    <img src="{% static 'images/manafacturing3.png' %}" alt="Manafacturing 1">
+                </div>
+                <div class="row-text">
+                    Advanced R&D and testing capabilities.
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 description-card alternate-card">
+                <div class="row-text">
+                    Large-scale production for growing businesses.
+                </div>
+                <div class="row-img">
+                    <img src="{% static 'images/manafacturing4.png' %}" alt="Manafacturing 1" >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!---Process for third party manafacturing-->
+<div class="container-fluid steps-wrapper mt-5 mb-5">
+  <h6 class="heading text-center mt-5 mb-5">Third Party Manafacturing Process</h6>
+  <div class="row text-center justify-content-center gy-4 mb-5">
+    <div class="col-6 col-md-2 step offset-md-1" data-step="0">
+      <div class="step-number">01</div>
+      <div class="dot"></div>
+      <div class="hover-prompt">Click here</div>
+      <div class="step-title">Product Brief & Custom Requirement Gathering</div>
+      <div class="step-desc">
+        Every great product starts with a strong brief and we’re all ears.
+        We dive deep to understand your brand’s vision, target market, and formulation goals. Whether it’s a sulfate-free shampoo, an anti-pigmentation cream, a ceramide-based hair perfume, or a scalp treatment serum, we create a tailored roadmap.
+      </div>
+    </div>
+    <div class="col-6 col-md-2 step" data-step="0">
+      <div class="step-number">02</div>
+      <div class="dot"></div>
+      <div class="hover-prompt">Click here</div>
+      <div class="step-title">R&D and Formulation Development</div>
+      <div class="step-desc">
+        Our in-house R&D lab in Gujarat, led by expert cosmetic chemists, crafts personalized skincare and haircare formulations using science-backed and trending actives. From peptides and ceramides to snail mucin, fermented botanicals, and niacinamide - your formula is developed for performance and uniqueness.
+      </div>
+    </div>
+    <div class="col-6 col-md-2 step" data-step="1">
+      <div class="step-number">03</div>
+      <div class="dot"></div>
+      <div class="hover-prompt">Click here</div>
+      <div class="step-title">Sampling, Testing & Regulatory Compliance</div>
+      <div class="step-desc">
+        Once your formulation is whipped up, we send you lab samples for testing and review. We assist with dermatological testing (optional), ingredient disclosures, label claims, and compliance with Indian and global cosmetic regulations.
+      </div>
+    </div>
+    <div class="col-6 col-md-2 step" data-step="2">
+      <div class="step-number">04</div>
+      <div class="dot"></div>
+      <div class="hover-prompt">Click here</div>
+      <div class="step-title">Purchase Order, Sales Order & Bulk Manufacturing at WHO-GMP Certified Facility
+      </div>
+      <div class="step-desc">
+        Once you're happy with the sample and ready to roll, we lock things in with a Purchase Order (PO) from your side and generate a Sales Order (SO) from ours.
+Manufacturing then begins at our WHO-GMP certified plant in Gujarat with strict quality checks in place. We accommodate flexible batch sizes (starting at 3,000 units) and have the scale to grow with your brand.
+      </div>
+    </div>
+    <div class="col-6 col-md-2 step" data-step="3">
+      <div class="step-number">05</div>
+      <div class="dot"></div>
+      <div class="hover-prompt">Click here</div>
+      <div class="step-title">Packaging, Labeling, QC & Final Dispatch
+      </div>
+      <div class="step-desc">
+        Bring your own packaging, or let us connect you with our trusted vendors for jars, tubes, bottles, and droppers, whatever suits your brand aesthetic. Post-final QC, products are batch-coded, shrink-wrapped, labeled, and made ready for dispatch.
+      </div>
+    </div>
+    <div class="col-6 col-md-2 step" data-step="3">
+      <!-- <div class="step-number">06</div>
+      <div class="dot"></div>
+      <div class="hover-prompt">Click here</div>
+      <div class="step-title">Development</div>
+      <div class="step-desc">
+        Development converts mockups into real, working web or app experiences.
+      </div>
+    </div> -->
+  </div>
+</div>
+
+<!---Product Categories-->
+<div class="container-fluid products mt-5">
+  <h4 class="heading text-center mb-5">Product Categories</h4>
+  
+  {% for product in products %}
+      {% if forloop.first or forloop.counter0|divisibleby:4 %}
+      <div class="row product-row">
+      {% endif %}
+
+          <div class="col-md-3 col-sm-12">
+              <div class="product-card">
+                  <div class="product-img">
+                      <img src="{{ product.svg_file }}" alt="{{ product.type }}" class="img-fluid">
+                  </div>
+                  <div class="product-type">
+                      <h6 class="heading text-center">{{ product.type }}</h6>
+                  </div>
+              </div> 
+          </div>
+
+      {% if forloop.counter|divisibleby:4 or forloop.last %}
+      </div> <!-- close row -->
+      {% endif %}
+  {% endfor %}
+
+</div>
+
+<div class="container">
+  <h6 heading class="heading text-center mt-5">Industries We Serve</h6>
+  <div class="clientele-custom-carousel">
+    <!-- Left-moving carousel -->
+    <div class="clientele-carousel-horizontal w-100" fb-carousel="true" fb-carousel-direction="left" fb-carousel-speed="20000" fb-carousel-delay="200" fb-carousel-pauseable="true">
+        <div class="clientele-carousel-content" fb-carousel-content="true">
+            <img class="img-fluid" src="/static/images/logo/24c_derma_labs_logo.jfif" alt="24c Derma Labs" />
+            <img class="img-fluid" src="/static/images/logo/ACME PHARMACEUTICALS.png" alt="ACME" />
+            <img class="img-fluid" src="/static/images/logo/Ajanta Pharma Limited.jfif" alt="Ajanta" />
+            <img class="img-fluid" src="/static/images/logo/Alyxia.png" alt="Alyxia" />
+            <img class="img-fluid" src="/static/images/logo/Ambit Bio Medix.webp" alt="Ambit Bio Medix" />
+            <img class="img-fluid" src="/static/images/logo/AMERICAN PHARMA REMEDIES.png" alt="American Pharma Remedies" />
+            <img class="img-fluid" src="/static/images/logo/Aptus pharma.png" alt="Aptus Pharma" />
+        </div>
+    </div>
+
+    <!-- Right-moving carousel -->
+    <div class="clientele-carousel-horizontal w-100" fb-carousel="true" fb-carousel-direction="right" fb-carousel-speed="20000" fb-carousel-delay="200" fb-carousel-pauseable="true">
+        <div class="clientele-carousel-content" fb-carousel-content="true">
+          <img class="img-fluid" src="/static/images/logo/renee.jfif" alt="Derma Essentia" />
+            <img class="img-fluid" src="/static/images/logo/Ardent Life Sciences.png" alt="Ardent Life Sciences" />
+            <img class="img-fluid" src="/static/images/logo/AURA PHARMACEUTICALS PVT LTD.jfif" alt="Aura Pharmaceuticals" />
+            <img class="img-fluid" src="/static/images/logo/bionova_pharmaceutical_ltd_logo.jfif" alt="Bionova Pharmaceutical" />
+            <img class="img-fluid" src="/static/images/logo/Cloud Wellness Private Limited (DERMATOUCH).png" alt="Dermatouch" />
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+<div class="container">
+    <div class="accordian-heading">
+      <h5 class="heading mt-5">FAQ</h5>
+    </div>
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button d-flex justify-content-flex-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Accordion Item #1
+          <span class="icon">+</span>
+        </button>
+      </h2>
+  
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Accordion Item #2
+          <span class="icon">+</span>
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Accordion Item #3
+          <span class="icon">+</span>
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!--Banner-->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const accordionButtons = document.querySelectorAll(".accordion-button");
+
+    accordionButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const icon = this.querySelector(".icon");
+            // Toggle between + and -
+            setTimeout(() => {
+                if (this.classList.contains("collapsed")) {
+                    console.log("Collapsed");
+                    icon.textContent = "+";
+                } else {
+                    console.log("Expanded");
+                    icon.textContent = "-";
+                }
+            }, 100); // Small delay to sync with Bootstrap animation
+        });
+    });
+});
+
+const steps = document.querySelectorAll(".step");
+
+steps.forEach(step => {
+  step.addEventListener("click", () => {
+    step.classList.toggle("active"); // Toggles the 'active' class
+  });
+});
+  </script>
+</div>
+
+<div class="container w-100 testimonial-container mb-5">
+    <div id="testimonialCarousel" class="carousel">
+        <h5 class="heading d-flex justify-content-center pt-4">Success Stories</h5>
+  
+        <div class="carousel-inner testimonial">
+          {% for item in testimonials%}
+            <div class="carousel-item testimonial-item active">
+                <div class="testimonial-card">
+                    <div class="quote-icon">
+                        <img src="{% static 'images/testimonial.png'%}" alt="Testimonial">
+                    </div>
+                    <p class="testimonial-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus asperiores non perspiciatis ratione praesentium delectus, sequi tempore ullam sed! Officiis velit assumenda repellat dolores facilis, eum consequuntur quia nisi debitis.</p>
+                    <div class="testimonial-author">
+                        <img src="{{item.image}}" alt="">
+                      <div class="testimonial-author-details">
+                        <small>{{item.customer_name}}</small>
+                        <small>{{item.updated_at}}</small>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          {% endfor %}
+        </div>
+        <button class="carousel-control-prev testimonial-button" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next testimonial-button" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+
+    <script src="../../static/js/manafacturing.js"></script>
+
+  </div>
+  {% include 'partials/banner.html' %}
+
+
+
+{% endblock %}

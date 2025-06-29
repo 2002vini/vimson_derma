@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import Category, Product, Client, FAQ, Testimonial, Tag, BlogPost, SubCategory, Job, JobPosition
-from import_export import resources
-from import_export.admin import ImportExportModelAdmin
+from .models import Category, JobApplications, Product, Client, FAQ, Testimonial, Tag, BlogPost, SubCategory, Job, JobPosition
 from tinymce.widgets import TinyMCE
+from import_export import resources, fields
+from import_export.widgets import ForeignKeyWidget, ManyToManyWidget, JSONWidget
+from import_export.admin import ImportExportModelAdmin
 
 
 class CategoryResource(resources.ModelResource):
@@ -18,17 +19,53 @@ class CategoryAdmin(ImportExportModelAdmin):
     list_per_page = 10
 
 class ProductResource(resources.ModelResource):
+    category = fields.Field(
+        column_name='category',
+        attribute='category',
+        widget=ForeignKeyWidget(Category, 'name')
+    )
+
+    subcategory = fields.Field(
+        column_name='subcategory',
+        attribute='subcategory',
+        widget=ManyToManyWidget(SubCategory, field='name', separator=',')
+    )
+
+    attributes = fields.Field(
+        column_name='attributes',
+        attribute='attributes',
+        widget=JSONWidget()
+    )
+
     class Meta:
-        fields = ('name', 'description', 'category', 'image', 'is_featured', 'created_at', 'updated_at', 'attributes')
         model = Product
-
+        import_id_fields = ('name',)
+        fields = (
+            'name',
+            'description',
+            'category',
+            'subcategory',
+            'image',
+            'is_featured',
+            'created_at',
+            'updated_at',
+            'attributes',
+            'is_medicated',
+            'is_customized',
+            'tagline',
+        )
+        
 class ProductAdmin(ImportExportModelAdmin):
-    list_display = ('name', 'description', 'category', 'image', 'is_featured', 'created_at', 'updated_at', 'attributes')
-    search_fields = ('name', 'description', 'category', 'image', 'is_featured', 'created_at', 'updated_at', 'attributes')
-    list_filter = ('name', 'description', 'category', 'image', 'is_featured', 'created_at', 'updated_at', 'attributes')
     resource_class = ProductResource
-    list_per_page = 10
 
+    list_display = (
+        'name', 'category', 'is_featured', 'is_medicated',
+        'is_customized', 'created_at', 'updated_at'
+    )
+    search_fields = ('name', 'description', 'tagline')
+    list_filter = ('category', 'is_featured', 'is_medicated', 'is_customized', 'created_at')
+    list_per_page = 20
+   
 class ClientResource(resources.ModelResource):
     class Meta:
         fields = ('name', 'description', 'image', 'is_featured', 'created_at', 'updated_at')
@@ -124,13 +161,25 @@ class JobPositionResource(resources.ModelResource):
         fields = ('position',)
         model = JobPosition
 
-# class JobPositionAdmin(ImportExportModelAdmin):
-#     list_display = ('position',)
-#     search_fields = ('position',)
-#     list_filter = ('position',)
-#     resource_class = JobPositionResource
-#     def __str__(self):
-#         return self.position
+class JobApplicationResource(resources.ModelResource):
+    class Meta:
+        fields = ('job_id', 'name', 'email', 'phone', 'dob', 'resume', 'job_position', 'applied_at')
+        model = JobApplications
+
+class JobApplicationAdmin(ImportExportModelAdmin):
+    list_display = ('job_id', 'name', 'email', 'phone', 'dob', 'resume', 'job_position', 'applied_at')
+    search_fields = ('job_id__title', 'name', 'email', 'phone', 'dob', 'resume', 'job_position__position')
+    list_filter = ('job_id__title', 'name', 'email', 'phone', 'dob', 'resume', 'job_position__position')
+    resource_class = JobApplicationResource
+    list_per_page = 10
+
+class JobPositionAdmin(ImportExportModelAdmin):
+    list_display = ('position',)
+    search_fields = ('position',)
+    list_filter = ('position',)
+    resource_class = JobPositionResource
+    def __str__(self):
+        return self.position
 
 
 # admin.site.register(JobPosition, JobPositionAdmin)
@@ -143,4 +192,6 @@ admin.site.register(Tag, TagAdmin)
 admin.site.register(BlogPost, BlogPostAdmin)
 admin.site.register(SubCategory, SubCategoryAdmin)
 admin.site.register(Job, JobAdmin)
+admin.site.register(JobApplications, JobApplicationAdmin)
+admin.site.register(JobPosition, JobPositionAdmin)
 # admin.site.register(JobPosition, JobPositionAdmin)

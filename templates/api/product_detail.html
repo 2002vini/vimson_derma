@@ -1,0 +1,63 @@
+{% extends 'temp_base.html' %} {% load static %} {% block title %}Home Page{%endblock %} {% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Passion+One:wght@400;700;900&family=Roboto:wght@600&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+  rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/product_detail.css' %}" />
+
+{% endblock %} {% block content %}
+<div class="bg-light mt-5 mb-5">
+  <div class="product-info-container container py-5">
+    <div class="row h-100">
+      <!-- Product Image -->
+      <div class="col-md-6 h-100">
+        <img id="productImage" src="{{product.image}}" alt="Product"  />
+      </div>
+
+      <!-- Product Info -->
+      <div class="col-md-6">
+        <h2 class="fw-bold text-secondary mb-0">{{product.name}}</h2>
+        <p class="text-muted-tagline"><i>{{product.tagline}}</i></p>
+        <hr>
+        <!-- <p class="text-muted "><i>{{product.category}}</i></p> -->
+        <button class="btn btn-primary w-100 mb-3">{{product.category}}</button>
+        <p>{{product.description}}</p>
+
+        <div class="subtags mb-5">
+          {% for tag in product.subcategory %}
+          <button class="btn btn-primary btn-sm me-1 mb-1">{{ tag}}</button>
+          {% endfor %}
+        </div>
+
+        <div class="accordion" id="productInfo">
+          {% for key, values in product.attributes.items %}
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button {% if not forloop.first %}collapsed{% endif %}" type="button"
+                data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}"
+                aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
+                {{ key|capfirst }}
+              </button>
+            </h2>
+            <div id="collapse{{ forloop.counter }}"
+              class="accordion-collapse collapse {% if forloop.first %}show{% endif %}">
+              <div class="accordion-body">
+                <ul>
+                  {% for item in values %}
+                  <li>{{ item }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+{%endblock%}

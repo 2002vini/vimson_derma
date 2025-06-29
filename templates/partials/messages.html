@@ -1,0 +1,30 @@
+{% if messages %}
+<script>
+    function showToast(type, message) {
+        Swal.fire({
+            icon: type,
+            title: message,
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            showCloseButton: true,
+            timer: 5000,
+            timerProgressBar: true,
+            backdrop: false,
+            customClass: {
+                popup: 'no-blur-popup'
+            }
+        });
+    }
+
+    {% for message in messages %}
+        {% if 'error' in message.tags or 'danger' in message.tags %}
+            showToast('error', '{{ message|escapejs }}');
+        {% elif 'success' in message.tags %}
+            showToast('success', '{{ message|escapejs }}');
+        {% else %}
+            showToast('info', '{{ message|escapejs }}');
+        {% endif %}
+    {% endfor %}
+</script>
+{% endif %}

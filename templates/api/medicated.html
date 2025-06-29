@@ -1,0 +1,197 @@
+{% extends 'temp_base.html' %}
+{% load static %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/products.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Passion+One:wght@400;700;900&family=Roboto:wght@600&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+  rel="stylesheet">
+<style>
+  .category-card {
+    position: relative;
+    color: white;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+
+  }
+  .category-card:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+
+  .main-card {
+    height: 100%;
+  }
+
+  .category-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    /* dark overlay */
+    z-index: 1;
+  }
+  .selected-card {
+    border: 2px solid #ff9800;
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.8);
+  }
+
+  .category-text {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    z-index: 2;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .carousel-item {
+    height: 250px;
+  }
+
+  .carousel-item .category-card {
+    height: 100%;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- Desktop Grid -->
+<div class="container mt-4 d-none d-md-block">
+  <div class="row g-2">
+    <div class="col-md-6">
+      <div class="category-card main-card {% if selected_category == 'BodyCare' %}selected-card{% endif %}" style="background-image: url('/static/images/medicated_bodycare.png');" onclick="window.location.href='?category=BodyCare'">
+        <div class="category-text">Body Care</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row g-2">
+        <div class="col-6">
+          <div class="category-card {% if selected_category == 'FaceCare' %}selected-card{% endif %}" style="background-image: url('/static/images/medicated_facecare.png');" onclick="window.location.href='?category=FaceCare'">
+            <div class="category-text">Face Care</div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="category-card {% if selected_category == 'HairCare' %}selected-card{% endif %}" style="background-image: url('/static/images/medicated_haircare.png');" onclick="window.location.href='?category=HairCare'">
+            <div class="category-text">Hair Care</div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="category-card {% if selected_category == 'VeterinaryCare' %}selected-card{% endif %}" style="background-image: url('/static/images/medicated_veterinary.png');" onclick="window.location.href='?category=Veterinary'">
+            <div class="category-text">Veterinary Care</div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="category-card {% if selected_category == 'OralCare' %}selected-card{% endif %}" style="background-image: url('/static/images/medicated_oral.png');" onclick="window.location.href='?category=OralCare'">
+            <div class="category-text">Oral Care</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Carousel -->
+<div class="container mt-4 d-block d-md-none">
+  <div id="categoryCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="category-card {% if selected_category == 'BodyCare' %}selected-card{% endif %}" style="background-image: url('/static/images/medicated_bodycare.png');" onclick="window.location.href='?category=BodyCare'">
+          <div class="category-text">Body Care</div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="category-card {% if selected_category == 'FaceCare' %}selected-card{% endif %}" style="background-color:#142061;" onclick="window.location.href='?category=facecare'">
+          <div class="category-text">Face Care</div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="category-card {% if selected_category == 'HairCare' %}selected-card{% endif %}" style="background-image: url('/static/images/medicated_haircare.png');" onclick="window.location.href='?category=HairCare'" >
+          <div class="category-text">Hair Care</div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="category-card {% if selected_category == 'VeterinaryCare' %}selected-card{% endif %}" style="background-image: url('/static/images/medicated_veterinary.png');" onclick="window.location.href='?category=Veterinary'">
+          <div class="category-text">Veterinary Care</div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="category-card {% if selected_category == 'OralCare' %}selected-card{% endif %}" style="background-image: url('/static/images/medicated_oral.png');" onclick="window.location.href='?category=oralcare'">
+          <div class="category-text">Oral Care</div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#categoryCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#categoryCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</div>
+
+<!--Products Display-->
+<div class="container">
+  <div class="heading">
+    <h4 class="text-center mt-5 mb-5">{{selected_category}}</h4>
+  </div>
+  <div class="product-display-list">
+    {% for product in products %} {% if forloop.first or forloop.counter0|divisibleby:4 %}
+    <div class="row g-3">
+      {% endif %}
+      <div class="col-sm-12 col-md-3 ">
+        <div class="product-card {{product.category}} {{product.subcategory}}" id="{{product.id}}">
+          <div class="image-container mb-2">
+            <img src="{{product.image}}" alt="Product" class="product-img" />
+          </div>
+          <!-- <h6 class="heading">{{product.name}}</h6> -->
+          <div class="product-tags">
+          <h6 class="heading">{{product.name}}</h6>
+
+          </div>
+        </div>
+      </div>
+
+      {% if forloop.counter|divisibleby:4 or forloop.last %}
+    </div>
+    <!-- close row -->
+    {% endif %} {% endfor %}
+  </div>
+</div>
+
+<div class="container mb-5 p-2">
+
+  <div class="blog-title">
+      <h4 class="heading text-center mt-5 mb-5">Top Formulations</h4>
+  </div>         
+  <div class="row ">
+    {% for product in featured_products %}
+      <div class="col-md-4 col-sm-12">
+          <div class="blog-card">
+              <img src="{{product.image}}" alt="Skincare Image">
+              <div class="blog-content">
+                  <div class="tags">
+                      {% for sub in product.subcategory %}
+                      <span class="tag">{{sub}}</span>
+                      {%endfor%}
+                  </div>
+                  <div class="product-card-title">{{product.name}}</div>
+                  <div class="product-card-description">{{product.description}}</div>
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+  </div> 
+  
+</div>
+
+
+{%endblock%}

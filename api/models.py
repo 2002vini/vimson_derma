@@ -6,10 +6,13 @@ from tinymce.models import HTMLField
 
 class Category(models.Model):
     """Model representing product categories in the system."""
-
+    class Meta:
+        verbose_name_plural = 'category'
     type = models.CharField(max_length=200)
     description = models.TextField()
     svg_file = models.FileField(upload_to="svgs/", blank=True)  # Store in /media/svgs/
+    is_medicated = models.BooleanField(default=False)
+    url = models.CharField(blank=True, null=True)  # Optional URL field for category
 
     def __str__(self):
         """String representation of the Category model."""
@@ -17,10 +20,14 @@ class Category(models.Model):
 
 
 class SubCategory(models.Model):
+    class Meta:
+        verbose_name_plural = 'sub category'
+        
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     type = models.CharField()
     description = models.TextField()
     image = models.FileField(upload_to="svgs/", blank=True)
+    
 
     def __str__(self):
         """String representation of the SubCategory model."""
@@ -31,7 +38,6 @@ def default_subcategories():
 
 class Product(models.Model):
     """Model representing products in the system."""
-
     name = models.CharField(max_length=200)
     description = models.TextField()
     attributes = models.JSONField(blank=True, null=True)
@@ -41,6 +47,10 @@ class Product(models.Model):
     is_featured = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    is_medicated = models.BooleanField(default=False)
+    is_customized = models.BooleanField(default=False)
+    tagline = models.CharField(max_length=200, null=True, blank=True)
+    
 
     def __str__(self):
         """String representation of the Product model."""
@@ -128,12 +138,26 @@ class BlogPost(models.Model):
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
+class JobApplications(models.Model):
+    """Model representing job applications in the system."""
+    job_id = models.ForeignKey('Job', on_delete=models.CASCADE, null=True, blank=True)
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    phone = models.CharField(max_length=15)
+    dob = models.DateField(blank=True, null=True)
+    resume = models.FileField(upload_to="resumes/")
+    cover_letter = models.TextField(blank=True, null=True)
+    job_position = models.ForeignKey('JobPosition', on_delete=models.CASCADE)
+    applied_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        """String representation of the JobApplications model."""
+        return f"{self.name} - {self.job_position.position}"
 # Create your models here.
 class Job(models.Model):
     """Model representing job postings in the system."""
 
-    title = models.CharField(max_length=200)
+    title = models.ForeignKey('JobPosition', on_delete=models.CASCADE)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     experience = models.IntegerField()
@@ -142,7 +166,7 @@ class Job(models.Model):
 
     def __str__(self):
         """String representation of the Job model."""
-        return self.title
+        return self.title.position
 
 class JobPosition(models.Model):
     """Model representing job positions in the system."""

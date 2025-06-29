@@ -1,0 +1,352 @@
+{% extends 'temp_base.html' %}
+{% load static %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/innovations.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Passion+One:wght@400;700;900&family=Roboto:wght@600&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+    rel="stylesheet">
+<script src="https://kit.fontawesome.com/300d51b9da.js" crossorigin="anonymous"></script>
+
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid innovations-about">
+    <div class="overlay-text">
+        <h3 class="heading">Tailored Solutions</h3>
+        <h3 class="heading">For Your Unique Brand</h3>
+        <h6 class="sub-heading-text mt-5">Bring Your Brand Vision to Life with Custom Cosmetic Solutions</h6>
+    </div>
+</div>
+
+<div class="container">
+    <div class="about-us-container">
+        <div class="heading h3">Overview</div>
+        <div class="text">
+            <p>
+                At Vimson Derma, we specialize in helping brands create products that truly represent their identity.
+                Whether you're an emerging entrepreneur or an established label, we offer end-to-end customization in
+                skincare, haircare, bodycare, baby care, intimate care, and more excluding medicated products where
+                standard, compliant formulations are followed.
+            </p>
+            <p>
+                From the choice of active ingredients to packaging aesthetics, every element is customizable to meet
+                your vision and market demands.
+            </p>
+        </div>
+    </div>
+</div>
+<div class="expertise container-fluid mt-5">
+    <h2 class="section-title text-center">Customization Options</h2>
+    <div class="row justify-content-center">
+
+        <div class="col-md-3 expertise-card">
+            <div class="expertise-icon">
+                <img src="{% static 'images/formulation.svg' %}" alt="Ingredients" class="img-fluid">
+            </div>
+            <div class="expertise-heading">
+                <h5>Formulation</h5>
+            </div>
+            <div class="expertise-sub-heading">
+                <p> Create unique blends with custom ingredients, skin-safe claims like vegan and sulfate-free, and
+                    globally inspired formulations.</p>
+            </div>
+        </div>
+
+        <div class="col-md-3 expertise-card">
+            <div class="expertise-icon">
+                <img src="{% static 'images/Vector.svg' %}" alt="Packaging Quality" class="img-fluid">
+            </div>
+            <div class="expertise-heading">
+                <h5>Fragrances</h5>
+            </div>
+            <div class="expertise-sub-heading">
+                <p>Choose from floral, herbal, musky, fruity, or opt for fragrance-free options to suit sensitive skin.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-3 expertise-card">
+            <div class="expertise-icon">
+                <img src="{% static 'images/packaging_quality.svg' %}" alt="Packaging Quality" class="img-fluid">
+            </div>
+            <div class="expertise-heading">
+                <h5>Packaging</h5>
+            </div>
+            <div class="expertise-sub-heading">
+                <p>Choose from materials (glass, PET), designs (minimalistic, luxury), and sizes.</p>
+            </div>
+        </div>
+        <div class="col-md-3 expertise-card">
+            <div class="expertise-icon">
+                <img src="{% static 'images/branding.svg' %}" alt="Branding" class="img-fluid">
+            </div>
+            <div class="expertise-heading">
+                <h5>Texture And Color</h5>
+            </div>
+            <div class="expertise-sub-heading">
+                <p>Define the texture and color of your product with options ranging from lightweight gels to rich
+                    creams and soft neutrals to bold tones.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+  <section class="claims-section py-5 mt-3">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h4 class="heading text-center mb-4">Claims You Can Offer With Your Products</h4>
+      <p class="text-muted" style="color: rgba(20, 32, 97, 1);">
+        Stand out with clean, conscious, and consumer-trusted product claims. Our team ensures each claim is compliant, relevant, and tailored to your brand and target audience.
+      </p>
+    </div>
+
+  <div class="row g-4 mt-5">
+  <div class="col-6 col-md-4 col-lg-3" >
+  <div class="claim-card text-center p-3 h-100">
+    Vegan
+    <img src="/static/images/product-claims/Artboard 1.png" alt="Product Claims Visual" class="img-fluid rounded" />
+
+  </div>
+</div>
+  <div class="col-6 col-md-4 col-lg-3"><div class="claim-card text-center p-3 h-100">
+    Cruelty-Free
+    <img src="/static/images/product-claims/Artboard 1 copy 2.png" alt="Product Claims Visual" class="img-fluid rounded" />
+
+  </div></div>
+  <div class="col-6 col-md-4 col-lg-3"><div class="claim-card text-center p-3 h-100">
+    Alcohol-Free
+    <img src="/static/images/product-claims/Artboard 1 copy 4.png" alt="Product Claims Visual" class="img-fluid rounded" />
+  </div></div>
+  <div class="col-6 col-md-4 col-lg-3"><div class="claim-card text-center p-3 h-100">
+    Paraben-Free
+    <img src="/static/images/product-claims/Artboard 1 copy 5.png" alt="Product Claims Visual" class="img-fluid rounded" />
+
+  </div></div>
+  <div class="col-6 col-md-4 col-lg-3"><div class="claim-card text-center p-3 h-100">
+    Dermatologically Tested
+    <img src="/static/images/product-claims/Artboard 1 copy 6.png" alt="Product Claims Visual" class="img-fluid rounded" />
+  </div></div>
+  <div class="col-6 col-md-4 col-lg-3"><div class="claim-card text-center p-3 h-100">
+    silicone-free
+    <img src="/static/images/product-claims/Artboard 1 copy 7.png" alt="Product Claims Visual" class="img-fluid rounded" />
+  </div></div>
+  <div class="col-6 col-md-4 col-lg-3"><div class="claim-card text-center p-3 h-100">
+    Mineral-Oil Free
+    <img src="/static/images/product-claims/Artboard 1 copy 8.png" alt="Product Claims Visual" class="img-fluid rounded" />
+
+  </div></div>
+  <div class="col-6 col-md-4 col-lg-3"><div class="claim-card text-center p-3 h-100">
+    Hypoallergenic
+    <img src="/static/images/product-claims/Artboard 1 copy 9.png" alt="Product Claims Visual" class="img-fluid rounded" />
+  </div></div>
+  <div class="col-6 col-md-4 col-lg-3"><div class="claim-card text-center p-3 h-100">
+    Non-Comedegenic
+    <img src="/static/images/product-claims/Artboard 1 copy 10.png" alt="Product Claims Visual" class="img-fluid rounded" />
+  </div></div>
+  <div class="col-6 col-md-4 col-lg-3"><div class="claim-card text-center p-3 h-100">
+    Fragrance Free
+   <img src="/static/images/product-claims/Artboard 1 copy 11.png" alt="Product Claims Visual" class="img-fluid rounded" />
+
+  </div></div>
+  <div class="col-6 col-md-4 col-lg-3"><div class="claim-card text-center p-3 h-100">
+    Reef-Safe
+    <img src="/static/images/product-claims/Artboard 1 copy 12.png" alt="Product Claims Visual" class="img-fluid rounded" />
+  </div></div>
+  <div class="col-6 col-md-4 col-lg-3"><div class="claim-card text-center p-3 h-100">
+    Color-Safe
+    <img src="/static/images/product-claims/Artboard 1 copy 13.png" alt="Product Claims Visual" class="img-fluid rounded" />
+  </div></div>
+  <div class="col-6 col-md-4 col-lg-3"><div class="claim-card text-center p-3 h-100">
+    Safe for Pregnancy & Lactation 
+    <img src="/static/images/product-claims/Artboard 1 copy 15.png" alt="Product Claims Visual" class="img-fluid rounded" />
+  </div></div>
+  <div class="col-6 col-md-4 col-lg-3"><div class="claim-card text-center p-3 h-100">
+    ph Balanced
+    <img src="/static/images/product-claims/Artboard 1 copy.png" alt="Product Claims Visual" class="img-fluid rounded" />
+  </div></div>
+   <div class="col-6 col-md-4 col-lg-3"><div class="claim-card text-center p-3 h-100">
+    sulphate-free
+    <img src="/static/images/product-claims/Artboard 1 copy 3.png" alt="Product Claims Visual" class="img-fluid rounded" />
+  </div></div>
+  <div class="col-6 col-md-4 col-lg-3"><div class="claim-card text-center p-3 h-100">
+    EWG-Approved Ingredients 
+    <img src="/static/images/product-claims/Artboard 1 copy 14.png" alt="Product Claims Visual" class="img-fluid rounded" />
+  </div></div>
+</div>
+
+  </div>
+</section>
+
+<div class="container mb-5 p-2">
+  <div class="blog-title">
+    <h4 class="heading text-center mt-5 mb-5">Top Formulations</h4>
+  </div>
+ <!-- Desktop Carousel (group of 3 per slide) -->
+<div id="productCarouselDesktop" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    {% for product in customized_products %}
+      {% if forloop.first or forloop.counter0|divisibleby:4 %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+          <div class="row">
+      {% endif %}
+
+      <div class="col-md-3">
+        <div class="blog-card">
+          <img src="{{ product.image }}" alt="Skincare Image">
+          <div class="blog-content">
+            <div class="tags">
+              {% for sub in product.subcategory %}
+                <span class="tag">{{ sub }}</span>
+              {% endfor %}
+            </div>
+            <div class="product-card-title">{{ product.name }}</div>
+            <div class="product-card-description">{{ product.tagline }}</div>
+          </div>
+        </div>
+      </div>
+
+      {% if forloop.counter|divisibleby:4 or forloop.last %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% if customized_products|length > 4 %}
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#productCarouselDesktop" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#productCarouselDesktop" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  {% endif %}
+</div>
+
+<!-- Mobile Carousel (one card per slide) -->
+<div id="productCarouselMobile" class="carousel slide d-md-none" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    {% for product in featured_products %}
+    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+      <div class="col-12">
+        <div class="blog-card">
+          <img src="{{ product.image }}" alt="Skincare Image">
+          <div class="blog-content">
+            <div class="tags">
+              {% for sub in product.subcategory %}
+                <span class="tag">{{ sub }}</span>
+              {% endfor %}
+            </div>
+            <div class="product-card-title">{{ product.name }}</div>
+            <div class="product-card-description">{{ product.description }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% if featured_products|length > 1 %}
+    <button class="carousel-control-prev" type="button" data-bs-target="#productCarouselMobile" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#productCarouselMobile" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  {% endif %}
+</div>
+</div>
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button d-flex justify-content-flex-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+ Can I create a unique skincare or haircare formula with Vimson Derma?   
+       <span class="icon">+</span>
+      </button>
+    </h2>
+
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+Yes, our R&D team specializes in crafting custom formulations tailored to your brand’s goals. You can choose specific ingredients, textures, scents, and target benefits.
+
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+What types of customizations can I request?
+<span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+You can customize ingredients, active percentages, fragrance, packaging type, label design, and product claims, all while maintaining regulatory compliance.
+</div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+How do you ensure the formulation is safe and effective?
+
+        <span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+All custom formulations go through R&D trials, stability testing, dermatological compatibility checks, and regulatory review to ensure performance and safety.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+ How long does it take to develop a custom formula?
+        <span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+ Depending on complexity, it usually takes 3–4 weeks for sampling. Once approved, manufacturing takes 6–7 weeks for the first batch.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+Is there an extra cost for formulation and development?
+         <span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+No separate formulation charges for bulk orders. For special research-based developments or low MOQ requests, nominal R&D charges may apply.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+Can I request a sample of my customized product before manufacturing?
+ <span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+Yes, and we do not charge for samples. You can evaluate the look, feel, and performance of your custom product before going ahead with production.
+    </div>
+  </div>
+  </div>
+
+
+
+</div> 
+
+
+{% include 'partials/banner.html' %}
+{% endblock %}

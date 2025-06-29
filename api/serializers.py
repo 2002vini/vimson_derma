@@ -1,7 +1,7 @@
 from os import replace
 from django.forms import SlugField
 from rest_framework import serializers
-from .models import Category, Job, JobPosition, Product, Client, FAQ, Testimonial, Tag, BlogPost
+from .models import Category, Job, JobApplications, JobPosition, Product, Client, FAQ, Testimonial, Tag, BlogPost
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     """Serializer for the Category model."""
@@ -26,6 +26,10 @@ class ProductSerializer(serializers.ModelSerializer):
     image=serializers.SerializerMethodField()
     category=serializers.SlugRelatedField(read_only=True, slug_field="type")
     subcategory = serializers.SlugRelatedField(many=True, read_only=True, slug_field="type")
+    is_medicated = serializers.BooleanField(default=False)
+    is_customized = serializers.BooleanField(default=False)
+    tagline = serializers.CharField( allow_blank=True, required=False)
+    
     """Serializer for the Product model."""
     class Meta:
         """Meta class to configure the ProductSerializer."""
@@ -108,6 +112,10 @@ class SubCategorySerializer(serializers.HyperlinkedModelSerializer):
 
 class JobSerializer(serializers.ModelSerializer):
     """Serializer for the Job model."""
+    title = serializers.SlugRelatedField(
+        read_only=True,
+        slug_field='position'
+    )   
     class Meta:
         """Meta class to configure the JobSerializer."""
         model=Job
@@ -120,5 +128,11 @@ class JobPositionSerializer(serializers.ModelSerializer):
         fields = "__all__"
   
 
-
-
+class JobApplicationSerializer(serializers.ModelSerializer):
+    """Serializer for the JobPosition model."""
+    job = serializers.SlugRelatedField(read_only=True, slug_field="id")
+    
+    class Meta:
+        """Meta class to configure the JobPositionSerializer."""
+        model = JobApplications
+        fields = "__all__"

@@ -2,7 +2,7 @@ from urllib import request
 from django.shortcuts import render
 from django.db.models import Q
 from rest_framework import viewsets
-from ..models import Category, Product, Client, FAQ, SubCategory, Testimonial, Tag, BlogPost
+from ..models import Category, Job, JobApplications, JobPosition, Product, Client, FAQ, SubCategory, Testimonial, Tag, BlogPost
 from ..serializers import CategorySerializer, ProductSerializer, ClientSerializer, FAQSerializer, SubCategorySerializer, TestimonialSerializer, TagSerializer, BlogPostSerializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -11,7 +11,8 @@ from rest_framework import status
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.core.files.storage import default_storage
-    
+from django.contrib import messages
+
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 import re
@@ -247,6 +248,9 @@ def contact_submit(request):
 
         print(response)
         print("submitted successfully")
+        messages.success(request, 'Item successfully added!')
+
+        
         return JsonResponse({'status': 1, 'message': 'Form submitted successfully'})
     except Exception as e:
         return JsonResponse({'status': 0, 'error': f'Server error: {str(e)}'})
@@ -378,10 +382,11 @@ def careers_apply(request):
     name = request.POST.get('name', '').strip()
     email = request.POST.get('email', '').strip()
     contact_no = request.POST.get('phone', '').strip()
-    message = request.POST.get('message', '').strip()
     position = request.POST.get('position', '').strip()
-    # resume = request.FILES.get('resume', None)
-    print(name, email, contact_no, message, position)
+    job_id = request.POST.get('job_id', '').strip()
+    dob = request.POST.get('dob', '').strip()
+    resume = request.FILES.get('resume', None)
+    print(name, email, contact_no, position,resume)
     # Basic validation
     if not name:
         print("name is empty")
@@ -399,10 +404,55 @@ def careers_apply(request):
     if not contact_clean or not re.match(r'^\d{10,15}$', contact_clean):
         print("contact no is invalid")
         return JsonResponse({'status': 0, 'error': '* Invalid Contact No.'})
-
-    # if not resume:
-    #     return JsonResponse({'status': 0, 'error': '* Please upload your resume.'})
+    if not resume:
+        print("resume is empty")
+        return JsonResponse({'status': 0, 'error': '* Please upload your resume.'})
+    if not position:
+        print("position is empty")
+        return JsonResponse({'status': 0, 'error': '* Please select a position to apply.'})
+    
+    if job_id:
+        print("job id exists!")
+        try:
+            job = Job.objects.get(id=int(job_id))
+        except Job.DoesNotExist:
+            return JsonResponse({'status': 0, 'error': '* Invalid Job ID.'})
+        # check if the job position is already applied for
+        if JobApplications.objects.filter(job_id=job.id, email=email).exists():
+            print("already applied for the same job")
+            return JsonResponse({'status': 0, 'error': '* You have already applied for this job.'})
+        # add job_id to the job application
+        job_application=JobApplications(
+            job_id=job,
+            name=name,
+            email=email,
+            phone=contact_no,
+            dob=dob,
+            resume=resume,
+            job_position=JobPosition.objects.get(position=position)
+        )
+        #todo: send email for admin
+        job_application.save()
+        print("data has been validated successfully")
+        return JsonResponse({'status': 1, 'message': 'Form submitted successfully','success': True})
+    
+    # Validate if from same email we have already applied for the same position
+    if JobApplications.objects.filter(email=email, job_position__position=position).exists():
+        print("already applied for the same position")
+        return JsonResponse({'status': 0, 'error': '* You have already applied for this position.'})
+    else:
+        # Save the job application
+        job_application = JobApplications(
+            name=name,
+            email=email,
+            phone=contact_no,
+            dob=dob,
+            resume=resume,
+            job_position=JobPosition.objects.get(position=position)
+        )
+        job_application.save()
+        #todo: send email notification to admin
     print("data has been validated successfully")
-    return JsonResponse({'status': 1, 'message': 'Form submitted successfully'})
+    return JsonResponse({'status': 1, 'message': 'Form submitted successfully','success': True})
     # Save the resume file
 

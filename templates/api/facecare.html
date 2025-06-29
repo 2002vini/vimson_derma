@@ -1,0 +1,397 @@
+{% extends 'temp_base.html' %} {% load static %} {% block title %}Home Page{%endblock %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/products.css' %}" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Passion+One:wght@400;700;900&family=Roboto:wght@600&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+  rel="stylesheet"
+/>
+
+{% endblock %} {% block content %}
+<div class="container-fluid products-display"></div>
+
+<div class="container mb-5 p-2">
+  <div class="blog-title">
+    <h4 class="heading text-center mt-5 mb-5">Top Formulations</h4>
+  </div>
+ <!-- Desktop Carousel (group of 3 per slide) -->
+<div id="productCarouselDesktop" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    {% for product in featured_products %}
+      {% if forloop.first or forloop.counter0|divisibleby:3 %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+          <div class="row">
+      {% endif %}
+
+      <div class="col-md-4">
+        <div class="blog-card">
+          <img src="{{ product.image }}" alt="Skincare Image">
+          <div class="blog-content">
+            <div class="tags">
+              {% for sub in product.subcategory %}
+                <span class="tag">{{ sub }}</span>
+              {% endfor %}
+            </div>
+            <div class="product-card-title">{{ product.name }}</div>
+            <div class="product-card-description">{{ product.description }}</div>
+          </div>
+        </div>
+      </div>
+
+      {% if forloop.counter|divisibleby:3 or forloop.last %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% if featured_products|length > 3 %}
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#productCarouselDesktop" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#productCarouselDesktop" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  {% endif %}
+</div>
+
+<!-- Mobile Carousel (one card per slide) -->
+<div id="productCarouselMobile" class="carousel slide d-md-none" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    {% for product in featured_products %}
+    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+      <div class="col-12">
+        <div class="blog-card">
+          <img src="{{ product.image }}" alt="Skincare Image">
+          <div class="blog-content">
+            <div class="tags">
+              {% for sub in product.subcategory %}
+                <span class="tag">{{ sub }}</span>
+              {% endfor %}
+            </div>
+            <div class="product-card-title">{{ product.name }}</div>
+            <div class="product-card-description">{{ product.description }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% if featured_products|length > 1 %}
+    <button class="carousel-control-prev" type="button" data-bs-target="#productCarouselMobile" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#productCarouselMobile" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  {% endif %}
+</div>
+
+</div>
+
+<section class="facecare-section-container container">
+  <div class="facecare-overlay"></div>
+
+  <div class="facecare-text-left">
+    <h4>Face Care Product<br />Manufacturers</h4>
+    <p>Healthy and Strong hair from the root to the tip</p>
+  </div>
+
+  <div class="facecare-text-right">
+    <p>
+      Welcome to HCP Wellness, your trusted partner in premium hair care
+      products. As a leading hair care products manufacturer in India, we pride
+      ourselves on delivering innovative and high-quality solutions for all hair
+      types. Our comprehensive range includes everything from hair oils and
+      shampoos to serums and gels, all crafted to meet the diverse needs of our
+      clients.
+    </p>
+    <p>
+      At HCP Wellness, we specialize in creating a wide array of hair care
+      products that cater to different market segments. As renowned hair care
+      product suppliers, we ensure that our products are made with the finest
+      ingredients and cutting-edge technology.
+    </p>
+    <p>
+      Harnessing the power of ancient Ayurveda, we produce hair care solutions
+      that are both effective and gentle. Our Ayurvedic hair care products are
+      designed to promote healthy hair growth, reduce hair fall, and enhance the
+      natural beauty of your hair.
+    </p>
+  </div>
+</section>
+<!--FACE CARE FAQ-->
+
+<div class="container-fluid mt-5 mb-5 p-2">
+  <div class="row">
+    <!-- Left Sidebar (on top for mobile, side for desktop) -->
+    <div class="d-md-none text-center mb-3">
+      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#mobileRightContent" style="background-color: #E58D60;">
+        Show Products
+      </button>
+    </div>
+    <div class="col-12 col-md-3 left-sidebar mb-3 mb-md-0 collapse d-md-block" id="mobileRightContent">
+      {% for sub in subcategory %}
+      <div
+        class="category-item" data-subcategory="{{ sub.type }}">
+        <span>{{sub.type}}</span>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Right Content -->
+   
+    <div class="col-12 col-md-9 right-content ">
+      <div
+        class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4"
+      >
+        <h5 class="heading text-center">Products</h5>
+      </div>
+      <div class="product-display-list">
+        {% for product in products %} {% if forloop.first or forloop.counter0|divisibleby:3 %}
+        <div class="row g-3">
+          {% endif %}
+          <div class="col-sm-12 col-md-4">
+            <div
+              class="product-card {{product.category}} {{product.subcategory}}"
+              id="{{product.id}}"
+            >
+              <div class="image-container mb-2">
+                <img
+                  src="{{product.image}}"
+                  alt="Product"
+                  class="product-img"
+                />
+              </div>
+              <h6 class="heading">{{product.name}}</h6>
+              <div class="product-tags">
+                {% for tag in product.subcategory %}
+                <small class="text-muted"> {{tag}} </small>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          {% if forloop.counter|divisibleby:3 or forloop.last %}
+        </div>
+        <!-- close row -->
+        {% endif %} {% endfor %}
+      </div>
+      <div class="pagination d-flex justify-content-center mt-5">
+        {% if products|length == 0 %}
+        <h3 class="text-center heading">No products found!</h3>
+        {% endif %}
+        {% if products|length > 0 %}
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-flex-end">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+              <a
+                class="page-link"
+                href="?page={{ page_obj.previous_page_number }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}"
+                >Previous</a
+              >
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <span class="page-link">Previous</span>
+            </li>
+            {% endif %} {% for num in page_obj.paginator.page_range %} {% if page_obj.number == num %}
+            <li class="page-item active">
+              <span class="page-link">{{ num }}</span>
+            </li>
+            {% else %}
+            <li class="page-item">
+              <a
+                class="page-link"
+                href="?page={{ num }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}"
+                >{{ num }}</a
+              >
+            </li>
+            {% endif %} {% endfor %} {% if page_obj.has_next %}
+            <li class="page-item">
+              <a
+                class="page-link"
+                href="?page={{ page_obj.next_page_number }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}"
+                >Next</a
+              >
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <span class="page-link">Next</span>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+        {% endif %}
+    </div>
+  </div>
+</div>
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button d-flex justify-content-flex-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Can I launch my own facecare range with Vimson Derma even if I don’t have prior experience?        <span class="icon">+</span>
+      </button>
+    </h2>
+
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Yes, we support startups and entrepreneurs with end-to-end solutions including formulation, design, packaging, and branding. Our in-house R&D, QA, and QC departments help speed up development and reduce costs.
+
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        What is the MOQ for private label facecare products?
+        <span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Our minimum order quantity (MOQ) is 3000 units per variant. This allows us to maintain cost-efficiency and consistent quality in production.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Do you offer customization for facecare products?
+        <span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Absolutely. We offer extensive customization options in bottles, tubes, jars, and dispensers along with branding, labels, and material choices suited for Indian and global markets. You can choose specific ingredients, textures, scents, and target benefits to suit your brand vision.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        Are your facecare products suitable for different skin types and climates in India?
+        <span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Yes. We formulate products specifically for varied Indian skin types and climatic conditions across regions—from dry to humid weather.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        Are Vimson Derma’s facecare formulations dermatologically tested        <span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Yes, all our formulations go through dermatological testing. We also provide COA (Certificate of Analysis) reports and follow strict GMP & GLP protocols.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+        Are Vimson Derma’s facecare formulations dermatologically tested        <span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Yes, all our formulations go through dermatological testing. We also provide COA (Certificate of Analysis) reports and follow strict GMP & GLP protocols.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+        Are Vimson Derma’s facecare formulations dermatologically tested        <span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Yes, all our formulations go through dermatological testing. We also provide COA (Certificate of Analysis) reports and follow strict GMP & GLP protocols.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+        Are Vimson Derma’s facecare formulations dermatologically tested        <span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="heading" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Yes, all our formulations go through dermatological testing. We also provide COA (Certificate of Analysis) reports and follow strict GMP & GLP protocols.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+        Are Vimson Derma’s facecare formulations dermatologically tested        <span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Yes, all our formulations go through dermatological testing. We also provide COA (Certificate of Analysis) reports and follow strict GMP & GLP protocols.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        Are Vimson Derma’s facecare formulations dermatologically tested        <span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Yes, all our formulations go through dermatological testing. We also provide COA (Certificate of Analysis) reports and follow strict GMP & GLP protocols.
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+<!-- JS to toggle subcategories -->
+<script>
+  document.querySelectorAll('[data-toggle="subcategory"]').forEach((item) => {
+    item.addEventListener("click", () => {
+      const targetId = item.getAttribute("data-target");
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        targetElement.classList.toggle("show");
+      }
+    });
+  });
+
+  document.querySelectorAll(".heading.choice").forEach((item) => {
+    item.addEventListener("click", () => {
+      document
+        .querySelectorAll(".heading.choice")
+        .forEach((i) => i.classList.remove("active"));
+      item.classList.add("active");
+    });
+  });
+
+  document.querySelectorAll(".product-card").forEach((item) => {
+    item.addEventListener("click", () => {
+      const productId = item.getAttribute("id");
+      window.location.href = `/product/${productId}/`;
+    });
+  });
+
+  document.querySelectorAll('.category-item').forEach(item => {
+  item.addEventListener('click', function () {
+    const subcategory = this.dataset.subcategory;
+    const url = new URL(window.location.href);
+    url.searchParams.set('filter', subcategory);
+    window.location.href = url.toString();
+  });
+});
+</script>
+{%endblock%}
