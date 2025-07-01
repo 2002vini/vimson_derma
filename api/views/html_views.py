@@ -17,7 +17,6 @@ def index(request):
     categories_section_2 = serialized_categories[mid_index:]  # Second half
     testimonials=Testimonial.objects.all().filter(is_featured=True).order_by('updated_at')
     serialized_testimonials = TestimonialSerializer(testimonials, many=True,context={'request':request}).data
-    print("serialized testimonials are: ", serialized_testimonials)
     grouped_testimonials = [serialized_testimonials[i:i+3] for i in range(0, len(serialized_testimonials), 3)]  # Split into groups of 3
 
     return render(request, 'api/index.html',{'category_section_1':categories_section_1, 'category_section_2':categories_section_2,'grouped_testimonials':grouped_testimonials,'testimonials':serialized_testimonials})
@@ -28,7 +27,6 @@ def about(request):
 def service(request):
     categories = Category.objects.all()
     serialized_categories=CategorySerializer(categories, many=True,context={'request':request}).data
-    print("serialized categories:",serialized_categories)
     return render(request,'api/service.html',{'products':serialized_categories})
 
 def manafacturing(request):
@@ -45,7 +43,6 @@ def blogs(request):
     tags=Tag.objects.all()
 
     serialized_blog_post=BlogPostSerializer(blogs,many=True,context={'request':request}).data
-    print("serialized blogs are: ", serialized_blog_post)
     
     return render(request,'api/blogs.html',
                   {'blogs':serialized_blog_post})
@@ -53,17 +50,14 @@ def blogs(request):
 def blog_detail(request, id):
     blog = BlogPost.objects.all().get(id=id)
     blog_serailized = BlogPostSerializer(blog, context={'request': request}).data
-    print("serialized blog is: ", blog_serailized)
     return render(request, 'api/blog_detail.html', {'blog': blog_serailized})
 
 def facecare(request):
     # Fetch all the products that need to be displayed
     products=Product.objects.all().filter(is_featured=False,category=4).order_by('updated_at')
     selected_tag = request.GET.get('filter')
-    print("selected tag is: ", selected_tag)
     if selected_tag:
         products = products.filter(subcategory__type=selected_tag)  # Assuming 'tags' is a ManyToManyField in Product model
-        print(f"Filtering products by tag: {selected_tag}")
     #Fetch the page number from the request 
     page_number = request.GET.get('page', 1)
     paginator = Paginator(products, 5)
@@ -80,7 +74,6 @@ def haircare(request):
     products=Product.objects.all().filter(is_featured=False,category=3).order_by('updated_at')
     if selected_subcategory:
         products = products.filter(subcategory__type=selected_subcategory)
-        print("selected subcategory is: ", selected_subcategory)
     serialized_products=ProductSerializer(products,many=True,context={'request':request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category=3), many=True,context={'request':request}).data
@@ -113,7 +106,6 @@ def mothercare(request):
 def product_detail(request,product_id):
     product=Product.objects.get(id=product_id)
     serialized_product=ProductSerializer(product,context={'request':request}).data
-    print("serialized product is: ", serialized_product)
     return render(request,'api/product_detail.html',{'product':serialized_product})
 
 def careers(request):
@@ -145,14 +137,12 @@ def medicated(request):
     category_filter = request.GET.get('category')
     feautured_products = Product.objects.filter(is_featured=True, is_medicated=True).order_by('updated_at')
     serialized_featured_products = ProductSerializer(feautured_products, many=True, context={'request': request}).data
-    print("category filter is: ", category_filter)
     if category_filter:
         products = Product.objects.filter(is_medicated=True, category__type=category_filter).order_by('updated_at')
     else:
         products = Product.objects.filter(is_medicated=True, category__type='FaceCare').order_by('updated_at')
         category_filter = 'FaceCare'  # Default category if none is selected
     serialized_products = ProductSerializer(products, many=True, context={'request': request}).data
-    print("serialized products are: ", serialized_products)
     return render(request,'api/medicated.html',{'products':serialized_products,'selected_category':category_filter,'featured_products':serialized_featured_products})
 
 def intimatecare(request):
@@ -168,7 +158,6 @@ def veterinary(request):
     products=Product.objects.all().filter(is_featured=False,category=5).order_by('updated_at')
     if selected_subcategory:
         products = products.filter(subcategory__type=selected_subcategory)
-        print("selected subcategory is: ", selected_subcategory)
     serialized_products=ProductSerializer(products,many=True,context={'request':request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category=5), many=True,context={'request':request}).data

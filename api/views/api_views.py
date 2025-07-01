@@ -110,7 +110,6 @@ def send_mailtrap_email(name, email, contact_no, dob,resume=None):
       
         return True
     except Exception as e:
-        print(f"Error creating mail object: {e}")
         return False
 
 
@@ -339,8 +338,6 @@ def contact_submit(request):
         client = mt.MailtrapClient(token="ad0bd2f3543f7375bb7dc34bd84a933b")
         response = client.send(mail)
 
-        print(response)
-        print("submitted successfully")
         messages.success(request, 'Item successfully added!')
 
         
@@ -458,7 +455,6 @@ def quote_submit(request):
             client = mt.MailtrapClient(token="ad0bd2f3543f7375bb7dc34bd84a933b")
             response = client.send(mail)
 
-            print(response)
             return JsonResponse({'status': 1, 'message': 'Form submitted successfully'})
         except Exception as e:
             return JsonResponse({'status': 0, 'error': f'Server error: {str(e)}'})
@@ -477,37 +473,29 @@ def careers_apply(request):
     resume = request.FILES.get('resume', None)
     # Basic validation
     if not name:
-        print("name is empty")
         return JsonResponse({'status': 0, 'error': '* Please Enter Name.'})
 
     if not re.match(r'^[a-zA-Z][a-zA-Z\s\-\,\.]*$', name):
-        print("name is invalid")
         return JsonResponse({'status': 0, 'error': f'* Invalid Name: {name}'})
 
     if not email or not re.match(r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$', email):
-        print("email is invalid")
         return JsonResponse({'status': 0, 'error': '* Invalid Email ID.'})
 
     contact_clean = contact_no.replace('+', '')
     if not contact_clean or not re.match(r'^\d{10,15}$', contact_clean):
-        print("contact no is invalid")
         return JsonResponse({'status': 0, 'error': '* Invalid Contact No.'})
     if not resume:
-        print("resume is empty")
         return JsonResponse({'status': 0, 'error': '* Please upload your resume.'})
     if not position:
-        print("position is empty")
         return JsonResponse({'status': 0, 'error': '* Please select a position to apply.'})
     
     if job_id:
-        print("job id exists!")
         try:
             job = Job.objects.get(id=int(job_id))
         except Job.DoesNotExist:
             return JsonResponse({'status': 0, 'error': '* Invalid Job ID.'})
         # check if the job position is already applied for
         if JobApplications.objects.filter(job_id=job.id, email=email).exists():
-            print("already applied for the same job")
             return JsonResponse({'status': 0, 'error': '* You have already applied for this job.'})
         # add job_id to the job application
         job_application=JobApplications(
@@ -522,14 +510,11 @@ def careers_apply(request):
         #todo: send email for admin
         job_application.save()
         if not send_mailtrap_email(name, email, contact_no, dob, resume):
-            print("failed to send email")
             return JsonResponse({'status': 0, 'error': '* Failed to send email. Please try again later.'})
-        print("data has been validated successfully")
         return JsonResponse({'status': 1, 'message': 'Form submitted successfully','success': True})
     
     # Validate if from same email we have already applied for the same position
     if JobApplications.objects.filter(email=email, job_position__position=position).exists():
-        print("already applied for the same position")
         return JsonResponse({'status': 0, 'error': '* You have already applied for this position.'})
     else:
         # Save the job application
@@ -544,7 +529,6 @@ def careers_apply(request):
         job_application.save()
         send_mailtrap_email(name, email, contact_no, dob, resume)
         #todo: send email notification to admin
-    print("data has been validated successfully")
     return JsonResponse({'status': 1, 'message': 'Form submitted successfully','success': True})
     # Save the resume file
 
