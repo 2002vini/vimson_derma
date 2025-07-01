@@ -62,7 +62,7 @@
           <a href="{% url 'about' %}" class="btn btn-custom">Learn More</a>
         </div>
       </div>
-      <img src="{% static 'images/carousel/carousel_2.png'%}" alt="Slide 2" class="w-100 h-100 object-fit-cover" />
+      <img src="{% static 'images/carousel/carousel_2.png'%}" alt="Slide 2" class="w-100 h-100 object-fit-cover" style="object-position: center 90%;" />
     </div>
     <div class="carousel-item hero">
       <div class="hero-introduction">
@@ -212,9 +212,9 @@
     </div>
   </section>
 
-  <section class="video-container">
-    <div class="intro-video"></div>
-  </section>
+<!--  <section class="video-container">-->
+<!--    <div class="intro-video"></div>-->
+<!--  </section>-->
 
   <div class="container py-5">
     <div class="row">
@@ -257,47 +257,6 @@
       </div>
     </div>
   </div>
-  <!--Testimonial Section-->
-  <div class="container w-100 testimonial-container">
-    <div id="testimonialCarousel" class="carousel slide">
-      <h5 class="heading d-flex justify-content-center pt-4">Success Stories</h5>
-
-      <div class="carousel-inner testimonial">
-        {% for item in testimonials%}
-        <div class="carousel-item testimonial-item {% if forloop.first %}active{% endif %}">
-          <div class="testimonial-card">
-            <div class="quote-icon">
-              <img src="{% static 'images/testimonial.png'%}" alt="Testimonial">
-            </div>
-            <p class="testimonial-text">
-              {{item.feedback}}
-            </p>
-            <div class="testimonial-author">
-              <img src="{{item.image}}" alt="">
-              <div class="testimonial-author-details">
-                <small>{{item.customer_name}}</small>
-                <small>{{item.updated_at}}</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-      <button class="carousel-control-prev testimonial-button" type="button" data-bs-target="#testimonialCarousel"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next testimonial-button" type="button" data-bs-target="#testimonialCarousel"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  </div>
-
-
-
 
 
 
@@ -442,6 +401,47 @@
 
       </div>
   </div>
+
+    <!--Testimonial Section-->
+  <div class="container w-100 testimonial-container">
+    <div id="testimonialCarousel" class="carousel slide">
+      <h5 class="heading d-flex justify-content-center pt-4">Success Stories</h5>
+
+      <div class="carousel-inner testimonial">
+        {% for item in testimonials%}
+        <div class="carousel-item testimonial-item {% if forloop.first %}active{% endif %}">
+          <div class="testimonial-card">
+            <div class="quote-icon">
+              <img src="{% static 'images/testimonial.png'%}" alt="Testimonial">
+            </div>
+            <p class="testimonial-text">
+              {{item.feedback}}
+            </p>
+            <div class="testimonial-author">
+              <img src="{{item.image}}" alt="">
+              <div class="testimonial-author-details">
+                <small>{{item.customer_name}}</small>
+                <small>{{item.updated_at}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <button class="carousel-control-prev testimonial-button" type="button" data-bs-target="#testimonialCarousel"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next testimonial-button" type="button" data-bs-target="#testimonialCarousel"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+
   <div class="container-fluid mb-5 mt-3">
     <div class="accordian-heading">
       <h4 class="heading mt-5 mb-3">FAQ</h4>
