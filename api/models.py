@@ -231,3 +231,6 @@ class WebsiteImages(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = models.Manager()
+
+    def __str__(self):
+        return f"Version {self.id}"
