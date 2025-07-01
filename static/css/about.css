@@ -372,10 +372,10 @@
 }
 
 .vm-section p {
-  color: #555;
+  /* color: #555; */
   font-family: 'Be Vietnam', sans-serif;
   font-weight: 400;
-  /* color: #0b1957 */
+  color: #0b1957
 }
 
 .vision-btn-custom {
@@ -426,6 +426,8 @@
 
 .text-orange-team {
   color: #f57c00;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 400;
 }
 
 .team-card {
