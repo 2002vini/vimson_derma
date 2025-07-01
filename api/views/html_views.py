@@ -30,6 +30,7 @@ def service(request):
     serialized_categories=CategorySerializer(categories, many=True,context={'request':request}).data
     print("serialized categories:",serialized_categories)
     return render(request,'api/service.html',{'products':serialized_categories})
+
 def manafacturing(request):
     categories = Category.objects.all()
     serialized_categories=CategorySerializer(categories, many=True,context={'request':request}).data
