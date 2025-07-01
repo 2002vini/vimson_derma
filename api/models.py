@@ -175,3 +175,46 @@ class JobPosition(models.Model):
     def __str__(self):
         """String representation of the JobPosition model."""
         return self.position
+
+
+
+class WebsiteImages(models.Model):
+    class Meta:
+        verbose_name_plural = 'Website Images'
+
+    home_carousel_1 = models.FileField(upload_to='home_carousels', null=True, blank=True)
+    home_carousel_2 = models.FileField(upload_to='home_carousels', null=True, blank=True)
+    home_carousel_3 = models.FileField(upload_to='home_carousels', null=True, blank=True)
+    about_hero = models.FileField(upload_to='about_us', null=True, blank=True)
+    about_image_1 = models.FileField(upload_to='about_us', null=True, blank=True)
+    about_image_2 = models.FileField(upload_to='about_us', null=True, blank=True)
+    blog_hero = models.FileField(upload_to='blog', null=True, blank=True)
+    career_hero = models.FileField(upload_to='career', null=True, blank=True)
+    product_catalog_link = models.URLField(null=True, blank=True)
+    know_more_about_us_link = models.URLField(null=True, blank=True)
+    rnd_hero = models.FileField(upload_to='rnd_page_images', null=True, blank=True)
+    formulation_hero = models.FileField(upload_to='formulation_page_images', null=True, blank=True)
+    third_party_hero = models.FileField(upload_to='third_party_page_images', null=True, blank=True)
+    private_labelling_hero = models.FileField(upload_to='private_labelling', null=True, blank=True)
+    face_care_hero = models.FileField(upload_to='face_care', null=True, blank=True)
+    face_care_image_1 = models.FileField(upload_to='face_care', null=True, blank=True)
+    hair_care_hero = models.FileField(upload_to='hair_care', null=True, blank=True)
+    hair_care_image_1 = models.FileField(upload_to='hair_care', null=True, blank=True)
+    body_care_hero = models.FileField(upload_to='body_care', null=True, blank=True)
+    body_care_image_1 = models.FileField(upload_to='body_care', null=True, blank=True)
+    medicated_image_1 = models.FileField(upload_to='medicated', null=True, blank=True)
+    medicated_image_2 = models.FileField(upload_to='medicated', null=True, blank=True)
+    medicated_image_3 = models.FileField(upload_to='medicated', null=True, blank=True)
+    medicated_image_4 = models.FileField(upload_to='medicated', null=True, blank=True)
+    medicated_image_5 = models.FileField(upload_to='medicated', null=True, blank=True)
+    mens_grooming_hero = models.FileField(upload_to='mens_grooming', null=True, blank=True)
+    mens_grooming_image_1 = models.FileField(upload_to='mens_grooming', null=True, blank=True)
+    intimate_care_hero = models.FileField(upload_to='intimate_care', null=True, blank=True)
+    intimate_care_image_1 = models.FileField(upload_to='intimate_care', null=True, blank=True)
+    mother_care_hero = models.FileField(upload_to='mother_care', null=True, blank=True)
+    mother_care_image_1 = models.FileField(upload_to='mother_care', null=True, blank=True)
+    veterinary_hero = models.FileField(upload_to='veterinary', null=True, blank=True)
+    veterinary_image_1 = models.FileField(upload_to='veterinary', null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    objects = models.Manager()
