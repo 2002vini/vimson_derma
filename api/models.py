@@ -13,6 +13,7 @@ class Category(models.Model):
     svg_file = models.FileField(upload_to="svgs/", blank=True)  # Store in /media/svgs/
     is_medicated = models.BooleanField(default=False)
     url = models.URLField(blank=True, null=True)  # Optional URL field for category
+    objects = models.Manager()
 
     def __str__(self):
         """String representation of the Category model."""
@@ -27,11 +28,12 @@ class SubCategory(models.Model):
     type = models.CharField(max_length=255)
     description = models.TextField()
     image = models.FileField(upload_to="svgs/", blank=True)
-    
+    objects = models.Manager()
 
     def __str__(self):
         """String representation of the SubCategory model."""
         return self.type
+
 
 def default_subcategories():
     return list(SubCategory.objects.filter(type="other").values_list('id', flat=True))
@@ -50,7 +52,7 @@ class Product(models.Model):
     is_medicated = models.BooleanField(default=False)
     is_customized = models.BooleanField(default=False)
     tagline = models.CharField(max_length=200, null=True, blank=True)
-    
+    objects = models.Manager()
 
     def __str__(self):
         """String representation of the Product model."""
@@ -66,6 +68,7 @@ class Client(models.Model):
     is_featured = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = models.Manager()
 
     def __str__(self):
         """String representation of the Client model."""
@@ -80,6 +83,7 @@ class FAQ(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_featured = models.BooleanField(default=True)
+    objects = models.Manager()
 
     def __str__(self):
         """String representation of the FAQ model."""
@@ -95,6 +99,7 @@ class Testimonial(models.Model):
     is_featured = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = models.Manager()
 
     def __str__(self):
         """String representation of the Testimonial model."""
@@ -106,6 +111,7 @@ class Tag(models.Model):
 
     slug = models.SlugField(unique=True, blank=True)
     name = models.CharField(max_length=200)
+    objects = models.Manager()
 
     def save(self, *args, **kwargs):
         """Override save method to automatically generate slug from name."""
@@ -128,6 +134,7 @@ class BlogPost(models.Model):
     image = models.ImageField(upload_to="blog_posts/", null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = models.Manager()
 
     def __str__(self):
         """String representation of the BlogPost model."""
@@ -149,10 +156,13 @@ class JobApplications(models.Model):
     cover_letter = models.TextField(blank=True, null=True)
     job_position = models.ForeignKey('JobPosition', on_delete=models.CASCADE)
     applied_at = models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()
 
     def __str__(self):
         """String representation of the JobApplications model."""
         return f"{self.name} - {self.job_position.position}"
+
+
 # Create your models here.
 class Job(models.Model):
     """Model representing job postings in the system."""
@@ -163,19 +173,22 @@ class Job(models.Model):
     experience = models.IntegerField()
     openings = models.CharField(max_length=200)
     location = models.CharField(max_length=200, null=True)
+    objects = models.Manager()
 
     def __str__(self):
         """String representation of the Job model."""
         return self.title.position
 
+
 class JobPosition(models.Model):
     """Model representing job positions in the system."""
 
     position = models.CharField(max_length=200)
+    objects = models.Manager()
+
     def __str__(self):
         """String representation of the JobPosition model."""
         return self.position
-
 
 
 class WebsiteImages(models.Model):
