@@ -14,6 +14,7 @@ router.register(r'subcategories', SubCategoryViewSet)  # Assuming you want to us
 
 urlpatterns = [
     path('api/', include(router.urls)),
+    path('', index, name='index'),
     path('index/', index, name='index'),
     path('about/', about, name='about'),
     path('services/private_labelling', service, name='services'),
