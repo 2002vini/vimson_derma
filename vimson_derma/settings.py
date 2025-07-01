@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # *** CONFIGURATIONS FOR PRODUCTION ***
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # collectstatic will copy here
-MEDIA_URL = '/media/'
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # where uploads are stored
 
 
