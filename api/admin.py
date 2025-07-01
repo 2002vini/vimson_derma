@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Category, JobApplications, Product, Client, FAQ, Testimonial, Tag, BlogPost, SubCategory, Job, JobPosition
+from .models import Category, JobApplications, Product, Client, FAQ, Testimonial, Tag, BlogPost, SubCategory, Job, \
+    JobPosition, WebsiteImages
 from tinymce.widgets import TinyMCE
 from import_export import resources, fields
 from import_export.widgets import ForeignKeyWidget, ManyToManyWidget, JSONWidget
@@ -194,4 +195,5 @@ admin.site.register(SubCategory, SubCategoryAdmin)
 admin.site.register(Job, JobAdmin)
 admin.site.register(JobApplications, JobApplicationAdmin)
 admin.site.register(JobPosition, JobPositionAdmin)
+admin.site.register(WebsiteImages)
 # admin.site.register(JobPosition, JobPositionAdmin)
