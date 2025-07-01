@@ -18,7 +18,107 @@ from django.views.decorators.http import require_POST
 import re
 import mailtrap as mt
 
-
+def send_mailtrap_email(name, email, contact_no, dob,resume=None):
+    """Function to send an email using Mailtrap."""
+    try:
+        print("resume is: ", resume)
+        resume_content = resume.read() if resume else None
+        print("resume content: ", resume_content)
+        if resume_content:
+            resume_name = resume.name
+            resume_mime_type = resume.content_type
+            attachment = mt.Attachment(
+                filename=resume_name,
+                content=resume_content,
+                mimetype=resume_mime_type
+            )
+            print("resume content is not empty")
+            print("resume name: ", resume_name)
+            print("resume mime type: ", resume_mime_type)
+            print("resume content: ", resume_content)
+            print("attachment created successfully")
+        mail = mt.Mail(
+        sender=mt.Address(email="hello@demomailtrap.co", name="Mailtrap Test"),
+        to=[mt.Address(email="hundlanivini2002@gmail.com")],
+        subject="Testing For Contact Us Leads!",
+        text="Congrats for sending test email with Mailtrap! \n\n",
+        html = f"""
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Contact Us Email</title>
+            <style>
+                body {{
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                    color: #333;
+                    background-color: #f9f9f9;
+                    margin: 0;
+                    padding: 0;
+                }}
+                .email-container {{
+                    max-width: 600px;
+                    margin: 20px auto;
+                    background: #ffffff;
+                    border: 1px solid #ddd;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    overflow: hidden;
+                }}
+                .email-header {{
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 20px;
+                    text-align: center;
+                }}
+                .email-body {{
+                    padding: 20px;
+                }}
+                .email-body p {{
+                    margin: 10px 0;
+                }}
+                .email-footer {{
+                    background-color: #f1f1f1;
+                    text-align: center;
+                    padding: 10px;
+                    font-size: 12px;
+                    color: #666;
+                }}
+            </style>
+        </head>
+        <body>
+            <div class="email-container">
+                <div class="email-header">
+                    <h1>Contact Us Submission</h1>
+                </div>
+                <div class="email-body">
+                    <p>Congrats for sending a test email with Mailtrap!</p>
+                    <p><strong>Name:</strong> {name}</p>
+                    <p><strong>Email:</strong> {email}</p>
+                    <p><strong>Contact No:</strong> {contact_no}</p>
+                    <p><strong>Date of birth:</strong></p>
+                    <p>{dob}</p>
+                </div>
+                <div class="email-footer">
+                    <p>This is an automated email. Please do not reply.</p>
+                </div>
+            </div>
+        </body>
+        </html>
+        """,
+        category="Integration Test",
+        attachments=[attachment] if resume_content else []
+        )
+        client = mt.MailtrapClient(token="ad0bd2f3543f7375bb7dc34bd84a933b")
+        response = client.send(mail)
+        print(response)
+        print("Email sent successfully")
+        return True
+    except Exception as e:
+        print(f"Error creating mail object: {e}")
+        return False
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -375,7 +475,7 @@ def quote_submit(request):
             return JsonResponse({'status': 0, 'error': f'Server error: {str(e)}'})
 
 
-    
+
 @require_POST
 def careers_apply(request):
     """Handle the request for a job application."""
@@ -433,6 +533,9 @@ def careers_apply(request):
         )
         #todo: send email for admin
         job_application.save()
+        if not send_mailtrap_email(name, email, contact_no, dob, resume):
+            print("failed to send email")
+            return JsonResponse({'status': 0, 'error': '* Failed to send email. Please try again later.'})
         print("data has been validated successfully")
         return JsonResponse({'status': 1, 'message': 'Form submitted successfully','success': True})
     
@@ -451,6 +554,7 @@ def careers_apply(request):
             job_position=JobPosition.objects.get(position=position)
         )
         job_application.save()
+        send_mailtrap_email(name, email, contact_no, dob, resume)
         #todo: send email notification to admin
     print("data has been validated successfully")
     return JsonResponse({'status': 1, 'message': 'Form submitted successfully','success': True})
