@@ -38,7 +38,6 @@ class ProductSerializer(serializers.ModelSerializer):
     def get_image(self, obj):
         """Removes base URL from the `image` field."""
         if obj.image:
-            print("removing base url from product")
             return obj.image.url.replace('http://127.0.0.1:8000', '')
     def get_subcategory(self, obj):
         """Returns a list of subcategory names."""
@@ -70,7 +69,6 @@ class TestimonialSerializer(serializers.HyperlinkedModelSerializer):
     def get_image(self, obj):
         """Removes base URL from the `image` field."""
         if obj.image:
-            print("removing base url from testimonial")
             return obj.image.url.replace('http://127.0.0.1:8000', '')  # Modify URL
         return None  # Return None if no file exists
     def get_updated_at(self, obj):

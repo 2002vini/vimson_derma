@@ -21,9 +21,7 @@ import mailtrap as mt
 def send_mailtrap_email(name, email, contact_no, dob,resume=None):
     """Function to send an email using Mailtrap."""
     try:
-        print("resume is: ", resume)
         resume_content = resume.read() if resume else None
-        print("resume content: ", resume_content)
         if resume_content:
             resume_name = resume.name
             resume_mime_type = resume.content_type
@@ -32,11 +30,7 @@ def send_mailtrap_email(name, email, contact_no, dob,resume=None):
                 content=resume_content,
                 mimetype=resume_mime_type
             )
-            print("resume content is not empty")
-            print("resume name: ", resume_name)
-            print("resume mime type: ", resume_mime_type)
-            print("resume content: ", resume_content)
-            print("attachment created successfully")
+         
         mail = mt.Mail(
         sender=mt.Address(email="hello@demomailtrap.co", name="Mailtrap Test"),
         to=[mt.Address(email="hundlanivini2002@gmail.com")],
@@ -113,8 +107,7 @@ def send_mailtrap_email(name, email, contact_no, dob,resume=None):
         )
         client = mt.MailtrapClient(token="ad0bd2f3543f7375bb7dc34bd84a933b")
         response = client.send(mail)
-        print(response)
-        print("Email sent successfully")
+      
         return True
     except Exception as e:
         print(f"Error creating mail object: {e}")
@@ -359,7 +352,6 @@ def contact_submit(request):
 def quote_submit(request):
     """Handle the request for a quote."""
     if request.method == 'POST':
-        print("quote_submit function called");
         name = request.POST.get('request-name', '').strip()
         email = request.POST.get('request-email', '').strip()
         contact_no = request.POST.get('request-phone', '').strip()
@@ -367,7 +359,6 @@ def quote_submit(request):
         quantity = request.POST.get('request-quantity', '').strip()
         product_name = request.POST.get('request-product', '').strip()
         customization = request.POST.get('request-customization', '').strip()
-        print("data received from form: ", name, email, contact_no, message, quantity, product_name, customization)
         # Basic validation
         if not name:
             return JsonResponse({'status': 0, 'error': '* Please Enter Name.'})
@@ -387,7 +378,6 @@ def quote_submit(request):
         if not product_name:
             return JsonResponse({'status': 0, 'error': '* Please Enter Product Name.'})
         
-        print("data has been validated successfully")
     
         try:
             mail = mt.Mail(
@@ -469,7 +459,6 @@ def quote_submit(request):
             response = client.send(mail)
 
             print(response)
-            print("submitted successfully")
             return JsonResponse({'status': 1, 'message': 'Form submitted successfully'})
         except Exception as e:
             return JsonResponse({'status': 0, 'error': f'Server error: {str(e)}'})
@@ -486,7 +475,6 @@ def careers_apply(request):
     job_id = request.POST.get('job_id', '').strip()
     dob = request.POST.get('dob', '').strip()
     resume = request.FILES.get('resume', None)
-    print(name, email, contact_no, position,resume)
     # Basic validation
     if not name:
         print("name is empty")
