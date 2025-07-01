@@ -12,7 +12,7 @@ class Category(models.Model):
     description = models.TextField()
     svg_file = models.FileField(upload_to="svgs/", blank=True)  # Store in /media/svgs/
     is_medicated = models.BooleanField(default=False)
-    url = models.CharField(blank=True, null=True)  # Optional URL field for category
+    url = models.URLField(blank=True, null=True)  # Optional URL field for category
 
     def __str__(self):
         """String representation of the Category model."""
@@ -24,7 +24,7 @@ class SubCategory(models.Model):
         verbose_name_plural = 'sub category'
         
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    type = models.CharField()
+    type = models.CharField(max_length=255)
     description = models.TextField()
     image = models.FileField(upload_to="svgs/", blank=True)
     

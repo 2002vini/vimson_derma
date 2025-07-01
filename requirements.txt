@@ -6,7 +6,7 @@ charset-normalizer==3.4.2
 click==8.1.8
 diff-match-patch==20241021
 dill==0.3.9
-Django==5.2
+django
 django-debug-toolbar==5.1.0
 django-filter==25.1
 django-import-export==4.3.7
