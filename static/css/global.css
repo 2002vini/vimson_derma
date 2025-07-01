@@ -45,9 +45,16 @@
 @media (max-width: 768px) {
     .navbar-nav .nav-item {
         padding: 0; /* Reduced spacing for mobile */
+        width: 100%; /* Full width for mobile */
     }
     .navbar-nav {
         gap: 10px; /* Reduced gap for mobile */
+    }
+    #customDropdownProductMenu{
+      width: 100%;
+    }
+    #customDropdownMenu{
+      width: 100%;
     }
 }
 
