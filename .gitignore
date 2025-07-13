@@ -1,5 +1,6 @@
 # Python cache files
 __pycache__/
+**/__pycache__/
 *.py[cod]
 *$py.class
 
@@ -16,6 +17,7 @@ db.sqlite3
 *.pyc
 
 migrations/
+*/migrations/
 
 # Ignore secrets and environment variables
 .env
