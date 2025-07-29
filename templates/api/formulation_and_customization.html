@@ -40,7 +40,7 @@
 <div class="container">
     <div class="about-us-container">
         <div class="heading h3">Overview</div>
-        <div class="text">
+        <div class="text" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
             <p>
                 At Vimson Derma, we specialize in helping brands create products that truly represent their identity.
                 Whether you're an emerging entrepreneur or an established label, we offer end-to-end customization in
@@ -65,7 +65,7 @@
             <div class="expertise-heading">
                 <h5>Formulation</h5>
             </div>
-            <div class="expertise-sub-heading">
+            <div class="expertise-sub-heading" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
                 <p> Create unique blends with custom ingredients, skin-safe claims like vegan and sulfate-free, and
                     globally inspired formulations.</p>
             </div>
@@ -78,7 +78,7 @@
             <div class="expertise-heading">
                 <h5>Fragrances</h5>
             </div>
-            <div class="expertise-sub-heading">
+            <div class="expertise-sub-heading" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
                 <p>Choose from floral, herbal, musky, fruity, or opt for fragrance-free options to suit sensitive skin.
                 </p>
             </div>
@@ -91,7 +91,7 @@
             <div class="expertise-heading">
                 <h5>Packaging</h5>
             </div>
-            <div class="expertise-sub-heading">
+            <div class="expertise-sub-heading" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
                 <p>Choose from materials (glass, PET), designs (minimalistic, luxury), and sizes.</p>
             </div>
         </div>
@@ -102,7 +102,7 @@
             <div class="expertise-heading">
                 <h5>Texture And Color</h5>
             </div>
-            <div class="expertise-sub-heading">
+            <div class="expertise-sub-heading" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
                 <p>Define the texture and color of your product with options ranging from lightweight gels to rich
                     creams and soft neutrals to bold tones.</p>
             </div>
@@ -115,7 +115,7 @@
   <div class="container">
     <div class="text-center mb-5">
       <div class="heading h3 text-center mb-4">Claims You Can Offer With Your Products</div>
-      <p class="text" style="color: rgba(20, 32, 97, 1);">
+      <p class="text" style="color: rgba(20, 32, 97, 1);" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
         Stand out with clean, conscious, and consumer-trusted product claims. Our team ensures each claim is compliant, relevant, and tailored to your brand and target audience.
       </p>
     </div>
@@ -363,10 +363,10 @@ Yes, and we do not charge for samples. You can evaluate the look, feel, and perf
 
 
 </div> 
-
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init();
 document.addEventListener("DOMContentLoaded", function () {
+    AOS.init();
   const accordionButtons = document.querySelectorAll(".accordion-button");
     accordionButtons.forEach(button => {
         button.addEventListener("click", function () {

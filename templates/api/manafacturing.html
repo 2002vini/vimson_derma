@@ -42,7 +42,7 @@
 <div class="container">
   <div class="about-container">
   <div class="about-heading heading h3 text-center">About Third Party Manufacturing</div>
-  <p class="about-text">
+  <p class="about-text" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
     At Vimson Derma, we offer end-to-end skincare and cosmetic manufacturing solutions, from research & development to
     high-quality production. With FDA-approved facilities, advanced formulations, and a commitment to safety and
     efficacy, we ensure premium, customized products tailored to your brand’s needs.
@@ -59,12 +59,12 @@
         <div class="row-img">
           <img src="{% static 'images/manafacturing1.png' %}" alt="Manufacturing 1">
         </div>
-        <div class="row-text">
+        <div class="row-text" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
           Custom formulations tailored to your brand’s vision
         </div>
       </div>
       <div class="col-md-3 col-sm-6 description-card alternate-card">
-        <div class="row-text">
+        <div class="row-text" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
           Full control over ingredients and product design </div>
         <div class="row-img">
           <img src="{% static 'images/manafacturing2.png' %}" alt="Manufacturing 1">
@@ -74,12 +74,12 @@
         <div class="row-img">
           <img src="{% static 'images/manafacturing3.png' %}" alt="Manufacturing 1">
         </div>
-        <div class="row-text">
+        <div class="row-text" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
           Advanced R&D and testing capabilities.
         </div>
       </div>
       <div class="col-md-3 col-sm-6 description-card alternate-card">
-        <div class="row-text">
+        <div class="row-text" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
           Large-scale production for growing businesses.
         </div>
         <div class="row-img">
@@ -192,13 +192,13 @@
 
 </div>
 
-<div class="container mx-auto">
+<div class="container">
   <div class="heading h3 text-center mt-5 mb-5">Industries We Serve</div>
   <div class="clientele-custom-carousel">
     <!-- Left-moving carousel -->
     <div class="clientele-carousel-horizontal w-100" fb-carousel="true" fb-carousel-direction="left"
       fb-carousel-speed="20000" fb-carousel-delay="200" fb-carousel-pauseable="true">
-      <div class="clientele-carousel-content" fb-carousel-content="true">
+      <div class="clientele-carousel-content mb-5" fb-carousel-content="true">
         <img class="img-fluid" src="/static/images/logo/24c_derma_labs_logo.jfif" alt="24c Derma Labs" />
         <img class="img-fluid" src="/static/images/logo/ACME PHARMACEUTICALS.png" alt="ACME" />
         <img class="img-fluid" src="/static/images/logo/Ajanta Pharma Limited.jfif" alt="Ajanta" />
@@ -212,7 +212,7 @@
     <!-- Right-moving carousel -->
     <div class="clientele-carousel-horizontal w-100" fb-carousel="true" fb-carousel-direction="right"
       fb-carousel-speed="20000" fb-carousel-delay="200" fb-carousel-pauseable="true">
-      <div class="clientele-carousel-content" fb-carousel-content="true">
+      <div class="clientele-carousel-content mb-5" fb-carousel-content="true">
         <img class="img-fluid" src="/static/images/logo/renee.jfif" alt="Derma Essentia" />
         <img class="img-fluid" src="/static/images/logo/Ardent Life Sciences.png" alt="Ardent Life Sciences" />
         <img class="img-fluid" src="/static/images/logo/AURA PHARMACEUTICALS PVT LTD.jfif" alt="Aura Pharmaceuticals" />
@@ -378,6 +378,10 @@
 
 </div>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 
 {% include 'partials/banner.html' %}
 
