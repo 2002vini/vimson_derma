@@ -222,12 +222,14 @@
       <div class="col-lg-4 col-md-6 order-2 order-lg-1 scrollable-column">
         {% for category in category_section_1 %}
         <div class="product-card">
+        <a href="{% url category.url %}" class="product-link">
           <div class="product-image">
             <img src="{{category.svg_file}}" alt="Product Image">
           </div>
           <div class="text p-6">
             {{category.type}}
           </div>
+        </a>
         </div>
         {% endfor %}
       </div>

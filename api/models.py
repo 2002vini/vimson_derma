@@ -12,7 +12,7 @@ class Category(models.Model):
     description = models.TextField()
     svg_file = models.FileField(upload_to="svgs/", blank=True)  # Store in /media/svgs/
     is_medicated = models.BooleanField(default=False)
-    url = models.URLField(blank=True, null=True)  # Optional URL field for category
+    url = models.CharField(blank=True, null=True,max_length=200)  # Optional URL field for category
     objects = models.Manager()
 
     def __str__(self):
