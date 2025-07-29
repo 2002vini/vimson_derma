@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Make image maps responsive
+    const accordionButtons = document.querySelectorAll(".accordion-button");
+
     const imageMap = document.querySelector('img[usemap]');
     if (imageMap) {
         // Load rwdImageMaps.js functionality (if necessary)
@@ -31,4 +33,26 @@ modalImage.addEventListener('show.bs.modal', function (event) {
   document.getElementById('popup-img').src = imgSrc; // Set modal image source
   document.getElementById('modal-title').innerHTML = title;
 });
+
+ accordionButtons.forEach(button => {
+        button.addEventListener("click", function () {
+          event.preventDefault();
+            const icon = this.querySelector(".icon");
+            if ( this.classList.contains("collapsed")) {
+                icon.textContent = "+";
+            }
+            else {
+                icon.textContent = "-";
+            }
+            // Toggle between + and -
+            setTimeout(() => {
+                if (this.classList.contains("collapsed")) {
+                    icon.textContent = "+";
+                } else {
+                    icon.textContent = "-";
+                }
+            }, 100); // Small delay to sync with Bootstrap animation
+        });
+    });
+
 });

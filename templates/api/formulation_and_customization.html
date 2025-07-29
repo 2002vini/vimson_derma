@@ -1,7 +1,7 @@
 {% extends 'temp_base.html' %}
 {% load static %}
 
-{% block title %}Home Page{% endblock %}
+{% block title %}Formulation and Customization{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/innovations.css' %}">
@@ -55,7 +55,7 @@
     </div>
 </div>
 <div class="expertise container-fluid mt-5">
-    <h2 class="section-title text-center">Customization Options</h2>
+    <h2 class="section-title text-center mt-3 py-5">Customization Options</h2>
     <div class="row justify-content-center">
 
         <div class="col-md-3 expertise-card">
@@ -111,11 +111,11 @@
     </div>
 </div>
 
-  <section class="claims-section py-5 mt-3">
+  <section class="claims-section py-5 mt-5">
   <div class="container">
     <div class="text-center mb-5">
-      <h4 class="heading text-center mb-4">Claims You Can Offer With Your Products</h4>
-      <p class="text-muted" style="color: rgba(20, 32, 97, 1);">
+      <div class="heading h3 text-center mb-4">Claims You Can Offer With Your Products</div>
+      <p class="text" style="color: rgba(20, 32, 97, 1);">
         Stand out with clean, conscious, and consumer-trusted product claims. Our team ensures each claim is compliant, relevant, and tailored to your brand and target audience.
       </p>
     </div>
@@ -199,7 +199,7 @@
 
 <div class="container mb-5 p-2">
   <div class="blog-title">
-    <h4 class="heading text-center mt-5 mb-5">Top Formulations</h4>
+    <div class="heading h3 text-center mt-5 mb-5">Top Formulations</div>
   </div>
  <!-- Desktop Carousel (group of 3 per slide) -->
 <div id="productCarouselDesktop" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
@@ -275,6 +275,9 @@
 </div>
 </div>
 <div class="accordion" id="accordionExample">
+  <div class="accordion-header text-center">
+    <div class="heading h3 text-center mb-5">Frequently Asked Questions</div>
+  </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button d-flex justify-content-flex-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -361,6 +364,32 @@ Yes, and we do not charge for samples. You can evaluate the look, feel, and perf
 
 </div> 
 
+<script>
+  AOS.init();
+document.addEventListener("DOMContentLoaded", function () {
+  const accordionButtons = document.querySelectorAll(".accordion-button");
+    accordionButtons.forEach(button => {
+        button.addEventListener("click", function () {
+          event.preventDefault();
+            const icon = this.querySelector(".icon");
+            if ( this.classList.contains("collapsed")) {
+                icon.textContent = "+";
+            }
+            else {
+                icon.textContent = "-";
+            }
+            // Toggle between + and -
+            setTimeout(() => {
+                if (this.classList.contains("collapsed")) {
+                    icon.textContent = "+";
+                } else {
+                    icon.textContent = "-";
+                }
+            }, 100); // Small delay to sync with Bootstrap animation
+        });
+    });
 
+});
+</script>
 {% include 'partials/banner.html' %}
 {% endblock %}

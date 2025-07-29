@@ -597,20 +597,20 @@ h6 {
 }
 
 /* Remove default Bootstrap arrow */
-.accordion-button::after {
+/* .accordion-button::after {
     content: none !important;
 }
 .accordion-button .icon {
     font-size: 1.5rem;
     font-weight: bold;
-    margin-left: auto; /* Pushes the icon to the right */
+    margin-left: auto; 
     transition: transform 0.3s ease-in-out;
 }
 
 /* Change to minus (-) when expanded */
 .accordion-button:not(.collapsed) .icon {
     content: "-";
-}
+} */
 
 
 #accordionExample{

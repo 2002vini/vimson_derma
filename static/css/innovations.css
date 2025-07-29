@@ -145,6 +145,7 @@
     padding: 15px;
     background: #FDECE4;
     background-color: #FDEBF8;
+    height: 100%;
   
 }
 
@@ -229,6 +230,8 @@
   justify-content: center;
   align-items: center;
   color: #fff;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 300;
 }
 
 .claim-card:hover {

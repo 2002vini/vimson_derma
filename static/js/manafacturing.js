@@ -1,4 +1,5 @@
-
+document.addEventListener('DOMContentLoaded', function () {
+ 
 const multipleItemCarousel = document.getElementById('testimonialCarousel');
 if (multipleItemCarousel && window.innerWidth >= 768) {
   const carousel = new bootstrap.Carousel(multipleItemCarousel, {
@@ -30,4 +31,31 @@ if (multipleItemCarousel && window.innerWidth >= 768) {
   multipleItemCarousel.classList.add('slide');
 }
 
+    const accordionButtons = document.querySelectorAll(".accordion-button");
+
+    accordionButtons.forEach(button => {
+      button.addEventListener("click", function () {
+        const icon = this.querySelector(".icon");
+        // Toggle between + and -
+        setTimeout(() => {
+          if (this.classList.contains("collapsed")) {
+            console.log("Collapsed");
+            icon.textContent = "+";
+          } else {
+            console.log("Expanded");
+            icon.textContent = "-";
+          }
+        }, 100); // Small delay to sync with Bootstrap animation
+      });
+    });
+ 
+
+  const steps = document.querySelectorAll(".step");
+
+  steps.forEach(step => {
+    step.addEventListener("click", () => {
+      step.classList.toggle("active"); // Toggles the 'active' class
+    });
+  });
+});
 

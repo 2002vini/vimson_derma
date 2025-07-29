@@ -71,7 +71,7 @@
 }
 .carousel-control-prev,
 .carousel-control-next {
-  background-color: #e1e1e1;
+  background-color: #888;
   width: 5vh;
   height: 5vh;
   border-radius: 50%;
@@ -107,6 +107,7 @@
 .blog-content {
   padding: 15px;
   background: #fdece4;
+  height: 100%;
 }
 
 .tags {

@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+
     const form = document.getElementById('Contact_Us');
     const request_quote= document.getElementById('Request_Quote');
     const form_banner = document.getElementById('Contact_Us_banner');
@@ -125,3 +126,4 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
 })
+

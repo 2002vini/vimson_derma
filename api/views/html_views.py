@@ -25,12 +25,12 @@ def about(request):
     return render(request, 'api/about.html')
 
 def service(request):
-    categories = Category.objects.all()
+    categories = Category.objects.filter(is_medicated=False)
     serialized_categories=CategorySerializer(categories, many=True,context={'request':request}).data
     return render(request,'api/service.html',{'products':serialized_categories})
 
 def manafacturing(request):
-    categories = Category.objects.all()
+    categories = Category.objects.filter(is_medicated=False)
     serialized_categories=CategorySerializer(categories, many=True,context={'request':request}).data
     testimonials=Testimonial.objects.all()
     serialized_testimonials = TestimonialSerializer(testimonials, many=True,context={'request':request}).data
@@ -126,7 +126,7 @@ def career_detail(request,job_id):
 def innovation(request):
     customized_products = Product.objects.filter(is_customized=True).order_by('updated_at')
     customized_product_serializers = ProductSerializer(customized_products, many=True, context={'request': request}).data
-    return render(request,'api/innovation.html',{'customized_products':customized_product_serializers})
+    return render(request,'api/formulation_and_customization.html',{'customized_products':customized_product_serializers})
 
 def research(request):
     blogs=BlogPost.objects.all()
