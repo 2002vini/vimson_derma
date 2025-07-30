@@ -200,6 +200,11 @@
     background-color: #ffffff;
 
 }
+@media (max-width: 767px) {
+  .clientele-custom-carousel {
+    padding: 0.5rem;
+  }
+}
 
 .clientele-carousel-horizontal {
     display: flex;

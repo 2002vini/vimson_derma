@@ -24,14 +24,17 @@
       align-items: center;
       justify-content: center;
   }
+
+
+
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="container-fluid career-about">
   <div class="overlay-text">
-    <h1 class="heading">Career</h1>
-    <p class="p-5">Would you like to be part of our company?</p>
+    <h1 class="heading hero-text">Career</h1>
+    <!-- <p class="p-5 text-center">Would you like to be part of our company?</p> -->
   </div>
 </div>
 
@@ -169,6 +172,14 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    const aboutSection = document.getElementsByClassName('overlay-text')[0];
+    if (aboutSection) {
+      console.log('About section found, adding animation class.');
+      aboutSection.classList.add('about-animate');
+    }
+    else {
+      console.log('About section not found.');
+    }
     const jobForm = document.getElementById('jobForm');
     function showToast(type, message) {
       Swal.fire({

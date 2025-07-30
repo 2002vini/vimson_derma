@@ -218,7 +218,10 @@
       AOS.init();
     document.addEventListener("DOMContentLoaded", function () {
       const accordionButtons = document.querySelectorAll(".accordion-button");
-
+      const aboutSection = document.getElementsByClassName('overlay-text')[0];
+      if (aboutSection) {
+        aboutSection.classList.add('about-animate');
+      }
       accordionButtons.forEach(button => {
         button.addEventListener("click", function () {
           const icon = this.querySelector(".icon");
