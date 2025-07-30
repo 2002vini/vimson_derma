@@ -54,7 +54,7 @@ def blog_detail(request, id):
 
 def facecare(request):
     # Fetch all the products that need to be displayed
-    products=Product.objects.all().filter(is_featured=False,category=4).order_by('updated_at')
+    products=Product.objects.all().filter(is_featured=False,category__type='FaceCare').order_by('updated_at')
     selected_tag = request.GET.get('filter')
     if selected_tag:
         products = products.filter(subcategory__type=selected_tag)  # Assuming 'tags' is a ManyToManyField in Product model
@@ -62,7 +62,7 @@ def facecare(request):
     page_number = request.GET.get('page', 1)
     paginator = Paginator(products, 5)
     page_obj = paginator.get_page(page_number)
-    featured_products=Product.objects.all().filter(is_featured=True,category=4).order_by('updated_at')
+    featured_products=Product.objects.all().filter(is_featured=True,category__type='FaceCare').order_by('updated_at')
     serialized_products = ProductSerializer(page_obj.object_list, many=True, context={'request': request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category=4), many=True,context={'request':request}).data
@@ -70,8 +70,8 @@ def facecare(request):
 
 def haircare(request):
     selected_subcategory = request.GET.get('subcategory')
-    featured_products=Product.objects.all().filter(is_featured=True,category=3).order_by('updated_at')
-    products=Product.objects.all().filter(is_featured=False,category=3).order_by('updated_at')
+    featured_products=Product.objects.all().filter(is_featured=True,category__type='HairCare').order_by('updated_at')
+    products=Product.objects.all().filter(is_featured=False,category__type='HairCare').order_by('updated_at')
     if selected_subcategory:
         products = products.filter(subcategory__type=selected_subcategory)
     serialized_products=ProductSerializer(products,many=True,context={'request':request}).data
@@ -80,16 +80,16 @@ def haircare(request):
     return render(request,'api/haircare.html',{'products':serialized_products,'featured_products':serialized_featured_products,'subcategory':serialized_sub_categories})
 
 def bodycare(request):
-    featured_products=Product.objects.all().filter(is_featured=True,category=9).order_by('updated_at')
-    products=Product.objects.all().filter(is_featured=False,category=9).order_by('updated_at')
+    featured_products=Product.objects.all().filter(is_featured=True,category__type='BodyCare').order_by('updated_at')
+    products=Product.objects.all().filter(is_featured=False,category__type='BodyCare').order_by('updated_at')
     serialized_products=ProductSerializer(products,many=True,context={'request':request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category=9), many=True,context={'request':request}).data
     return render(request,'api/bodycare.html',{'products':serialized_products,'subcategory':serialized_sub_categories,'featured_products':serialized_featured_products})
 
 def mens_grooming(request):
-    featured_products=Product.objects.all().filter(is_featured=True,category=7).order_by('updated_at')
-    products=Product.objects.all().filter(is_featured=False,category=9).order_by('updated_at')
+    featured_products=Product.objects.all().filter(is_featured=True,category__type="Men's Grooming").order_by('updated_at')
+    products=Product.objects.all().filter(is_featured=False,category__type="Men's Grooming").order_by('updated_at')
     serialized_products=ProductSerializer(products,many=True,context={'request':request}).data
     serialized_categories=CategorySerializer(Category.objects.all(), many=True,context={'request':request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all(), many=True,context={'request':request}).data
@@ -97,8 +97,8 @@ def mens_grooming(request):
     return render(request,'api/mens_grooming.html',{'products':serialized_products,'categories':serialized_categories,'subcategory':serialized_sub_categories,'featured_products':serialized_featured_products})
 
 def mothercare(request):
-    featured_products=Product.objects.all().filter(is_featured=True,category=12).order_by('updated_at')
-    products=Product.objects.all().filter(is_featured=False,category=12).order_by('updated_at')
+    featured_products=Product.objects.all().filter(is_featured=True,category__type='Baby & Mother Care').order_by('updated_at')
+    products=Product.objects.all().filter(is_featured=False,category__type='Baby & Mother Care').order_by('updated_at')
     serialized_products=ProductSerializer(products,many=True,context={'request':request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category=12), many=True,context={'request':request}).data
@@ -154,8 +154,8 @@ def intimatecare(request):
 
 def veterinary(request):
     selected_subcategory = request.GET.get('subcategory')
-    featured_products=Product.objects.all().filter(is_featured=True,category=5).order_by('updated_at')
-    products=Product.objects.all().filter(is_featured=False,category=5).order_by('updated_at')
+    featured_products=Product.objects.all().filter(is_featured=True,category__type='Veterinary').order_by('updated_at')
+    products=Product.objects.all().filter(is_featured=False,category__type='Veterinary').order_by('updated_at')
     if selected_subcategory:
         products = products.filter(subcategory__type=selected_subcategory)
     serialized_products=ProductSerializer(products,many=True,context={'request':request}).data
