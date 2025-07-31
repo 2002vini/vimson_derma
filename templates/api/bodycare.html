@@ -7,17 +7,20 @@
 <link rel="stylesheet" href="{% static 'css/products.css' %}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Passion+One:wght@400;700;900&family=Roboto:wght@600&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Passion+One:wght@400;700;900&family=Roboto:wght@600&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+  rel="stylesheet">
 <style>
-    .products-display {
-        background-image: url("{% static '{{ website_images.body_care_hero.url }}' %}");
-    }
-    .facecare-section-container {
-        background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)), 
-        url('{{ website_images.body_care_image_1.url }}');
-        background-size: cover;
-        background-position: center;
-    }
+  .products-display {
+    background-image: url('{{ website_images.body_care_hero.url }}');
+  }
+
+  .facecare-section-container {
+    background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)),
+    url('{{ website_images.body_care_image_1.url }}');
+    background-size: cover;
+    background-position: center;
+  }
 </style>
 {% endblock %}
 
@@ -29,37 +32,37 @@
   <div class="blog-title">
     <h4 class="heading text-center mt-5 mb-5">Top Formulations</h4>
   </div>
- <!-- Desktop Carousel (group of 3 per slide) -->
-<div id="productCarouselDesktop" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    {% for product in featured_products %}
+  <!-- Desktop Carousel (group of 3 per slide) -->
+  <div id="productCarouselDesktop" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      {% for product in featured_products %}
       {% if forloop.first or forloop.counter0|divisibleby:3 %}
-        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-          <div class="row">
-      {% endif %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <div class="row">
+          {% endif %}
 
-      <div class="col-md-4">
-        <div class="blog-card">
-          <img src="{{ product.image }}" alt="Skincare Image">
-          <div class="blog-content">
-            <div class="tags">
-              {% for sub in product.subcategory %}
-                <span class="tag">{{ sub }}</span>
-              {% endfor %}
+          <div class="col-md-4">
+            <div class="blog-card">
+              <img src="{{ product.image }}" alt="Skincare Image">
+              <div class="blog-content">
+                <div class="tags">
+                  {% for sub in product.subcategory %}
+                  <span class="tag">{{ sub }}</span>
+                  {% endfor %}
+                </div>
+                <div class="product-card-title">{{ product.name }}</div>
+                <div class="product-card-description">{{ product.description }}</div>
+              </div>
             </div>
-            <div class="product-card-title">{{ product.name }}</div>
-            <div class="product-card-description">{{ product.description }}</div>
           </div>
+
+          {% if forloop.counter|divisibleby:3 or forloop.last %}
         </div>
       </div>
-
-      {% if forloop.counter|divisibleby:3 or forloop.last %}
-          </div>
-        </div>
       {% endif %}
-    {% endfor %}
-  </div>
-  {% if featured_products|length > 3 %}
+      {% endfor %}
+    </div>
+    {% if featured_products|length > 3 %}
     <!-- Controls -->
     <button class="carousel-control-prev" type="button" data-bs-target="#productCarouselDesktop" data-bs-slide="prev">
       <span class="carousel-control-prev-icon"></span>
@@ -67,40 +70,40 @@
     <button class="carousel-control-next" type="button" data-bs-target="#productCarouselDesktop" data-bs-slide="next">
       <span class="carousel-control-next-icon"></span>
     </button>
-  {% endif %}
-</div>
+    {% endif %}
+  </div>
 
-<!-- Mobile Carousel (one card per slide) -->
-<div id="productCarouselMobile" class="carousel slide d-md-none" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    {% for product in featured_products %}
-    <div class="carousel-item {% if forloop.first %}active{% endif %}">
-      <div class="col-12">
-        <div class="blog-card">
-          <img src="{{ product.image }}" alt="Skincare Image">
-          <div class="blog-content">
-            <div class="tags">
-              {% for sub in product.subcategory %}
+  <!-- Mobile Carousel (one card per slide) -->
+  <div id="productCarouselMobile" class="carousel slide d-md-none" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      {% for product in featured_products %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <div class="col-12">
+          <div class="blog-card">
+            <img src="{{ product.image }}" alt="Skincare Image">
+            <div class="blog-content">
+              <div class="tags">
+                {% for sub in product.subcategory %}
                 <span class="tag">{{ sub }}</span>
-              {% endfor %}
+                {% endfor %}
+              </div>
+              <div class="product-card-title">{{ product.name }}</div>
+              <div class="product-card-description">{{ product.description }}</div>
             </div>
-            <div class="product-card-title">{{ product.name }}</div>
-            <div class="product-card-description">{{ product.description }}</div>
           </div>
         </div>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
-  </div>
-  {% if featured_products|length > 1 %}
+    {% if featured_products|length > 1 %}
     <button class="carousel-control-prev" type="button" data-bs-target="#productCarouselMobile" data-bs-slide="prev">
       <span class="carousel-control-prev-icon"></span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#productCarouselMobile" data-bs-slide="next">
       <span class="carousel-control-next-icon"></span>
     </button>
-  {% endif %}
-</div>
+    {% endif %}
+  </div>
 
 </div>
 
@@ -108,22 +111,33 @@
 <section class="facecare-section-container container">
 
   <div class="facecare-overlay"></div>
-  
+
   <div class="facecare-text-left">
     <h4>No.1 Body Care<br> Manufacturer in India</h4>
     <p>Scalable & Skin-Friendly Solutions for Every Body Type
-</p>
+    </p>
   </div>
 
   <div class="facecare-text-right">
     <p>
-Vimson Derma is your trusted partner in building high-performance body care products that combine indulgence with real efficacy. As a leading body care manufacturer in India, we specialize in private label and third-party manufacturing, offering brands scalable solutions tailored to diverse skin types and concerns. From nourishing body lotions and butters to clarifying scrubs, hydrating mists, gentle shower gels, and SPF-infused formulas. Our wide-ranging portfolio is designed to meet today’s demands and anticipate tomorrow’s trends.
+      Vimson Derma is your trusted partner in building high-performance body care products that combine indulgence with
+      real efficacy. As a leading body care manufacturer in India, we specialize in private label and third-party
+      manufacturing, offering brands scalable solutions tailored to diverse skin types and concerns. From nourishing
+      body lotions and butters to clarifying scrubs, hydrating mists, gentle shower gels, and SPF-infused formulas. Our
+      wide-ranging portfolio is designed to meet today’s demands and anticipate tomorrow’s trends.
     </p>
     <p>
-What sets us apart is our commitment to clean, skin-friendly formulations that address real-life issues like dry skin, body acne, rough patches, pigmentation, sensitivity, sun damage, and post-shave irritation. Every product is enriched with clinically backed actives like ceramides, shea butter, plant-based AHAs, botanical extracts, and other trending ingredients, all while being cruelty-free, sulfate-free, and paraben-free. Whether you're catering to the luxury wellness market or need dermatologically tested solutions, Vimson Derma ensures low MOQs, complete formulation support, and products that meet global safety standards through rigorous dermatological and stability testing.
+      What sets us apart is our commitment to clean, skin-friendly formulations that address real-life issues like dry
+      skin, body acne, rough patches, pigmentation, sensitivity, sun damage, and post-shave irritation. Every product is
+      enriched with clinically backed actives like ceramides, shea butter, plant-based AHAs, botanical extracts, and
+      other trending ingredients, all while being cruelty-free, sulfate-free, and paraben-free. Whether you're catering
+      to the luxury wellness market or need dermatologically tested solutions, Vimson Derma ensures low MOQs, complete
+      formulation support, and products that meet global safety standards through rigorous dermatological and stability
+      testing.
     </p>
     <p>
-Choose Vimson Derma, the No.1 body care manufacturer in India to create skin-smart, market-ready formulations that help your brand lead with confidence and care.
+      Choose Vimson Derma, the No.1 body care manufacturer in India to create skin-smart, market-ready formulations that
+      help your brand lead with confidence and care.
     </p>
   </div>
 </section>
@@ -132,25 +146,23 @@ Choose Vimson Derma, the No.1 body care manufacturer in India to create skin-sma
   <div class="row">
     <!-- Left Sidebar (on top for mobile, side for desktop) -->
     <div class="d-md-none text-center mb-3">
-      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#mobileRightContent" style="background-color: #E58D60;">
+      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#mobileRightContent"
+        style="background-color: #E58D60;">
         Show Products
       </button>
     </div>
     <div class="col-12 col-md-3 left-sidebar mb-3 mb-md-0 collapse d-md-block" id="mobileRightContent">
       {% for sub in subcategory %}
-      <div
-        class="category-item" data-subcategory="{{ sub.type }}">
+      <div class="category-item" data-subcategory="{{ sub.type }}">
         <span>{{sub.type}}</span>
       </div>
       {% endfor %}
     </div>
 
     <!-- Right Content -->
-   
+
     <div class="col-12 col-md-9 right-content ">
-      <div
-        class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4"
-      >
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
         <h5 class="heading text-center">Products</h5>
       </div>
       <div class="product-display-list">
@@ -158,16 +170,9 @@ Choose Vimson Derma, the No.1 body care manufacturer in India to create skin-sma
         <div class="row g-3">
           {% endif %}
           <div class="col-sm-12 col-md-4">
-            <div
-              class="product-card {{product.category}} {{product.subcategory}}"
-              id="{{product.id}}"
-            >
+            <div class="product-card {{product.category}} {{product.subcategory}}" id="{{product.id}}">
               <div class="image-container mb-2">
-                <img
-                  src="{{product.image}}"
-                  alt="Product"
-                  class="product-img"
-                />
+                <img src="{{product.image}}" alt="Product" class="product-img" />
               </div>
               <h6 class="heading">{{product.name}}</h6>
               <div class="product-tags">
@@ -192,11 +197,8 @@ Choose Vimson Derma, the No.1 body care manufacturer in India to create skin-sma
           <ul class="pagination justify-content-flex-end">
             {% if page_obj.has_previous %}
             <li class="page-item">
-              <a
-                class="page-link"
-                href="?page={{ page_obj.previous_page_number }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}"
-                >Previous</a
-              >
+              <a class="page-link"
+                href="?page={{ page_obj.previous_page_number }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}">Previous</a>
             </li>
             {% else %}
             <li class="page-item disabled">
@@ -208,19 +210,14 @@ Choose Vimson Derma, the No.1 body care manufacturer in India to create skin-sma
             </li>
             {% else %}
             <li class="page-item">
-              <a
-                class="page-link"
-                href="?page={{ num }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}"
-                >{{ num }}</a
-              >
+              <a class="page-link"
+                href="?page={{ num }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}">{{ num
+                }}</a>
             </li>
             {% endif %} {% endfor %} {% if page_obj.has_next %}
             <li class="page-item">
-              <a
-                class="page-link"
-                href="?page={{ page_obj.next_page_number }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}"
-                >Next</a
-              >
+              <a class="page-link"
+                href="?page={{ page_obj.next_page_number }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}">Next</a>
             </li>
             {% else %}
             <li class="page-item disabled">
@@ -230,50 +227,154 @@ Choose Vimson Derma, the No.1 body care manufacturer in India to create skin-sma
           </ul>
         </nav>
       </div>
-        {% endif %}
+      {% endif %}
     </div>
   </div>
 </div>
-  
-  <!-- JS to toggle subcategories -->
-  <script>
-    document.querySelectorAll('[data-toggle="subcategory"]').forEach(item => {
-      item.addEventListener('click', () => {
-        const targetId = item.getAttribute('data-target');
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          targetElement.classList.toggle('show');
+
+<div class="accordion" id="accordionExample">
+  <div class="accordian-heading">
+    <div class="heading h3 mb-5 mt-5">Frequently Asked Questions</div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button d-flex justify-content-flex-end" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        What types of bodycare products do you manufacture?
+        <span class="icon">+</span>
+      </button>
+    </h2>
+
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        We manufacture body lotions, body butters, body wash, scrubs, bath salts, deodorants, and more tailored to
+        Indian consumers and climates.
+
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+        aria-expanded="false" aria-controls="collapseTwo">
+        Can I customize bodycare products for specific concerns like dryness or pigmentation?
+        <span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Yes, you can choose specific ingredients, textures, scents, and target benefits such as hydration, whitening,
+        tan removal, or anti-aging.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+        aria-expanded="false" aria-controls="collapseThree">
+        Are your bodycare products skin-safe and dermatologically tested?
+        <span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Yes. All formulations undergo dermatological checks and are supported by COA reports. Our facility adheres to
+        GMP, GLP, and ISO 9001:2015 standards.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
+        aria-expanded="false" aria-controls="collapseFour">
+        Do you offer clean-label claims for bodycare products? <span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Yes, clients can claim sulphate-free, paraben-free, and cruelty-free depending on the formulation.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive"
+        aria-expanded="false" aria-controls="collapseFive">
+        Can I launch innovative bodycare products with trending ingredients?
+        <span class="icon">+</span>
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Absolutely. We bring the latest global trends through market research and formulate products with unique actives
+        like wasabi, marine extracts, and fermented ingredients.
+        <ul class="product-list">
+          <li>Dead skin &amp; Callus remover spray with Lactic acid</li>
+          <li>Body Sunscreen - Mist/lotion</li>
+          <li>Body Wash Exfoliating/Brightening/Detox</li>
+          <li>Body hydrator oil</li>
+          <li>Body Cleansing Milk</li>
+          <li>Underarm brightening and odour Control Roll on</li>
+          <li>Knee elbow brightening roll on</li>
+          <li>Pigmentation removal Cream</li>
+          <li>Cleansing oil to milk</li>
+          <li>Body Butter / Yogurt</li>
+          <li>Hand &amp; Nail Cuticle Softener/Cream</li>
+          <li>Nail &amp; Cuticle Oil</li>
+          <li>Body-scrub/polish</li>
+          <li>Bath Salt</li>
+          <li>Foot scrub/Foot Cream</li>
+          <li>Solid Perfume</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JS to toggle subcategories -->
+<script>
+  document.querySelectorAll('[data-toggle="subcategory"]').forEach(item => {
+    item.addEventListener('click', () => {
+      const targetId = item.getAttribute('data-target');
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        targetElement.classList.toggle('show');
+      }
+    });
+  });
+
+  document.querySelectorAll('.heading.choice').forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.heading.choice').forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.product-card').forEach(item => {
+    item.addEventListener('click', () => {
+      const productId = item.getAttribute('id');
+      window.location.href = `/product/${productId}/`;
+    });
+  });
+
+  document.querySelectorAll('.sub-category-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const categoryClass = item.classList[1];
+      const subCategoryClass = item.textContent.trim();
+      const productCards = document.querySelectorAll('.product-card');
+      productCards.forEach(card => {
+        if (card.classList.contains(categoryClass) && card.classList.contains(subCategoryClass)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
         }
       });
     });
-
-    document.querySelectorAll('.heading.choice').forEach(item => {
-      item.addEventListener('click', () => {
-        document.querySelectorAll('.heading.choice').forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-      });
-    });
-
-    document.querySelectorAll('.product-card').forEach(item => {
-      item.addEventListener('click', () => {
-        const productId = item.getAttribute('id');
-        window.location.href = `/product/${productId}/`;
-      });
-    });
-
-    document.querySelectorAll('.sub-category-item').forEach(item => {
-      item.addEventListener('click', () => {
-        const categoryClass = item.classList[1];
-        const subCategoryClass = item.textContent.trim();
-        const productCards = document.querySelectorAll('.product-card');
-        productCards.forEach(card => {
-          if (card.classList.contains(categoryClass) && card.classList.contains(subCategoryClass)) {
-            card.style.display = 'block';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-  </script>
+  });
+</script>
 {%endblock%}

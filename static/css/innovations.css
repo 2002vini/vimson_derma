@@ -28,10 +28,9 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: 40vh;
   gap: 40px;
   color: rgba(77, 84, 127, 1);
-  padding: 8.5rem;
+  padding: 5.5rem;
 }
 .about-us-container text {
   line-height: 1.5;

@@ -116,6 +116,7 @@
     line-height: 100%; /* Same as 1.0 */
     letter-spacing: -0.02em; /* -2% converted to em */
     color:rgba(20,32,97,1);
+    font-size: 2rem; /* Adjusted for better readability */
 }
 .text{
     font-family: 'Be Vietnam Pro';
@@ -171,7 +172,7 @@ h1 {
 } */
 
 h3 {
-    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-size: 2.5rem;
     line-height: clamp(2.5rem, 6vw, 5rem);
 }
 

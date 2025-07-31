@@ -141,7 +141,7 @@
 <!--Products Display-->
 <div class="container">
   <div class="heading">
-    <h4 class="text-center mt-5 mb-5">{{selected_category}}</h4>
+    <div class="text-center mt-5 mb-5 heading h3">{{selected_category}}</div>
   </div>
   <div class="product-display-list">
     {% for product in products %} {% if forloop.first or forloop.counter0|divisibleby:4 %}
@@ -170,7 +170,7 @@
 <div class="container mb-5 p-2">
 
   <div class="blog-title">
-      <h4 class="heading text-center mt-5 mb-5">Top Formulations</h4>
+      <div class="heading h3 text-center mt-5 mb-5">Top Formulations</div>
   </div>         
   <div class="row ">
     {% for product in featured_products %}
