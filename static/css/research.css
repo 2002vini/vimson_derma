@@ -7,7 +7,7 @@
   font-family: "Be Vietnam Pro", sans-serif;
   line-height: 1.5;
   font-weight: 100;
-  width: 700px;
+  width: auto;
 }
 
 .overview-text {
@@ -83,14 +83,16 @@
     height: 11em;
   }
 }
-
 .blog-card {
-  width: 320px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  background: white;
-  transition: transform 0.3s ease;
+    width: 320px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background: white;
+    transition: transform 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .blog-card:hover {
@@ -104,26 +106,32 @@
   object-fit: cover;
 }
 
+
 .blog-content {
-  padding: 15px;
-  background: #fdece4;
-  height: 100%;
+    padding: 15px;
+    background: #FDECE4;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
+
 .tags {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 8px;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
 }
 
 .tag {
-  background-color: #e58d60;
-  color: white;
-  font-size: 12px;
-  padding: 5px 10px;
-  border-radius: 15px;
-  max-width: 100px;
+    background-color: #E58D60;
+    color: white;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    width: auto;
 }
+
 
 #selectedTagsContainer {
   display: flex;
@@ -133,21 +141,27 @@
 }
 
 .title {
-  font-size: 18px;
-  font-weight: bold;
-  color: #1c1c4d;
-  margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #1C1C4D;
+    margin-bottom: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;       /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .description {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
 }
 
 .date {
-  font-size: 12px;
-  color: #888;
+    font-size: 12px;
+    color: #888;
+    margin-top: auto;
 }
 
 .intro-text {

@@ -113,8 +113,8 @@
 .heading{
     font-family: 'Inria Serif';
     font-weight: 400;
-    line-height: 100%; /* Same as 1.0 */
-    letter-spacing: -0.02em; /* -2% converted to em */
+    line-height: 108%; /* Same as 1.0 */
+    /* letter-spacing: -0.02em; -2% converted to em */
     color:rgba(20,32,97,1);
 }
 .text{
