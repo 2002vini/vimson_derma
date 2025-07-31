@@ -63,25 +63,59 @@
   .product-tags{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
+    text-align: left;
     gap: 0.5rem;
-    background-color: rgba(254, 242, 250, 1);
-    padding: 0.5rem;
+
+    /* background-color: rgba(254, 242, 250, 1); */
+    padding: 1rem;
+  }
+  .product-tags small{
+    padding: 8px 12px;
+    border-radius: 8px;
+    background-color: #FDECE4;
+    font-weight: 600;
+    color: rgb(46, 46, 46) !important;
+  }
+  .product-tags .heading{
+    font-family: 'Be Vietnam Pro' !important;
+    font-size: 16px !important;
+    line-height: 20px;
+    text-align: left !important;
+    width: 100%;
   }
   .product-card {
-    background: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    padding: 1rem;
+    background: #ffffff;
+    /* border-radius: 0.5rem; */
+    /* box-shadow: 0 2px 6px rgba(0,0,0,0.05); */
     text-align: center;
     width: 100%;
-    height: auto;
+    height: 100%;
+    border: 0.5px solid #1420611e;
+    border-bottom-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+  }
+  .product-card .heading{
+    margin-top: 14px;
+    font-family: 'Be Vietnam Pro' !important;
+    font-size: 16px !important;
+    line-height: 20px;
+    text-align: left !important;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;       /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding: 0px 16px;
+    text-overflow: ellipsis;
   }
   .product-img {
     width: 100%;
     height: auto;
-    border-radius: 0.25rem;
+    /* border-radius: 0.25rem; */
+    border-bottom-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
     object-fit: cover;
   }
   .category-item {

@@ -17,10 +17,39 @@
       background-size: cover;
       background-position: center;
   }
+  .product-text {
+    display: flex;
+    width: 100%;
+    align-items:center;   /* align text to left */
+    justify-content: start;   /* vertical center */
+    height: 100%;              /* full height of parent */
+    padding-left: 80px;        /* adjust left space */
+    color: rgb(20 32 97);              /* or your preferred text color */
+  }
+
+  .product-text h1 {
+      font-family: 'Inria Serif';
+      font-size: 5rem;
+      font-weight: bold;
+      margin: 0;
+  }
+  @media (max-width: 768px) {
+    .product-text {
+      padding-left: 30px;
+    }
+
+    .product-text h1 {
+      font-size: 4rem;
+    }
+  }
 </style>
 
 {% endblock %} {% block content %}
-<div class="container-fluid products-display"></div>
+<div class="container-fluid products-display">
+  <div class="product-text">
+    <h1>Mother Care</h1>
+  </div>
+</div>
 
 <div class="container mb-5 p-2">
   <div class="blog-title">

@@ -32,8 +32,19 @@
   color: rgba(77, 84, 127, 1);
   padding: 5.5rem;
 }
+
+.sub-heading-text{
+    font-size: 1.25rem;
+    padding-bottom: 1.5rem;
+    color: rgba(20, 32, 97, 1);
+    font-family: 'Be Vietnam Pro', sans-serif;
+    line-height: 1.5;
+    font-weight: 100;
+    width:auto;
+}
 .about-us-container text {
   line-height: 1.5;
+
 }
 
 .section-title {
