@@ -173,28 +173,22 @@
 <div class="container-fluid products mt-5 mb-5">
   <div class="heading h3 text-center mb-5">Product Categories</div>
 
-  {% for product in products %}
-  {% if forloop.first or forloop.counter0|divisibleby:4 %}
-  <div class="row product-row">
-    {% endif %}
-
-    <div class="col-md-3 col-sm-12">
-      <div class="product-card">
-        <div class="product-img">
-          <img src="{{ product.svg_file }}" alt="{{ product.type }}" class="img-fluid">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    {% for product in products %}
+    <div class="col">
+      <div class="product-card h-100 d-flex flex-column align-items-center text-center p-3 shadow-sm rounded">
+        <div class="product-img mb-3">
+          <img src="{{ product.svg_file }}" alt="{{ product.type }}" class="img-fluid" style="max-height: 120px;">
         </div>
         <div class="product-type">
-          <h6 class="heading text-center">{{ product.type }}</h6>
+          <h6 class="heading">{{ product.type }}</h6>
         </div>
       </div>
     </div>
-
-    {% if forloop.counter|divisibleby:4 or forloop.last %}
-  </div> <!-- close row -->
-  {% endif %}
-  {% endfor %}
-
+    {% endfor %}
+  </div>
 </div>
+
 
 <div class="container">
   <div class="heading h3 text-center mt-5 mb-5">Industries We Serve</div>
@@ -230,50 +224,46 @@
 
 
 </div>
-<div class="container w-100 testimonial-container mb-5">
-  <div id="testimonialCarousel" class="carousel">
-    <div class="heading h3 d-flex justify-content-center pt-4">Success Stories</div>
+  <div class="container w-100 testimonial-container mt-5 mb-5">
+    <div id="testimonialCarousel" class="carousel slide">
+      <h5 class="heading d-flex justify-content-center pt-4">Success Stories</h5>
 
-    <div class="carousel-inner testimonial">
-      {% for item in testimonials%}
-      <div class="carousel-item testimonial-item active">
-        <div class="testimonial-card">
-          <div class="quote-icon">
-            <img src="{% static 'images/testimonial.png'%}" alt="Testimonial">
-          </div>
-          <p class="testimonial-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
-            asperiores
-            non perspiciatis ratione praesentium delectus, sequi tempore ullam sed! Officiis velit assumenda repellat
-            dolores facilis, eum consequuntur quia nisi debitis.</p>
-          <div class="testimonial-author">
-            <img src="{{item.image}}" alt="">
-            <div class="testimonial-author-details">
-              <small>{{item.customer_name}}</small>
-              <small>{{item.updated_at}}</small>
+      <div class="carousel-inner testimonial">
+        {% for item in testimonials%}
+        <div class="carousel-item testimonial-item {% if forloop.first %}active{% endif %}">
+          <div class="testimonial-card">
+            <div class="quote-icon">
+              <img src="{% static 'images/testimonial.png'%}" alt="Testimonial">
+            </div>
+            <p class="testimonial-text">
+              {{item.feedback}}
+            </p>
+            <div class="testimonial-author">
+              <img src="{{item.image}}" alt="">
+              <div class="testimonial-author-details">
+                <small>{{item.customer_name}}</small>
+                <small>{{item.updated_at}}</small>
+              </div>
             </div>
           </div>
         </div>
+        {% endfor %}
       </div>
-      {% endfor %}
+      <button class="carousel-control-prev testimonial-button" type="button" data-bs-target="#testimonialCarousel"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next testimonial-button" type="button" data-bs-target="#testimonialCarousel"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <button class="carousel-control-prev testimonial-button" type="button" data-bs-target="#testimonialCarousel"
-      data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next testimonial-button" type="button" data-bs-target="#testimonialCarousel"
-      data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
-
-
-</div>
 <div class="container">
   <div class="accordian-heading">
-    <div class="heading h3 mt-3">Frequently Asked Questions</div>
+    <div class="heading h3 mt-5 mb-5">Frequently Asked Questions</div>
   </div>
   <div class="accordion" id="accordionExample">
     <div class="accordion-item">

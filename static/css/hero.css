@@ -19,7 +19,8 @@
 }
 @media (max-width: 768px) {
   .about-us-container {
-      padding: 2rem; /* Reduced padding for mobile */
+      padding: 0.5rem; /* Reduced padding for mobile */
+      text-align: justify;
   }
 }
 
@@ -223,6 +224,7 @@ z-index: 2;
     width:50%;
     font-family: 'Vietnam Pro', sans-serif;
 }
+
 .hero-introduction-loader{
   clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
   animation: slideInFromLeft 3s ease-in-out forwards;
@@ -232,6 +234,12 @@ z-index: 2;
   margin-top: 80px;
   margin-left: 50px;
   transform: translateX(-50px);
+}
+@media (max-width: 768px) {
+    .hero-introduction {
+        width: 100%;
+        top: 80px;
+    }
 }
 .carousel-item.hero.active .text-overlay {
     animation: textFadeIn 1.5s ease-in-out forwards;
