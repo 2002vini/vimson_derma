@@ -29,7 +29,7 @@
                     <ul class="dropdown-menu" id="customDropdownMenu">
                       <li><a class="dropdown-item" href="{% url 'research' %}">Research & Development</a></li>
                       <li><a class="dropdown-item" href="{% url 'innovation' %}">Formulation & Customization</a></li>
-                      <li><a class="dropdown-item" href="{% url 'manafacturing' %}">Third Party Manafacturing</a></li>
+                      <li><a class="dropdown-item" href="{% url 'manafacturing' %}">Third Party Manufacturing</a></li>
                       <li><a class="dropdown-item" href="{% url 'services'%}">Private Labeling</a></li>
                     </ul>
                 </li>
@@ -56,17 +56,11 @@
                     <a class="nav-link text-white" href="{% url 'careers' %}">Career</a>
                 </li>
             </ul>
-            <div class="d-flex flex-column flex-lg-row gap-2 align-items-center">
+            <div class="d-flex flex-column flex-lg-row gap-2 align-items-center" style="margin-right: 10px;">
                 <a href="#" class="btn btn-custom w-100 " data-bs-toggle="modal" data-bs-target="#center-modal">Contact Us</a>
                 <a href="#" class="btn btn-custom w-100 " data-bs-toggle="modal" data-bs-target="#request-quote-modal">Request a Quote</a>
               </div>
         </div>
-
-        <!-- Right Section: Buttons -->
-        <!-- <div class="navbar-buttons d-flex flex-column justify-content-center gap-3 flex-lg-row ">
-            <a href="#" class="btn btn-custom" id="contact-us" data-bs-toggle="modal" data-bs-target="#center-modal">Contact Us</a>
-            <a href="#" class="btn btn-custom" id="request-quote" data-bs-toggle="modal" data-bs-target="#request-quote-modal">Request a Quote</a>
-        </div> -->
 </div>
 <div class="modal fade" id="center-modal">
     <form id="Contact_Us" class="submit-form" method="POST" action="{% url 'contact_submit' %}">

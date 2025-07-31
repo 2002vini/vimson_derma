@@ -95,10 +95,10 @@
   <div class="about-us-container">
     <div class="heading h3">Why Brands Choose Vimson Derma?</div>
     <div class="text p-4" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-      Vimson Derma isn’t just another manufacturer – we are your <strong> hub for skincare, haircare, and derma
-        solutions.</strong> From <strong>custom formulations </strong> to <strong>premium packaging</strong>, we handle
+      Vimson Derma isn’t just another manufacturer – we are your hub for skincare, haircare, and derma
+        solutions.From custom formulations to premium packaging, we handle
       everything so your brand stands out in the market. Whether you’re a startup or an established brand, our expertise
-      ensures <strong>high-performance, compliant, and market-ready products</strong> with global standards.
+      ensures high-performance, compliant, and market-ready products with global standards.
     </div>
   </div>
 </div>
@@ -222,12 +222,14 @@
       <div class="col-lg-4 col-md-6 order-2 order-lg-1 scrollable-column">
         {% for category in category_section_1 %}
         <div class="product-card">
+        <a href="{% url category.url %}" class="product-link">
           <div class="product-image">
             <img src="{{category.svg_file}}" alt="Product Image">
           </div>
           <div class="text p-6">
             {{category.type}}
           </div>
+        </a>
         </div>
         {% endfor %}
       </div>
@@ -261,9 +263,11 @@
 
 
   <!--Process timeline-->
+
   <div class="timeline-container mt-5 overflow-hidden">
     <h5 class="heading text-center mb-3">Our Processes</h1>
       <div id="timeline">
+
 
         <div class="timeline-item">
           <div class="timeline-icon">

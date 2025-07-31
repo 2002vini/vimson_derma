@@ -20,8 +20,9 @@
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
+      padding: 60px;
   }
 </style>
 {% endblock %}
@@ -218,7 +219,10 @@
       AOS.init();
     document.addEventListener("DOMContentLoaded", function () {
       const accordionButtons = document.querySelectorAll(".accordion-button");
-
+      const aboutSection = document.getElementsByClassName('overlay-text')[0];
+      if (aboutSection) {
+        aboutSection.classList.add('about-animate');
+      }
       accordionButtons.forEach(button => {
         button.addEventListener("click", function () {
           const icon = this.querySelector(".icon");
