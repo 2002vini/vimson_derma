@@ -165,6 +165,9 @@ Our men’s grooming manufacturing line is bold, functional, and made for daily 
       {% for sub in subcategory %}
       <div
         class="category-item" data-subcategory="{{ sub.type }}">
+        {% if sub.image %}
+       <img src="{{ sub.image }}" alt="Subcategory Image" class="subcategory-image">
+       {% endif %}   
         <span>{{sub.type}}</span>
       </div>
       {% endfor %}

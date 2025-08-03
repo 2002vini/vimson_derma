@@ -13,7 +13,7 @@
 <style>
 
     .products-display {
-        background-image: url("{% static '{{ website_images.body_care_hero.url }}' %}");
+        background-image: url('{{ website_images.body_care_hero.url }}');
     }
     .facecare-section-container {
         background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)), 
@@ -182,7 +182,10 @@
     <div class="col-12 col-md-3 left-sidebar mb-3 mb-md-0 collapse d-md-block" id="mobileRightContent">
       {% for sub in subcategory %}
       <div class="category-item" data-subcategory="{{ sub.type }}">
-        <span>{{sub.type}}</span>
+      {% if sub.image %}
+      <img src="{{ sub.image }}" alt="Subcategory Image" class="subcategory-image">
+      {% endif %}        
+      <span>{{sub.type}}</span>
       </div>
       {% endfor %}
     </div>

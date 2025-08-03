@@ -163,7 +163,7 @@ Whether you’re launching custom pet grooming products, animal ointments, or li
     <!-- Left Sidebar (on top for mobile, side for desktop) -->
     <div class="d-md-none text-center mb-3">
       <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#mobileRightContent" style="background-color: #E58D60;">
-        Top Formulations
+        Show Products
       </button>
     </div>
     <div class="col-12 col-md-3 left-sidebar mb-3 mb-md-0 collapse d-md-block" id="mobileRightContent">
@@ -171,6 +171,9 @@ Whether you’re launching custom pet grooming products, animal ointments, or li
       <div
         class="category-item" data-subcategory="{{ sub.type }}">
         <span>{{sub.type}}</span>
+        {% if sub.image %}
+        <img src="{{ sub.image }}" alt="Subcategory Image" class="subcategory-image">
+        {% endif %}
       </div>
       {% endfor %}
     </div>

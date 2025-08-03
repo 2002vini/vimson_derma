@@ -163,7 +163,10 @@ As a reliable intimate wash manufacturer in India, we offer private label hygien
       {% for sub in subcategory %}
       <div
         class="category-item" data-subcategory="{{ sub.type }}">
-        <span>{{sub.type}}</span>
+      {% if sub.image %}
+      <img src="{{ sub.image }}" alt="Subcategory Image" class="subcategory-image">
+      {% endif %}   
+      <span>{{sub.type}}</span>
       </div>
       {% endfor %}
     </div>

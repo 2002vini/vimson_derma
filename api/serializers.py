@@ -1,7 +1,7 @@
 from os import replace
 from django.forms import SlugField
 from rest_framework import serializers
-from .models import Category, Job, JobApplications, JobPosition, Product, Client, FAQ, Testimonial, Tag, BlogPost
+from .models import Category, Job, JobApplications, JobPosition, Product, Client, FAQ, Testimonial, Tag, BlogPost, SubCategory
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     """Serializer for the Category model."""
@@ -19,7 +19,7 @@ class SubCategorySerializer(serializers.HyperlinkedModelSerializer):
     """Serializer for the SubCategory model."""
     class Meta:
         """Meta class to configure the SubCategorySerializer."""
-        model = Category
+        model = SubCategory
         fields = "__all__"
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -102,11 +102,11 @@ class SubCategorySerializer(serializers.HyperlinkedModelSerializer):
     category = serializers.SerializerMethodField()
     class Meta:
         """Meta class to configure the SubCategorySerializer."""
-        model = Category
+        model = SubCategory
         fields = "__all__"
     def get_category(self, obj):
         """Returns the category name."""
-        return obj.type
+        return obj.category.type
 
 class JobSerializer(serializers.ModelSerializer):
     """Serializer for the Job model."""
