@@ -106,7 +106,7 @@ class SubCategorySerializer(serializers.HyperlinkedModelSerializer):
         fields = "__all__"
     def get_category(self, obj):
         """Returns the category name."""
-        return obj.category.type
+        return obj.type
 
 class JobSerializer(serializers.ModelSerializer):
     """Serializer for the Job model."""
