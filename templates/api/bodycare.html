@@ -180,6 +180,9 @@
       </button>
     </div>
     <div class="col-12 col-md-3 left-sidebar mb-3 mb-md-0 collapse d-md-block" id="mobileRightContent">
+       <div class="category-item" data-subcategory="All">
+        <span>All</span>
+      </div>
       {% for sub in subcategory %}
       <div class="category-item" data-subcategory="{{ sub.type }}">
       {% if sub.image %}
@@ -369,43 +372,39 @@
 
 <!-- JS to toggle subcategories -->
 <script>
-  document.querySelectorAll('[data-toggle="subcategory"]').forEach(item => {
-    item.addEventListener('click', () => {
-      const targetId = item.getAttribute('data-target');
+  document.querySelectorAll('[data-toggle="subcategory"]').forEach((item) => {
+    item.addEventListener("click", () => {
+      const targetId = item.getAttribute("data-target");
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
-        targetElement.classList.toggle('show');
+        targetElement.classList.toggle("show");
       }
     });
   });
 
-  document.querySelectorAll('.heading.choice').forEach(item => {
-    item.addEventListener('click', () => {
-      document.querySelectorAll('.heading.choice').forEach(i => i.classList.remove('active'));
-      item.classList.add('active');
+  document.querySelectorAll(".heading.choice").forEach((item) => {
+    item.addEventListener("click", () => {
+      document
+        .querySelectorAll(".heading.choice")
+        .forEach((i) => i.classList.remove("active"));
+      item.classList.add("active");
     });
   });
 
-  document.querySelectorAll('.product-card').forEach(item => {
-    item.addEventListener('click', () => {
-      const productId = item.getAttribute('id');
+  document.querySelectorAll(".product-card").forEach((item) => {
+    item.addEventListener("click", () => {
+      const productId = item.getAttribute("id");
       window.location.href = `/product/${productId}/`;
     });
   });
 
-  document.querySelectorAll('.sub-category-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const categoryClass = item.classList[1];
-      const subCategoryClass = item.textContent.trim();
-      const productCards = document.querySelectorAll('.product-card');
-      productCards.forEach(card => {
-        if (card.classList.contains(categoryClass) && card.classList.contains(subCategoryClass)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
+  document.querySelectorAll('.category-item').forEach(item => {
+  item.addEventListener('click', function () {
+    const subcategory = this.dataset.subcategory;
+    const url = new URL(window.location.href);
+    url.searchParams.set('filter', subcategory);
+    window.location.href = url.toString();
   });
+});
 </script>
 {%endblock%}

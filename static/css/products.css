@@ -96,6 +96,11 @@
     border-bottom-left-radius: 1.5rem;
     border-top-right-radius: 1.5rem;
   }
+  .product-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    cursor: pointer;
+  }
   .product-card .heading{
     margin-top: 14px;
     font-family: 'Be Vietnam Pro' !important;
