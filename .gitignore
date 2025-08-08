@@ -49,3 +49,4 @@ Pipfile
 Pipfile.lock
 
 media/
+staticfiles/
