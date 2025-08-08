@@ -60,7 +60,7 @@ class ProductAdmin(ImportExportModelAdmin):
     resource_class = ProductResource
 
     list_display = (
-        'name', 'category', 'is_featured', 'is_medicated',
+        'id', 'name', 'category', 'is_featured', 'is_medicated',
         'is_customized', 'created_at', 'updated_at'
     )
     search_fields = ('name', 'description', 'tagline')
