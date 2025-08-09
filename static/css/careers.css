@@ -148,3 +148,37 @@
   .job-container a:hover{
     cursor: pointer;
   }
+
+  .team-card {
+  max-width: 75%;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #0b1957;
+}
+
+.team-img {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  border-bottom: 4px solid #f57c00;
+}
+
+.card-title-team {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #fff;
+
+}
+
+.card-text-team {
+  font-size: 1rem;
+}
+.card-body-team {
+  padding: 1.5rem;
+  background-color: #0b1957;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+
+}

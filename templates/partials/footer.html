@@ -21,15 +21,11 @@
                 <div class="col-lg-3 col-md-6 text-center text-lg-start">
                     <h5 class="footer-heading">Quick Links</h5>
                     <div class="row">
-                        <div class="col-6">
-                            <p class="text p6"><a href="#">About Us</a></p>
-                            <p class="text p6"><a href="#">Products</a></p>
-                            <p class="text p6"><a href="#">Business Inquiry</a></p>
-                        </div>
-                        <div class="col-6">
-                            <p class="text p6"><a href="#">Our Blogs</a></p>
-                            <p class="text p6"><a href="#">Contact Us</a></p>
-                            <p class="text p6"><a href="#">Privacy Policy</a></p>
+                        <div class="col-12">
+                            <p class="text p6"><a href="{% url 'about' %}">About Us</a></p>
+                            <p class="text p6"><a href="{% url 'facecare' %}">Products</a></p>
+                            <p class="text p6"><a href="{% url 'blogs' %}">Our Blogs</a></p>
+
                         </div>
                     </div>
                 </div>
@@ -50,9 +46,9 @@
 
             <!-- Social Icons -->
             <div class="social-icons">
-                <a href="#" class="social-icon"><i class="fas fa-times"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.facebook.com/VimsonDermaIndia/" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/vimson_derma/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/vimson-derma/" class="social-icon"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
     </div>
