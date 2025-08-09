@@ -45,7 +45,7 @@ class Product(models.Model):
     attributes = models.JSONField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     subcategory = models.ManyToManyField(SubCategory,blank=False, default=default_subcategories)
-    image = models.ImageField(upload_to="products/", null=True, blank=True)
+    image = models.ImageField(upload_to="products/", null=True, blank=True, max_length=255)
     is_featured = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
