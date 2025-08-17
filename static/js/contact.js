@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
         errorBox.style.color = 'red';
     });
     function submitForm(form,formData,errorBox,loading){
-        console.log("form action is:",form.action);
         for (let [key, value] of formData.entries()) {
             formData.set(key, value.trim());
           }
@@ -70,19 +69,15 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
     form.addEventListener('submit', function (e) {
-      console.log("submit form clicked")
       e.preventDefault();
       const errorBox = document.getElementById('error_data');
       const loading = document.getElementById('form_process');
-        console.log("error box is:",errorBox);
-        console.log("loading is:",loading);
       const formData = new FormData(form);
       submitForm(form,formData,errorBox,loading);
     });
 
     request_quote.addEventListener('submit', function (e) {
         e.preventDefault();
-        console.log("request quote clicked")
         const errorBox = document.getElementById('error_data_request');
         const loading = document.getElementById('form_process_request');
         const formData = new FormData(request_quote);
@@ -92,7 +87,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     form_banner.addEventListener('submit', function (e) {
         e.preventDefault();
-        console.log("form banner clicked")
         const errorBox = document.getElementById('error_data_banner');
         const loading = document.getElementById('form_process_banner');
         const formData = new FormData(form_banner);
@@ -106,8 +100,6 @@ document.addEventListener('DOMContentLoaded', function () {
             item.addEventListener('click', function (e) {
                 e.preventDefault(); // Prevent default link behavior
                 const selectedText = this.textContent; // Get the text of the clicked item
-                console.log(selectedText);
-                console.log("previous selected text was:", dropdownButton.innerText);
                 dropdownButton.innerText = selectedText; // Update the button text
             });
         });
@@ -119,8 +111,6 @@ document.addEventListener('DOMContentLoaded', function () {
             item.addEventListener('click', function (e) {
                 e.preventDefault(); // Prevent default link behavior
                 const selectedText = this.textContent; // Get the text of the clicked item
-                console.log(selectedText);
-                console.log("previous selected text was:", dropdownButtonRequest.innerText);
                 dropdownButtonRequest.innerText = selectedText; // Update the button text
             });
         });

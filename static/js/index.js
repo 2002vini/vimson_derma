@@ -112,7 +112,6 @@ if (multipleItemCarousel && window.innerWidth >= 768) {
   // });
 
   if(document.querySelector('.carousel-inner.testimonial') && document.querySelector('.testimonial-item.carousel-item') && document.querySelector('.testimonial-item.carousel-item').getBoundingClientRect().width){
-    console.log("inside if condition")
       const carouselInner = document.querySelector('.carousel-inner.testimonial');
       const carouselItem = document.querySelector('.testimonial-item.carousel-item');
       const cardWidth = carouselItem.getBoundingClientRect().width
@@ -123,7 +122,6 @@ if (multipleItemCarousel && window.innerWidth >= 768) {
         if (scrollPosition < carouselInner.scrollWidth - carouselInner.clientWidth) {
           scrollPosition += cardWidth;
           carouselInner.scrollTo({ left: scrollPosition, behavior: 'smooth' });
-          console.log("auto scrolling");
         } else {
           scrollPosition = 0; // Reset to the beginning when reaching the end
           carouselInner.scrollTo({ left: scrollPosition, behavior: 'smooth' });
@@ -131,7 +129,6 @@ if (multipleItemCarousel && window.innerWidth >= 768) {
       }, 2000); // Auto-scroll every 5 seconds
     
       document.querySelector('.carousel-control-next.testimonial-button').addEventListener('click', () => {
-        console.log("next button clicked")
         if (scrollPosition < carouselInner.scrollWidth - carouselInner.clientWidth) {
           scrollPosition += cardWidth;
           carouselInner.scrollTo({ left: scrollPosition, behavior: 'smooth' });
@@ -139,7 +136,6 @@ if (multipleItemCarousel && window.innerWidth >= 768) {
       });
     
       document.querySelector('.carousel-control-prev.testimonial-button').addEventListener('click', () => {
-        console.log("prev button clicked")
         if (scrollPosition > 0) {
           scrollPosition -= cardWidth;
           carouselInner.scrollTo({ left: scrollPosition, behavior: 'smooth' });

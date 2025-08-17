@@ -145,7 +145,6 @@
 
             const formData = new FormData(jobForm);
             formData.append('resume', file); // Append the file to the FormData object
-            console.log(formData.entries());
             fetch("{% url 'careers_apply' %}", {
                 method: 'POST',
                 headers: {

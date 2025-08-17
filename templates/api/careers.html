@@ -204,12 +204,9 @@
   document.addEventListener('DOMContentLoaded', function () {
     const aboutSection = document.getElementsByClassName('overlay-text')[0];
     if (aboutSection) {
-      console.log('About section found, adding animation class.');
       aboutSection.classList.add('about-animate');
     }
-    else {
-      console.log('About section not found.');
-    }
+
     const jobForm = document.getElementById('jobForm');
     function showToast(type, message) {
       Swal.fire({
@@ -246,7 +243,6 @@
 
       const formData = new FormData(jobForm);
       formData.append('resume', file); // Append the file to the FormData object
-      console.log(formData.entries());
       fetch("{% url 'careers_apply' %}", {
         method: 'POST',
         headers: {
