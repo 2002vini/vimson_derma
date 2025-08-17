@@ -31,8 +31,8 @@
 
 {% block content %}
 <div class="container-fluid service-about">
-  <div class="overlay-text">
-    <h1 class="heading">Private Labelling</h1>
+  <div class="overlay-text w-50 align-items-center">
+    <h1 class="heading" style="color: white;">Best Private Label Skincare and Haircare Manufacturers in India</h1>
   </div>
 </div>
 <div class="container">
@@ -99,8 +99,101 @@
   </div>
 </div>
 
+<!--Our Process-->
+  <section class="features-section mt-5">
+    <div class="custom-container">
+      <div class="text-center mb-3 pb-0 pb-md-5 px-4">
+        <div class="heading h3 text-center">Our Private Label Process</div>
+        <p> <strong>Quick, Clean, and Brand-Ready</strong></p>
+        <p class="about-text">At Vimson Derma, we don’t just manufacture, we bottle your brand’s brilliance. Our private label skincare and personal care manufacturing is built for speed, compliance, and confidence. No R&D wait times, no formulation hiccups - just market-ready products with your brand on it. </p>
+      </div>
+      <div class="step-line">
+        <img class="img-fluid"
+          src="https://www.21twelveinteractive.com/wp-content/uploads/2025/07/shape-img11.png">
+      </div>
+      <div class="row justify-content-center text-center mt-5">
+
+        <!-- Step 1 -->
+        <div class="col-md-2 col-sm-6 mb-4 step-card position-relative">
+          <div class="step-number" style="-webkit-text-fill-color: #ccc;">1</div>
+          <div class="step-box"> <img class="img-fluid"
+              src="/media/private_labelling_process_1.png"
+              alt="Audit &amp; Research"> </div>
+          <div class="step-content">
+            <h3>Product Pick &amp; Play</h3>
+            <p class="text-muted">Dive into our extensive catalog of ready-to-brand formulations from anti-acne serums and hydrating face creams to clarifying shampoos and soothing baby lotions. All dermatologist-tested, stability-approved, and made for rebranding.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="col-md-2 col-sm-6 mb-4 step-card position-relative">
+          <div class="step-number" style="-webkit-text-fill-color: #ccc;">2</div>
+          <div class="step-box"> <img class="img-fluid"
+              src="/media/private_labelling_process_3.png"
+              alt="Strategy &amp; Targeting"> </div>
+          <div class="step-content">
+            <h3>Make It Yours: Branding &amp; Packaging</h3>
+            <p class="text-muted">Our design team helps you craft packaging that pops and choose from standard or luxe, minimalist or bold, all while staying compliant. Your brand identity takes center stage; we just dress it up to impress.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="col-md-2 col-sm-6 mb-4 step-card position-relative">
+          <div class="step-number" style="-webkit-text-fill-color: #ccc;">3</div>
+          <div class="step-box"> <img class="img-fluid"
+              src="/media/private_labelling_4.png"
+              alt="Keyword &amp; Channel Plan"> </div>
+          <div class="step-content">
+            <h3>Labeling, Compliance &amp; Paperwork</h3>
+            <p class="text-muted">We handle the nitty-gritty like regulatory compliance, and labeling guidelines, so your products are shelf-ready and rule-proof. All necessary documentation is prepped and aligned for smooth sales.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="col-md-2 col-sm-6 mb-4 step-card position-relative">
+          <div class="step-number" style="-webkit-text-fill-color: #ccc;">4</div>
+          <div class="step-box"> <img class="img-fluid"
+              src="/media/private_labelling_process_2.png"
+              alt="Content &amp; Creatives"> </div>
+          <div class="step-content">
+            <h3>PO to Production to Perfection</h3>
+            <p class="text-muted">Once your Purchase Order (PO) is confirmed, we move to full-scale production at our certified facility in Gujarat. Each batch goes through strict quality checks to ensure your customers get consistent, safe, and effective products. No detours, no delays.</p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="col-md-2 col-sm-6 mb-4 step-card position-relative">
+          <div class="step-number" style="-webkit-text-fill-color: #ccc;">5</div>
+          <div class="step-box"> <img class="img-fluid"
+              src="/media/private_labelling_6.png"
+              alt="Execution &amp; Optimization"> </div>
+          <div class="step-content">
+            <h3>SO Long, Delays – It's Delivery Time</h3>
+            <p class="text-muted">With your Sales Order (SO) in place, your branded products are packed, quality-stamped, and shipped. Whether that’s to your warehouse, retail outlet, or straight to your D2C fulfillment center. All that’s left? Watching your brand glow up.</p>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <!-- <div class="col-md-2 col-sm-6 mb-4 step-card position-relative">
+          <div class="step-number" style="-webkit-text-fill-color: #ccc;">6</div>
+          <div class="step-box"> <img class="img-fluid"
+              src="https://www.21twelveinteractive.com/wp-content/uploads/2025/07/Performance-Growth.png"
+              alt="Performance &amp; Growth"> </div>
+          <div class="step-content">
+            <h3>Performance &amp; Growth</h3>
+            <p class="text-muted">You’ll get regular reports, insights, and a plan for how we’ll grow your
+              traffic, leads, and sales.</p>
+          </div>
+        </div> -->
+
+      </div>
+    </div>
+  </section>
 <div class="container-fluid products mt-5">
-  <div class="heading h3 text-center" style="margin: 6rem;">Product Categories</div>
+  <div class="text-center heading mb-5">
+    <h3 class="heading">Product Categories</h3>
+  <p style="font-size: 1rem;">Explore our extensive product categories to discover what we can custom-develop for your brand from concept to final formulation</p>
+  </div>
 
   {% for product in products %}
   {% if forloop.first or forloop.counter0|divisibleby:4 %}
@@ -108,6 +201,7 @@
     {% endif %}
 
     <div class="col-md-3 col-sm-12">
+      <a href="{% url product.url %}" class="text-decoration-none">
       <div class="product-card">
         <div class="product-img">
           <img src="{{ product.svg_file }}" alt="{{ product.type }}" class="img-fluid">
@@ -116,6 +210,7 @@
           <h6 class="heading text-center">{{ product.type }}</h6>
         </div>
       </div>
+      </a>
     </div>
 
     {% if forloop.counter|divisibleby:4 or forloop.last %}
@@ -237,6 +332,14 @@
             }
           }, 100); // Small delay to sync with Bootstrap animation
         });
+      });
+    });
+
+     // Toggle description on step-box click
+    document.querySelectorAll(".step-box").forEach((box, index) => {
+      box.addEventListener("click", () => {
+        let content = box.parentElement.querySelector(".step-content");
+        content.classList.toggle("show");
       });
     });
   </script>

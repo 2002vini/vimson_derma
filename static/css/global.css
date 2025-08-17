@@ -7,6 +7,15 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+html,body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
 .custom-navbar {
     background-color: rgba(20,32,97,1);
     max-width: 100%;

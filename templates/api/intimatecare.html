@@ -10,6 +10,7 @@
 <style>
   .products-display {
       background-image: url('{{ website_images.intimate_care_hero.url }}');
+      justify-content: flex-start;
   }
   .facecare-section-container {
       background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)), 
@@ -19,12 +20,13 @@
   }
   .product-text {
     display: flex;
+    flex-direction: column; /* stack text vertically */
     width: 100%;
-    align-items:center;   /* align text to left */
-    justify-content: start;   /* vertical center */
+    justify-content: center;   /* vertical center */
     height: 100%;              /* full height of parent */
     padding-left: 80px;        /* adjust left space */
     color: rgb(20 32 97);              /* or your preferred text color */
+    align-items: center; /* align text to left */
   }
 
   .product-text h1 {
@@ -46,8 +48,9 @@
 
 {% endblock %} {% block content %}
 <div class="container-fluid products-display">
-  <div class="product-text">
-    <h1>Intimate Care</h1>
+  <div class="product-text w-50">
+    <h4>Safe, Gentle, and Effective Intimate Care Solutions</h4>
+    <p>We create clinically tested, skin-friendly products for intimate care tailored to your brand’s vision and customer needs.</p>
   </div>
 </div>
 
@@ -130,12 +133,12 @@
 
 </div>
 
-<section class="facecare-section-container container">
+<section class="facecare-section-container container mb-5">
   <div class="facecare-overlay"></div>
 
   <div class="facecare-text-left">
     <h4>Intimate Hygiene Product<br />Manufacturers</h4>
-    <p>Trusted Formulations</p>
+    <p>We’ve Got You Covered, From pH to Perfect</p>
   </div>
 
   <div class="facecare-text-right">
@@ -151,7 +154,7 @@ As a reliable intimate wash manufacturer in India, we offer private label hygien
   </div>
 </section>
 
-<div class="container-fluid mt-5 mb-5 p-2">
+<div class="container-fluid m-0 p-0">
   <div class="row">
     <!-- Left Sidebar (on top for mobile, side for desktop) -->
     <div class="d-md-none text-center mb-3">
@@ -267,6 +270,9 @@ As a reliable intimate wash manufacturer in India, we offer private label hygien
 </div>
 
 <div class="accordion mb-5" id="accordionExample">
+    <div class="accordian-heading">
+      <div class="heading h3 mb-5 mt-5">Frequently Asked Questions</div>
+    </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button d-flex justify-content-flex-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">

@@ -1,7 +1,12 @@
 
-.career-about .heading,.p-5{
-  color: white;
+.career-about{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #1c2a4b;
+
 }
+
 .heading {
     color: #1c2a4b;
     font-weight: bold;
@@ -14,6 +19,19 @@
     flex-wrap: wrap;
     gap: 40px;
   }
+.hero-text {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1c2a4b;
+   
+}
+.about-animate {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+}
   
   .job-card {
     border: 1px solid #dcdcdc;
@@ -156,6 +174,12 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   background-color: #0b1957;
+}
+@media screen and (max-width: 768px) {
+  .team-card {
+    max-width: 100%;
+  }
+  
 }
 
 .team-img {

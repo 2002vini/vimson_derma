@@ -14,6 +14,7 @@
 
     .products-display {
         background-image: url('{{ website_images.body_care_hero.url }}');
+        justify-content: flex-start;
     }
     .facecare-section-container {
         background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)), 
@@ -23,17 +24,17 @@
     }
   .product-text {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
-    align-items:center;   /* align text to left */
-    justify-content: start;   /* vertical center */
     height: 100%;              /* full height of parent */
     padding-left: 80px;        /* adjust left space */
     color: rgb(20 32 97);              /* or your preferred text color */
   }
 
-  .product-text h1 {
+  .product-text h4 {
       font-family: 'Inria Serif';
-      font-size: 5rem;
+      font-size: 3rem;
       font-weight: bold;
       margin: 0;
   }
@@ -42,8 +43,8 @@
       padding-left: 30px;
     }
 
-    .product-text h1 {
-      font-size: 4rem;
+    .product-text h4 {
+      font-size: 2rem;
     }
   }
 </style>
@@ -51,8 +52,9 @@
 
 {% block content %}
 <div class="container-fluid products-display">
-  <div class="product-text">
-    <h1>Body Care</h1>
+  <div class="product-text w-50">
+    <h4>Premium Body Care Manufacturing for Every Skin Need.</h4>
+    <p>Advanced body care manufacturing with custom formulations for lotions, scrubs, washes, and creams that nourish and protect skin.</p>
   </div>
 </div>
 
@@ -141,9 +143,8 @@
   <div class="facecare-overlay"></div>
 
   <div class="facecare-text-left">
-    <h4>No.1 Body Care<br> Manufacturer in India</h4>
-    <p>Scalable & Skin-Friendly Solutions for Every Body Type
-    </p>
+    <h4>No.1 Body Care <br> Manufacturer in India</h4>
+    <p>Scalable & Skin-Friendly Solutions for Every Body Type</p>
   </div>
 
   <div class="facecare-text-right">

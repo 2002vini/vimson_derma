@@ -17,13 +17,32 @@
       background-image: url('{{ website_images.career_hero.url }}');
       display: flex;
       width: 100%;
-      height:88vh;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       align-items: center;
-      justify-content: center;
+      padding-right: 5rem; /* optional, for spacing */
+      min-height: 80vh;
+      background-position: left center;
   }
+  @media screen and (max-width: 768px) {
+      .career-about {
+          font-size: 1rem;      
+          display: flex;
+          flex-direction: row;
+          padding-right: 0;
+        }
+        .hero-text {
+          font-size: 2rem;
+        }
+        .overlay-text {
+          width: 50%;
+          padding-right: 0; /* no right padding on smaller screens */
+        }
+
+    
+  }
+
 
 
 
@@ -33,10 +52,10 @@
 {% block content %}
 <div class="container-fluid career-about">
   <div class="overlay-text">
-    <h1 class="heading hero-text">Career</h1>
-    <!-- <p class="p-5 text-center">Would you like to be part of our company?</p> -->
+    <h1 class="heading hero-text p-0">Your Future with Vimson Derma</h1>
+    <p class>Explore a workplace that values your growth, ideas, and impact</p>
+    </div>
   </div>
-</div>
 
 <!-- <div id="jobCarousel">
     <div class="container w-100">

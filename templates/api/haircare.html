@@ -10,6 +10,7 @@
 <style>
   .products-display {
       background-image: url('{{ website_images.hair_care_hero.url }}');
+      justify-content: flex-start;
 
   }
  
@@ -21,9 +22,10 @@
   }
   .product-text {
     display: flex;
+    flex-direction: column;
     width: 100%;
     align-items:center;   /* align text to left */
-    justify-content: start;   /* vertical center */
+    justify-content: center;   /* vertical center */
     height: 100%;              /* full height of parent */
     padding-left: 80px;        /* adjust left space */
     color: rgb(20 32 97);              /* or your preferred text color */
@@ -48,8 +50,9 @@
 
 {% endblock %} {% block content %}
 <div class="container-fluid products-display">
-  <div class="product-text">
-    <h1>Hair Care</h1>
+  <div class="product-text w-50">
+    <h4>Innovative Hair Care Manufacturing with Customizable Formulas</h4>
+    <p>Offering GMP-certified private label and third-party solutions, we create custom formulations from sulphate-free shampoos to premium hair oils and scalp care products.</p>
   </div>
 </div>
 
@@ -291,7 +294,8 @@ Can I get sulfate-free or paraben-free haircare products made?        <span clas
     </h2>
     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-Can I get sulfate-free or paraben-free haircare products made?      </div>
+Yes. We offer clean formulations that are free from sulfates, parabens, and silicones customized for different scalp and hair concerns in India.
+    </div>
     </div>
   </div>
   <div class="accordion-item">

@@ -10,6 +10,7 @@
 <style>
   .products-display {
       background-image: url('{{ website_images.mother_care_hero.url }}');
+      justify-content: flex-start;
   }
   .facecare-section-container {
       background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)), 
@@ -19,9 +20,9 @@
   }
   .product-text {
     display: flex;
+    flex-direction: column; /* Add this line */
     width: 100%;
-    align-items:center;   /* align text to left */
-    justify-content: start;   /* vertical center */
+    justify-content: center;   /* vertical center */
     height: 100%;              /* full height of parent */
     padding-left: 80px;        /* adjust left space */
     color: rgb(20 32 97);              /* or your preferred text color */
@@ -46,8 +47,11 @@
 
 {% endblock %} {% block content %}
 <div class="container-fluid products-display">
-  <div class="product-text">
+  <div class="product-text w-50" >
+    <h1>Baby &</h1>
     <h1>Mother Care</h1>
+    <h5>Gentle Formulations for Life’s Most Delicate Moments</h5>
+    <p>Offering end-to-end manufacturing of baby and mother care products with natural, gentle, and clinically tested ingredients to ensure safety and comfort for delicate skin.</p>
   </div>
 </div>
 
@@ -134,8 +138,8 @@
   <div class="facecare-overlay"></div>
 
   <div class="facecare-text-left">
-    <h4>Men's Grooming Product<br />Manufacturers</h4>
-    <p>Healthy and Strong hair from the root to the tip</p>
+    <h4>Trusted Baby & Mother Care<br />Product Manufacturer in India</h4>
+    <p>From Bump to Baby, We’ve Got You Covered</p>
   </div>
 
   <div class="facecare-text-right">
@@ -152,7 +156,7 @@ Vimson Derma offers end-to-end private label and third-party manufacturing for b
   </div>
 </section>
 
-<div class="container-fluid mt-5 mb-5 p-2">
+<div class="container-fluid m-0 p-0">
   <div class="row">
     <!-- Left Sidebar (on top for mobile, side for desktop) -->
     <div class="d-md-none text-center mb-3">
@@ -268,6 +272,9 @@ Vimson Derma offers end-to-end private label and third-party manufacturing for b
 </div>
 
 <div class="accordion mb-5" id="accordionExample">
+    <div class="accordian-heading">
+      <div class="heading h3 mb-5 mt-5">Frequently Asked Questions</div>
+    </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button d-flex justify-content-flex-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
