@@ -211,6 +211,7 @@
 
       <div class="col-md-3">
         <div class="blog-card">
+          <a href="{% url 'product_detail' product.id %}" class="text-decoration-none">
           <img src="{{ product.image }}" alt="Skincare Image">
           <div class="blog-content">
             <div class="tags">
@@ -221,6 +222,7 @@
             <div class="product-card-title">{{ product.name }}</div>
             <div class="product-card-description">{{ product.tagline }}</div>
           </div>
+          </a>
         </div>
       </div>
 
