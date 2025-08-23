@@ -95,6 +95,20 @@
       border-bottom: none;
     }
   }
+.expertise .col-md-3 {
+  display: flex;
+  align-items: stretch; /* make equal height */
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+.expertise .d-flex {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
 
   .expertise.container-fluid{
     background-color: rgb(20,32,97,1);
@@ -103,7 +117,6 @@
     /* height: 60vh; */
     padding-bottom: 0;
     /* border-radius: 25px  0 25px 0; */
-
   }
 
   .expertise.container-fluid h5{
@@ -122,8 +135,6 @@
     letter-spacing: normal; /* 0% */
     color:white;
   }
-  
-
   
   .section-icon {
     width: 40px;
