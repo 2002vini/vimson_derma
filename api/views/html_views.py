@@ -195,3 +195,7 @@ def veterinary(request):
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category__type='Veterinary'), many=True,context={'request':request}).data
     return render(request,'api/veterinary.html',{'products':serialized_products,'featured_products':serialized_featured_products,'subcategory':serialized_sub_categories})
+
+
+# def test_slider(request):
+#     return render(request, 'api/test_slider.html')
