@@ -94,7 +94,7 @@
 <div class="container">
   <div class="about-us-container">
     <div class="heading h3">Why Brands Choose Vimson Derma?</div>
-    <div class="text p-4" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+    <div class="text py-4 px-1" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
       Vimson Derma isn’t just another manufacturer – we are your hub for skincare, haircare, and derma
         solutions.From custom formulations to premium packaging, we handle
       everything so your brand stands out in the market. Whether you’re a startup or an established brand, our expertise
@@ -215,23 +215,23 @@
       <div class="heading h3 mx-auto" style="color:white;">Facts & Figures</div>
       <div class="row mt-5">
         <!-- Column 1 -->
-        <div class="col-md-3">
+        <div class="col-md-3 mb-3">
           <div class="counter-number" data-target="50">0</div>
           <div class="text">Years of Experience</div>
         </div>
 
         <!-- Column 2 -->
-        <div class="col-md-3">
+        <div class="col-md-3 mb-3">
           <div class="counter-number" data-target="300">0</div>
           <div class="text">Unique Formulations</div>
         </div>
 
         <!-- Column 3 -->
-        <div class="col-md-3">
+        <div class="col-md-3 mb-3">
           <div class="counter-number" data-target="200">0</div>
           <div class="text">Product Permissions</div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 mb-3">
           <div class="counter-number" data-target="1000">0</div>
           <div class="text">Satified Companies</div>
         </div>
@@ -249,18 +249,14 @@
       <div class="col-lg-4 col-md-6 order-2 order-lg-1 scrollable-column">
         {% for category in category_section_1 %}
         <div class="product-card">
-        {% if category.url %}
-        <a href="{% url category.url %}" class="product-link">
-        {% else %}
-        <a href="#" class="product-link disabled">
-        {% endif %}
-          <div class="product-image">
-            <img src="{{category.svg_file}}" alt="Product Image">
-          </div>
-          <div class="text p-6">
-            {{category.type}}
-          </div>
-        </a>
+          <a href="{% url category.url %}" class="product-link {% if not category.url %} disabled{% endif %}">
+            <div class="product-image">
+              <img src="{{category.svg_file}}" alt="Product Image">
+            </div>
+            <div class="text p-6">
+              {{category.type}}
+            </div>
+          </a>
         </div>
         {% endfor %}
       </div>
@@ -296,10 +292,8 @@
   <!--Process timeline-->
 
   <div class="timeline-container mt-5 overflow-hidden">
-    <h5 class="heading text-center mb-3">Our Processes</h1>
+    <h1 class="heading text-center mb-3">Our Processes</h1>
       <div id="timeline">
-
-
         <div class="timeline-item">
           <div class="timeline-icon">
             <div class="icon-circle">
@@ -362,7 +356,7 @@
             <div class="icon-circle icon-blue">
               <i class="fa fa-boxes-packing" aria-hidden="true" style="color:#ffffff; font-size: 40px;"></i>
             </div>
-            <h5 class="heading mt-3">Procurement of RM & PM</h5 class="heading">
+            <h5 class="heading mt-3">Procurement of RM & PM</h5>
             <p>
               Vendors are coordinated with to ensure timely delivery of all materials.
             </p>
@@ -453,7 +447,11 @@
               {{item.feedback}}
             </p>
             <div class="testimonial-author">
+              {% if item.image %}
               <img src="{{item.image}}" alt="">
+              {% else %}
+              <img src="" alt="">
+              {% endif %}
               <div class="testimonial-author-details">
                 <small>{{item.customer_name}}</small>
                 <small>{{item.updated_at}}</small>

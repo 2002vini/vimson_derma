@@ -49,10 +49,8 @@ if (multipleItemCarousel && window.innerWidth >= 768) {
         // Toggle between + and -
         setTimeout(() => {
           if (this.classList.contains("collapsed")) {
-            console.log("Collapsed");
             icon.textContent = "+";
           } else {
-            console.log("Expanded");
             icon.textContent = "-";
           }
         }, 100); // Small delay to sync with Bootstrap animation
