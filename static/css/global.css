@@ -447,7 +447,7 @@ h6 {
   }
 
   .modal{
-    overflow-y: visible !important;
+    overflow-y: scroll !important;
     overflow-x: visible !important;
     z-index:1040;
   } 
