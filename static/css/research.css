@@ -195,32 +195,16 @@
   font-family: "Playfair Display", serif;
   text-align: center;
   font-size: 1.1rem;
+  height: 100px;
 }
 
-.strength-points {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
 .research-container{
     background-color: #fdece4;
     padding: 2rem;
 
 }
 
-.strength-box {
-  width: 220px;
-  border-radius: 20px;
-  padding: 1rem;
-background-color: white;
-color: #1c1c4d;
-  text-align: center;
-  font-size: 0.95rem;
-  font-weight: 500;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-}
+
 
 .carousel-item .research{
   background-color: #e6a6a1;
@@ -244,3 +228,45 @@ color: #1c1c4d;
     width: 100%;
   }
 }
+
+
+/* Research Page Specific Styles */
+.strength-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.strength-box {
+  flex: 1 1 calc(20% - 1.5rem); /* Desktop: 5 per row */
+  min-width: 200px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+.strength-box h6 {
+ line-height: normal;
+}
+
+.strength-box:hover {
+  transform: translateY(-5px);
+}
+
+/* Tablet: 2 per row */
+@media (max-width: 991px) {
+  .strength-box {
+    flex: 1 1 calc(50% - 1.5rem);
+  }
+}
+
+/* Mobile: hide this grid, show carousel */
+@media (max-width: 767px) {
+  .strength-points {
+    display: none !important;
+  }
+}
+

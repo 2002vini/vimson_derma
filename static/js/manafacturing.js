@@ -1,5 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
  
+
+    // Toggle description on step-box click
+    document.querySelectorAll(".step-box").forEach((box, index) => {
+      box.addEventListener("click", () => {
+        let content = box.parentElement.querySelector(".step-content");
+        content.classList.toggle("show");
+      });
+    });
+
+
 const multipleItemCarousel = document.getElementById('testimonialCarousel');
 if (multipleItemCarousel && window.innerWidth >= 768) {
   const carousel = new bootstrap.Carousel(multipleItemCarousel, {
@@ -49,10 +59,8 @@ if (multipleItemCarousel && window.innerWidth >= 768) {
         // Toggle between + and -
         setTimeout(() => {
           if (this.classList.contains("collapsed")) {
-            console.log("Collapsed");
             icon.textContent = "+";
           } else {
-            console.log("Expanded");
             icon.textContent = "-";
           }
         }, 100); // Small delay to sync with Bootstrap animation
