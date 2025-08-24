@@ -575,7 +575,7 @@ h6 {
 }
 @media (max-width: 768px) {
   .about-us-container {
-      margin: 2rem; /* Reduced padding for mobile */
+      margin: 2rem 0; /* Reduced padding for mobile */
   }
 }
 

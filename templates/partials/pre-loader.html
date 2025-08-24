@@ -7,7 +7,7 @@
 <script>
 window.addEventListener("load", () => {
   const preloader = document.getElementById("preloader");
-  const content = document.getElementById("main-content");
+<!--  const content = document.getElementById("main-content");-->
 
   const minDisplayTime = 1000; // minimum time (in ms) to show preloader
   const transitionDuration = 500; // match your CSS fade-out duration
@@ -23,7 +23,7 @@ window.addEventListener("load", () => {
 
     setTimeout(() => {
       preloader.style.display = "none";
-      content.style.display = "block";
+<!--      content.style.display = "block";-->
     }, transitionDuration);
   }, remainingTime);
 });

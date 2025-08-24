@@ -1,7 +1,8 @@
 from django.urls import path,include
 from .views.api_views import CategoryViewSet, ProductViewSet, ClientViewSet, FAQViewSet, SubCategoryViewSet, TestimonialViewSet, TagViewSet, BlogPostViewSet, careers_apply, contact_submit, quote_submit
 from rest_framework.routers import DefaultRouter
-from .views.html_views import blog_detail, facecare, index, about,service,manafacturing,blogs,product_detail,careers,career_detail,innovation, veterinary,research, haircare, bodycare, mens_grooming, medicated, mothercare,intimatecare
+from .views.html_views import *
+
 router = DefaultRouter()
 router.register(r'categories', CategoryViewSet)
 router.register(r'products', ProductViewSet)
@@ -38,7 +39,6 @@ urlpatterns = [
     path('intimatecare/', intimatecare, name='intimatecare'),
     path('veterinary/',veterinary, name='veterinary'),
 
-
-
+    # path('test_slider/',test_slider, name='test_slider'),
     
 ]

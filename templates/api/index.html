@@ -94,7 +94,7 @@
 <div class="container">
   <div class="about-us-container">
     <div class="heading h3">Why Brands Choose Vimson Derma?</div>
-    <div class="text p-4" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+    <div class="text py-4 px-1" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
       Vimson Derma isn’t just another manufacturer – we are your hub for skincare, haircare, and derma
         solutions.From custom formulations to premium packaging, we handle
       everything so your brand stands out in the market. Whether you’re a startup or an established brand, our expertise
@@ -116,9 +116,16 @@
         <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true"> High-quality production with global safety
           standards.</p>
       </div>
-    </div>
 
+      <!-- Overlay -->
+      <div class="overlay">
+        <div class="overlay-content">
+          <p style="text-align: justify;">Every creation begins in our lab, where science meets artistry. We fuse breakthrough research with proven ingredients to design formulations that perform ensuring your brand stands out in both quality and efficacy.</p>
+        </div>
+      </div>
+    </div>
   </div>
+
   <div class="five-col service-box">
     <div class="service-box-card p-2">
       <div class="logo ">
@@ -133,8 +140,13 @@
         <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true"> High-quality production with global safety
           standards.</p>
       </div>
+      <!-- Overlay -->
+      <div class="overlay">
+        <div class="overlay-content">
+          <p style="text-align: justify;">Your journey from concept to consumer is seamless with us. From product ideation, R&D, and packaging design to manufacturing and delivery, our integrated process ensures efficiency without compromise on quality.</p>
+        </div>
+      </div>
     </div>
-
   </div>
   <div class="five-col service-box">
     <div class="service-box-card p-2">
@@ -148,8 +160,13 @@
         <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true"> High-quality production with global safety
           standards.</p>
       </div>
+      <!-- Overlay -->
+      <div class="overlay">
+        <div class="overlay-content">
+          <p style="text-align: justify;">GMP | GLP | ISO Certified (*WHO Applied) <br>Our facilities operate at the highest level of compliance, holding GMP, GLP, and ISO</p>
+        </div>
+      </div>
     </div>
-
   </div>
   <div class="five-col service-box">
     <div class="service-box-card p-2">
@@ -162,6 +179,12 @@
       <div class="logo-text text-center">
         <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">Tailored formulations for brands,
           dermatologists, and entrepreneurs.</p>
+      </div>
+      <!-- Overlay -->
+      <div class="overlay">
+        <div class="overlay-content">
+          <p style="text-align: justify;">Whether you’re an emerging beauty entrepreneur or an established global brand, we specialize in translating your vision into reality. Our ready-to-launch and bespoke solutions are crafted with precision, passion, and a deep understanding of the market.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -178,9 +201,13 @@
         <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">
           From medicated skincare to luxury beauty products – all under one roof.</p>
       </div>
+      <!-- Overlay -->
+      <div class="overlay">
+        <div class="overlay-content">
+          <p style="text-align: justify;">From indulgent luxury skincare to advanced medicated solutions, our portfolio spans the full spectrum of beauty and dermatology. Whatever your market demands, we bring it to life under one trusted roof.</p>
+        </div>
+      </div>
     </div>
-
-
   </div>
 
   <section class="brand-section">
@@ -188,23 +215,23 @@
       <div class="heading h3 mx-auto" style="color:white; font-size:2.5rem;">Facts & Figures</div>
       <div class="row mt-5">
         <!-- Column 1 -->
-        <div class="col-md-3">
+        <div class="col-md-3 mb-3">
           <div class="counter-number" data-target="50">0</div>
           <div class="text">Years of Experience</div>
         </div>
 
         <!-- Column 2 -->
-        <div class="col-md-3">
+        <div class="col-md-3 mb-3">
           <div class="counter-number" data-target="300">0</div>
           <div class="text">Unique Formulations</div>
         </div>
 
         <!-- Column 3 -->
-        <div class="col-md-3">
+        <div class="col-md-3 mb-3">
           <div class="counter-number" data-target="200">0</div>
           <div class="text">Product Permissions</div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 mb-3">
           <div class="counter-number" data-target="1000">0</div>
           <div class="text">Satified Companies</div>
         </div>
@@ -222,18 +249,14 @@
       <div class="col-lg-4 col-md-6 order-2 order-lg-1 scrollable-column">
         {% for category in category_section_1 %}
         <div class="product-card">
-        {% if category.url %}
-        <a href="{% url category.url %}" class="product-link">
-        {% else %}
-        <a href="#" class="product-link disabled">
-        {% endif %}
-          <div class="product-image">
-            <img src="{{category.svg_file}}" alt="Product Image">
-          </div>
-          <div class="text p-6">
-            {{category.type}}
-          </div>
-        </a>
+          <a href="{% url category.url %}" class="product-link {% if not category.url %} disabled{% endif %}">
+            <div class="product-image">
+              <img src="{{category.svg_file}}" alt="Product Image">
+            </div>
+            <div class="text p-6">
+              {{category.type}}
+            </div>
+          </a>
         </div>
         {% endfor %}
       </div>
@@ -269,10 +292,8 @@
   <!--Process timeline-->
 
   <div class="timeline-container mt-5 overflow-hidden">
-    <h5 class="heading text-center mb-3">Our Processes</h1>
+    <h1 class="heading text-center mb-3">Our Processes</h1>
       <div id="timeline">
-
-
         <div class="timeline-item">
           <div class="timeline-icon">
             <div class="icon-circle">
@@ -335,7 +356,7 @@
             <div class="icon-circle icon-blue">
               <i class="fa fa-boxes-packing" aria-hidden="true" style="color:#ffffff; font-size: 40px;"></i>
             </div>
-            <h5 class="heading mt-3">Procurement of RM & PM</h5 class="heading">
+            <h5 class="heading mt-3">Procurement of RM & PM</h5>
             <p>
               Vendors are coordinated with to ensure timely delivery of all materials.
             </p>
@@ -426,7 +447,11 @@
               {{item.feedback}}
             </p>
             <div class="testimonial-author">
+              {% if item.image %}
               <img src="{{item.image}}" alt="">
+              {% else %}
+              <img src="" alt="">
+              {% endif %}
               <div class="testimonial-author-details">
                 <small>{{item.customer_name}}</small>
                 <small>{{item.updated_at}}</small>
@@ -436,12 +461,12 @@
         </div>
         {% endfor %}
       </div>
-      <button class="carousel-control-prev testimonial-button" type="button" data-bs-target="#testimonialCarousel"
+      <button class="carousel-control-prev testimonial-button d-none" type="button" data-bs-target="#testimonialCarousel"
         data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next testimonial-button" type="button" data-bs-target="#testimonialCarousel"
+      <button class="carousel-control-next testimonial-button d-none" type="button" data-bs-target="#testimonialCarousel"
         data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
@@ -450,9 +475,9 @@
   </div>
 
 
-  <div class="container-fluid mt-5">
+  <div class="container-fluid my-5">
     <div class="accordian-heading">
-      <div class="heading h3 ">Frequently Asked Questions</div>
+      <div class="heading h3 text-center">Frequently Asked Questions</div>
     </div>
     <!-- OLD Accordian -->
     <div class="accordion" id="accordionExample">

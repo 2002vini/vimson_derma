@@ -19,7 +19,7 @@
 
     <!--Contact Us-->
     <div class="modal fade" id="center-modal-banner">
-        <form id="Contact_Us_banner" class="submit-form" method="POST" action="{% url 'contact_submit' %}">
+        <form id="Contact_Us_banner" class="submit-form" method="post" action="{% url 'contact_submit' %}">
             {% csrf_token %}
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -80,3 +80,4 @@
         </form>
     </div>
 </div>
+

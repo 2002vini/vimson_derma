@@ -57,56 +57,67 @@
     <h2 class="section-title text-center mt-3 py-5">Customization Options</h2>
     <div class="row justify-content-center">
 
-        <div class="col-md-3 expertise-card">
-            <div class="expertise-icon">
-                <img src="{% static 'images/formulation.svg' %}" alt="Ingredients" class="img-fluid">
-            </div>
-            <div class="expertise-heading">
-                <h5>Formulation</h5>
-            </div>
-            <div class="expertise-sub-heading" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-                <p> Create unique blends with custom ingredients, skin-safe claims like vegan and sulfate-free, and
-                    globally inspired formulations.</p>
-            </div>
-        </div>
-
-        <div class="col-md-3 expertise-card">
-            <div class="expertise-icon">
-                <img src="{% static 'images/fragrance.svg' %}" alt="Packaging Quality" class="img-fluid">
-            </div>
-            <div class="expertise-heading">
-                <h5>Fragrances</h5>
-            </div>
-            <div class="expertise-sub-heading" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-                <p>Choose from floral, herbal, musky, fruity, or opt for fragrance-free options to suit sensitive skin.
-                </p>
+        <div class="col-md-3 h-100 p-4 border-end">
+            <div class="d-flex flex-column justify-content-between align-items-center h-100">
+                <div class="expertise-icon">
+                <img src="{% static 'images/formulation.svg' %}" alt="Ingredients" style="height: 70px;" class="img-fluid">
+                </div>
+                <div class="">
+                    <h5 style="color: #F5821F;">Formulation</h5>
+                </div>
+                <div class="" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+                    <p>Create unique blends with custom ingredients, skin-safe claims like vegan and sulfate-free, and
+                        globally inspired formulations.</p>
+                </div>
             </div>
         </div>
 
-        <div class="col-md-3 expertise-card">
-            <div class="expertise-icon">
-                <img src="{% static 'images/packaging_quality.svg' %}" alt="Packaging Quality" class="img-fluid">
-            </div>
-            <div class="expertise-heading">
-                <h5>Packaging</h5>
-            </div>
-            <div class="expertise-sub-heading" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-                <p>Choose from materials (glass, PET), designs (minimalistic, luxury), and sizes.</p>
-            </div>
-        </div>
-        <div class="col-md-3 expertise-card">
-            <div class="expertise-icon">
-                <img src="{% static 'images/branding.svg' %}" alt="Branding" class="img-fluid">
-            </div>
-            <div class="expertise-heading">
-                <h5>Texture And Color</h5>
-            </div>
-            <div class="expertise-sub-heading" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-                <p>Define the texture and color of your product with options ranging from lightweight gels to rich
-                    creams and soft neutrals to bold tones.</p>
+        <div class="col-md-3">
+            <div class="h-100 p-4 border-end">
+                <div class="d-flex flex-column justify-content-between align-items-center h-100">
+                    <div class="expertise-icon">
+                        <img src="{% static 'images/Vector.svg' %}" alt="Packaging Quality" style="height: 70px;" class="img-fluid">
+                    </div>
+                    <div class="">
+                        <h5 style="color: #F5821F;">Fragrances</h5>
+                    </div>
+                    <div class="" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+                        <p>Choose from floral, herbal, musky, fruity, or opt for fragrance-free options to suit sensitive skin.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <div class="col-md-3">
+            <div class="h-100 p-4 border-end">
+                <div class="d-flex flex-column justify-content-between align-items-center h-100">
+                    <div class="expertise-icon">
+                        <img src="{% static 'images/packaging_quality.svg' %}" alt="Packaging Quality" style="height: 70px;" class="img-fluid">
+                    </div>
+                    <div class="">
+                        <h5 style="color: #F5821F;">Packaging</h5>
+                    </div>
+                    <div class="" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+                        <p>Choose from materials (glass, PET), designs (minimalistic, luxury), and sizes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 h-100 p-4 ">
+            <div class="d-flex flex-column justify-content-between align-items-center h-100">
+                <div class="expertise-icon">
+                    <img src="{% static 'images/branding.svg' %}" alt="Branding" style="height: 70px;" class="img-fluid">
+                </div>
+                <div class="">
+                    <h5 style="color: #F5821F;">Texture And Color</h5>
+                </div>
+                <div class="" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+                    <p>Define the texture and color of your product with options ranging from lightweight gels to rich
+                        creams and soft neutrals to bold tones.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -365,6 +376,8 @@ Yes, and we do not charge for samples. You can evaluate the look, feel, and perf
 
 </div> 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="/static/js/contact.js"></script>
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     AOS.init();
