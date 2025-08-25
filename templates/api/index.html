@@ -62,7 +62,8 @@
           <a href="{% url 'about' %}" class="btn btn-custom">Learn More</a>
         </div>
       </div>
-      <img src="{{ website_images.home_carousel_2.url }}" alt="Slide 2" class="w-100 h-100 object-fit-cover" style="object-position: center 90%;" />
+      <img src="{{ website_images.home_carousel_2.url }}" alt="Slide 2" class="w-100 h-100 object-fit-cover"
+        style="object-position: center 90%;" />
     </div>
     <div class="carousel-item hero">
       <div class="hero-introduction">
@@ -96,7 +97,7 @@
     <div class="heading h3">Why Brands Choose Vimson Derma?</div>
     <div class="text py-4 px-1" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
       Vimson Derma isn’t just another manufacturer – we are your hub for skincare, haircare, and derma
-        solutions.From custom formulations to premium packaging, we handle
+      solutions.From custom formulations to premium packaging, we handle
       everything so your brand stands out in the market. Whether you’re a startup or an established brand, our expertise
       ensures high-performance, compliant, and market-ready products with global standards.
     </div>
@@ -120,7 +121,9 @@
       <!-- Overlay -->
       <div class="overlay">
         <div class="overlay-content">
-          <p style="text-align: justify;">Every creation begins in our lab, where science meets artistry. We fuse breakthrough research with proven ingredients to design formulations that perform ensuring your brand stands out in both quality and efficacy.</p>
+          <p style="text-align: justify;">Every creation begins in our lab, where science meets artistry. We fuse
+            breakthrough research with proven ingredients to design formulations that perform ensuring your brand stands
+            out in both quality and efficacy.</p>
         </div>
       </div>
     </div>
@@ -143,7 +146,9 @@
       <!-- Overlay -->
       <div class="overlay">
         <div class="overlay-content">
-          <p style="text-align: justify;">Your journey from concept to consumer is seamless with us. From product ideation, R&D, and packaging design to manufacturing and delivery, our integrated process ensures efficiency without compromise on quality.</p>
+          <p style="text-align: justify;">Your journey from concept to consumer is seamless with us. From product
+            ideation, R&D, and packaging design to manufacturing and delivery, our integrated process ensures efficiency
+            without compromise on quality.</p>
         </div>
       </div>
     </div>
@@ -163,7 +168,8 @@
       <!-- Overlay -->
       <div class="overlay">
         <div class="overlay-content">
-          <p style="text-align: justify;">GMP | GLP | ISO Certified (*WHO Applied) <br>Our facilities operate at the highest level of compliance, holding GMP, GLP, and ISO</p>
+          <p style="text-align: justify;">GMP | GLP | ISO Certified (*WHO Applied) <br>Our facilities operate at the
+            highest level of compliance, holding GMP, GLP, and ISO</p>
         </div>
       </div>
     </div>
@@ -183,7 +189,9 @@
       <!-- Overlay -->
       <div class="overlay">
         <div class="overlay-content">
-          <p style="text-align: justify;">Whether you’re an emerging beauty entrepreneur or an established global brand, we specialize in translating your vision into reality. Our ready-to-launch and bespoke solutions are crafted with precision, passion, and a deep understanding of the market.</p>
+          <p style="text-align: justify;">Whether you’re an emerging beauty entrepreneur or an established global brand,
+            we specialize in translating your vision into reality. Our ready-to-launch and bespoke solutions are crafted
+            with precision, passion, and a deep understanding of the market.</p>
         </div>
       </div>
     </div>
@@ -204,7 +212,9 @@
       <!-- Overlay -->
       <div class="overlay">
         <div class="overlay-content">
-          <p style="text-align: justify;">From indulgent luxury skincare to advanced medicated solutions, our portfolio spans the full spectrum of beauty and dermatology. Whatever your market demands, we bring it to life under one trusted roof.</p>
+          <p style="text-align: justify;">From indulgent luxury skincare to advanced medicated solutions, our portfolio
+            spans the full spectrum of beauty and dermatology. Whatever your market demands, we bring it to life under
+            one trusted roof.</p>
         </div>
       </div>
     </div>
@@ -239,12 +249,12 @@
     </div>
   </section>
 
-<!--  <section class="video-container">-->
-<!--    <div class="intro-video"></div>-->
-<!--  </section>-->
+  <!--  <section class="video-container">-->
+  <!--    <div class="intro-video"></div>-->
+  <!--  </section>-->
 
   <div class="container py-5">
-    <div class="row">
+    <div class="row d-none d-lg-flex">
       <!-- Left Scrollable Column -->
       <div class="col-lg-4 col-md-6 order-2 order-lg-1 scrollable-column">
         {% for category in category_section_1 %}
@@ -274,12 +284,46 @@
         {% for category in category_section_2%}
         <div class="product-card">
           <a href="{% url category.url %}" class="product-link">
-          <div class="product-image">
-            <img src="{{category.svg_file}}" alt="Product Image" style="filter: brightness(0) invert(1);">
-          </div>
-          <div class="text p-6">
-            {{category.type}}
-          </div>
+            <div class="product-image">
+              <img src="{{category.svg_file}}" alt="Product Image" style="filter: brightness(0) invert(1);">
+            </div>
+            <div class="text p-6">
+              {{category.type}}
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="row d-flex d-lg-none">
+      <div class="col-12">
+        <h6 class="heading text-center">Explore Our</h6>
+        <h6 class="heading text-center">Product Categories</h6>
+        <p class="text p-4 product-text text-center">Got a Product Idea? We’ll Bring It to Life!</p>
+
+        {% for category in category_section_1 %}
+        <div class="product-card">
+          <a href="{% url category.url %}" class="product-link {% if not category.url %} disabled{% endif %}">
+            <div class="product-image">
+              <img src="{{category.svg_file}}" alt="Product Image">
+            </div>
+            <div class="text p-6">
+              {{category.type}}
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+
+        {% for category in category_section_2 %}
+        <div class="product-card">
+          <a href="{% url category.url %}" class="product-link">
+            <div class="product-image">
+              <img src="{{category.svg_file}}" alt="Product Image" style="filter: brightness(0) invert(1);">
+            </div>
+            <div class="text p-6">
+              {{category.type}}
+            </div>
           </a>
         </div>
         {% endfor %}
@@ -293,128 +337,128 @@
 
   <div class="timeline-container mt-5 overflow-hidden">
     <h1 class="heading text-center mb-3">Our Processes</h1>
-      <div id="timeline">
-        <div class="timeline-item">
-          <div class="timeline-icon">
-            <div class="icon-circle">
-            </div>
+    <div id="timeline">
+      <div class="timeline-item">
+        <div class="timeline-icon">
+          <div class="icon-circle">
           </div>
-          <div class="timeline-content" data-aos="fade-right">
-            <div class="icon-circle icon-yellow">
-              <i class="fa fa-handshake" style=" font-size: 40px;" aria-hidden="true"></i>
-            </div>
-            <h5 class="heading mt-3">Client Inquiry and sampling</h5>
+        </div>
+        <div class="timeline-content" data-aos="fade-right">
+          <div class="icon-circle icon-yellow">
+            <i class="fa fa-handshake" style=" font-size: 40px;" aria-hidden="true"></i>
+          </div>
+          <h5 class="heading mt-3">Client Inquiry and sampling</h5>
 
-            <p>
-              Discuss product requirements and specifications
-            </p>
+          <p>
+            Discuss product requirements and specifications
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-aos="fade-left">
+        <div class="timeline-icon">
+          <div class="icon-circle"></div>
+
+        </div>
+        <div class="timeline-content right">
+          <div class="icon-circle icon-blue">
+            <i class="fa fa-envelope-open-o" aria-hidden="true" style="color: #ffffff; font-size: 40px;"></i>
+
+          </div>
+
+          <h5 class="heading mt-3">Sample Approval & Quotation</h5>
+          <p>
+            finalize the product samples based on agreed specifications.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-aos="fade-right">
+        <div class="timeline-icon">
+          <div class="icon-circle"></div>
+
+        </div>
+        <div class="timeline-content">
+          <div class="icon-circle icon-red">
+            <i class="fa fa-credit-card" aria-hidden="true" style=" font-size: 40px;"></i>
+          </div>
+
+          <div class="heading mt-3">
+            <h5 class="heading mt-3">Purchase Order & Sales Order</h5>
+          </div>
+          <p>
+            Documents are shared with relevant parties for approval and records.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-aos="fade-left">
+        <div class="timeline-icon">
+          <div class="icon-circle"></div>
+        </div>
+        <div class="timeline-content right">
+          <div class="icon-circle icon-blue">
+            <i class="fa fa-boxes-packing" aria-hidden="true" style="color:#ffffff; font-size: 40px;"></i>
+          </div>
+          <h5 class="heading mt-3">Procurement of RM & PM</h5>
+          <p>
+            Vendors are coordinated with to ensure timely delivery of all materials.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-aos="fade-right">
+        <div class="timeline-icon">
+          <div class="icon-circle"></div>
+        </div>
+        <div class="timeline-content">
+          <div class="icon-circle icon-teal">
+            <i class="fa fa-palette" aria-hidden="true" style="color: white; font-size: 40px;"></i>
+          </div>
+          <h5 class="heading mt-3">Artwork Approval</h5>
+          <p>
+            Design elements are reviewed for consistency, branding, and functionality.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item right" data-aos="fade-left">
+        <div class="timeline-icon">
+          <div class="icon-circle"></div>
+        </div>
+        <div class="timeline-content right">
+          <div class="icon-circle icon-red">
+            <i class="fa fa-box-open" aria-hidden="true" style="color: white; font-size: 40px;"></i>
+
+          </div>
+
+          <h5 class="heading mt-3">Batch Production</h5>
+          <p>
+            We manufacture the products according to finalized designs and specifications.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-aos="fade-right">
+        <div class="timeline-icon ">
+          <div class="icon-circle">
+
           </div>
         </div>
 
-        <div class="timeline-item" data-aos="fade-left">
-          <div class="timeline-icon">
-            <div class="icon-circle"></div>
-
+        <div class="timeline-content ">
+          <div class="icon-circle icon-teal">
+            <i class="fa fa-truck-fast" aria-hidden="true" style="color: #ffffff; font-size: 40px;"></i>
           </div>
-          <div class="timeline-content right">
-            <div class="icon-circle icon-blue">
-              <i class="fa fa-envelope-open-o" aria-hidden="true" style="color: #ffffff; font-size: 40px;"></i>
-
-            </div>
-
-            <h5 class="heading mt-3">Sample Approval & Quotation</h5>
-            <p>
-              finalize the product samples based on agreed specifications.
-            </p>
-          </div>
+          <h5 class="heading mt-3">QA/QC Approval & Dispatch</h5>
+          <p>
+            We package the final products using approved materials and designs.
+          </p>
         </div>
 
-        <div class="timeline-item" data-aos="fade-right">
-          <div class="timeline-icon">
-            <div class="icon-circle"></div>
+      </div>
 
-          </div>
-          <div class="timeline-content">
-            <div class="icon-circle icon-red">
-              <i class="fa fa-credit-card" aria-hidden="true" style=" font-size: 40px;"></i>
-            </div>
-
-            <div class="heading mt-3">
-              <h5 class="heading mt-3">Purchase Order & Sales Order</h5>
-            </div>
-            <p>
-              Documents are shared with relevant parties for approval and records.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item" data-aos="fade-left">
-          <div class="timeline-icon">
-            <div class="icon-circle"></div>
-          </div>
-          <div class="timeline-content right">
-            <div class="icon-circle icon-blue">
-              <i class="fa fa-boxes-packing" aria-hidden="true" style="color:#ffffff; font-size: 40px;"></i>
-            </div>
-            <h5 class="heading mt-3">Procurement of RM & PM</h5>
-            <p>
-              Vendors are coordinated with to ensure timely delivery of all materials.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item" data-aos="fade-right">
-          <div class="timeline-icon">
-            <div class="icon-circle"></div>
-          </div>
-          <div class="timeline-content">
-            <div class="icon-circle icon-teal">
-              <i class="fa fa-palette" aria-hidden="true" style="color: white; font-size: 40px;"></i>
-            </div>
-            <h5 class="heading mt-3">Artwork Approval</h5>
-            <p>
-              Design elements are reviewed for consistency, branding, and functionality.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item right" data-aos="fade-left">
-          <div class="timeline-icon">
-            <div class="icon-circle"></div>
-          </div>
-          <div class="timeline-content right">
-            <div class="icon-circle icon-red">
-              <i class="fa fa-box-open" aria-hidden="true" style="color: white; font-size: 40px;"></i>
-
-            </div>
-
-            <h5 class="heading mt-3">Batch Production</h5>
-            <p>
-              We manufacture the products according to finalized designs and specifications.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item" data-aos="fade-right">
-          <div class="timeline-icon ">
-            <div class="icon-circle">
-
-            </div>
-          </div>
-
-          <div class="timeline-content ">
-            <div class="icon-circle icon-teal">
-              <i class="fa fa-truck-fast" aria-hidden="true" style="color: #ffffff; font-size: 40px;"></i>
-            </div>
-            <h5 class="heading mt-3">QA/QC Approval & Dispatch</h5>
-            <p>
-              We package the final products using approved materials and designs.
-            </p>
-          </div>
-
-        </div>
-
-        <!-- <div class="timeline-item right" data-aos="fade-left">
+      <!-- <div class="timeline-item right" data-aos="fade-left">
             <div class="timeline-icon ">
             </div>
             <div class="timeline-content ">
@@ -428,11 +472,11 @@
             </div>
           </div> -->
 
-      </div>
+    </div>
   </div>
 
-    <!--Testimonial Section-->
-  <div class="container w-100 testimonial-container mt-5">
+  <!--Testimonial Section-->
+  <!-- <div class="container w-100 testimonial-container mt-5">
     <div id="testimonialCarousel" class="carousel slide">
       <h5 class="heading d-flex justify-content-center pt-4">Success Stories</h5>
 
@@ -461,20 +505,59 @@
         </div>
         {% endfor %}
       </div>
-      <button class="carousel-control-prev testimonial-button d-none" type="button" data-bs-target="#testimonialCarousel"
-        data-bs-slide="prev">
+      <button class="carousel-control-prev testimonial-button d-none" type="button"
+        data-bs-target="#testimonialCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next testimonial-button d-none" type="button" data-bs-target="#testimonialCarousel"
-        data-bs-slide="next">
+      <button class="carousel-control-next testimonial-button d-none" type="button"
+        data-bs-target="#testimonialCarousel" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-  </div>
+  </div> -->
 
 
+  <div class="container my-5 testimonial-container">
+    <div class="swiper">
+      <h5 class="heading d-flex justify-content-center pt-4 mb-5 mt-3">Success Stories</h5>
+
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper mb-5 ">
+        <!-- Slides -->
+         {% for item in testimonials %}
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="quote-icon">
+              <img src="{% static 'images/testimonial.png'%}" alt="Testimonial">
+            </div>
+            <p class="testimonial-text">
+              {{item.feedback}}
+            </p>
+            <div class="testimonial-author">
+              {% if item.image %}
+              <img src="{{item.image}}" alt="">
+              {% else %}
+              <img src="" alt="">
+              {% endif %}
+              <div class="testimonial-author-details">
+                <small>{{item.customer_name}}</small>
+                <small>{{item.updated_at}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+</div>
+
+</div>
   <div class="container-fluid my-5">
     <div class="accordian-heading">
       <div class="heading h3 text-center">Frequently Asked Questions</div>
@@ -556,6 +639,33 @@
   AOS.init();
 
   window.addEventListener("DOMContentLoaded", function () {
+
+      const swiper = new Swiper('.swiper', {
+        slidesPerView: 3,
+        direction: 'horizontal',
+        loop: true,
+        spaceBetween: 10,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: 1,  // mobile
+            },
+            768: {
+                slidesPerView: 2,  // tablet
+            },
+            1024: {
+                slidesPerView: 3,  // desktop
+            }
+        },
+    });
+
     window.AgentInitializer.init({
       agentRenderURL: "https://agent.jotform.com/0196a1a066137b3381c2955125b45e6fcd77",
       rootId: "JotformAgent-0196a1a066137b3381c2955125b45e6fcd77",

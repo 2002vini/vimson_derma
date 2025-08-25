@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+
     const accordionButtons = document.querySelectorAll(".accordion-button");
     const heroSection = document.getElementById("hero-intro-section");
     setTimeout(() => {
@@ -104,45 +105,4 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
-const multipleItemCarousel = document.getElementById('testimonialCarousel');
-if (multipleItemCarousel && window.innerWidth >= 768) {
-  // const carousel = new bootstrap.Carousel(multipleItemCarousel, {
-  //   interval: false,
-  // });
-
-  if(document.querySelector('.carousel-inner.testimonial') && document.querySelector('.testimonial-item.carousel-item') && document.querySelector('.testimonial-item.carousel-item').getBoundingClientRect().width){
-      const carouselInner = document.querySelector('.carousel-inner.testimonial');
-      const carouselItem = document.querySelector('.testimonial-item.carousel-item');
-      const cardWidth = carouselItem.getBoundingClientRect().width
-      let scrollPosition = 0;
-    
-      // Auto-scroll functionality
-      const autoScrollInterval = setInterval(() => {
-        if (scrollPosition < carouselInner.scrollWidth - carouselInner.clientWidth) {
-          scrollPosition += cardWidth;
-          carouselInner.scrollTo({ left: scrollPosition, behavior: 'smooth' });
-        } else {
-          scrollPosition = 0; // Reset to the beginning when reaching the end
-          carouselInner.scrollTo({ left: scrollPosition, behavior: 'smooth' });
-        }
-      }, 2000); // Auto-scroll every 5 seconds
-    
-      document.querySelector('.carousel-control-next.testimonial-button').addEventListener('click', () => {
-        if (scrollPosition < carouselInner.scrollWidth - carouselInner.clientWidth) {
-          scrollPosition += cardWidth;
-          carouselInner.scrollTo({ left: scrollPosition, behavior: 'smooth' });
-        }
-      });
-    
-      document.querySelector('.carousel-control-prev.testimonial-button').addEventListener('click', () => {
-        if (scrollPosition > 0) {
-          scrollPosition -= cardWidth;
-          carouselInner.scrollTo({ left: scrollPosition, behavior: 'smooth' });
-        }
-      });
-    } else if (multipleItemCarousel) {
-      multipleItemCarousel.classList.add('slide');
-    }
-  }
 
