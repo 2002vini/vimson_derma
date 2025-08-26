@@ -40,10 +40,12 @@
 
 {% block content %}
 <div class="container-fluid Manufacturing-about">
-  <div class="overlay-text w-50">
-    <h4 class="heading" style="color: white;">Best Third Party Manufacturer of Cosmetic & Medicated Products in India
-    </h4>
+  <div class="overlay-text w-50 text-center">
+    <div class="overlay-content">
+    <h4 class="hero-heading">Best Third Party Manufacturer of Cosmetic & Medicated Products in India</h4>
     <a href="#" class="btn btn-custom mt-3 " data-bs-toggle="modal" data-bs-target="#center-modal">Get In Touch</a>
+    </div>
+
     <div class="modal fade" id="center-modal">
       <form id="Contact_Us" class="submit-form" method="POST" action="{% url 'contact_submit' %}">
         {% csrf_token %}
@@ -136,34 +138,36 @@
     <div class="row gx-0">
       <div class="col-md-3 col-sm-6 description-card">
         <div class="row-img">
-          <img src="{% static 'images/manafacturing1.png' %}" alt="Manufacturing 1">
+          <img src="{% static 'images/manufacturing5.webp' %}" alt="Manufacturing 1">
         </div>
         <div class="row-text" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-          <h5 class="heading">Tailored Formulations with Market Insights</h5>
-          Custom formulations tailored to your brand’s vision
+         Our R&D team combines formulation expertise with global trend analysis helping you create unique, market-ready products with the right ingredients, textures, and timing.
+
         </div>
       </div>
       <div class="col-md-3 col-sm-6 description-card alternate-card">
         <div class="row-text" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-          Full control over ingredients and product design </div>
+           You get full access to our WHO-GMP certified facility, experienced technical team, and quality systems without investing in your own plant.
+</div>
         <div class="row-img">
-          <img src="{% static 'images/manafacturing2.png' %}" alt="Manufacturing 1">
+          <img src="{% static 'images/manufacturing2.webp' %}" alt="Manufacturing 1">
         </div>
       </div>
       <div class="col-md-3 col-sm-6 description-card ">
         <div class="row-img">
-          <img src="{% static 'images/manafacturing3.png' %}" alt="Manufacturing 1">
+          <img src="{% static 'images/manufacturing3.webp' %}" alt="Manufacturing 1">
         </div>
         <div class="row-text" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-          Advanced R&D and testing capabilities.
+         Whether you're testing a niche concept or scaling a best-seller, our flexible batch sizes and production timelines help you stay responsive to the market without locking you into high-volume risks.
+
         </div>
       </div>
       <div class="col-md-3 col-sm-6 description-card alternate-card">
         <div class="row-text" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-          Large-scale production for growing businesses.
+From serums and sunscreens to scalp treatments and baby care - we manufacture a wide spectrum of cosmetics and dermatology products so you can expand your line seamlessly
         </div>
         <div class="row-img">
-          <img src="{% static 'images/manafacturing4.png' %}" alt="Manufacturing 1">
+          <img src="{% static 'images/manufacturing1.webp' %}" alt="Manufacturing 1">
         </div>
       </div>
     </div>
@@ -171,7 +175,7 @@
 </div>
 <!---Process for third party Manufacturing-->
 <section class="features-section mt-5">
-  <div class="custom-container">
+  <div class="custom-container overflow-hidden">
     <div class="text-center mb-3 pb-0 pb-md-5 px-4">
       <div class="heading h3 text-center">Our Third Party Manufacturing Process</div>
       <p style="color: rgba(20,32,97,1);"> Scalable, Customized, and Built for Brand-Led Innovation</p>

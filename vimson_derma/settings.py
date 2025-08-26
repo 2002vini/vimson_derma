@@ -69,8 +69,11 @@ INSTALLED_APPS = [
     "api",
     "debug_toolbar",
     "rest_framework",
-    "tinymce"
+    "tinymce",
+    "smart_selects",
 ]
+USE_DJANGO_JQUERY = True
+
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",

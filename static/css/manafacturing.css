@@ -15,6 +15,11 @@
     align-items: center;
     justify-content: center;
 }
+.btn-custom{
+    background-color: rgba(20, 32, 97, 1);
+    color: white;
+    border: none;
+}
 
 .about-container {
     display: flex;
@@ -73,6 +78,9 @@
     justify-content: center;
     max-height:550px;
     align-items: center;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: rgb(20,32,97,1);
+    
   }
 
   @media (max-width: 768px) {

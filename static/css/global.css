@@ -119,6 +119,14 @@
     }
 }
 
+.hero-heading{
+    font-family: 'Inria Serif';
+    font-weight: 700;
+    line-height: 108%; /* Same as 1.0 */
+    /* letter-spacing: -0.02em; -2% converted to em */
+    color:rgba(20,32,97,1);
+    font-size: 3rem; /* Adjusted for better readability */
+}
 .heading{
     font-family: 'Inria Serif';
     font-weight: 400;

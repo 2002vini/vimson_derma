@@ -276,7 +276,17 @@
   justify-content: center;
   gap: 20px;
 }
-
+.hero-text{
+  justify-content: center;
+  align-items: center;
+}
+.hero-text h4{
+  font-family: 'Inria Serif', serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1; /* Equivalent to 100% */
+  letter-spacing: 0.04em; /* Equivalent to 4% */
+}
 .value-card {
   border: 1px solid #0b1957;
   padding: 30px 15px;

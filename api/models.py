@@ -2,6 +2,8 @@ from unicodedata import category
 from django.db import models
 from django.utils.text import slugify
 from tinymce.models import HTMLField
+from smart_selects.db_fields import ChainedManyToManyField
+
 
 
 class Category(models.Model):
@@ -44,7 +46,13 @@ class Product(models.Model):
     description = models.TextField()
     attributes = models.JSONField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    subcategory = models.ManyToManyField(SubCategory,blank=False, default=default_subcategories)
+    subcategory = ChainedManyToManyField(
+        SubCategory,
+        chained_field="category",
+        chained_model_field="category",
+        blank=False, default=default_subcategories,
+    )
+    
     image = models.ImageField(upload_to="products/", null=True, blank=True, max_length=255)
     is_featured = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)

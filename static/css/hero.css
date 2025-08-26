@@ -262,7 +262,7 @@ z-index: 2;
 }
 .hero-introduction{
     position:absolute;
-    top:20px;
+    top:25%;
     left:10px;
     width:50%;
     font-family: 'Vietnam Pro', sans-serif;
@@ -274,7 +274,6 @@ z-index: 2;
 }
 .text-overlay{
   z-index: 5;
-  margin-top: 80px;
   margin-left: 50px;
   transform: translateX(-50px);
 }
@@ -345,7 +344,7 @@ to {
   /* Testimonial Styling */
 
 
-#testimonialCarousel img {
+.testimonial-card img {
     width: 50px;
     height: auto;
     border-radius: 50%;
