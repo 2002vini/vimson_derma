@@ -127,6 +127,11 @@
     color:rgba(20,32,97,1);
     font-size: 3rem; /* Adjusted for better readability */
 }
+@media (max-width: 576px) {
+  .hero-heading {
+    font-size: 2rem;
+  }
+}
 .heading{
     font-family: 'Inria Serif';
     font-weight: 400;
