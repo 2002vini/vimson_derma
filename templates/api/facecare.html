@@ -10,7 +10,7 @@
   rel="stylesheet" />
 
 <style>
-  .products-display {
+    .products-display {
     background-image: url('{{ website_images.face_care_hero.url }}');
     border-radius: 50px 0px 50px 0px;
     display: flex;
@@ -21,24 +21,6 @@
     background-size: cover;
     align-items: center;
     justify-content: flex-start;
-  }
-
-  .facecare-section-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)),
-    url('{{ website_images.face_care_image_1.url }}');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 60px;
-    min-height: 625px;
-    border-radius: 20px;
-    position: relative;
-    overflow: hidden;
-    width: 80%;
   }
 
   .product-text {
@@ -71,6 +53,75 @@
       font-size: 4rem;
     }
   }
+
+.facecare-section-container {
+  display: flex;
+  flex-direction: row; /* desktop: left-right */
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)),
+    url('{{ website_images.face_care_image_1.url }}');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 60px;
+  min-height: 625px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  width: 80%;
+  margin: 0 auto; /* center the section */
+  gap: 40px; /* spacing between left/right */
+}
+
+.facecare-text-left {
+  flex: 1;
+  font-family: 'Inria Serif', serif;
+}
+
+.facecare-text-left h4 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ff9f1c; /* orange highlight */
+}
+
+.facecare-text-left p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.facecare-text-right {
+  flex: 2;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ✅ Mobile / Tablet Fix */
+@media (max-width: 992px) {
+  .facecare-section-container {
+    flex-direction: column; /* stack vertically */
+    text-align: center;
+    padding: 30px 20px;
+    width: 95%;
+  }
+
+  .facecare-text-left,
+  .facecare-text-right {
+    flex: unset;
+    width: 100%;
+  }
+
+  .facecare-text-left h4 {
+    font-size: 2rem;
+  }
+
+  .facecare-text-right {
+    font-size: 0.95rem;
+    text-align: justify;
+  }
+}
+
 </style>
 
 {% endblock %}
@@ -106,7 +157,7 @@
                   {% endfor %}
                 </div>
                 <div class="product-card-title">{{ product.name }}</div>
-                <div class="product-card-description">{{ product.description }}</div>
+                <div class="product-card-description">{{ product.description|truncatewords:42 }}</div>
               </div>
             </div>
           </div>
@@ -129,7 +180,7 @@
   </div>
 
   <!-- Mobile Carousel (one card per slide) -->
-  <div id="productCarouselMobile" class="carousel slide d-md-none" data-bs-ride="carousel">
+  <div id="productCarouselMobile" class="carousel slide d-md-none" data-bs-touch="true" data-bs-ride="carousel">
     <div class="carousel-inner">
       {% for product in featured_products %}
       <div class="carousel-item {% if forloop.first %}active{% endif %}">
@@ -143,68 +194,76 @@
                 {% endfor %}
               </div>
               <div class="product-card-title">{{ product.name }}</div>
-              <div class="product-card-description">{{ product.description }}</div>
+              <div class="product-card-description">{{ product.description|truncatewords:30 }}</div>
             </div>
           </div>
         </div>
       </div>
       {% endfor %}
     </div>
-    {% if featured_products|length > 1 %}
-    <button class="carousel-control-prev" type="button" data-bs-target="#productCarouselMobile" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#productCarouselMobile" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-    {% endif %}
   </div>
 
 </div>
 
-<section class="facecare-section-container container">
+<section class="facecare-section-container container-fluid py-5 position-relative">
+  <!-- Overlay -->
   <div class="facecare-overlay"></div>
 
-  <div class="facecare-text-left">
-    <h4>Face Care Manufacturing <br />with Science</h4>
-    <p>Innovation & Sensory Luxury</p>
-  </div>
+  <div class="container position-relative">
+    <div class="row align-items-center">
 
-  <div class="facecare-text-right">
-    <p>
-      At Vimson Derma, we don’t just manufacture skincare; we shape tomorrow’s beauty brands. As a trusted face care
-      manufacturer in India, we specialize in premium private label and third-party manufacturing of cleansers, toners,
-      serums, moisturizers, exfoliators, and face masks tailored to your brand’s goals.
-    </p>
-    <p>
-      From acne solutions and anti-aging treatments to brightening serums and daily hydration, our R&D team combines
-      science-backed actives with luxurious textures your customers will love.
-    </p>
-    <p>
-      We harness the power of trending skincare ingredients like niacinamide, hyaluronic acid, glycolic acid, retinol,
-      and vitamin C - all carefully selected for their proven efficacy and market demand. But we don’t stop there.
-    </p>
-    <p>
-      We work with trending ingredients like niacinamide, hyaluronic acid, glycolic acid, retinol, and vitamin C, and
-      lead the way with next-gen actives like snail mucin, wasabi extract, and other global skincare trends.
-    </p>
-    <p>
-      With deep expertise in dermatological performance, consumer insights, and regulatory compliance, every formula is
-      crafted with safety, stability, and quality at its core.
-    </p>
-    <p>
-      Let your brand shine with innovative, effective, and luxurious face care powered by Vimson Derma.
+      <!-- Left side -->
+      <div class="col-md-5 mb-4 mb-md-0 text-center text-md-start facecare-text-left">
+        <h4 class="fw-bold">Face Care Manufacturing <br />with Science</h4>
+        <p class="lead">Innovation &amp; Sensory Luxury</p>
+      </div>
+
+      <!-- Right side -->
+      <div class="col-md-7 facecare-text-right">
+        <p>
+          At Vimson Derma, we don’t just manufacture skincare; we shape tomorrow’s beauty brands.
+          As a trusted face care manufacturer in India, we specialize in premium private label and
+          third-party manufacturing of cleansers, toners, serums, moisturizers, exfoliators, and
+          face masks tailored to your brand’s goals.
+        </p>
+        <p>
+          From acne solutions and anti-aging treatments to brightening serums and daily hydration,
+          our R&amp;D team combines science-backed actives with luxurious textures your customers
+          will love.
+        </p>
+        <p>
+          We harness the power of trending skincare ingredients like niacinamide, hyaluronic acid,
+          glycolic acid, retinol, and vitamin C - all carefully selected for their proven efficacy
+          and market demand. But we don’t stop there.
+        </p>
+        <p>
+          We work with trending ingredients like niacinamide, hyaluronic acid, glycolic acid,
+          retinol, and vitamin C, and lead the way with next-gen actives like snail mucin, wasabi
+          extract, and other global skincare trends.
+        </p>
+        <p>
+          With deep expertise in dermatological performance, consumer insights, and regulatory
+          compliance, every formula is crafted with safety, stability, and quality at its core.
+        </p>
+        <p>
+          Let your brand shine with innovative, effective, and luxurious face care powered by
+          Vimson Derma.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
-<!--FACE CARE FAQ-->
+
 
 <div class="container-fluid mt-5 mb-5 p-2">
   <div class="row">
     <!-- Left Sidebar (on top for mobile, side for desktop) -->
-    <div class="d-md-none text-center mb-3">
-      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#mobileRightContent"
+    <div class="d-md-none mb-3">
+      <button class="btn d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#mobileRightContent"
         style="background-color: #E58D60;">
-        Show Products
+        <span class="material-icons me-2">filter_list</span>
+        <span>Product Filter</span>
+
       </button>
     </div>
     <div class="col-12 col-md-3 left-sidebar mb-3 mb-md-0 collapse d-md-block" id="mobileRightContent">
@@ -295,7 +354,7 @@
 
 <div class="accordion" id="accordionExample">
   <div class="accordian-heading">
-    <div class="heading h3 mb-5 mt-5">Frequently Asked Questions</div>
+    <div class="heading h3 mb-5 mt-5 text-center">Frequently Asked Questions</div>
   </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
