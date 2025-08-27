@@ -5,6 +5,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/products.css' %}">
+<link rel="stylesheet" href="{% static 'css/facecare.css' %}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -149,27 +150,31 @@
 </div>
 
 <!-- Intro section -->
-<section class="facecare-section-container container mb-5 mt-5">
+<section class="mt-3 facecare-section-container container-fluid py-5 position-relative">
+  <!-- Overlay -->
   <div class="facecare-overlay"></div>
 
-  <div class="facecare-text-left">
-    <h4>Trusted Medicated Skincare & Haircare 
-<br />Manufacturer in India</h4>
-    <p>Medicated Care Backed by Science, Crafted by Vimson</p>
-  </div>
+  <div class="container position-relative">
+    <div class="row align-items-center">
 
-  <div class="facecare-text-right">
-    <p>
-  At Vimson Derma, we specialize in the development and third party manufacturing of high performance medicated personal care products. Our expertise spans across facecare, haircare, bodycare, oral care, and veterinary care, with each category designed to meet specific dermatological and therapeutic needs using clinically trusted actives.
+      <div class="col-md-5 mb-4 mb-md-0 text-center text-md-start facecare-text-left">
+        <h4>Trusted Medicated Skincare & Haircare <br />Manufacturer in India</h4>
+        <p>Medicated Care Backed by Science, Crafted by Vimson</p>
+      </div>
 
-    </p>
-    <p>
-  Our medicated facecare range includes acne gels, pigmentation creams, under eye serums, and sensitive skin moisturizers powered by actives like niacinamide, azelaic acid, and salicylic acid. In haircare, we manufacture anti dandruff shampoos, hair fall solutions, and scalp serums with ingredients such as ketoconazole, caffeine, and biotin. For bodycare, we offer antifungal powders, eczema creams, and soothing body washes.
-    </p>
-    <p>
- Our oral care line features medicated mouthwashes, gum care gels, and sensitive toothpaste, while our veterinary care segment includes pet safe antifungal powders, skin sprays, and medicated shampoos. With every formulation, we bring together therapeutic efficacy, regulatory compliance, and customization to help brands launch trusted medicated products backed by Vimson’s manufacturing excellence.
-  
-    </p>
+      <div class="col-md-7 facecare-text-right">
+            <p>
+          At Vimson Derma, we specialize in the development and third party manufacturing of high performance medicated personal care products. Our expertise spans across facecare, haircare, bodycare, oral care, and veterinary care, with each category designed to meet specific dermatological and therapeutic needs using clinically trusted actives.
+            </p>
+            <p>
+          Our medicated facecare range includes acne gels, pigmentation creams, under eye serums, and sensitive skin moisturizers powered by actives like niacinamide, azelaic acid, and salicylic acid. In haircare, we manufacture anti dandruff shampoos, hair fall solutions, and scalp serums with ingredients such as ketoconazole, caffeine, and biotin. For bodycare, we offer antifungal powders, eczema creams, and soothing body washes.
+            </p>
+            <p>
+         Our oral care line features medicated mouthwashes, gum care gels, and sensitive toothpaste, while our veterinary care segment includes pet safe antifungal powders, skin sprays, and medicated shampoos. With every formulation, we bring together therapeutic efficacy, regulatory compliance, and customization to help brands launch trusted medicated products backed by Vimson’s manufacturing excellence.
+
+            </p>
+        </div>
+    </div>
   </div>
 </section>
 
@@ -230,7 +235,7 @@
 
 <div class="accordion" id="accordionExample">
   <div class="accordian-heading">
-    <div class="heading h3 mb-5 mt-5">Frequently Asked Questions</div>
+    <div class="heading h3 mb-5 mt-5 text-center mx-2">Frequently Asked Questions</div>
   </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
