@@ -1,5 +1,6 @@
 {% extends 'temp_base.html' %} {% load static %} {% block title %}Home Page{%endblock %} {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/products.css' %}" />
+<link rel="stylesheet" href="{% static 'css/facecare.css' %}" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
@@ -9,46 +10,16 @@
 
 <style>
   .products-display {
-      background-image: url('{{ website_images.hair_care_hero.url }}');
-      justify-content: flex-start;
-
+    background-image: url('{{ website_images.hair_care_hero.url }}');
   }
- 
-  .facecare-section-container {
-      background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)), 
-      url('{{ website_images.hair_care_image_1.url }}');
-      background-size: cover;
-      background-position: center;
-  }
-  .product-text {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items:center;   /* align text to left */
-    justify-content: center;   /* vertical center */
-    height: 100%;              /* full height of parent */
-    padding-left: 80px;        /* adjust left space */
-    color: rgb(20 32 97);              /* or your preferred text color */
-  }
-
-  .product-text h1 {
-      font-family: 'Inria Serif';
-      font-size: 5rem;
-      font-weight: bold;
-      margin: 0;
-  }
-  @media (max-width: 768px) {
-    .product-text {
-      padding-left: 30px;
-    }
-
-    .product-text h1 {
-      font-size: 4rem;
-    }
+    .facecare-section-container{
+    background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)), url('{{ website_images.hair_care_image_1.url }}');
   }
 </style>
+{% endblock %}
 
-{% endblock %} {% block content %}
+
+{% block content %}
 <div class="container-fluid products-display">
   <div class="product-text w-50">
     <h4>Innovative Hair Care Manufacturing with Customizable Formulas</h4>
@@ -79,7 +50,7 @@
               {% endfor %}
             </div>
             <div class="product-card-title">{{ product.name }}</div>
-            <div class="product-card-description">{{ product.description }}</div>
+            <div class="product-card-description">{{ product.description|truncatewords:42 }}</div>
           </div>
         </div>
       </div>
@@ -102,7 +73,7 @@
 </div>
 
 <!-- Mobile Carousel (one card per slide) -->
-<div id="productCarouselMobile" class="carousel slide d-md-none" data-bs-ride="carousel">
+<div id="productCarouselMobile" class="carousel slide d-md-none" data-bs-touch="true" data-bs-ride="carousel">
   <div class="carousel-inner">
     {% for product in featured_products %}
     <div class="carousel-item {% if forloop.first %}active{% endif %}">
@@ -116,32 +87,26 @@
               {% endfor %}
             </div>
             <div class="product-card-title">{{ product.name }}</div>
-            <div class="product-card-description">{{ product.description }}</div>
+            <div class="product-card-description">{{ product.description|truncatewords:30 }}</div>
           </div>
         </div>
       </div>
     </div>
     {% endfor %}
   </div>
-  {% if featured_products|length > 1 %}
-    <button class="carousel-control-prev" type="button" data-bs-target="#productCarouselMobile" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#productCarouselMobile" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-  {% endif %}
 </div>
 
 </div>
 
-<section class="facecare-section-container container">
+<section class="facecare-section-container container-fluid py-5 position-relative">
   <div class="facecare-overlay"></div>
+  <div class="container position-relative">
+    <div class="row align-items-center">
 
-  <div class="facecare-text-left">
-    <h4>Hair Care Product<br />Manufacturers</h4>
-    <p>Healthy and Strong hair from the root to the tip</p>
-  </div>
+      <div class="col-md-5 mb-4 mb-md-0 text-center text-md-start facecare-text-left">
+        <h4>Hair Care Product<br />Manufacturers</h4>
+        <p>Healthy and Strong hair from the root to the tip</p>
+      </div>
 
   <div class="facecare-text-right">
     <p>
@@ -159,9 +124,10 @@
 <div class="container-fluid mt-5 mb-5 p-2">
   <div class="row">
     <!-- Left Sidebar (on top for mobile, side for desktop) -->
-    <div class="d-md-none text-center mb-3">
-      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#mobileRightContent" style="background-color: #E58D60;">
-        Show Products
+    <div class="d-md-none mb-3">
+      <button class="btn d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#mobileRightContent" style="background-color: #E58D60;">
+        <span class="material-icons me-2">filter_list</span>
+        <span>Product Filter</span>
       </button>
     </div>
     <div class="col-12 col-md-3 left-sidebar mb-3 mb-md-0 collapse d-md-block" id="mobileRightContent">

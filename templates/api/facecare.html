@@ -3,125 +3,20 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/products.css' %}" />
+<link rel="stylesheet" href="{% static 'css/facecare.css' %}" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Passion+One:wght@400;700;900&family=Roboto:wght@600&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
   rel="stylesheet" />
-
 <style>
-    .products-display {
+  .products-display {
     background-image: url('{{ website_images.face_care_hero.url }}');
-    border-radius: 50px 0px 50px 0px;
-    display: flex;
-    width: 100%;
-    height: 88vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    align-items: center;
-    justify-content: flex-start;
   }
 
-  .product-text {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    /* vertical center */
-    height: 100%;
-    /* full height of parent */
-    padding-left: 80px;
-    /* adjust left space */
-    color: rgb(20 32 97);
-    /* or your preferred text color */
-    flex-direction: column;
+  .facecare-section-container{
+    background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)), url('{{ website_images.face_care_image_1.url }}');
   }
-
-  .product-text h4 {
-    font-family: 'Inria Serif';
-    font-size: 3rem;
-    font-weight: bold;
-    margin: 0;
-  }
-
-  @media (max-width: 768px) {
-    .product-text {
-      padding-left: 30px;
-    }
-
-    .product-text h1 {
-      font-size: 4rem;
-    }
-  }
-
-.facecare-section-container {
-  display: flex;
-  flex-direction: row; /* desktop: left-right */
-  align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)),
-    url('{{ website_images.face_care_image_1.url }}');
-  background-size: cover;
-  background-position: center;
-  color: white;
-  padding: 60px;
-  min-height: 625px;
-  border-radius: 20px;
-  position: relative;
-  overflow: hidden;
-  width: 80%;
-  margin: 0 auto; /* center the section */
-  gap: 40px; /* spacing between left/right */
-}
-
-.facecare-text-left {
-  flex: 1;
-  font-family: 'Inria Serif', serif;
-}
-
-.facecare-text-left h4 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #ff9f1c; /* orange highlight */
-}
-
-.facecare-text-left p {
-  font-size: 1.2rem;
-  margin: 0;
-}
-
-.facecare-text-right {
-  flex: 2;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-/* ✅ Mobile / Tablet Fix */
-@media (max-width: 992px) {
-  .facecare-section-container {
-    flex-direction: column; /* stack vertically */
-    text-align: center;
-    padding: 30px 20px;
-    width: 95%;
-  }
-
-  .facecare-text-left,
-  .facecare-text-right {
-    flex: unset;
-    width: 100%;
-  }
-
-  .facecare-text-left h4 {
-    font-size: 2rem;
-  }
-
-  .facecare-text-right {
-    font-size: 0.95rem;
-    text-align: justify;
-  }
-}
-
 </style>
 
 {% endblock %}
