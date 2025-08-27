@@ -1,48 +1,20 @@
 {% extends 'temp_base.html' %} {% load static %} {% block title %}Intimate Care{%endblock %} {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/products.css' %}" />
+<link rel="stylesheet" href="{% static 'css/facecare.css' %}" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Passion+One:wght@400;700;900&family=Roboto:wght@600&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
   rel="stylesheet"
 />
-
 <style>
   .products-display {
-      background-image: url('{{ website_images.intimate_care_hero.url }}');
-      justify-content: flex-start;
-  }
-  .facecare-section-container {
-      background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)), 
-      url('{{ website_images.intimate_care_image_1.url }}');
-      background-size: cover;
-      background-position: center;
-  }
-  .product-text {
-    display: flex;
-    flex-direction: column; /* stack text vertically */
-    width: 100%;
-    justify-content: center;   /* vertical center */
-    height: 100%;              /* full height of parent */
-    padding-left: 80px;        /* adjust left space */
-    color: rgb(20 32 97);              /* or your preferred text color */
-    align-items: center; /* align text to left */
+    background-image: url('{{ website_images.intimate_care_hero.url }}');
   }
 
-  .product-text h1 {
-      font-family: 'Inria Serif';
-      font-size: 5rem;
-      font-weight: bold;
-      margin: 0;
-  }
-  @media (max-width: 768px) {
-    .product-text {
-      padding-left: 30px;
-    }
-
-    .product-text h1 {
-      font-size: 4rem;
-    }
+  .facecare-section-container{
+    background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)), url('{{ website_images.intimate_care_image_1.url }}');
   }
 </style>
 
@@ -54,9 +26,9 @@
   </div>
 </div>
 
-<div class="container mb-5 p-2">
+<div class="container mb-3 p-2">
   <div class="blog-title">
-    <h4 class="heading text-center mt-5 mb-5">Top Formulations</h4>
+    <h4 class="heading text-center mt-5">Top Formulations</h4>
   </div>
  <!-- Desktop Carousel (group of 3 per slide) -->
 <div id="productCarouselDesktop" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
@@ -77,7 +49,7 @@
               {% endfor %}
             </div>
             <div class="product-card-title">{{ product.name }}</div>
-            <div class="product-card-description">{{ product.description }}</div>
+            <div class="product-card-description">{{ product.description|truncatewords:42 }}</div>
           </div>
         </div>
       </div>
@@ -100,7 +72,7 @@
 </div>
 
 <!-- Mobile Carousel (one card per slide) -->
-<div id="productCarouselMobile" class="carousel slide d-md-none" data-bs-ride="carousel">
+<div id="productCarouselMobile" class="carousel slide d-md-none" data-bs-touch="true" data-bs-ride="carousel">
   <div class="carousel-inner">
     {% for product in featured_products %}
     <div class="carousel-item {% if forloop.first %}active{% endif %}">
@@ -114,52 +86,51 @@
               {% endfor %}
             </div>
             <div class="product-card-title">{{ product.name }}</div>
-            <div class="product-card-description">{{ product.description }}</div>
+            <div class="product-card-description">{{ product.description|truncatewords:30 }}</div>
           </div>
         </div>
       </div>
     </div>
     {% endfor %}
   </div>
-  {% if featured_products|length > 1 %}
-    <button class="carousel-control-prev" type="button" data-bs-target="#productCarouselMobile" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#productCarouselMobile" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-  {% endif %}
 </div>
 
 </div>
 
-<section class="facecare-section-container container mb-5">
+
+<section class="facecare-section-container container-fluid py-5 position-relative">
+  <!-- Overlay -->
   <div class="facecare-overlay"></div>
 
-  <div class="facecare-text-left">
-    <h4>Intimate Hygiene Product<br />Manufacturers</h4>
-    <p>We’ve Got You Covered, From pH to Perfect</p>
-  </div>
+  <div class="container position-relative">
+    <div class="row align-items-center">
 
-  <div class="facecare-text-right">
-    <p>
-Delicate care deserves expert formulations. At Vimson Derma, we manufacture high-quality feminine hygiene products that are pH-balanced, soap-free, and gynecologist-tested for everyday use. Our range includes intimate washes, soothing gels, refreshing wipes, and post-waxing care crafted to support comfort and confidence.
-    <p>
-Formulated with trusted ingredients like lactic acid, tea tree oil, witch hazel, and aloe vera, our pH-balanced intimate care products help maintain a healthy microbiome while preventing irritation, dryness, and odor. Every product is designed to work in harmony with the body’s natural pH, ensuring gentle yet effective hygiene.
-    </p>
-    <p>
-As a reliable intimate wash manufacturer in India, we offer private label hygiene products and third-party intimate care manufacturing that meet strict dermatological and gynecological standards. With Vimson Derma, you can build a brand that stands for safety, trust, and intimate well-being.
-    </p>
-   
+      <div class="col-md-5 mb-4 mb-md-0 text-center text-md-start facecare-text-left">
+        <h4>Intimate Hygiene Product<br />Manufacturers</h4>
+        <p>We’ve Got You Covered, From pH to Perfect</p>
+      </div>
+
+      <div class="col-md-7 facecare-text-right">
+        <p>
+    Delicate care deserves expert formulations. At Vimson Derma, we manufacture high-quality feminine hygiene products that are pH-balanced, soap-free, and gynecologist-tested for everyday use. Our range includes intimate washes, soothing gels, refreshing wipes, and post-waxing care crafted to support comfort and confidence.
+        <p>
+    Formulated with trusted ingredients like lactic acid, tea tree oil, witch hazel, and aloe vera, our pH-balanced intimate care products help maintain a healthy microbiome while preventing irritation, dryness, and odor. Every product is designed to work in harmony with the body’s natural pH, ensuring gentle yet effective hygiene.
+        </p>
+        <p>
+    As a reliable intimate wash manufacturer in India, we offer private label hygiene products and third-party intimate care manufacturing that meet strict dermatological and gynecological standards. With Vimson Derma, you can build a brand that stands for safety, trust, and intimate well-being.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="container-fluid m-0 p-0">
+<div class="container-fluid m-0 p-0 mt-5">
   <div class="row">
     <!-- Left Sidebar (on top for mobile, side for desktop) -->
     <div class="d-md-none text-center mb-3">
-      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#mobileRightContent" style="background-color: #E58D60;">
-        Top Formulations
+      <button class="btn d-flex align-items-center mt-5" type="button" data-bs-toggle="collapse" data-bs-target="#mobileRightContent" style="background-color: #E58D60;">
+          <span class="material-icons me-2">filter_list</span>
+          <span>Product Filter</span>
       </button>
     </div>
     <div class="col-12 col-md-3 left-sidebar mb-3 mb-md-0 collapse d-md-block" id="mobileRightContent">
@@ -271,7 +242,7 @@ As a reliable intimate wash manufacturer in India, we offer private label hygien
 
 <div class="accordion mb-5" id="accordionExample">
     <div class="accordian-heading">
-      <div class="heading h3 mb-5 mt-5">Frequently Asked Questions</div>
+      <div class="heading h3 mb-5 mt-5 mx-2 text-center">Frequently Asked Questions</div>
     </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
