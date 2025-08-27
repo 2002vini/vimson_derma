@@ -3,69 +3,21 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/products.css' %}" />
+<link rel="stylesheet" href="{% static 'css/facecare.css' %}" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Passion+One:wght@400;700;900&family=Roboto:wght@600&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
   rel="stylesheet"
 />
-
 <style>
-  .products-display{
+  .products-display {
     background-image: url('{{ website_images.veterinary_hero.url }}');
-      border-radius: 50px 0px 50px 0px;
-      display: flex;
-      width: 100%;
-      height:88vh;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      align-items: center;
-      justify-content: center;
-  }
-  .facecare-section-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-   background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)),
-    url('{{ website_images.veterinary_image_1.url }}');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 60px;
-    min-height: 625px;
-    border-radius: 20px;
-    position: relative;
-    overflow: hidden;
-    width: 80%;
   }
 
-.product-text {
-    display: flex;
-    width: 100%;
-    align-items:center;   /* align text to left */
-    justify-content: center;  /* vertical center */
-    height: 100%;              /* full height of parent */
-    padding-left: 80px;        /* adjust left space */
-    color: white;            /* or your preferred text color */
-}
-
-.product-text h1 {
-    font-family: 'Inria Serif';
-    font-size: 5rem;
-    font-weight: bold;
-    margin: 0;
-}
-@media (max-width: 768px) {
-  .product-text {
-    padding-left: 30px;
+  .facecare-section-container{
+    background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)), url('{{ website_images.veterinary_image_1.url }}');
   }
-
-  .product-text h1 {
-    font-size: 4rem;
-  }
-}
 </style>
 
 {% endblock %}
@@ -73,13 +25,13 @@
 {% block content %}
 <div class="container-fluid products-display">
   <div class="product-text">
-    <h1>Veterinary</h1>
+    <h1 class="text-white text-center">Veterinary</h1>
   </div>
 </div>
 
-<div class="container mb-5 p-2">
+<div class="container mb-3 p-2">
   <div class="blog-title">
-    <h4 class="heading text-center mt-5 mb-5">Top Formulations</h4>
+    <h4 class="heading text-center mt-5">Top Formulations</h4>
   </div>
  <!-- Desktop Carousel (group of 3 per slide) -->
 <div id="productCarouselDesktop" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
@@ -100,7 +52,7 @@
               {% endfor %}
             </div>
             <div class="product-card-title">{{ product.name }}</div>
-            <div class="product-card-description">{{ product.description }}</div>
+            <div class="product-card-description">{{ product.description|truncatewords:42 }}</div>
           </div>
         </div>
       </div>
@@ -123,7 +75,7 @@
 </div>
 
 <!-- Mobile Carousel (one card per slide) -->
-<div id="productCarouselMobile" class="carousel slide d-md-none" data-bs-ride="carousel">
+<div id="productCarouselMobile" class="carousel slide d-md-none" data-bs-touch="true" data-bs-ride="carousel">
   <div class="carousel-inner">
     {% for product in featured_products %}
     <div class="carousel-item {% if forloop.first %}active{% endif %}">
@@ -137,58 +89,57 @@
               {% endfor %}
             </div>
             <div class="product-card-title">{{ product.name }}</div>
-            <div class="product-card-description">{{ product.description }}</div>
+            <div class="product-card-description">{{ product.description|truncatewords:30 }}</div>
           </div>
         </div>
       </div>
     </div>
     {% endfor %}
   </div>
-  {% if featured_products|length > 1 %}
-    <button class="carousel-control-prev" type="button" data-bs-target="#productCarouselMobile" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#productCarouselMobile" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-  {% endif %}
 </div>
 
 </div>
 
-<section class="facecare-section-container container mb-5">
+<section class="facecare-section-container container-fluid py-5 position-relative">
+  <!-- Overlay -->
   <div class="facecare-overlay"></div>
 
-  <div class="facecare-text-left">
-    <h4>Veterinary Product<br />Manufacturers</h4>
-    <p>Science Meets Snuggles</p>
-  </div>
+  <div class="container position-relative">
+    <div class="row align-items-center">
 
-  <div class="facecare-text-right">
-    <p>
-   At Vimson Derma, we treat pet and livestock care with the same precision and compassion as human skincare. As a
-      trusted veterinary shampoo manufacturer in India, we offer third-party manufacturing for a range of pet care
-      products including medicated shampoos, ointments, oral supplements, and paw creams. Our solutions support skin
-      health, parasite control, and hygiene with formulations tailored for pets and farm animals. 
-    </p>
-    <p>
-   All products are developed in collaboration with veterinary experts using safe and effective ingredients like
-      chlorhexidine, neem, ketoconazole, and natural oils. We ensure each formula is gentle yet powerful, meeting strict
-      safety standards while delivering visible results without irritation.    </p>
-    <p>
-   Whether you’re launching custom pet grooming products, animal ointments, or livestock hygiene solutions, Vimson
-      Derma offers scalable, customizable manufacturing. Our deep expertise in cosmeceuticals and dermatology makes us
-      the ideal partner for creating medicated pet care products that brands and pet owners can trust.    
-    </p>
+      <div class="col-md-5 mb-4 mb-md-0 text-center text-md-start facecare-text-left">
+        <h4>Veterinary Product<br />Manufacturers</h4>
+        <p>Science Meets Snuggles</p>
+      </div>
+
+      <div class="col-md-7 facecare-text-right">
+        <p>
+       At Vimson Derma, we treat pet and livestock care with the same precision and compassion as human skincare. As a
+          trusted veterinary shampoo manufacturer in India, we offer third-party manufacturing for a range of pet care
+          products including medicated shampoos, ointments, oral supplements, and paw creams. Our solutions support skin
+          health, parasite control, and hygiene with formulations tailored for pets and farm animals.
+        </p>
+        <p>
+       All products are developed in collaboration with veterinary experts using safe and effective ingredients like
+          chlorhexidine, neem, ketoconazole, and natural oils. We ensure each formula is gentle yet powerful, meeting strict
+          safety standards while delivering visible results without irritation.    </p>
+        <p>
+       Whether you’re launching custom pet grooming products, animal ointments, or livestock hygiene solutions, Vimson
+          Derma offers scalable, customizable manufacturing. Our deep expertise in cosmeceuticals and dermatology makes us
+          the ideal partner for creating medicated pet care products that brands and pet owners can trust.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="container-fluid m-0 p-0">
+<div class="container-fluid m-0 p-0 mt-5">
   <div class="row">
     <!-- Left Sidebar (on top for mobile, side for desktop) -->
-    <div class="d-md-none text-center mb-3">
-      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#mobileRightContent" style="background-color: #E58D60;">
-        Show Products
+    <div class="d-md-none mb-3">
+      <button class="btn d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#mobileRightContent" style="background-color: #E58D60;">
+        <span class="material-icons me-2">filter_list</span>
+        <span>Product Filter</span>
       </button>
     </div>
     <div class="col-12 col-md-3 left-sidebar mb-3 mb-md-0 collapse d-md-block" id="mobileRightContent">
@@ -298,7 +249,7 @@
 
 <div class="accordion" id="accordionExample">
    <div class="accordian-heading">
-      <div class="heading h3 mb-5 mt-5">Frequently Asked Questions</div>
+      <div class="heading h3 mb-5 mt-5 mx-2 text-center">Frequently Asked Questions</div>
     </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
