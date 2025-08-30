@@ -279,6 +279,12 @@
     padding-right: 10px;
   }
   .about-us-container {
-    padding: 2rem;
+    padding: 0.5rem;
+    text-align: justify;
+  }
+  .claims-section {
+    padding: 0.5rem;
+    text-align: justify;
   }
 }
+

@@ -34,7 +34,10 @@
 }
 @media screen and (max-width: 768px) {
   .about-us-container {
-    padding: 0rem; /* Reduced padding for mobile */
+    padding: 0.5rem; /* Reduced padding for mobile */
+  }
+  .about-us-container .text {
+    text-align: justify;
   }
 }
 .about-us-container text {

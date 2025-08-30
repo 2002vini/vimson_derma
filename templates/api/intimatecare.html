@@ -11,16 +11,17 @@
 <style>
   .products-display {
     background-image: url('{{ website_images.intimate_care_hero.url }}');
+    background-position: right center;
   }
 
   .facecare-section-container{
-    background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)), url('{{ website_images.intimate_care_image_1.url }}');
+    background: linear-gradient(rgba(20, 32, 97, 0.35), rgba(20, 32, 97, 0.45)), url('{{ website_images.intimate_care_image_1.url }}');
   }
 </style>
 
 {% endblock %} {% block content %}
 <div class="container-fluid products-display">
-  <div class="product-text w-50">
+  <div class="product-text">
     <h4>Safe, Gentle, and Effective Intimate Care Solutions</h4>
     <p>We create clinically tested, skin-friendly products for intimate care tailored to your brand’s vision and customer needs.</p>
   </div>
@@ -98,7 +99,7 @@
 </div>
 
 
-<section class="facecare-section-container container-fluid py-5 position-relative">
+<section class="facecare-section-container container-fluid py-5 position-relative d-none d-md-block">
   <!-- Overlay -->
   <div class="facecare-overlay"></div>
 
@@ -120,6 +121,30 @@
     As a reliable intimate wash manufacturer in India, we offer private label hygiene products and third-party intimate care manufacturing that meet strict dermatological and gynecological standards. With Vimson Derma, you can build a brand that stands for safety, trust, and intimate well-being.
         </p>
       </div>
+    </div>
+  </div>
+</section>
+<section class="facecare-mobile-section container-fluid d-block d-md-none overflow-hidden">
+  <div class="row ">
+     <div class="col-12 text-center">
+     <h4>Intimate Hygiene Product<br />Manufacturers</h4>
+        <p>We’ve Got You Covered, From pH to Perfect</p>
+    </div>
+    <!-- Image on top -->
+    <div class="col-12 mb-3">
+      <img src="{{ website_images.intimate_care_image_1.url }}" alt="Men's Care" class="w-100 rounded">
+    </div>
+
+    <!-- Text below -->
+    <div class="col-12 facecare-text">
+       <p>
+    Delicate care deserves expert formulations. At Vimson Derma, we manufacture high-quality feminine hygiene products that are pH-balanced, soap-free, and gynecologist-tested for everyday use. Our range includes intimate washes, soothing gels, refreshing wipes, and post-waxing care crafted to support comfort and confidence.
+        <p>
+    Formulated with trusted ingredients like lactic acid, tea tree oil, witch hazel, and aloe vera, our pH-balanced intimate care products help maintain a healthy microbiome while preventing irritation, dryness, and odor. Every product is designed to work in harmony with the body’s natural pH, ensuring gentle yet effective hygiene.
+        </p>
+        <p>
+    As a reliable intimate wash manufacturer in India, we offer private label hygiene products and third-party intimate care manufacturing that meet strict dermatological and gynecological standards. With Vimson Derma, you can build a brand that stands for safety, trust, and intimate well-being.
+        </p>
     </div>
   </div>
 </section>

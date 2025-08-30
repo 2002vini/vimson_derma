@@ -32,6 +32,13 @@
     color: rgba(77, 84, 127, 1);
     padding: 5.5rem;
   }
+  @media (max-width: 768px) {
+  .about-container {
+      padding: 0.5rem; /* Reduced padding for mobile */ 
+      text-align: justify;
+  }
+    
+  }
 
   .about-heading {
     font-family: 'Inria Serif', serif;

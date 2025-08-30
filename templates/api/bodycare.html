@@ -15,17 +15,18 @@
 <style>
   .products-display {
     background-image: url('{{ website_images.body_care_hero.url }}');
+    background-position: right center;
   }
 
   .facecare-section-container{
-    background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)), url('{{ website_images.hair_care_image_1.url }}');
+    background: linear-gradient(rgba(20, 32, 97, 0.35), rgba(20, 32, 97, 0.45)), url('{{ website_images.body_care_image_1.url }}');
   }
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="container-fluid products-display">
-  <div class="product-text w-50">
+  <div class="product-text">
     <h4>Premium Body Care Manufacturing for Every Skin Need.</h4>
     <p>Advanced body care manufacturing with custom formulations for lotions, scrubs, washes, and creams that nourish and protect skin.</p>
   </div>
@@ -103,8 +104,7 @@
 </div>
 
 
-<section class="facecare-section-container container-fluid py-5 position-relative">
-  <!-- Overlay -->
+<section class="facecare-section-container container-fluid py-5 position-relative d-none d-md-block overflow-hidden">
   <div class="facecare-overlay"></div>
   <div class="container position-relative">
     <div class="row align-items-center">
@@ -113,31 +113,68 @@
         <p>Scalable & Skin-Friendly Solutions for Every Body Type</p>
       </div>
 
-      <div class="col-md-7 facecare-text-right">
-        <p>
-          Vimson Derma is your trusted partner in building high-performance body care products that combine indulgence with
-          real efficacy. As a leading body care manufacturer in India, we specialize in private label and third-party
-          manufacturing, offering brands scalable solutions tailored to diverse skin types and concerns. From nourishing
-          body lotions and butters to clarifying scrubs, hydrating mists, gentle shower gels, and SPF-infused formulas. Our
-          wide-ranging portfolio is designed to meet today’s demands and anticipate tomorrow’s trends.
-        </p>
-        <p>
-          What sets us apart is our commitment to clean, skin-friendly formulations that address real-life issues like dry
-          skin, body acne, rough patches, pigmentation, sensitivity, sun damage, and post-shave irritation. Every product is
-          enriched with clinically backed actives like ceramides, shea butter, plant-based AHAs, botanical extracts, and
-          other trending ingredients, all while being cruelty-free, sulfate-free, and paraben-free. Whether you're catering
-          to the luxury wellness market or need dermatologically tested solutions, Vimson Derma ensures low MOQs, complete
-          formulation support, and products that meet global safety standards through rigorous dermatological and stability
-          testing.
-        </p>
-        <p>
-          Choose Vimson Derma, the No.1 body care manufacturer in India to create skin-smart, market-ready formulations that
-          help your brand lead with confidence and care.
-        </p>
-      </div>
+  <div class="facecare-text-right">
+    <p>
+      Vimson Derma is your trusted partner in building high-performance body care products that combine indulgence with
+      real efficacy. As a leading body care manufacturer in India, we specialize in private label and third-party
+      manufacturing, offering brands scalable solutions tailored to diverse skin types and concerns. From nourishing
+      body lotions and butters to clarifying scrubs, hydrating mists, gentle shower gels, and SPF-infused formulas. Our
+      wide-ranging portfolio is designed to meet today’s demands and anticipate tomorrow’s trends.
+    </p>
+    <p>
+      What sets us apart is our commitment to clean, skin-friendly formulations that address real-life issues like dry
+      skin, body acne, rough patches, pigmentation, sensitivity, sun damage, and post-shave irritation. Every product is
+      enriched with clinically backed actives like ceramides, shea butter, plant-based AHAs, botanical extracts, and
+      other trending ingredients, all while being cruelty-free, sulfate-free, and paraben-free. Whether you're catering
+      to the luxury wellness market or need dermatologically tested solutions, Vimson Derma ensures low MOQs, complete
+      formulation support, and products that meet global safety standards through rigorous dermatological and stability
+      testing.
+    </p>
+    <p>
+      Choose Vimson Derma, the No.1 body care manufacturer in India to create skin-smart, market-ready formulations that
+      help your brand lead with confidence and care.
+    </p>
+  </div>
+</section>
+
+<!-- ✅ Mobile Section -->
+<section class="facecare-mobile-section container-fluid d-block d-md-none overflow-hidden">
+  <div class="row ">
+     <div class="col-12 text-center mb-3">
+      <h4>No.1 Body Care <br> Manufacturer in India</h4>
+      <p style="color: rgba(20, 32, 97, 1);">Scalable & Skin-Friendly Solutions for Every Body Type</p>
+    </div>
+    <!-- Image on top -->
+    <div class="col-12 mb-3">
+      <img src="{{ website_images.body_care_image_1.url }}" alt="Body Care" class="w-100 rounded">
+    </div>
+
+    <!-- Text below -->
+    <div class="col-12 facecare-text">
+      <p >
+       Vimson Derma is your trusted partner in building high-performance body care products that combine indulgence with
+      real efficacy. As a leading body care manufacturer in India, we specialize in private label and third-party
+      manufacturing, offering brands scalable solutions tailored to diverse skin types and concerns. From nourishing
+      body lotions and butters to clarifying scrubs, hydrating mists, gentle shower gels, and SPF-infused formulas. Our
+      wide-ranging portfolio is designed to meet today’s demands and anticipate tomorrow’s trends.
+      </p>
+      <p>
+        What sets us apart is our commitment to clean, skin-friendly formulations that address real-life issues like dry
+      skin, body acne, rough patches, pigmentation, sensitivity, sun damage, and post-shave irritation. Every product is
+      enriched with clinically backed actives like ceramides, shea butter, plant-based AHAs, botanical extracts, and
+      other trending ingredients, all while being cruelty-free, sulfate-free, and paraben-free. Whether you're catering
+      to the luxury wellness market or need dermatologically tested solutions, Vimson Derma ensures low MOQs, complete
+      formulation support, and products that meet global safety standards through rigorous dermatological and stability
+      testing.
+      </p>
+      <p>
+       Choose Vimson Derma, the No.1 body care manufacturer in India to create skin-smart, market-ready formulations that
+      help your brand lead with confidence and care.
+      </p>
     </div>
   </div>
 </section>
+
 
 <div class="container-fluid mt-5 mb-5 p-2 overflow-hidden">
   <div class="row">
@@ -236,7 +273,7 @@
   </div>
 </div>
 
-<div class="accordion" id="accordionExample">
+<div class="accordion overflow-hidden" id="accordionExample">
   <div class="accordian-heading">
     <div class="heading h3 mb-5 mt-5 text-center mx-2">Frequently Asked Questions</div>
   </div>

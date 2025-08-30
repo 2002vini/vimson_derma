@@ -24,6 +24,17 @@
       justify-content: center;
       padding: 60px;
   }
+  .overlay-text {
+    width: 50%;
+}
+
+/* Mobile view: width 100% */
+@media (max-width: 768px) {
+  .overlay-text {
+    width: 100%;
+  }
+}
+
 </style>
 {% endblock %}
 
@@ -31,7 +42,7 @@
 
 {% block content %}
 <div class="container-fluid service-about">
-  <div class="overlay-text w-50 align-items-center text-center">
+  <div class="overlay-text align-items-center text-center">
     <h1 class="hero-heading" style="color: white; ">Best Private Label Skincare and Haircare Manufacturers in India</h1>
   </div>
 </div>
@@ -100,7 +111,7 @@
 </div>
 
 <!--Our Process-->
-  <section class="features-section mt-5">
+  <section class="features-section mt-5 overflow-hidden">
     <div class="custom-container">
       <div class="text-center mb-3 pb-0 pb-md-5 px-4">
         <div class="heading h3 text-center">Our Private Label Process</div>
@@ -209,7 +220,7 @@
 
 <div class="container">
   <div class="accordian-heading">
-    <h5 class="heading mt-5">Frequently Asked Questions</h5>
+    <h5 class="heading mt-5 text-center">Frequently Asked Questions</h5>
   </div>
   <div class="accordion" id="accordionExample">
     <div class="accordion-item">

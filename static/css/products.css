@@ -1,6 +1,5 @@
 .products-display{
     background-image: url('/static/images/Products/face_care_hero.png');
-    border-radius: 50px 0px 50px 0px;
     display: flex;
     width: 100%;
     height:88vh;
@@ -292,14 +291,24 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 23, 97, 0.3);
   z-index: 1;
+}
+
+.facecare-text{
+  text-align: justify;
 }
 
 .facecare-text-left {
   position: relative;
   z-index: 2;
   max-width: 40%;
+}
+.facecare-mobile-section h4{
+    font-size: 24px;
+  color: #f89b24;
+  margin: 0 0 20px;
+  font-weight: 700;
+  font-family: 'Inria Serif', serif;
 }
 
 .facecare-text-left h4 {
@@ -327,7 +336,12 @@
   font-size: 16px;
   font-weight: 500;
 }
-
+.facecare-text{
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(20, 32, 97, 1);
+}
 @media (max-width: 768px) {
   .facecare-section-container {
     flex-direction: column;

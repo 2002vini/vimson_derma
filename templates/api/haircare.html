@@ -11,9 +11,12 @@
 <style>
   .products-display {
     background-image: url('{{ website_images.hair_care_hero.url }}');
+    background-position: right center;
   }
     .facecare-section-container{
-    background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)), url('{{ website_images.hair_care_image_1.url }}');
+    background: linear-gradient(rgba(20, 32, 97, 0.35), rgba(20, 32, 97, 0.45)), url('{{ website_images.hair_care_image_1.url }}');
+     background-size: cover;
+    background-repeat: no-repeat;
   }
 </style>
 {% endblock %}
@@ -21,7 +24,7 @@
 
 {% block content %}
 <div class="container-fluid products-display">
-  <div class="product-text w-50">
+  <div class="product-text ">
     <h4>Innovative Hair Care Manufacturing with Customizable Formulas</h4>
     <p>Offering GMP-certified private label and third-party solutions, we create custom formulations from sulphate-free shampoos to premium hair oils and scalp care products.</p>
   </div>
@@ -98,7 +101,7 @@
 
 </div>
 
-<section class="facecare-section-container container-fluid py-5 position-relative">
+<section class="facecare-section-container container-fluid py-5 position-relative d-none d-md-block">
   <div class="facecare-overlay"></div>
   <div class="container position-relative">
     <div class="row align-items-center">
@@ -114,6 +117,29 @@
           At Vimson Derma, we go beyond basic formulations to deliver salon-grade, sulfate-free, and silicone-free hair care using clinically proven ingredients like biotin, caffeine, peptides, plant ceramides, niacinamide, and more. Whether you’re building a clean beauty line, a luxury trichology-grade range, or trend-driven influencer products, we provide unmatched flexibility and proven efficacy. As a trusted private label and third-party hair care manufacturer, we bring to life premium formulations that address real-life concerns while aligning with evolving beauty and wellness standards. Partner with us to create standout products that are as effective as they are market-ready.
         </p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="facecare-mobile-section container-fluid d-block d-md-none overflow-hidden">
+  <div class="row ">
+     <div class="col-12 text-center mb-3">
+      <h4>No.1 Body Care <br> Manufacturer in India</h4>
+      <p style="color: rgba(20, 32, 97, 1);">Scalable & Skin-Friendly Solutions for Every Body Type</p>
+    </div>
+    <!-- Image on top -->
+    <div class="col-12 mb-3">
+      <img src="{{ website_images.hair_care_image_1.url }}" alt="Body Care" class="w-100 rounded">
+    </div>
+
+    <!-- Text below -->
+    <div class="col-12 facecare-text">
+      <p>
+          Power your brand with Vimson Derma, one of the best hair care manufacturers in India where cutting-edge scalp science meets ingredient innovation. We specialize in crafting customizable, high-performance formulations for every hair and scalp concern. From anti-hair fall shampoos and dandruff-fighting conditioners to scalp-soothing serums, nourishing hair oils, and lightweight hair perfumes, our extensive portfolio covers it all. Whether your target audience struggles with dry scalp, oily scalp, frizz, breakage, dandruff, or color-treated hair, we offer science-backed solutions designed to deliver visible results and an exceptional user experience.
+        </p>
+        <p>
+          At Vimson Derma, we go beyond basic formulations to deliver salon-grade, sulfate-free, and silicone-free hair care using clinically proven ingredients like biotin, caffeine, peptides, plant ceramides, niacinamide, and more. Whether you’re building a clean beauty line, a luxury trichology-grade range, or trend-driven influencer products, we provide unmatched flexibility and proven efficacy. As a trusted private label and third-party hair care manufacturer, we bring to life premium formulations that address real-life concerns while aligning with evolving beauty and wellness standards. Partner with us to create standout products that are as effective as they are market-ready.
+        </p>
     </div>
   </div>
 </section>

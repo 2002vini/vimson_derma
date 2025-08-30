@@ -12,10 +12,11 @@
 <style>
   .products-display {
     background-image: url('{{ website_images.face_care_hero.url }}');
+    background-position: right center;
   }
 
   .facecare-section-container{
-    background: linear-gradient(rgba(20, 32, 97, 0.5), rgba(20, 32, 97, 0.8)), url('{{ website_images.face_care_image_1.url }}');
+    background: linear-gradient(rgba(20, 32, 97, 0.35), rgba(20, 32, 97, 0.45)), url('{{ website_images.face_care_image_1.url }}');
   }
 </style>
 
@@ -23,7 +24,7 @@
 
 {% block content %}
 <div class="container-fluid products-display">
-  <div class="product-text w-50">
+  <div class="product-text">
     <h4>Leading Face Care Manufacturer in India </h4>
     <p>Private Label & Third-Party Skincare Experts</p>
   </div>
@@ -100,7 +101,7 @@
 
 </div>
 
-<section class="facecare-section-container container-fluid py-5 position-relative">
+<section class="facecare-section-container container-fluid py-5 position-relative d-none d-md-block ">
   <!-- Overlay -->
   <div class="facecare-overlay"></div>
 
@@ -149,7 +150,51 @@
   </div>
 </section>
 
+<section class="facecare-mobile-section container-fluid d-block d-md-none overflow-hidden">
+  <div class="row ">
+     <div class="col-12 text-center mb-3">
+       <h4 class="fw-bold">Face Care Manufacturing <br />with Science</h4>
+        <p class="lead">Innovation &amp; Sensory Luxury</p>
+    </div>
+    <!-- Image on top -->
+    <div class="col-12 mb-3">
+      <img src="{{ website_images.face_care_image_1.url }}" alt="Body Care" class="w-100 rounded">
+    </div>
 
+    <!-- Text below -->
+    <div class="col-12 facecare-text">
+     <p>
+          At Vimson Derma, we don’t just manufacture skincare; we shape tomorrow’s beauty brands.
+          As a trusted face care manufacturer in India, we specialize in premium private label and
+          third-party manufacturing of cleansers, toners, serums, moisturizers, exfoliators, and
+          face masks tailored to your brand’s goals.
+        </p>
+        <p>
+          From acne solutions and anti-aging treatments to brightening serums and daily hydration,
+          our R&amp;D team combines science-backed actives with luxurious textures your customers
+          will love.
+        </p>
+        <p>
+          We harness the power of trending skincare ingredients like niacinamide, hyaluronic acid,
+          glycolic acid, retinol, and vitamin C - all carefully selected for their proven efficacy
+          and market demand. But we don’t stop there.
+        </p>
+        <p>
+          We work with trending ingredients like niacinamide, hyaluronic acid, glycolic acid,
+          retinol, and vitamin C, and lead the way with next-gen actives like snail mucin, wasabi
+          extract, and other global skincare trends.
+        </p>
+        <p>
+          With deep expertise in dermatological performance, consumer insights, and regulatory
+          compliance, every formula is crafted with safety, stability, and quality at its core.
+        </p>
+        <p>
+          Let your brand shine with innovative, effective, and luxurious face care powered by
+          Vimson Derma.
+        </p>
+    </div>
+  </div>
+</section>
 <div class="container-fluid mt-5 mb-5 p-2 overflow-hidden">
   <div class="row">
     <!-- Left Sidebar (on top for mobile, side for desktop) -->

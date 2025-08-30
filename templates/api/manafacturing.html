@@ -29,7 +29,13 @@
 
   .overlay-text {
     align-items: flex-start;
+    width: 50%;
   }
+  @media (max-width: 768px) {
+  .overlay-text {
+    width: 100%;
+  }
+}
 
   .btn-custom:hover {
     color: rgba(20, 32, 97, 1);
@@ -40,73 +46,9 @@
 
 {% block content %}
 <div class="container-fluid Manufacturing-about">
-  <div class="overlay-text w-50 text-center">
+  <div class="overlay-text text-center">
     <div class="overlay-content">
     <h4 class="hero-heading">Best Third Party Manufacturer of Cosmetic & Medicated Products in India</h4>
-    <a href="#" class="btn btn-custom mt-3 " data-bs-toggle="modal" data-bs-target="#center-modal">Get In Touch</a>
-    </div>
-
-    <div class="modal fade" id="center-modal">
-      <form id="Contact_Us" class="submit-form" method="POST" action="{% url 'contact_submit' %}">
-        {% csrf_token %}
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header mb-3">
-              <h5 class="modal-title heading text-center" id="exampleModalLongTitle">Contact Us</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                id="closeModalButton"></button>
-            </div>
-            <div class="modal-body">
-              <div class="form">
-                <div class="row">
-                  <div class="col-md-6 col-sm-12">
-                    <input type="text" id="name" name="name" class="form-control" placeholder="Name">
-                  </div>
-                  <div class="col-md-6 col-sm-12">
-                    <input type="email" name="email" id="email" class="form-control" placeholder="Email">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6 col-sm-12">
-                    <input type="text" name="company" id="company" class="form-control" placeholder="Company Name">
-                  </div>
-                  <div class="col-md-6 col-sm-12">
-                    <input type="number" id="phone" name="phone" class="form-control" placeholder="Phone">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12">
-                    <div class="dropdown">
-                      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-bs-toggle="dropdown" aria-expanded="false" placeolder="Select Product">
-                        Select Product
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdownMenu">
-                        <li><a class="dropdown-item modal-item" href="#">Option 1</a></li>
-                        <li><a class="dropdown-item modal-item" href="#">Option 2</a></li>
-                        <li><a class="dropdown-item modal-item" href="#">Option 3</a></li>
-                      </ul>
-                    </div>
-
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12">
-                    <textarea class="form-control" placeholder="Message"></textarea>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <div id="error_data" style="color: red;"></div>
-              <div id="form_process" style="visibility: hidden;">Processing...</div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-          </div>
-        </div>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script> -->
-      </form>
     </div>
 
   </div>
@@ -327,7 +269,7 @@ From serums and sunscreens to scalp treatments and baby care - we manufacture a 
 </div>
 
 <div class="container">
-  <div class="accordian-heading">
+  <div class="accordian-heading text-center">
     <div class="heading h3 mt-5">Frequently Asked Questions</div>
   </div>
   <div class="accordion" id="accordionExample">
