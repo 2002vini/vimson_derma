@@ -47,15 +47,14 @@
 
     position: relative; /* required for overlay */
     overflow: hidden;   /* hide sliding overlay */
-    border-radius: 10px;
     transition: transform 0.3s ease;
     background: #fff; /* ensures overlay contrast */
 }
 
 /* Overlay CSS Start*/
-.service-box-card:hover {
+/* .service-box-card:hover {
     transform: translateY(-5px);
-}
+} */
 /* Overlay styling */
 .overlay {
     position: absolute;
@@ -267,6 +266,10 @@ z-index: 2;
     width:50%;
     font-family: 'Vietnam Pro', sans-serif;
 }
+.third-slide{
+  left:25%;
+  text-align: center;
+}
 
 .hero-introduction-loader{
   clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
@@ -281,6 +284,9 @@ z-index: 2;
     .hero-introduction {
         width: 100%;
         top: 80px;
+    }
+    .third-slide{
+      left:0%;
     }
 }
 .carousel-item.hero.active .text-overlay {

@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
  
+  //enable tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+  
 
     // Toggle description on step-box click
     document.querySelectorAll(".step-box").forEach((box, index) => {

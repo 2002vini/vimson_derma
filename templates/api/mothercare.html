@@ -11,6 +11,14 @@
   .products-display {
     background-image: url('{{ website_images.mother_care_hero.url }}');
     background-position: center left;
+    justify-content: right;
+  }
+  @media screen and (max-width: 768px) {
+    .products-display {
+      background-position: center;
+      justify-content: left;
+    }
+    
   }
 
   .facecare-section-container{
