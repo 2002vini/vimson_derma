@@ -61,6 +61,38 @@
   </div>
 </div>
 
+<div class="container-fluid products">
+  <div class="text-center heading mb-5">
+    <h3 class="heading">Product Categories</h3>
+    <p style="font-size: 1rem;">Explore our extensive product categories to discover what we can custom-develop for your
+      brand from concept to final formulation</p>
+  </div>
+
+  {% for product in products %}
+  {% if forloop.first or forloop.counter0|divisibleby:4 %}
+  <div class="row product-row">
+    {% endif %}
+
+    <div class="col-md-3 col-sm-12">
+      <a href="{% url product.url %}" class="text-decoration-none">
+        <div class="product-card">
+          <div class="product-img">
+            <img src="{{ product.svg_file }}" alt="{{ product.type }}" class="img-fluid">
+          </div>
+          <div class="product-type">
+            <h6 class="heading text-center">{{ product.type }}</h6>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    {% if forloop.counter|divisibleby:4 or forloop.last %}
+  </div> <!-- close row -->
+  {% endif %}
+  {% endfor %}
+
+</div>
+
 
 <div class="container-fluid service-description">
   <div class="heading h3 text-center mt-5">Why choose our Private Label Services?</div>
@@ -196,37 +228,7 @@
     </div>
   </div>
 </section>
-<div class="container-fluid products mt-5">
-  <div class="text-center heading mb-5">
-    <h3 class="heading">Product Categories</h3>
-    <p style="font-size: 1rem;">Explore our extensive product categories to discover what we can custom-develop for your
-      brand from concept to final formulation</p>
-  </div>
 
-  {% for product in products %}
-  {% if forloop.first or forloop.counter0|divisibleby:4 %}
-  <div class="row product-row">
-    {% endif %}
-
-    <div class="col-md-3 col-sm-12">
-      <a href="{% url product.url %}" class="text-decoration-none">
-        <div class="product-card">
-          <div class="product-img">
-            <img src="{{ product.svg_file }}" alt="{{ product.type }}" class="img-fluid">
-          </div>
-          <div class="product-type">
-            <h6 class="heading text-center">{{ product.type }}</h6>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    {% if forloop.counter|divisibleby:4 or forloop.last %}
-  </div> <!-- close row -->
-  {% endif %}
-  {% endfor %}
-
-</div>
 
 <div class="container">
   <div class="accordian-heading">

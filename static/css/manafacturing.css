@@ -30,7 +30,7 @@
     min-height: 40vh;
     gap: 40px;
     color: rgba(77, 84, 127, 1);
-    padding: 5.5rem;
+    padding: 3.5rem;
   }
   @media (max-width: 768px) {
   .about-container {
