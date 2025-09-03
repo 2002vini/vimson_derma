@@ -215,8 +215,7 @@
             {% else %}
             <li class="page-item">
               <a class="page-link"
-                href="?page={{ num }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}">{{ num
-                }}</a>
+                href="?page={{ num }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}">{{ num }}</a>
             </li>
             {% endif %} {% endfor %} {% if page_obj.has_next %}
             <li class="page-item">
