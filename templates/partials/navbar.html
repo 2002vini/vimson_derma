@@ -55,19 +55,23 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{% url 'careers' %}">Career</a>
                 </li>
+
+                <!--Mobile view request a quote and contact us icons-->
+                <li class="nav-item d-lg-none mt-3">
+            <a href="#" class="btn btn-custom w-100 mb-2" data-bs-toggle="modal" data-bs-target="#center-modal">Contact Us</a>
+        </li>
+        <li class="nav-item d-lg-none">
+            <a href="#" class="btn btn-custom w-100" data-bs-toggle="modal" data-bs-target="#request-quote-modal">Request a Quote</a>
+        </li>
             </ul>
            
         </div>
-        <div class="d-flex flex-column flex-lg-row gap-2 align-items-center">
-
-         <div class="d-flex flex-column flex-lg-row gap-2 align-items-center p-3">
+        <div class="d-none d-lg-flex flex-column flex-lg-row gap-2 align-items-center p-3">
+        <!-- Right Section: Contact & Quote Buttons -->    
             <a href="#" class="btn btn-custom w-100 " data-bs-toggle="modal" data-bs-target="#center-modal">Contact Us</a>
             <a href="#" class="btn btn-custom w-100 mb-md-0 mb-2" data-bs-toggle="modal" data-bs-target="#request-quote-modal">Request a Quote</a>
         </div>
-        </div>
-</div>
-
-
+    </div>
 </nav>
 
 <div class="modal fade" id="center-modal">
