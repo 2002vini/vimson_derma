@@ -16,18 +16,30 @@
     box-sizing: border-box;
     overflow-x: hidden;
 } */
+
+.navbar-nav {
+  display: flex;              /* make ul a flex container */
+  width: 100%;               /* full width */
+  padding-left: 0;           /* reset any ul padding */
+  margin: 0;                 /* reset margin */
+}
+
+.navbar-nav > li.nav-item {
+  flex: 1 1 0;               /* make each li take equal width */
+  text-align: center;        /* center the text inside each li */
+}
 .custom-navbar {
     background-color: rgba(20,32,97,1);
-    max-width: 100%;
-    min-height:84px;
-    margin: 0 auto; /* Centers the navbar */
-    padding: 0 36px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    /* max-width: 100%; */
+    /* min-height:84px; */
+    /* margin: 0 auto;  */
+    /* padding: 0 36px; */
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: space-between; */
     backdrop-filter: blur(60px);
-    position: sticky;
-    top:0;
+    /* position: sticky; */
+    /* top:0; */
     z-index:1000;
 
 
@@ -42,16 +54,9 @@
   cursor: pointer;
 }
 
-.navbar-nav {
-    margin: auto; /* Center navbar items */
-    display: flex;
-    gap: 30px;
-}
 
-.navbar-nav .nav-item {
-    padding: 0 15px; /* Spacing between menu items */
-}
-@media (max-width: 768px) {
+
+@media (max-width: 992px) {
     .navbar-nav .nav-item {
         padding: 0; /* Reduced spacing for mobile */
         width: 100%; /* Full width for mobile */
@@ -127,7 +132,7 @@
     color:rgba(20,32,97,1);
     font-size: 3rem; /* Adjusted for better readability */
 }
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .hero-heading {
     font-size: 2rem;
   }
@@ -520,11 +525,11 @@ h6 {
     border-radius: 5px;
     border-color: rgb(19,39,97);
 }
-.dropdown-toggle::after {
+/* .dropdown-toggle::after {
     position: absolute;
     right: 10px; /* Moves the arrow to the right */
-    top: 50%;
-}
+    /* top: 50%; */
+/* }  */
 
 .dropdown-placeholder {
     color: #999; /* Gray color like placeholder */
@@ -837,7 +842,7 @@ h6 {
   } */
   
   
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 992px) {
     #timeline {
       margin: 30px;
       padding: 0px;

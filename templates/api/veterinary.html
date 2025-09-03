@@ -29,74 +29,36 @@
   </div>
 </div>
 
-<div class="container mb-3 p-2">
-  <div class="blog-title">
-    <h4 class="heading text-center mt-5">Top Formulations</h4>
-  </div>
- <!-- Desktop Carousel (group of 3 per slide) -->
-<div id="productCarouselDesktop" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    {% for product in featured_products %}
-      {% if forloop.first or forloop.counter0|divisibleby:3 %}
-        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-          <div class="row">
-      {% endif %}
+<!--Adding swiper for top formulations-->
+<div class="container my-5">
+  <div class="swiper">
+    <h5 class="heading d-flex justify-content-center pt-4 mb-5 mt-3">Top Formulations</h5>
 
-      <div class="col-md-4">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper mb-5 ">
+      <!-- Slides -->
+      {% for product in featured_products %}
+      <div class="swiper-slide">
         <div class="blog-card">
-          <img src="{{ product.image }}" alt="Skincare Image">
-          <div class="blog-content">
-            <div class="tags">
-              {% for sub in product.subcategory %}
+          <a href="{% url 'product_detail' product.id %}" class="text-decoration-none">
+            <img src="{{ product.image }}" alt="Skincare Image">
+            <div class="blog-content">
+              <div class="tags">
+                {% for sub in product.subcategory %}
                 <span class="tag">{{ sub }}</span>
-              {% endfor %}
+                {% endfor %}
+              </div>
+              <div class="product-card-title">{{ product.name }}</div>
+              <div class="product-card-description">{{ product.tagline }}</div>
             </div>
-            <div class="product-card-title">{{ product.name }}</div>
-            <div class="product-card-description">{{ product.description|truncatewords:42 }}</div>
-          </div>
+          </a>
         </div>
       </div>
-
-      {% if forloop.counter|divisibleby:3 or forloop.last %}
-          </div>
-        </div>
-      {% endif %}
-    {% endfor %}
-  </div>
-  {% if featured_products|length > 3 %}
-    <!-- Controls -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#productCarouselDesktop" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#productCarouselDesktop" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-  {% endif %}
-</div>
-
-<!-- Mobile Carousel (one card per slide) -->
-<div id="productCarouselMobile" class="carousel slide d-md-none" data-bs-touch="true" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    {% for product in featured_products %}
-    <div class="carousel-item {% if forloop.first %}active{% endif %}">
-      <div class="col-12">
-        <div class="blog-card">
-          <img src="{{ product.image }}" alt="Skincare Image">
-          <div class="blog-content">
-            <div class="tags">
-              {% for sub in product.subcategory %}
-                <span class="tag">{{ sub }}</span>
-              {% endfor %}
-            </div>
-            <div class="product-card-title">{{ product.name }}</div>
-            <div class="product-card-description">{{ product.description|truncatewords:30 }}</div>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
   </div>
-</div>
 
 </div>
 
@@ -212,7 +174,9 @@
                   class="product-img"
                 />
               </div>
+              <div class="product-name d-flex justify-content-center align-items-center">
               <h6 class="heading">{{product.name}}</h6>
+              </div>
               <!-- <div class="product-tags">
                 {% for tag in product.subcategory %}
                 <small class="text-muted"> {{tag}} </small>
@@ -342,6 +306,37 @@
 
 <!-- JS to toggle subcategories -->
 <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const swiperEl = document.querySelector('.swiper .swiper-wrapper');
+    const slideCount = swiperEl ? swiperEl.children.length : 0;
+
+    const swiper = new Swiper('.swiper', {
+      slidesPerView: 3,
+      direction: 'horizontal',
+      loop: slideCount > 4, // Only enable loop if enough slides
+      spaceBetween: 10,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 4,
+        }
+      },
+    });
+  });
+
   document.querySelectorAll('[data-toggle="subcategory"]').forEach((item) => {
     item.addEventListener("click", () => {
       const targetId = item.getAttribute("data-target");

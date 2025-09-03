@@ -15,8 +15,9 @@
     background-position: right center;
   }
 
-  .facecare-section-container{
-    background: linear-gradient(rgba(20, 32, 97, 0.35), rgba(20, 32, 97, 0.45)), url('{{ website_images.face_care_image_1.url }}');
+  .facecare-section-container {
+    background: linear-gradient(rgba(20, 32, 97, 0.35), rgba(20, 32, 97, 0.45)),
+    url('{{ website_images.face_care_image_1.url }}');
   }
 </style>
 
@@ -30,58 +31,19 @@
   </div>
 </div>
 
-<div class="container mb-5 p-2">
-  <div class="blog-title">
-    <h4 class="heading text-center mt-5 mb-5">Top Formulations</h4>
-  </div>
-  <!-- Desktop Carousel (group of 3 per slide) -->
-  <div id="productCarouselDesktop" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
-    <div class="carousel-inner">
+
+<!--Adding swiper for top formulations-->
+<div class="container my-5">
+  <div class="swiper">
+    <h5 class="heading d-flex justify-content-center pt-4 mb-5 mt-3">Top Formulations</h5>
+
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper mb-5 ">
+      <!-- Slides -->
       {% for product in featured_products %}
-      {% if forloop.first or forloop.counter0|divisibleby:3 %}
-      <div class="carousel-item {% if forloop.first %}active{% endif %}">
-        <div class="row">
-          {% endif %}
-
-          <div class="col-md-4">
-            <div class="blog-card">
-              <img src="{{ product.image }}" alt="Skincare Image">
-              <div class="blog-content">
-                <div class="tags">
-                  {% for sub in product.subcategory %}
-                  <span class="tag">{{ sub }}</span>
-                  {% endfor %}
-                </div>
-                <div class="product-card-title">{{ product.name }}</div>
-                <div class="product-card-description">{{ product.description|truncatewords:42 }}</div>
-              </div>
-            </div>
-          </div>
-
-          {% if forloop.counter|divisibleby:3 or forloop.last %}
-        </div>
-      </div>
-      {% endif %}
-      {% endfor %}
-    </div>
-    {% if featured_products|length > 3 %}
-    <!-- Controls -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#productCarouselDesktop" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#productCarouselDesktop" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-    {% endif %}
-  </div>
-
-  <!-- Mobile Carousel (one card per slide) -->
-  <div id="productCarouselMobile" class="carousel slide d-md-none" data-bs-touch="true" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      {% for product in featured_products %}
-      <div class="carousel-item {% if forloop.first %}active{% endif %}">
-        <div class="col-12">
-          <div class="blog-card">
+      <div class="swiper-slide">
+        <div class="blog-card">
+          <a href="{% url 'product_detail' product.id %}" class="text-decoration-none">
             <img src="{{ product.image }}" alt="Skincare Image">
             <div class="blog-content">
               <div class="tags">
@@ -90,16 +52,19 @@
                 {% endfor %}
               </div>
               <div class="product-card-title">{{ product.name }}</div>
-              <div class="product-card-description">{{ product.description|truncatewords:30 }}</div>
+              <div class="product-card-description">{{ product.tagline }}</div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
       {% endfor %}
     </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
   </div>
 
 </div>
+
 
 <section class="facecare-section-container container-fluid py-5 position-relative d-none d-md-block ">
   <!-- Overlay -->
@@ -152,9 +117,9 @@
 
 <section class="facecare-mobile-section container-fluid d-block d-md-none overflow-hidden">
   <div class="row ">
-     <div class="col-12 text-center mb-3">
-       <h4 class="fw-bold">Face Care Manufacturing <br />with Science</h4>
-        <p class="lead">Innovation &amp; Sensory Luxury</p>
+    <div class="col-12 text-center mb-3">
+      <h4 class="fw-bold">Face Care Manufacturing <br />with Science</h4>
+      <p class="lead">Innovation &amp; Sensory Luxury</p>
     </div>
     <!-- Image on top -->
     <div class="col-12 mb-3">
@@ -163,35 +128,35 @@
 
     <!-- Text below -->
     <div class="col-12 facecare-text">
-     <p>
-          At Vimson Derma, we don’t just manufacture skincare; we shape tomorrow’s beauty brands.
-          As a trusted face care manufacturer in India, we specialize in premium private label and
-          third-party manufacturing of cleansers, toners, serums, moisturizers, exfoliators, and
-          face masks tailored to your brand’s goals.
-        </p>
-        <p>
-          From acne solutions and anti-aging treatments to brightening serums and daily hydration,
-          our R&amp;D team combines science-backed actives with luxurious textures your customers
-          will love.
-        </p>
-        <p>
-          We harness the power of trending skincare ingredients like niacinamide, hyaluronic acid,
-          glycolic acid, retinol, and vitamin C - all carefully selected for their proven efficacy
-          and market demand. But we don’t stop there.
-        </p>
-        <p>
-          We work with trending ingredients like niacinamide, hyaluronic acid, glycolic acid,
-          retinol, and vitamin C, and lead the way with next-gen actives like snail mucin, wasabi
-          extract, and other global skincare trends.
-        </p>
-        <p>
-          With deep expertise in dermatological performance, consumer insights, and regulatory
-          compliance, every formula is crafted with safety, stability, and quality at its core.
-        </p>
-        <p>
-          Let your brand shine with innovative, effective, and luxurious face care powered by
-          Vimson Derma.
-        </p>
+      <p>
+        At Vimson Derma, we don’t just manufacture skincare; we shape tomorrow’s beauty brands.
+        As a trusted face care manufacturer in India, we specialize in premium private label and
+        third-party manufacturing of cleansers, toners, serums, moisturizers, exfoliators, and
+        face masks tailored to your brand’s goals.
+      </p>
+      <p>
+        From acne solutions and anti-aging treatments to brightening serums and daily hydration,
+        our R&amp;D team combines science-backed actives with luxurious textures your customers
+        will love.
+      </p>
+      <p>
+        We harness the power of trending skincare ingredients like niacinamide, hyaluronic acid,
+        glycolic acid, retinol, and vitamin C - all carefully selected for their proven efficacy
+        and market demand. But we don’t stop there.
+      </p>
+      <p>
+        We work with trending ingredients like niacinamide, hyaluronic acid, glycolic acid,
+        retinol, and vitamin C, and lead the way with next-gen actives like snail mucin, wasabi
+        extract, and other global skincare trends.
+      </p>
+      <p>
+        With deep expertise in dermatological performance, consumer insights, and regulatory
+        compliance, every formula is crafted with safety, stability, and quality at its core.
+      </p>
+      <p>
+        Let your brand shine with innovative, effective, and luxurious face care powered by
+        Vimson Derma.
+      </p>
     </div>
   </div>
 </section>
@@ -199,8 +164,8 @@
   <div class="row">
     <!-- Left Sidebar (on top for mobile, side for desktop) -->
     <div class="d-md-none mb-3">
-      <button class="btn d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#mobileRightContent"
-        style="background-color: #E58D60;">
+      <button class="btn d-flex align-items-center" type="button" data-bs-toggle="collapse"
+        data-bs-target="#mobileRightContent" style="background-color: #E58D60;">
         <span class="material-icons me-2">filter_list</span>
         <span>Product Filter</span>
       </button>
@@ -234,12 +199,9 @@
               <div class="image-container mb-2">
                 <img src="{{product.image}}" alt="Product" class="product-img" />
               </div>
-              <h6 class="heading">{{product.name}}</h6>
-              <!-- <div class="product-tags">
-                {% for tag in product.subcategory %}
-                <small class="text-muted"> {{tag}} </small>
-                {% endfor %}
-              </div> -->
+              <div class="product-name d-flex justify-content-center align-items-center">
+              <h6 class="heading text-center">{{product.name}}</h6>
+              </div>
             </div>
           </div>
 
@@ -271,7 +233,8 @@
             {% else %}
             <li class="page-item">
               <a class="page-link"
-                href="?page={{ num }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}">{{ num }}</a>
+                href="?page={{ num }}{% if request.GET.filter %}&filter={{ request.GET.filter }}{% endif %}">{{ num
+                }}</a>
             </li>
             {% endif %} {% endfor %} {% if page_obj.has_next %}
             <li class="page-item">
@@ -398,6 +361,37 @@
 
 <!-- JS to toggle subcategories -->
 <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const swiperEl = document.querySelector('.swiper .swiper-wrapper');
+    const slideCount = swiperEl ? swiperEl.children.length : 0;
+
+    const swiper = new Swiper('.swiper', {
+      slidesPerView: 3,
+      direction: 'horizontal',
+      loop: slideCount > 4, // Only enable loop if enough slides
+      spaceBetween: 10,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 4,
+        }
+      },
+    });
+  });
+
   document.querySelectorAll('[data-toggle="subcategory"]').forEach((item) => {
     item.addEventListener("click", () => {
       const targetId = item.getAttribute("data-target");

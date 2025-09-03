@@ -59,7 +59,7 @@ def facecare(request):
         products = products.filter(subcategory__type=selected_tag)  # Assuming 'tags' is a ManyToManyField in Product model
     #Fetch the page number from the request 
     page_number = request.GET.get('page', 1)
-    paginator = Paginator(products, 5)
+    paginator = Paginator(products, 30)
     page_obj = paginator.get_page(page_number)
     featured_products=Product.objects.all().filter(is_featured=True,category__type='FaceCare').order_by('updated_at')
     serialized_products = ProductSerializer(page_obj.object_list, many=True, context={'request': request}).data
@@ -74,7 +74,7 @@ def haircare(request):
     page_number = request.GET.get('page', 1)
     if selected_subcategory and selected_subcategory != 'All':
         products = products.filter(subcategory__type=selected_subcategory)
-    paginator = Paginator(products, 5)
+    paginator = Paginator(products, 30)
     page_obj = paginator.get_page(page_number)
     serialized_products=ProductSerializer(page_obj.object_list,many=True,context={'request':request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
@@ -88,7 +88,7 @@ def bodycare(request):
     products=Product.objects.all().filter(is_featured=False,category__type='BodyCare').order_by('updated_at')
     if selected_subcategory and selected_subcategory != 'All':
         products = products.filter(subcategory__type=selected_subcategory)
-    paginator = Paginator(products, 5)
+    paginator = Paginator(products, 30)
     page_obj = paginator.get_page(page_number)
     serialized_products=ProductSerializer(page_obj.object_list,many=True,context={'request':request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
@@ -102,7 +102,7 @@ def mens_grooming(request):
     if selected_subcategory and selected_subcategory != 'All':
         products = products.filter(subcategory__type=selected_subcategory)
     page_number = request.GET.get('page', 1)
-    paginator = Paginator(products, 5)
+    paginator = Paginator(products, 30)
     page_obj = paginator.get_page(page_number)
     serialized_products=ProductSerializer(page_obj.object_list,many=True,context={'request':request}).data
     serialized_categories=CategorySerializer(Category.objects.all(), many=True,context={'request':request}).data
@@ -117,7 +117,7 @@ def mothercare(request):
     if selected_subcategory and selected_subcategory != 'All':
         products = Product.objects.filter(is_featured=False, category__type='Baby & Mother Care', subcategory__type=selected_subcategory).order_by('updated_at')
     page_number = request.GET.get('page', 1)
-    paginator = Paginator(products, 5)
+    paginator = Paginator(products, 30)
     page_obj = paginator.get_page(page_number)
     serialized_products=ProductSerializer(page_obj.object_list,many=True,context={'request':request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
@@ -173,7 +173,7 @@ def intimatecare(request):
     page_number = request.GET.get('page', 1)
     if selected_subcategory and selected_subcategory != 'All':
         products = products.filter(subcategory__type=selected_subcategory)
-    paginator = Paginator(products, 5)
+    paginator = Paginator(products, 30)
     page_obj = paginator.get_page(page_number)
     products = page_obj.object_list
     serialized_products = ProductSerializer(products, many=True, context={'request': request}).data
@@ -188,7 +188,7 @@ def veterinary(request):
     products=Product.objects.all().filter(is_featured=False,category__type='Veterinary').order_by('updated_at')
     if selected_subcategory and selected_subcategory != 'All':
         products = products.filter(subcategory__type=selected_subcategory)
-    paginator = Paginator(products, 5)
+    paginator = Paginator(products, 30)
     page_obj = paginator.get_page(page_number)
     products = page_obj.object_list
     serialized_products=ProductSerializer(products,many=True,context={'request':request}).data
