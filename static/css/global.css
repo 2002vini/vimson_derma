@@ -509,10 +509,10 @@ h6 {
     padding: 10px; /* Add padding for better spacing */
     border-radius: 6px;
 }
-.show {
+/* .show {
     display: block;
 
-}
+} */
 .dropdown button{
     display: flex;
     justify-content: space-between;
@@ -551,7 +551,7 @@ h6 {
 }
 .modal-header {
     border-bottom: none !important; /* Removes the horizontal line */
-}
+ } 
 
 /* PreLoader css */
 /* Fullscreen overlay */
@@ -586,12 +586,12 @@ h6 {
     flex-direction: column;
   }
 
-  .modal-footer{
+  /* .modal-footer{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-  }
+  } */
 
   #dropdownMenuButtonRequest{
     width: 100%;
