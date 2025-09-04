@@ -36,6 +36,8 @@
   .about-container {
       padding: 0.5rem; /* Reduced padding for mobile */ 
       text-align: justify;
+      gap:0px;
+      margin-top: 1rem;
   }
     
   }
@@ -66,7 +68,7 @@
     text-align: justify;
   }
   .about-text{
-    padding:0rem;
+    padding:2rem;
     }
     .about-heading{
         margin-bottom:0px;
@@ -82,7 +84,7 @@
       font-size: 18px;
       padding: 2rem;
     }
-  }
+  
 
   .description-card{
     display: flex;

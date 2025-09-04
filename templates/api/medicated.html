@@ -111,40 +111,41 @@
 
 <!-- Mobile Carousel -->
 <div class="container mt-4 d-block d-md-none">
-  <div id="categoryCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div id="categoryCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <div class="category-card {% if selected_category == 'BodyCare' %}selected-card{% endif %}" style="background-image: url('/static/images/medicated_bodycare.png');" onclick="window.location.href='?category=BodyCare'">
+        <div class="category-card {% if selected_category == 'BodyCare' %}selected-card{% endif %}" style="background-image: url('{{ website_images.medicated_image_1.url }}');" onclick="window.location.href='?category=BodyCare'">
           <div class="category-text">Body Care</div>
         </div>
       </div>
       <div class="carousel-item">
-        <div class="category-card {% if selected_category == 'FaceCare' %}selected-card{% endif %}" style="background-color:#142061;" onclick="window.location.href='?category=facecare'">
+        <div class="category-card {% if selected_category == 'FaceCare' %}selected-card{% endif %}" style="background-image: url('{{ website_images.medicated_image_2.url }}');" onclick="window.location.href='?category=facecare'">
           <div class="category-text">Face Care</div>
         </div>
       </div>
       <div class="carousel-item">
-        <div class="category-card {% if selected_category == 'HairCare' %}selected-card{% endif %}" style="background-image: url('/static/images/medicated_haircare.png');" onclick="window.location.href='?category=HairCare'" >
+        <div class="category-card {% if selected_category == 'HairCare' %}selected-card{% endif %}" style="background-image: url('{{ website_images.medicated_image_3.url }}');" onclick="window.location.href='?category=HairCare'" >
           <div class="category-text">Hair Care</div>
         </div>
       </div>
       <div class="carousel-item">
-        <div class="category-card {% if selected_category == 'VeterinaryCare' %}selected-card{% endif %}" style="background-image: url('/static/images/medicated_veterinary.png');" onclick="window.location.href='?category=Veterinary'">
+        <div class="category-card {% if selected_category == 'VeterinaryCare' %}selected-card{% endif %}" style="background-image: url('{{ website_images.medicated_image_4.url }}');" onclick="window.location.href='?category=Veterinary'">
           <div class="category-text">Veterinary Care</div>
         </div>
       </div>
       <div class="carousel-item">
-        <div class="category-card {% if selected_category == 'OralCare' %}selected-card{% endif %}" style="background-image: url('/static/images/medicated_oral.png');" onclick="window.location.href='?category=oralcare'">
+        <div class="category-card {% if selected_category == 'OralCare' %}selected-card{% endif %}" style="background-image: url('{{ website_images.medicated_image_5.url }}');" onclick="window.location.href='?category=oralcare'">
           <div class="category-text">Oral Care</div>
         </div>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#categoryCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#categoryCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
+   <div class="carousel-indicators">
+    <button type="button" data-bs-target="#categoryCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#categoryCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#categoryCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#categoryCarousel" data-bs-slide-to="3" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#categoryCarousel" data-bs-slide-to="4" aria-label="Slide 3"></button>
+  </div>
   </div>
 </div>
 

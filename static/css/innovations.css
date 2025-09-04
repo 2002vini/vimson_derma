@@ -131,7 +131,7 @@
   background: white;
   transition: transform 0.3s ease;
   background-color: #fdebf8;
-  height: 370px;
+  height: 400px;
 }
 
 .blog-card:hover {
@@ -142,8 +142,10 @@
 .blog-card img {
   width: 100%;
   object-fit: cover;
-  max-height: 65%;
-   object-position: bottom; /* Focus on the top of the image */
+  max-height: 70%;
+  min-height: 60%;
+  object-position: bottom;
+  display: block;
 }
 
 .blog-content {

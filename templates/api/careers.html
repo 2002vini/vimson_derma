@@ -42,10 +42,9 @@
         .overlay-text {
           width: 100%;
           padding-right: 0; /* no right padding on smaller screens */
-          align-items: flex-end; /* align items to the start */
-          text-align: right; /* align text to the right */
-          padding-top: 20px; /* optional, for spacing */
-          padding: 2px;
+          align-items: center; /* align items to the start */
+          text-align: center; /* align text to the right */
+          padding: 2rem;
 
         }
       
@@ -124,7 +123,7 @@
 <!-- Carousel for Mobile (sm only) -->
 <div class="container d-md-none mt-5 mb-5">
   <h6 class="heading text-center mb-4">Current Job Openings</h6>
-  <div id="jobCarouselMobile" class="carousel slide" data-bs-ride="carousel">
+  <div id="jobCarouselMobile" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-touch="true">
     <div class="carousel-inner">
       {% for job in jobs %}
       <div class="carousel-item {% if forloop.first %}active{% endif %}">
@@ -141,12 +140,6 @@
       </div>
       {% endfor %}
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#jobCarouselMobile" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#jobCarouselMobile" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    </button>
   </div>
 </div>
 
