@@ -20,6 +20,18 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+  .hero-about-heading{
+    justify-content: center;
+  }
+  @media screen and (max-width: 768px) {
+    .bg-image{
+      background-image: url('/static/images/about us (1).webp');
+    }
+    .hero-about-heading{
+      justify-content: flex-start;
+    }
+    
+  }
 
 </style>
 {% endblock %}
@@ -30,8 +42,8 @@
 
 
 <div class="bg-image">
-  <div class="row h-100 p-2">
-    <div class="col-md-6 d-flex flex-column col-sm-12 justify-content-center">
+  <div class="row h-100 w-100 p-0 m-0">
+    <div class="col-md-6 d-flex flex-column col-sm-12 hero-about-heading">
       <div class="p-5 mb-5 hero-text d-flex justify-content-center flex-column">
         <h4 class="hero-heading mb-3 text-center" data-aos="fade-right" data-aos-easing="ease-in-sine" data-aos-offset="300" data-aos-once="true">About Vimson Derma</h4>
         <p class="about-text text-center" data-aos="fade-right" data-aos-easing="ease-in-sine" data-aos-offset="300" data-aos-once="true">Your Trusted Partner in Private Label & Third-Party Cosmetic Manufacturing
@@ -41,7 +53,7 @@
   </div>
 </div>
 
-<div class="container-fluid one-stop-solution gx-0">
+<div class="container-fluid one-stop-solution gx-0 overflow-hidden">
   <div class="row w-100 p-0 m-0  align-items-stretch gx-0">
     <div class="col-md-6 col-sm-12 pe-0" style="max-height: 600px;">
       <img src="{{ website_images.about_image_1.url }}" alt="Slide 1"  class="w-100 h-100 object-fit-cover" style="object-position: top-center"/>
@@ -82,13 +94,14 @@
       </div>
     </div>
     <div class="col-md-6 col-sm-12 ps-0" style="max-height: 600px;">
+      
       <img src="{{ website_images.about_image_2.url }}" alt="Slide 1" class="w-100 h-100 object-fit-cover" style="object-position: bottom;"/>
     </div>
   </div>
 
 </div>
 
-<div class="expertise container-fluid p-2 m-0">
+<div class="expertise container-fluid p-2 m-0 overflow-hidden">
   <div class="section-title">
     <h2 class="text-center mt-5">Our Expertise</h2>
     <p class="text-center" data-aos="zoom-in">Your Brand. Our Facility. One Seamless Process</p>
@@ -191,7 +204,7 @@
   </div>
 </section>
 
-<div class="clientele-section container-fluid">
+<div class="clientele-section container-fluid overflow-hidden">
   <div class="container">
      <div class="heading text-center mb-5" data-aos="zoom-in" data-aos-once="true" style="color: white;">
           Trusted By Great Companies
@@ -274,8 +287,8 @@
   </div>
 
   <!-- Vision & Mission Section -->
-  <div class="vm-section row mb-5">
-    <div class="col-md-6 mb-4 mb-md-0 border-end">
+  <div class="vm-section row mb-5 overflow-hidden">
+    <div class="col-md-6 col-sm-12 mb-md-0 border-end">
       <div class="row vision-card">
         <h5 mb-5>👁️ Vision</h5>
         <p mt-4>
@@ -284,7 +297,7 @@ To be the most trusted partner for delivering exceptional quality and accessible
       </div>
 
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 col-sm-12 ">
       <div class="row vision-card">
         <h5 mb-5>🛡️ Mission</h5>
         <p mt-4>

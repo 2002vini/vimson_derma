@@ -49,7 +49,15 @@
           <a href="{% url 'about' %}#AboutUsText" class="btn btn-custom mt-3">Learn More</a>
         </div>
       </div>
-      <img src="{{ website_images.home_carousel_1.url }}" alt="Slide 1" class="w-100 h-100 object-fit-cover" />
+    <img src="{{ website_images.home_carousel_1.url }}" 
+     alt="Slide 1 Desktop" 
+     class="w-100 h-100 object-fit-cover d-none d-lg-block" />
+
+    <!-- Mobile Image -->
+    <img src="/static/images/home page 1-1.webp" 
+     alt="Slide 1 Mobile" 
+     class="w-100 h-100 object-fit-cover d-block d-lg-none" />
+
     </div>
     <div class="carousel-item hero">
       <div class="hero-introduction">
@@ -62,8 +70,16 @@
           <a href="{% url 'about' %}" class="btn btn-custom">Learn More</a>
         </div>
       </div>
-      <img src="{{ website_images.home_carousel_2.url }}" alt="Slide 2" class="w-100 h-100 object-fit-cover"
-        style="object-position: center 90%;" />
+
+      <img src="{{ website_images.home_carousel_2.url }}" 
+     alt="Slide 1 Desktop" 
+     class="w-100 h-100 object-fit-cover d-none d-lg-block" />
+
+    <!-- Mobile Image -->
+    <img src="/static/images/home page 2.webp" 
+     alt="Slide 1 Mobile" 
+     class="w-100 h-100 object-fit-cover d-block d-lg-none" />
+     
     </div>
     <div class="carousel-item hero">
       <div class="hero-introduction third-slide">
@@ -85,6 +101,8 @@
   <button class="carousel-control-next hero">
     <span class="carousel-control-next-icon"></span>
   </button>
+
+
 </div>
 
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
@@ -440,49 +458,6 @@
     </div>
   </div>
 
-  <!--Testimonial Section-->
-  <!-- <div class="container w-100 testimonial-container mt-5">
-    <div id="testimonialCarousel" class="carousel slide">
-      <h5 class="heading d-flex justify-content-center pt-4">Success Stories</h5>
-
-      <div class="carousel-inner testimonial">
-        {% for item in testimonials%}
-        <div class="carousel-item testimonial-item {% if forloop.first %}active{% endif %}">
-          <div class="testimonial-card">
-            <div class="quote-icon">
-              <img src="{% static 'images/testimonial.png'%}" alt="Testimonial">
-            </div>
-            <p class="testimonial-text">
-              {{item.feedback}}
-            </p>
-            <div class="testimonial-author">
-              {% if item.image %}
-              <img src="{{item.image}}" alt="">
-              {% else %}
-              <img src="" alt="">
-              {% endif %}
-              <div class="testimonial-author-details">
-                <small>{{item.customer_name}}</small>
-                <small>{{item.updated_at}}</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-      <button class="carousel-control-prev testimonial-button d-none" type="button"
-        data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next testimonial-button d-none" type="button"
-        data-bs-target="#testimonialCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  </div> -->
-
 
   <div class="container my-5 testimonial-container">
     <div class="swiper">
@@ -658,6 +633,9 @@
 
 <script src="https://kit.fontawesome.com/300d51b9da.js" crossorigin="anonymous"></script>
 <script src="../../static/js/index.js"></script>
+
+
+
 
 
 

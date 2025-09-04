@@ -234,32 +234,6 @@
   </div>
 </div>
 
-<div class="container mb-5 p-2">
-
-  <div class="blog-title">
-      <div class="heading h3 text-center mt-5 mb-5">Top Formulations</div>
-  </div>         
-  <div class="row ">
-    {% for product in featured_products %}
-      <div class="col-md-4 col-sm-12">
-          <div class="blog-card">
-              <img src="{{product.image}}" alt="Skincare Image">
-              <div class="blog-content">
-                  <div class="tags">
-                      {% for sub in product.subcategory %}
-                      <span class="tag">{{sub}}</span>
-                      {%endfor%}
-                  </div>
-                  <div class="product-card-title">{{product.name}}</div>
-                  <div class="product-card-description">{{product.description}}</div>
-              </div>
-          </div>
-      </div>
-      {% endfor %}
-  </div> 
-  
-</div>
-
 <div class="accordion" id="accordionExample">
   <div class="accordian-heading">
     <div class="heading h3 mb-5 mt-5 text-center mx-2">Frequently Asked Questions</div>

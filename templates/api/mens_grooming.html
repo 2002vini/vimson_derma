@@ -14,8 +14,7 @@
   .facecare-section-container{
     background: linear-gradient(rgba(20, 32, 97, 0.35), rgba(20, 32, 97, 0.45)), url('{{ website_images.mens_grooming_image_1.url }}');
   }
-</style>
-<style>
+ 
   .product-text {
     display: flex;
     width: 100% !important;
@@ -30,6 +29,18 @@
     /* adjust left space */
     color: white;
     /* or your preferred text color */
+  }
+   @media screen and (max-width: 768px) {
+    .products-display {
+      background-image: url("/static/images/men's grooming.webp");
+    }
+    .product-text {
+      padding-left: 30px;
+      justify-content: flex-start;
+      align-items: center;
+      padding-top: 50px;
+    }
+    
   }
 </style>
 

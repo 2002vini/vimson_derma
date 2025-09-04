@@ -22,12 +22,23 @@
     align-items: center;
     justify-content: right;
   }
+  @media screen and (max-width: 768px) {
+    .research-about{
+      background-image: url('/static/images/R&D.webp');
+      justify-content: flex-end;
+      align-items: flex-end;
+      text-align: right;
+    }
+    .hero-heading{
+      font-size: 1.5rem;
+    }
+  }
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="container-fluid research-about">
-  <div class="overlay-text p-5">
+  <div class="overlay-text p-3">
     <h3 class="hero-heading" >Innovating the Future of </h3>
     <h3 class="hero-heading">Skincare and Cosmetics.</h3>
     <h6 class="sub-heading-text">Cutting-edge R&D tailored to your brand’s vision
