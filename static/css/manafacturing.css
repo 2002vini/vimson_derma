@@ -58,7 +58,6 @@
   }
    
 
-  @media (max-width: 768px) {
    @media (max-width: 768px) {
   .about-us-container {
       padding: 0.5rem; /* Reduced padding for mobile */
@@ -66,6 +65,12 @@
   .about-us-container .text {
     text-align: justify;
   }
+  .about-text{
+    padding:0rem;
+    }
+    .about-heading{
+        margin-bottom:0px;
+    }
 }
 
 
