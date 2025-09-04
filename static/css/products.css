@@ -54,6 +54,9 @@
       height: 100vh;
       overflow-y: auto;
     }
+    #accordionExample{
+        margin-bottom:3rem;
+        }
   }
   .category-tags{
     background-color: rgba(211, 213, 228, 1);
