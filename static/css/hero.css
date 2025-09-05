@@ -196,68 +196,8 @@
     }
 }
 
-
-.carousel-control-prev, .carousel-control-next {
-    width: 5%; /* Adjust arrow size */
-}
-
-.carousel-control-prev-icon, .carousel-control-next-icon {
-    background-color: black; /* Change arrow color */
-    border-radius: 50%;
-    padding: 10px;
-}
-
-/* Card Styling */
-/* Move Next Arrow to the Top */
-.carousel-control-next {
-    top: -40px; /* Move the next button above the carousel */
-    right: 10px; /* Keep it aligned to the right */
-    width: auto;
-}
-
-/* Move Previous Arrow to the Top */
-.carousel-control-prev {
-    top: -40px; /* Move the previous button above the carousel */
-    left: 10px; /* Keep it aligned to the left */
-    width: auto;
-}
-
-/* Customize Arrow Icons */
-.carousel-control-next-icon, .carousel-control-prev-icon {
-    background-color: rgba(20,32,97,1) !important; /* Change arrow color to blue */
-    border-radius: 50%;
-    padding: 10px;
-}
-
-/* Optional: Adjust Size */
-.carousel-control-next-icon, .carousel-control-prev-icon {
-    width: 40px;
-    height: 40px;
-}
-/* hero section css */
-
-.carousel-inner.hero {
-    position: relative;
-    overflow: hidden;
-    height: 85vh;
-  }
-
-  .carousel-item.hero {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    display: block;
-    /* transition: opacity 2s ease-in-out; */
-  }
-
-.carousel-item.hero.active {
-opacity: 1;
-clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-animation: slideInFromLeft 1.5s ease-in-out forwards;
-z-index: 2;
+.hero{
+  height: 85vh;
 }
 .hero-introduction{
     position:absolute;
@@ -268,16 +208,13 @@ z-index: 2;
 }
 .third-slide{
   left:25%;
-  top:45%;
+  top:5%;
   text-align: center;
 }
 
-.hero-introduction-loader{
-  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-  animation: slideInFromLeft 3s ease-in-out forwards;
-}
 .text-overlay{
-  z-index: 5;
+  z-index: 0;
+  opacity: 0;
   margin-left: 50px;
   transform: translateX(-50px);
 }
@@ -292,7 +229,8 @@ z-index: 2;
     }
 }
 .carousel-item.hero.active .text-overlay {
-    animation: textFadeIn 1.5s ease-in-out forwards;
+    z-index: 5;
+    animation: textFadeIn 1s ease-in-out forwards;
   }
   @media (max-width: 768px) {
     .text-overlay {
@@ -301,43 +239,6 @@ z-index: 2;
         transform: translateX(-20px);
     }
 }
-
-  
-.carousel-item.hero.prev-active .text-overlay {
-    animation: textFadeOut 1.5s ease-in-out forwards;
-}
-
-.carousel-item.hero.prev-active {
-  opacity: 1;
-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-animation: slideOutToRight 1.5s ease-in-out forwards;
-z-index: 2;
-}
-
-@keyframes slideInFromLeft {
-from {
-  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-}
-to {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-}
-}
-
-@keyframes slideOutToRight {
-from {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-}
-to {
-  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-}
-}
-
-  .carousel-control-prev.hero{
-      z-index: 5;
-  }
-  .carousel-control-next.hero{
-      z-index: 5;
-  }
 
   @keyframes textFadeIn {
     from { opacity: 0; transform: translateX(-50px); }
