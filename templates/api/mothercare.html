@@ -21,6 +21,14 @@
     .products-display {
       background-image: url("/static/images/baby and mother's care.webp");
     }
+    .product-text{
+      justify-content:flex-start;
+      padding:2.5rem;
+      text-align: left;
+      }
+    .product-text h1{
+      line-height: normal;
+    }
     
   }
 
@@ -31,11 +39,10 @@
 
 {% endblock %} {% block content %}
 <div class="container-fluid products-display">
-  <div class="product-text" >
-    <h1>Baby &</h1>
-    <h1>Mother Care</h1>
-    <h5>Gentle Formulations for Life’s Most Delicate Moments</h5>
-    <p>Offering end-to-end manufacturing of baby and mother care products with natural, gentle, and clinically tested ingredients to ensure safety and comfort for delicate skin.</p>
+  <div class="product-text" style="line-height: normal;">
+    <h1 style="line-height: normal;">Baby & Mother Care</h1>
+    <h5 style="line-height: normal;">Gentle Formulations for Life’s Most Delicate Moments</h5>
+    <p >Offering end-to-end manufacturing of baby and mother care products with natural, </p>
   </div>
 </div>
 

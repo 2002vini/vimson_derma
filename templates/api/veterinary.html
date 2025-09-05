@@ -1,5 +1,5 @@
 {% extends 'temp_base.html' %} {% load static %}
-{% block title %}FaceCare{%endblock %}
+{% block title %}Veterinary{%endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/products.css' %}" />
@@ -22,6 +22,10 @@
     .products-display {
       background-image: url('/static/images/veterinary care.webp');
     }
+     .product-text{
+      justify-content:flex-start;
+      padding:2.5rem;
+      }
     
   }
 </style>
@@ -31,7 +35,15 @@
 {% block content %}
 <div class="container-fluid products-display">
   <div class="product-text text-center w-100">
-    <h1 class="text-white text-center">Trusted Veterinary Care Manufacturer in India</h1>
+<h1 class="text-white text-center d-none d-lg-block">
+  Trusted Veterinary Care Manufacturer in India
+</h1>
+
+<!-- Show ONLY below lg -->
+<h1 class="text-white text-center d-lg-none heading">
+  Trusted Veterinary Care Manufacturer in India
+</h1>
+
   </div>
 </div>
 
