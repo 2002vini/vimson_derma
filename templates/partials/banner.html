@@ -44,30 +44,29 @@
                     <div class="form">
                         <div class="row">
                             <div class="col-md-6 col-sm-12">
-                                <input type="text" id="name" name="name" class="form-control" placeholder="Name">
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Name" required minlength="2">
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-sm-12">
-                                <input type="text" name="company" id="company" class="form-control" placeholder="Company Name">
+                                <input type="text" name="company" id="company" class="form-control" placeholder="Company Name" required minlength="2">
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <input type="number" id="phone" name="phone" class="form-control" placeholder="Phone">
+                                <input type="number" id="phone" name="phone" class="form-control" placeholder="Phone" required pattern="^\d{10,15}$">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
                                 <div class="dropdown">
                                     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" placeolder="Select Product">
-                                        Select Product
+                                        Select category
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdownMenu">
-                                        <li><a class="dropdown-item modal-item"  href="#">Option 1</a></li>
-                                        <li><a class="dropdown-item modal-item" href="#">Option 2</a></li>
-                                        <li><a class="dropdown-item modal-item" href="#">Option 3</a></li>
+                                        <li><a class="dropdown-item modal-item"  href="#">Pharmaceutical</a></li>
+                                        <li><a class="dropdown-item modal-item" href="#">Dermatology</a></li>
                                     </ul>
                                 </div>
                              
@@ -75,7 +74,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <textarea class="form-control" placeholder="Message"></textarea>
+                                <textarea class="form-control no-tinymce" placeholder="Message"></textarea>
                             </div>
                         </div>
                     </div>

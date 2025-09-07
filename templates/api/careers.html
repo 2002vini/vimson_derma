@@ -168,7 +168,8 @@
 <section class="form-section py-5" id="job-application-section">
   <div class="container">
     <h2 class="text-center mb-4 heading mt-3 mb-5">Apply For Job</h2>
-    <form id="jobForm">
+    <form id="jobForm" class="submit-form" method="POST" action="{% url 'careers_apply' %}">
+      {% csrf_token %}
       <div class="row g-3">
         <div class="col-md-6">
           <input type="text" name="name" placeholder="Name" class="form-control" required>
@@ -220,64 +221,26 @@
       aboutSection.classList.add('about-animate');
     }
 
-    const jobForm = document.getElementById('jobForm');
-    function showToast(type, message) {
-      Swal.fire({
-        icon: type,
-        title: message,
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        showCloseButton: true,
-        timer: 5000,
-        timerProgressBar: true,
-        backdrop: false,
-        customClass: {
-          popup: 'no-blur-popup',
-          title: 'custom-toast-title'
-        }
-      });
-    }
-    jobForm.addEventListener('submit', function (event) {
-      event.preventDefault(); // Prevent the default form submission
-      const resume = document.getElementById('resume');
-      const file = resume.files[0];
-      if (!file) {
-        showToast('warning', 'Please upload your resume.');
-        return;
-      }
-      const allowedExtensions = ['pdf', 'doc', 'docx'];
-      const fileExtension = file.name.split('.').pop().toLowerCase();
-
-      if (!allowedExtensions.includes(fileExtension)) {
-        showToast('warning', 'Invalid resume format.Only PDF, DOC, or DOCX files are allowed.');
-        return;
-      }
-
-      const formData = new FormData(jobForm);
-      formData.append('resume', file); // Append the file to the FormData object
-      fetch("{% url 'careers_apply' %}", {
-        method: 'POST',
-        headers: {
-          'X-CSRFToken': '{{ csrf_token }}',
-        },
-        body: formData // Convert the object to a JSON string
-      })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            showToast('success', 'Application submitted successfully!');
-            jobForm.reset();
-          } else {
-            showToast('error', 'Failed to submit application. details: ' + data.error);
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          showToast('error', 'An unexpected error occurred. Please try again.');
-        });
-    });
+    // const jobForm = document.getElementById('jobForm');
+    // function showToast(type, message) {
+    //   Swal.fire({
+    //     icon: type,
+    //     title: message,
+    //     toast: true,
+    //     position: 'top-end',
+    //     showConfirmButton: false,
+    //     showCloseButton: true,
+    //     timer: 5000,
+    //     timerProgressBar: true,
+    //     backdrop: false,
+    //     customClass: {
+    //       popup: 'no-blur-popup',
+    //       title: 'custom-toast-title'
+    //     }
+    //   });
+    // }
   });
+
 </script>
 
 {% endblock %}

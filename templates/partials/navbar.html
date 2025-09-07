@@ -3,7 +3,7 @@
 <nav class="navbar navbar-expand-lg custom-navbar w-100 p-0 sticky-top">
     <div class="container-fluid p-0">
         <!-- Left Section: Logo -->
-        <a class="navbar-brand m-0 h-100 p-0" href="{% url 'index' %}" >
+        <a class="navbar-brand m-0 h-100 p-0" href="{% url 'index' %}">
             <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-image h-100">
         </a>
 
@@ -16,28 +16,30 @@
         <!-- Center Section: Navbar Items -->
         <div class="collapse navbar-collapse" id="navbarNav" style="flex-grow: 1;">
             <ul class="navbar-nav justify-content-around">
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link text-white" href="{% url 'index' %}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{% url 'about' %}">About Us</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Services
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Services
                     </a>
                     <ul class="dropdown-menu" id="customDropdownMenu">
-                      <li><a class="dropdown-item" href="{% url 'manafacturing' %}">Third Party Manufacturing</a></li>
-                      <li><a class="dropdown-item" href="{% url 'services'%}">Private Label Manufacturing</a></li>
-                      <li><a class="dropdown-item" href="{% url 'innovation' %}">Formulation & Customization</a></li>
-                     <li><a class="dropdown-item" href="{% url 'research' %}">Research & Development</a></li>
+                        <li><a class="dropdown-item" href="{% url 'manafacturing' %}">Third Party Manufacturing</a></li>
+                        <li><a class="dropdown-item" href="{% url 'services'%}">Private Label Manufacturing</a></li>
+                        <li><a class="dropdown-item" href="{% url 'innovation' %}">Formulation & Customization</a></li>
+                        <li><a class="dropdown-item" href="{% url 'research' %}">Research & Development</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                         Products
-                      </a>
-                      <ul class="dropdown-menu" id="customDropdownProductMenu">
+                    </a>
+                    <ul class="dropdown-menu" id="customDropdownProductMenu">
                         <li><a class="dropdown-item" href="{% url 'facecare' %}">FaceCare</a></li>
                         <li><a class="dropdown-item" href="{% url 'haircare' %}">HairCare</a></li>
                         <li><a class="dropdown-item" href="{% url 'bodycare' %}">BodyCare</a></li>
@@ -47,7 +49,7 @@
                         <li><a class="dropdown-item" href="{% url 'mothercare' %}">Baby & Mother Care</a></li>
                         <li><a class="dropdown-item" href="{% url 'veterinary' %}">Veterinary</a></li>
 
-                      </ul>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{% url 'blogs' %}">Blog</a>
@@ -58,18 +60,22 @@
 
                 <!--Mobile view request a quote and contact us icons-->
                 <li class="nav-item d-lg-none mt-3">
-            <a href="#" class="btn btn-custom w-100 mb-2" data-bs-toggle="modal" data-bs-target="#center-modal">Contact Us</a>
-        </li>
-        <li class="nav-item d-lg-none">
-            <a href="#" class="btn btn-custom w-100 mb-3" data-bs-toggle="modal" data-bs-target="#request-quote-modal">Request a Quote</a>
-        </li>
+                    <a href="#" class="btn btn-custom w-100 mb-2" data-bs-toggle="modal"
+                        data-bs-target="#center-modal">Contact Us</a>
+                </li>
+                <li class="nav-item d-lg-none">
+                    <a href="#" class="btn btn-custom w-100 mb-3" data-bs-toggle="modal"
+                        data-bs-target="#request-quote-modal">Request a Quote</a>
+                </li>
             </ul>
-           
+
         </div>
         <div class="d-none d-lg-flex flex-column flex-lg-row gap-2 align-items-center p-3">
-        <!-- Right Section: Contact & Quote Buttons -->    
-            <a href="#" class="btn btn-custom w-100 " data-bs-toggle="modal" data-bs-target="#center-modal">Contact Us</a>
-            <a href="#" class="btn btn-custom w-100 mb-md-0 mb-2" data-bs-toggle="modal" data-bs-target="#request-quote-modal">Request a Quote</a>
+            <!-- Right Section: Contact & Quote Buttons -->
+            <a href="#" class="btn btn-custom w-100 " data-bs-toggle="modal" data-bs-target="#center-modal">Contact
+                Us</a>
+            <a href="#" class="btn btn-custom w-100 mb-md-0 mb-2" data-bs-toggle="modal"
+                data-bs-target="#request-quote-modal">Request a Quote</a>
         </div>
     </div>
 </nav>
@@ -77,118 +83,132 @@
 <div class="modal fade" id="center-modal">
     <form id="Contact_Us" class="submit-form" method="POST" action="{% url 'contact_submit' %}">
         {% csrf_token %}
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header mb-3">
-                <h5 class="modal-title heading text-center" id="exampleModalLongTitle">Contact Us</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeModalButton"></button>
-            </div>
-            <div class="modal-body">
-                <div class="form">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12">
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Name">
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <input type="email" name="email" id="email" class="form-control" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12">
-                            <input type="text" name="company" id="company" class="form-control" placeholder="Company Name">
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <input type="number" id="phone" name="phone" class="form-control" placeholder="Phone">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" placeolder="Select Product">
-                                    Select Category
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdownMenu">
-                                    <li><a class="dropdown-item modal-item"  href="#">Pharmaceutical</a></li>
-                                    <li><a class="dropdown-item modal-item" href="#">Dermatology</a></li>
-                                </ul>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header mb-3">
+                    <h5 class="modal-title heading text-center" id="exampleModalLongTitle">Contact Us</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="closeModalButton"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Name"
+                                    required minlength="2">
                             </div>
-                         
+                            <div class="col-md-6 col-sm-12">
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Email"
+                                    required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <textarea class="form-control" placeholder="Message"></textarea>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <input type="text" id="company" name="company" class="form-control"
+                                    placeholder="Company Name">
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone"
+                                    required pattern="^\d{10,15}$">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <!-- Hidden field to store dropdown selection -->
+                                <input type="hidden" name="category" id="category">
+
+                                <div class="dropdown">
+                                    <button class="btn dropdown-toggle" type="button" id="categoryDropdownButton"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Select Category
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="categoryDropdownButton">
+                                        <li><button type="button" class="dropdown-item category-item"
+                                                data-value="Pharmaceutical">Pharmaceutical</button></li>
+                                        <li><button type="button" class="dropdown-item category-item"
+                                                data-value="Dermatology">Dermatology</button></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                              <textarea class="form-control no-tinymce" name="message" id="message" placeholder="Message"></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <div id="error_data" style="color: red;"></div>
-                <div id="form_process" style="visibility: hidden;">Processing...</div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="modal-footer">
+                    <div id="error_data" style="color: red;"></div>
+                    <div id="form_process" style="visibility: hidden;">Processing...</div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script> -->
     </form>
 </div>
+
 
 <div class="modal fade request-quote" id="request-quote-modal">
     <form id="Request_Quote" class="submit-form" method="POST" action="{% url 'quote_submit' %}">
         {% csrf_token %}
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header mb-3">
-                <h5 class="modal-title heading text-center" id="exampleModalLongTitle">Request A Quote</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeModalButtonRequest"></button>
-            </div>
-            <div class="modal-body">
-                <div class="form">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12">
-                            <input type="text" id="request-name" name="request-name" class="form-control" placeholder="Name">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header mb-3">
+                    <h5 class="modal-title heading text-center" id="exampleModalLongTitle">Request A Quote</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="closeModalButtonRequest"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <input type="text" id="request-name" name="request-name" class="form-control"
+                                    placeholder="Name" required minlength="2">
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <input type="email" name="request-email" id="request-email" class="form-control"
+                                    placeholder="Email" required>
+                            </div>
                         </div>
-                        <div class="col-md-6 col-sm-12">
-                            <input type="email" name="request-email" id="request-email" class="form-control" placeholder="Email">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <input type="text" name="request-company" id="request-company" class="form-control"
+                                    placeholder="Company Name" required minlength="2">
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <input type="number" id="request-phone" name="request-phone" class="form-control"
+                                    placeholder="Phone" required pattern="^\d{10,15}$">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12">
-                            <input type="text" name="request-company" id="request-company" class="form-control" placeholder="Company Name">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group mt-3">
+                                    <select class="form-select" name="request-product" id="request-product" required>
+                                        <option value="" disabled selected>Select category</option>
+                                        <option value="option1">Pharmaceutical</option>
+                                        <option value="option2">Dermatology</option>
+                                    </select>
+                                </div>
+
+                            </div>
                         </div>
-                        <div class="col-md-6 col-sm-12">
-                            <input type="number" id="request-phone" name="request-phone" class="form-control" placeholder="Phone">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group mt-3">
-                                <select class="form-select" name="request-product" id="request-product" required>
-                                  <option value="" disabled selected>Select Product</option>
-                                  <option value="option1">Option 1</option>
-                                  <option value="option2">Option 2</option>
-                                  <option value="option3">Option 3</option>
-                                </select>
-                              </div>
-                         
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 request-quote-inputs">
-                            <input type="number" id="request-quantity" name="request-quantity" class="form-control" placeholder="Quantity">
-                            <input type="text" id="request-customization" name="request-customization" class="form-control" placeholder="Customization">
-                            <textarea class="form-control" placeholder="Message" id="request-message" name="request-message"></textarea>
+                        <div class="row">
+                            <div class="col-12 request-quote-inputs">
+                                <input type="number" id="request-quantity" name="request-quantity" class="form-control"
+                                    placeholder="Quantity">
+                                <input type="text" id="request-customization" name="request-customization"
+                                    class="form-control" placeholder="Customization">
+                                <textarea class="form-control no-tinymce" name="message" id="message" placeholder="Message" required></textarea>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <div id="error_data_request" style="color: red;"></div>
-                <div id="form_process_request" style="visibility: hidden;">Processing...</div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                 <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </div>
         </div>
-    </div>
     </form>
 </div>

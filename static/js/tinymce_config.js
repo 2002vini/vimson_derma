@@ -1,5 +1,5 @@
 tinymce.init({
-    selector: 'textarea',
+    selector: 'textarea:not(.no-tinymce)',// apply to all textareas except those with .no-tinymce,
     plugins: 'image link media code',
     toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link image media | code',
     image_title: true,

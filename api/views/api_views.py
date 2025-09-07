@@ -1,5 +1,6 @@
+from dis import Positions
 from urllib import request
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.db.models import Q
 from rest_framework import viewsets
 from ..models import Category, Job, JobApplications, JobPosition, Product, Client, FAQ, SubCategory, Testimonial, Tag, BlogPost
@@ -17,100 +18,10 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 import re
 import mailtrap as mt
+from django.utils.html import strip_tags
+from django.core.mail import EmailMultiAlternatives
 
-def send_mailtrap_email(name, email, contact_no, dob,resume=None):
-    """Function to send an email using Mailtrap."""
-    try:
-        resume_content = resume.read() if resume else None
-        if resume_content:
-            resume_name = resume.name
-            resume_mime_type = resume.content_type
-            attachment = mt.Attachment(
-                filename=resume_name,
-                content=resume_content,
-                mimetype=resume_mime_type
-            )
-         
-        mail = mt.Mail(
-        sender=mt.Address(email="hello@demomailtrap.co", name="Mailtrap Test"),
-        to=[mt.Address(email="hundlanivini2002@gmail.com")],
-        subject="Testing For Contact Us Leads!",
-        text="Congrats for sending test email with Mailtrap! \n\n",
-        html = f"""
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Contact Us Email</title>
-            <style>
-                body {{
-                    font-family: Arial, sans-serif;
-                    line-height: 1.6;
-                    color: #333;
-                    background-color: #f9f9f9;
-                    margin: 0;
-                    padding: 0;
-                }}
-                .email-container {{
-                    max-width: 600px;
-                    margin: 20px auto;
-                    background: #ffffff;
-                    border: 1px solid #ddd;
-                    border-radius: 8px;
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                    overflow: hidden;
-                }}
-                .email-header {{
-                    background-color: #4CAF50;
-                    color: white;
-                    padding: 20px;
-                    text-align: center;
-                }}
-                .email-body {{
-                    padding: 20px;
-                }}
-                .email-body p {{
-                    margin: 10px 0;
-                }}
-                .email-footer {{
-                    background-color: #f1f1f1;
-                    text-align: center;
-                    padding: 10px;
-                    font-size: 12px;
-                    color: #666;
-                }}
-            </style>
-        </head>
-        <body>
-            <div class="email-container">
-                <div class="email-header">
-                    <h1>Contact Us Submission</h1>
-                </div>
-                <div class="email-body">
-                    <p>Congrats for sending a test email with Mailtrap!</p>
-                    <p><strong>Name:</strong> {name}</p>
-                    <p><strong>Email:</strong> {email}</p>
-                    <p><strong>Contact No:</strong> {contact_no}</p>
-                    <p><strong>Date of birth:</strong></p>
-                    <p>{dob}</p>
-                </div>
-                <div class="email-footer">
-                    <p>This is an automated email. Please do not reply.</p>
-                </div>
-            </div>
-        </body>
-        </html>
-        """,
-        category="Integration Test",
-        attachments=[attachment] if resume_content else []
-        )
-        client = mt.MailtrapClient(token="ad0bd2f3543f7375bb7dc34bd84a933b")
-        response = client.send(mail)
-      
-        return True
-    except Exception as e:
-        return False
+VIMSON_EMAIL = "info@vimsonderma.com"
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -237,6 +148,23 @@ class BlogPostViewSet(viewsets.ModelViewSet):
         serializer.save()
         return Response(serializer.data)
 
+def send_email_handler(subject, recipient_email, html_content,attachment=None):
+
+    # Fallback plain text version
+    text_content = strip_tags(html_content)
+
+    # Send email
+    email = EmailMultiAlternatives(
+        subject=subject,
+        body=text_content,
+        to=[recipient_email,]
+    )
+    email.attach_alternative(html_content, "text/html")
+    if attachment:
+        filename, content, mimetype = attachment
+        email.attach(filename, content, mimetype)
+    email.send()
+    return f"Email sent to {recipient_email}"
 @require_POST
 def contact_submit(request):
     name = request.POST.get('name', '').strip()
@@ -244,25 +172,8 @@ def contact_submit(request):
     contact_no = request.POST.get('phone', '').strip()
     message = request.POST.get('message', '').strip()
 
-    # Basic validation
-    if not name:
-        return JsonResponse({'status': 0, 'error': '* Please Enter Name.'})
-
-    if not re.match(r'^[a-zA-Z][a-zA-Z\s\-\,\.]*$', name):
-        return JsonResponse({'status': 0, 'error': f'* Invalid Name: {name}'})
-
-    if not email or not re.match(r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$', email):
-        return JsonResponse({'status': 0, 'error': '* Invalid Email ID.'})
-
-    contact_clean = contact_no.replace('+', '')
-    if not contact_clean or not re.match(r'^\d{10,15}$', contact_clean):
-        return JsonResponse({'status': 0, 'error': '* Invalid Contact No.'})
-
     # Send email (or process data)
     try:
-        mail = mt.Mail(
-        sender=mt.Address(email="hello@demomailtrap.co", name="Mailtrap Test"),
-        to=[mt.Address(email="hundlanivini2002@gmail.com")],
         subject="Testing For Contact Us Leads!",
         text="Congrats for sending test email with Mailtrap! \n\n",
         html = f"""
@@ -331,19 +242,16 @@ def contact_submit(request):
         </body>
         </html>
         """,
-        
-        category="Integration Test",
-        )
+        send_email_handler(subject, 'hundlanivini2002@gmail.com', html)
+        messages.success(request, 'Email sent successfully!')
 
-        client = mt.MailtrapClient(token="ad0bd2f3543f7375bb7dc34bd84a933b")
-        response = client.send(mail)
-
-        messages.success(request, 'Item successfully added!')
-
-        
-        return JsonResponse({'status': 1, 'message': 'Form submitted successfully'})
+        print("Email sent successfully!")
+        return redirect(request.META.get('HTTP_REFERER', '/'))
     except Exception as e:
-        return JsonResponse({'status': 0, 'error': f'Server error: {str(e)}'})
+        print(e)
+        messages.error(request, 'An error occurred while sending the email.')
+        return redirect(request.META.get('HTTP_REFERER', '/'))
+
 
 
 def quote_submit(request):
@@ -356,32 +264,11 @@ def quote_submit(request):
         quantity = request.POST.get('request-quantity', '').strip()
         product_name = request.POST.get('request-product', '').strip()
         customization = request.POST.get('request-customization', '').strip()
-        # Basic validation
-        if not name:
-            return JsonResponse({'status': 0, 'error': '* Please Enter Name.'})
-
-        if not re.match(r'^[a-zA-Z][a-zA-Z\s\-\,\.]*$', name):
-            return JsonResponse({'status': 0, 'error': f'* Invalid Name: {name}'})
-
-        if not email or not re.match(r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$', email):
-            return JsonResponse({'status': 0, 'error': '* Invalid Email ID.'})
-
-        contact_clean = contact_no.replace('+', '')
-        if not contact_clean or not re.match(r'^\d{10,15}$', contact_clean):
-            return JsonResponse({'status': 0, 'error': '* Invalid Contact No.'})
-
-        if not quantity or not re.match(r'^\d+$', quantity):
-            return JsonResponse({'status': 0, 'error': '* Invalid Quantity.'})
-        if not product_name:
-            return JsonResponse({'status': 0, 'error': '* Please Enter Product Name.'})
         
     
         try:
-            mail = mt.Mail(
-            sender=mt.Address(email="hello@demomailtrap.co", name="Mailtrap Test"),
-            to=[mt.Address(email="hundlanivini2002@gmail.com")],
-            subject="Testing For Contact Us Leads!",
-            text="Congrats for sending test email with Mailtrap! \n\n",
+            subject="Testing For Contact Us Leads!"
+            text="Congrats for sending test email with Mailtrap! \n\n"
             html = f"""
             <!DOCTYPE html>
             <html lang="en">
@@ -438,6 +325,9 @@ def quote_submit(request):
                         <p><strong>Name:</strong> {name}</p>
                         <p><strong>Email:</strong> {email}</p>
                         <p><strong>Contact No:</strong> {contact_no}</p>
+                        <p><strong>Product Name:</strong> {product_name}</p>
+                        <p><strong>Quantity:</strong> {quantity}</p>
+                        <p><strong>Customization:</strong> {customization}</p>
                         <p><strong>Message:</strong></p>
                         <p>{message}</p>
                     </div>
@@ -447,17 +337,17 @@ def quote_submit(request):
                 </div>
             </body>
             </html>
-            """,
-
-            category="Integration Test",
-            )
-
-            client = mt.MailtrapClient(token="ad0bd2f3543f7375bb7dc34bd84a933b")
-            response = client.send(mail)
-
-            return JsonResponse({'status': 1, 'message': 'Form submitted successfully'})
+            """
+            send_email_handler(subject, VIMSON_EMAIL, html)
+            messages.success(request, 'Email sent successfully!')
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+            
         except Exception as e:
-            return JsonResponse({'status': 0, 'error': f'Server error: {str(e)}'})
+            messages.error(request, 'An error occurred while sending the email. Please try again later.')
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+
+
+
 
 
 
@@ -468,67 +358,129 @@ def careers_apply(request):
     email = request.POST.get('email', '').strip()
     contact_no = request.POST.get('phone', '').strip()
     position = request.POST.get('position', '').strip()
-    job_id = request.POST.get('job_id', '').strip()
     dob = request.POST.get('dob', '').strip()
     resume = request.FILES.get('resume', None)
-    # Basic validation
-    if not name:
-        return JsonResponse({'status': 0, 'error': '* Please Enter Name.'})
+    job_id=JobPosition.objects.get(position=position).id if position else None
 
-    if not re.match(r'^[a-zA-Z][a-zA-Z\s\-\,\.]*$', name):
-        return JsonResponse({'status': 0, 'error': f'* Invalid Name: {name}'})
-
-    if not email or not re.match(r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$', email):
-        return JsonResponse({'status': 0, 'error': '* Invalid Email ID.'})
-
-    contact_clean = contact_no.replace('+', '')
-    if not contact_clean or not re.match(r'^\d{10,15}$', contact_clean):
-        return JsonResponse({'status': 0, 'error': '* Invalid Contact No.'})
-    if not resume:
-        return JsonResponse({'status': 0, 'error': '* Please upload your resume.'})
-    if not position:
-        return JsonResponse({'status': 0, 'error': '* Please select a position to apply.'})
-    
     if job_id:
         try:
             job = Job.objects.get(id=int(job_id))
         except Job.DoesNotExist:
-            return JsonResponse({'status': 0, 'error': '* Invalid Job ID.'})
-        # check if the job position is already applied for
-        if JobApplications.objects.filter(job_id=job.id, email=email).exists():
-            return JsonResponse({'status': 0, 'error': '* You have already applied for this job.'})
-        # add job_id to the job application
-        job_application=JobApplications(
-            job_id=job,
-            name=name,
-            email=email,
-            phone=contact_no,
-            dob=dob,
-            resume=resume,
-            job_position=JobPosition.objects.get(position=position)
-        )
-        #todo: send email for admin
-        job_application.save()
-        if not send_mailtrap_email(name, email, contact_no, dob, resume):
-            return JsonResponse({'status': 0, 'error': '* Failed to send email. Please try again later.'})
-        return JsonResponse({'status': 1, 'message': 'Form submitted successfully','success': True})
-    
-    # Validate if from same email we have already applied for the same position
-    if JobApplications.objects.filter(email=email, job_position__position=position).exists():
-        return JsonResponse({'status': 0, 'error': '* You have already applied for this position.'})
-    else:
-        # Save the job application
-        job_application = JobApplications(
-            name=name,
-            email=email,
-            phone=contact_no,
-            dob=dob,
-            resume=resume,
-            job_position=JobPosition.objects.get(position=position)
-        )
-        job_application.save()
-        send_mailtrap_email(name, email, contact_no, dob, resume)
-        #todo: send email notification to admin
-    return JsonResponse({'status': 1, 'message': 'Form submitted successfully','success': True})
-    # Save the resume file
+            messages.error(request, 'Job not found.')
+            return redirect(request.META.get('HTTP_REFERER', '/'))
 
+        # Check for duplicate applications
+        if JobApplications.objects.filter(job_id=job.id, email=email).exists():
+            messages.error(request, 'You have already applied for this position.')
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+
+        try:
+            # Save job application to DB
+            job_application = JobApplications(
+                job_id=job,
+                name=name,
+                email=email,
+                phone=contact_no,
+                dob=dob,
+                resume=resume,
+                job_position=JobPosition.objects.get(position=position)
+            )
+            job_application.save()
+
+            # Prepare HTML content for email
+            html = f"""
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Contact Us Email</title>
+                <style>
+                    body {{
+                        font-family: Arial, sans-serif;
+                        line-height: 1.6;
+                        color: #333;
+                        background-color: #f9f9f9;
+                        margin: 0;
+                        padding: 0;
+                    }}
+                    .email-container {{
+                        max-width: 600px;
+                        margin: 20px auto;
+                        background: #ffffff;
+                        border: 1px solid #ddd;
+                        border-radius: 8px;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                    }}
+                    .email-header {{
+                        background-color: #4CAF50;
+                        color: white;
+                        padding: 20px;
+                        text-align: center;
+                    }}
+                    .email-body {{
+                        padding: 20px;
+                    }}
+                    .email-body p {{
+                        margin: 10px 0;
+                    }}
+                    .email-footer {{
+                        background-color: #f1f1f1;
+                        text-align: center;
+                        padding: 10px;
+                        font-size: 12px;
+                        color: #666;
+                    }}
+                </style>
+            </head>
+            <body>
+                <div class="email-container">
+                    <div class="email-header">
+                        <h1>Contact Us Submission</h1>
+                    </div>
+                    <div class="email-body">
+                        <p>Congrats for sending a test email with Mailtrap!</p>
+                        <p><strong>Name:</strong> {name}</p>
+                        <p><strong>Email:</strong> {email}</p>
+                        <p><strong>Contact No:</strong> {contact_no}</p>
+                        <p><strong>Date of birth:</strong> {dob}</p>
+                        <p><strong>Job Position:</strong> {position}</p>
+                        <p><strong>Message:</strong></p>
+                    </div>
+                    <div class="email-footer">
+                        <p>This is an automated email. Please do not reply.</p>
+                    </div>
+                </div>
+            </body>
+            </html>
+            """,
+            # Read file content
+            if resume:
+                attachment = (
+                    resume.name,
+                    resume.read(),
+                    resume.content_type
+                )
+            else:
+                attachment = None
+
+            # Send email to admin
+            send_email_handler(
+                subject=f"New Job Application: {name} - {position}",
+                recipient_email="hundlanivini2002@gmail.com",  # Change as needed
+                html_content=html,
+                attachment=attachment
+            )
+
+            messages.success(request, 'Your application has been submitted successfully.')
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+
+        except Exception as e:
+            print(e)
+            messages.error(request, 'An error occurred while submitting your application. Please try again later.')
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+
+    else:
+        messages.error(request, 'Invalid job. Please try again.')
+        return redirect(request.META.get('HTTP_REFERER', '/'))
