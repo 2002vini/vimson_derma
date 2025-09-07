@@ -242,7 +242,7 @@ def contact_submit(request):
         </body>
         </html>
         """,
-        send_email_handler(subject, 'hundlanivini2002@gmail.com', html)
+        send_email_handler(subject, VIMSON_EMAIL, html)
         messages.success(request, 'Email sent successfully!')
 
         print("Email sent successfully!")
@@ -468,7 +468,7 @@ def careers_apply(request):
             # Send email to admin
             send_email_handler(
                 subject=f"New Job Application: {name} - {position}",
-                recipient_email="hundlanivini2002@gmail.com",  # Change as needed
+                recipient_email=VIMSON_EMAIL,  # Change as needed
                 html_content=html,
                 attachment=attachment
             )
