@@ -191,7 +191,7 @@ def medicated(request):
 def intimatecare(request):
     page_number = request.GET.get('page', 1)
     selected_subcategory = request.GET.get('filter')
-    products = Product.objects.filter(is_featured=True, category__type='IntimateCare').order_by('updated_at')
+    products = Product.objects.filter(is_featured=True, category__type='Intimate Care').order_by('updated_at')
 
     if selected_subcategory and selected_subcategory != 'All':
         products = products.filter(subcategory__type=selected_subcategory)
