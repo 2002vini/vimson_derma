@@ -56,14 +56,6 @@
     color: #e37300;
   }
 
-  /* Card or Container Style (optional) */
-  .product-info-container {
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-    height: 100%;
-    min-height: 400px;
-  }
 
   #productImage {
     width: 100%;
