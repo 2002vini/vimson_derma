@@ -10,12 +10,7 @@ class Category(models.Model):
     """Model representing product categories in the system."""
     class Meta:
         verbose_name_plural = 'category'
-    CATEGORY_CHOICES = (
-        ('face_care', 'Face Care'),
-        ('body_care', 'Body Care'),
-        ('intimate_care', 'Intimate Care'),
-    )
-    type = models.CharField(max_length=200, choices=CATEGORY_CHOICES)
+    type = models.CharField(max_length=200)
     description = models.TextField()
     svg_file = models.FileField(upload_to="svgs/", blank=True)  # Store in /media/svgs/
     is_medicated = models.BooleanField(default=False)
