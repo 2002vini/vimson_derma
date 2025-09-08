@@ -202,7 +202,7 @@ def intimatecare(request):
     serialized_products = ProductSerializer(products, many=True, context={'request': request}).data
     featured_products = Product.objects.filter(is_featured=True, category__type='Intimate Care').order_by('updated_at')
     serialized_featured_products = ProductSerializer(featured_products, many=True, context={'request': request}).data
-    serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category__type='Intimate Care'), many=True, context={'request':request}).data
+    serialized_sub_categories = SubCategorySerializer(SubCategory.objects.all().filter(category__type='Intimate Care'), many=True, context={'request':request}).data
 
     context = {
         'products': serialized_products,
@@ -222,10 +222,20 @@ def veterinary(request):
     paginator = Paginator(products, 30)
     page_obj = paginator.get_page(page_number)
     products = page_obj.object_list
-    serialized_products=ProductSerializer(products,many=True,context={'request':request}).data
+    serialized_products = ProductSerializer(products,many=True,context={'request':request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
-    serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category__type='Veterinary'), many=True,context={'request':request}).data
-    return render(request,'api/veterinary.html',{'products':serialized_products,'featured_products':serialized_featured_products,'subcategory':serialized_sub_categories})
+    serialized_sub_categories = SubCategorySerializer(
+        SubCategory.objects.all().filter(category__type='Veterinary'),
+        many=True,
+        context={'request':request}
+    ).data
+
+    context = {
+        'products' : serialized_products,
+        'featured_products' : serialized_featured_products,
+        'subcategory' : serialized_sub_categories
+    }
+    return render(request,'api/veterinary.html', context)
 
 
 # def test_slider(request):
