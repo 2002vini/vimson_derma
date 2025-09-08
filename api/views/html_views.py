@@ -6,7 +6,7 @@ from django.contrib import messages
 
 
 from api.serializers import CategorySerializer, JobPositionSerializer, JobSerializer, SubCategorySerializer, TagSerializer,TestimonialSerializer,ProductSerializer,BlogPostSerializer
-from ..models import BlogPost, Category, Job, JobPosition, SubCategory, Tag,Testimonial,Product,Category
+from ..models import BlogPost, Category, Job, JobPosition, SubCategory, Tag, Testimonial, Product, Category, FactFigure
 
 
 def index(request):
@@ -18,7 +18,14 @@ def index(request):
     testimonials=Testimonial.objects.all().filter(is_featured=True).order_by('updated_at')
     serialized_testimonials = TestimonialSerializer(testimonials, many=True,context={'request':request}).data
     grouped_testimonials = [serialized_testimonials[i:i+3] for i in range(0, len(serialized_testimonials), 3)]  # Split into groups of 3
-    return render(request, 'api/index.html',{'category_section_1':categories_section_1, 'category_section_2':categories_section_2,'grouped_testimonials':grouped_testimonials,'testimonials':serialized_testimonials})
+    context = {
+        'category_section_1': categories_section_1,
+        'category_section_2': categories_section_2,
+        'grouped_testimonials': grouped_testimonials,
+        'testimonials': serialized_testimonials,
+        'facts_and_figures': FactFigure.objects.all()
+    }
+    return render(request, 'api/index.html', context)
 
 def about(request):
     return render(request, 'api/about.html')

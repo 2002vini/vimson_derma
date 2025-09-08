@@ -215,27 +215,12 @@
     <div class="container">
       <div class="heading h3 mx-auto" style="color:white; font-size:2.5rem;">Facts & Figures</div>
       <div class="row mt-5">
-        <!-- Column 1 -->
+        {% for item in facts_and_figures %}
         <div class="col-md-3 mb-3">
-          <div class="counter-number" data-target="50">0</div>
-          <div class="text">Years of Experience</div>
+          <div class="counter-number" data-target="{{item.figure_count}}">0</div>
+          <div class="text">{{item.figure_text}}</div>
         </div>
-
-        <!-- Column 2 -->
-        <div class="col-md-3 mb-3">
-          <div class="counter-number" data-target="300">0</div>
-          <div class="text">Unique Formulations</div>
-        </div>
-
-        <!-- Column 3 -->
-        <div class="col-md-3 mb-3">
-          <div class="counter-number" data-target="200">0</div>
-          <div class="text">Product Permissions</div>
-        </div>
-        <div class="col-md-3 mb-3">
-          <div class="counter-number" data-target="1000">0</div>
-          <div class="text">Satisfied Companies</div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </section>

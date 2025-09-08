@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Category, JobApplications, Product, Client, FAQ, Testimonial, Tag, BlogPost, SubCategory, Job, \
-    JobPosition, WebsiteImages
+    JobPosition, WebsiteImages, FactFigure
 from tinymce.widgets import TinyMCE
 from import_export import resources, fields
 from import_export.widgets import ForeignKeyWidget, ManyToManyWidget, JSONWidget
@@ -181,6 +181,18 @@ class JobPositionAdmin(ImportExportModelAdmin):
     resource_class = JobPositionResource
     def __str__(self):
         return self.position
+
+
+@admin.register(FactFigure)
+class FactFigureAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'figure_text',
+        'figure_count',
+        'created_at',
+        'updated_at',
+    )
+    list_display_links = ('id', 'figure_text')
 
 
 # admin.site.register(JobPosition, JobPositionAdmin)

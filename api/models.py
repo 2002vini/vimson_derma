@@ -242,3 +242,24 @@ class WebsiteImages(models.Model):
 
     def __str__(self):
         return f"Version {self.id}"
+
+
+class FactFigure(models.Model):
+    class Meta:
+        verbose_name_plural = 'Facts & Figures'
+
+    figure_text = models.CharField(max_length=100)
+    figure_count = models.CharField(max_length=10)
+    figure_code = models.SlugField(max_length=120, unique=True, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    objects = models.Manager()
+
+    def save(self, *args, **kwargs):
+        # generate slug from figure_text if not set
+        if not self.figure_code:
+            self.figure_code = slugify(self.figure_text)
+
+        super().save(*args, **kwargs)
+    def __str__(self):
+        return f"{self.figure_text}"
