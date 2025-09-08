@@ -200,7 +200,7 @@ def intimatecare(request):
     page_obj = paginator.get_page(page_number)
     products = page_obj.object_list
     serialized_products = ProductSerializer(products, many=True, context={'request': request}).data
-    featured_products = Product.objects.filter(is_featured=True, category__type='IntimateCare').order_by('updated_at')
+    featured_products = Product.objects.filter(is_featured=True, category__type='Intimate Care').order_by('updated_at')
     serialized_featured_products = ProductSerializer(featured_products, many=True, context={'request': request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category__type='Intimate Care'), many=True, context={'request':request}).data
 
