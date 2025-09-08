@@ -6,7 +6,7 @@ from django.core.mail import EmailMultiAlternatives
 from vimson_derma import settings
 
 
-def send_email_handler(subject, recipient_email, html_content):
+def send_email_handler(subject, recipient_email, html_content, attachments=None):
 
     # Fallback plain text version
     text_content = strip_tags(html_content)
@@ -18,6 +18,12 @@ def send_email_handler(subject, recipient_email, html_content):
         to=[recipient_email,]
     )
     email.attach_alternative(html_content, "text/html")
+
+    # Attach files if provided
+    if attachments:
+        for file_obj in attachments:
+            email.attach(file_obj.name, file_obj.read(), file_obj.content_type)
+
     email.send()
     return f"Email sent"
 
@@ -33,7 +39,6 @@ def send_contact_mail(name, email, company_name, phone_number, category, message
     html_content = render_to_string(
         'EmailTemplate/contact_mail_template.html',
         {
-            'subject': subject,
             'name': name,
             'email': email,
             'company_name': company_name,
@@ -45,35 +50,40 @@ def send_contact_mail(name, email, company_name, phone_number, category, message
     send_email_handler(subject, settings.EMAIL_HOST_USER, html_content)
 
 
-def send_carrier_mail(recipient_name, recipient_email):
-    subject = "Wallet Withdrawal Request Received"
-    content = f"Your wallet withdrawal request has been received and will be processed within 5 business days."
+def send_carrier_mail(name, email, dob, phone_number, position, file_field=None):
+    subject = f"New Job Application - {position}"
 
     html_content = render_to_string(
-        'EmailTemplate/basic_mail_template.html',
+        'EmailTemplate/contact_mail_template.html',
         {
-            'subject': subject,
-            'content': content,
-            'year': datetime.now().year,
-            'recipient_name': recipient_name,
-            'solvify_logo_url': "https://solvifyhub.com/static/assets/solvify_logo.png",
+            'name': name,
+            'email': email,
+            'phone_number': phone_number,
+            'dob': dob,
+            'position': position,
         }
     )
-    send_email_handler(subject, recipient_email, html_content)
+    send_email_handler(
+        subject = subject,
+        recipient_email = settings.EMAIL_HOST_USER,
+        html_content = html_content,
+        attachments=[file_field] if file_field else None
+    )
 
 
-def send_quote_mail(recipient_name, recipient_email):
-    subject = "Wallet Withdrawal Request Received"
-    content = f"Your wallet withdrawal request has been received and will be processed within 5 business days."
+def send_quote_mail(name, email, contact_no, product_name, quantity, customization, message):
+    subject = f"New Quote Request - {product_name}"
 
     html_content = render_to_string(
-        'EmailTemplate/basic_mail_template.html',
+        'EmailTemplate/career_mail_template.html',
         {
-            'subject': subject,
-            'content': content,
-            'year': datetime.now().year,
-            'recipient_name': recipient_name,
-            'solvify_logo_url': "https://solvifyhub.com/static/assets/solvify_logo.png",
+            'name': name,
+            'email': email,
+            'contact_no': contact_no,
+            'product_name': product_name,
+            'quantity': quantity,
+            'customization': customization,
+            'message': message,
         }
     )
-    send_email_handler(subject, recipient_email, html_content)
+    send_email_handler(subject, settings.EMAIL_HOST_USER, html_content)

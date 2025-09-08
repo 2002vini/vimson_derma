@@ -206,75 +206,7 @@ def quote_submit(request):
         try:
             subject="Testing For Contact Us Leads!"
             text="Congrats for sending test email with Mailtrap! \n\n"
-            html = f"""
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Contact Us Email</title>
-                <style>
-                    body {{
-                        font-family: Arial, sans-serif;
-                        line-height: 1.6;
-                        color: #333;
-                        background-color: #f9f9f9;
-                        margin: 0;
-                        padding: 0;
-                    }}
-                    .email-container {{
-                        max-width: 600px;
-                        margin: 20px auto;
-                        background: #ffffff;
-                        border: 1px solid #ddd;
-                        border-radius: 8px;
-                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                        overflow: hidden;
-                    }}
-                    .email-header {{
-                        background-color: #4CAF50;
-                        color: white;
-                        padding: 20px;
-                        text-align: center;
-                    }}
-                    .email-body {{
-                        padding: 20px;
-                    }}
-                    .email-body p {{
-                        margin: 10px 0;
-                    }}
-                    .email-footer {{
-                        background-color: #f1f1f1;
-                        text-align: center;
-                        padding: 10px;
-                        font-size: 12px;
-                        color: #666;
-                    }}
-                </style>
-            </head>
-            <body>
-                <div class="email-container">
-                    <div class="email-header">
-                        <h1>Contact Us Submission</h1>
-                    </div>
-                    <div class="email-body">
-                        <p>Congrats for sending a test email with Mailtrap!</p>
-                        <p><strong>Name:</strong> {name}</p>
-                        <p><strong>Email:</strong> {email}</p>
-                        <p><strong>Contact No:</strong> {contact_no}</p>
-                        <p><strong>Product Name:</strong> {product_name}</p>
-                        <p><strong>Quantity:</strong> {quantity}</p>
-                        <p><strong>Customization:</strong> {customization}</p>
-                        <p><strong>Message:</strong></p>
-                        <p>{message}</p>
-                    </div>
-                    <div class="email-footer">
-                        <p>This is an automated email. Please do not reply.</p>
-                    </div>
-                </div>
-            </body>
-            </html>
-            """
+
             send_email_handler(subject, settings.EMAIL_HOST_USER, html)
             messages.success(request, 'Email sent successfully!')
             return redirect(request.META.get('HTTP_REFERER', '/'))
