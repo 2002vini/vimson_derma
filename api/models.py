@@ -40,6 +40,7 @@ class SubCategory(models.Model):
 def default_subcategories():
     return list(SubCategory.objects.filter(type="other").values_list('id', flat=True))
 
+
 class Product(models.Model):
     """Model representing products in the system."""
     name = models.CharField(max_length=200)
@@ -85,22 +86,34 @@ class Client(models.Model):
 
 class FAQ(models.Model):
     """Model representing frequently asked questions in the system."""
-
+    PAGE_CHOICES = (
+        ('home', 'Home Page'),
+        ('third_party', 'Third Party Manufacturing'),
+        ('private_label', 'Private Label Manufacturing'),
+        ('formulation', 'Formulation & Customization'),
+        ('research', 'Research & Development'),
+        ('medicated', 'Medicated'),
+        ('facecare', 'Facecare'),
+        ('haircare', 'Haircare'),
+        ('bodycare', 'Bodycare'),
+        ('mens_grooming', 'Mens Grooming'),
+        ('intimate', 'Intimate Care'),
+        ('baby_and_mother', 'Baby & Mother Care'),
+        ('veterinary', 'Veterinary Care'),
+    )
+    faq_page = models.CharField(max_length=100, choices=PAGE_CHOICES)
     question = models.CharField(max_length=200)
-    answer = models.TextField()
+    answer = models.TextField(null=True, blank=True)
+    rank = models.PositiveSmallIntegerField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    is_featured = models.BooleanField(default=True)
     objects = models.Manager()
 
     def __str__(self):
-        """String representation of the FAQ model."""
         return self.question
 
 
 class Testimonial(models.Model):
-    """Model representing testimonials in the system."""
-
     customer_name = models.CharField(max_length=200)
     feedback = models.TextField()
     image = models.ImageField(upload_to="testimonials/", null=True, blank=True)
@@ -110,13 +123,10 @@ class Testimonial(models.Model):
     objects = models.Manager()
 
     def __str__(self):
-        """String representation of the Testimonial model."""
         return self.customer_name
 
 
 class Tag(models.Model):
-    """Model representing tags in the system."""
-
     slug = models.SlugField(unique=True, blank=True)
     name = models.CharField(max_length=200)
     objects = models.Manager()
@@ -128,7 +138,6 @@ class Tag(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        """String representation of the Tag model."""
         return self.name
 
 

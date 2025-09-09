@@ -79,17 +79,6 @@ class ClientAdmin(ImportExportModelAdmin):
     resource_class = ClientResource
     list_per_page = 10
 
-class FAQResource(resources.ModelResource):
-    class Meta:
-        fields = ('question', 'answer', 'created_at', 'updated_at','is_featured')
-        model = FAQ
-
-class FAQAdmin(ImportExportModelAdmin):
-    list_display = ( 'question', 'answer', 'created_at', 'updated_at','is_featured')
-    search_fields = ( 'question', 'answer', 'created_at', 'updated_at','is_featured')
-    list_filter = ('question', 'answer', 'created_at', 'updated_at','is_featured')
-    resource_class = FAQResource
-    list_per_page = 10
 
 class TestimonialResource(resources.ModelResource):
     class Meta:
@@ -208,11 +197,23 @@ class TrustedCompaniesAdmin(admin.ModelAdmin):
     list_filter = ('company_name',)
 
 
+@admin.register(FAQ)
+class FAQAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'faq_page',
+        'question',
+        'answer',
+        'rank'
+    )
+    list_display_links = ('id', 'question')
+    list_filter = ('faq_page',)
+
+
 # admin.site.register(JobPosition, JobPositionAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Client, ClientAdmin)
-admin.site.register(FAQ, FAQAdmin)
 admin.site.register(Testimonial, TestimonialAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(BlogPost, BlogPostAdmin)

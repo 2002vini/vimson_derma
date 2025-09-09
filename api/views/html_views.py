@@ -43,7 +43,10 @@ def about(request):
 def service(request):
     categories = Category.objects.filter(is_medicated=False)
     serialized_categories=CategorySerializer(categories, many=True,context={'request':request}).data
-    return render(request,'api/service.html',{'products':serialized_categories})
+    context = {
+        'products': serialized_categories
+    }
+    return render(request,'api/service.html', context)
 
 
 def manafacturing(request):
