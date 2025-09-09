@@ -40,15 +40,16 @@
                         Products
                     </a>
                     <ul class="dropdown-menu" id="customDropdownProductMenu">
+                        <li><a class="dropdown-item" href="{% url 'medicated' %}">Medicated</a></li>
+                        <!-- Separator -->
+                        <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{% url 'facecare' %}">FaceCare</a></li>
                         <li><a class="dropdown-item" href="{% url 'haircare' %}">HairCare</a></li>
                         <li><a class="dropdown-item" href="{% url 'bodycare' %}">BodyCare</a></li>
-                        <li><a class="dropdown-item" href="{% url 'medicated' %}">Medicated</a></li>
                         <li><a class="dropdown-item" href="{% url 'mens_grooming' %}">Men's Grooming</a></li>
                         <li><a class="dropdown-item" href="{% url 'intimatecare' %}">Intimate Care</a></li>
                         <li><a class="dropdown-item" href="{% url 'mothercare' %}">Baby & Mother Care</a></li>
                         <li><a class="dropdown-item" href="{% url 'veterinary' %}">Veterinary Care</a></li>
-
                     </ul>
                 </li>
                 <li class="nav-item">
