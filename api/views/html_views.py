@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from django.core.paginator import Paginator
 from django.contrib import messages
+from api.models import FAQ
 
 
 from api.serializers import CategorySerializer, JobPositionSerializer, JobSerializer, SubCategorySerializer, TagSerializer,TestimonialSerializer,ProductSerializer,BlogPostSerializer
@@ -19,12 +20,15 @@ def index(request):
     testimonials=Testimonial.objects.all().filter(is_featured=True).order_by('updated_at')
     serialized_testimonials = TestimonialSerializer(testimonials, many=True,context={'request':request}).data
     grouped_testimonials = [serialized_testimonials[i:i+3] for i in range(0, len(serialized_testimonials), 3)]  # Split into groups of 3
+
+    home_page_faq = FAQ.objects.filter(faq_page='home')
     context = {
         'category_section_1': categories_section_1,
         'category_section_2': categories_section_2,
         'grouped_testimonials': grouped_testimonials,
         'testimonials': serialized_testimonials,
-        'facts_and_figures': FactFigure.objects.all()
+        'facts_and_figures': FactFigure.objects.all(),
+        'faq_obj': home_page_faq
     }
     return render(request, 'api/index.html', context)
 
@@ -43,8 +47,11 @@ def about(request):
 def service(request):
     categories = Category.objects.filter(is_medicated=False)
     serialized_categories=CategorySerializer(categories, many=True,context={'request':request}).data
+    faq_obj = FAQ.objects.filter(faq_page='private_label')
     context = {
-        'products': serialized_categories
+        'products': serialized_categories,
+        'faq_obj': faq_obj,
+
     }
     return render(request,'api/service.html', context)
 
@@ -57,12 +64,14 @@ def manafacturing(request):
 
     trusted_companies_ltr = TrustedCompanies.objects.filter(slider_direction="ltr")
     trusted_companies_rtl = TrustedCompanies.objects.filter(slider_direction="rtl")
+    faq_obj = FAQ.objects.filter(faq_page='third_party')
 
     context = {
         'products': serialized_categories,
         'testimonials':serialized_testimonials,
         'trusted_companies_ltr': trusted_companies_ltr,
         'trusted_companies_rtl': trusted_companies_rtl,
+        'faq_obj': faq_obj,
     }
     return render(request,'api/manafacturing.html', context)
 
@@ -99,11 +108,15 @@ def facecare(request):
     serialized_products = ProductSerializer(page_obj.object_list, many=True, context={'request': request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category__type='FaceCare'), many=True,context={'request':request}).data
+
+    faq_obj = FAQ.objects.filter(faq_page='facecare')
+
     context = {
         'products':serialized_products,
         'page_obj':page_obj,
         'subcategory':serialized_sub_categories,
-        'featured_products':serialized_featured_products
+        'featured_products':serialized_featured_products,
+        'faq_obj': faq_obj
     }
     return render(request,'api/facecare.html',context)
 
@@ -121,11 +134,14 @@ def haircare(request):
     serialized_products=ProductSerializer(page_obj.object_list,many=True,context={'request':request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category__type='HairCare'), many=True,context={'request':request}).data
+    faq_obj = FAQ.objects.filter(faq_page='haircare')
+
     context = {
         'products':serialized_products,
         'featured_products':serialized_featured_products,
         'subcategory':serialized_sub_categories,
         'page_obj': page_obj,
+        'faq_obj': faq_obj
     }
     return render(request,'api/haircare.html', context)
 
@@ -142,11 +158,15 @@ def bodycare(request):
     serialized_products=ProductSerializer(page_obj.object_list,many=True,context={'request':request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category__type='BodyCare'), many=True,context={'request':request}).data
+
+    faq_obj = FAQ.objects.filter(faq_page='bodycare')
+
     context = {
         'products': serialized_products,
         'subcategory':serialized_sub_categories,
         'featured_products':serialized_featured_products,
         'page_obj': page_obj,
+        'faq_obj': faq_obj,
     }
     return render(request,'api/bodycare.html', context)
 
@@ -164,12 +184,15 @@ def mens_grooming(request):
     serialized_categories=CategorySerializer(Category.objects.all(), many=True,context={'request':request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category__type="Men's Grooming"), many=True,context={'request':request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
+    faq_obj = FAQ.objects.filter(faq_page='mens_grooming')
+
     context = {
         'products':serialized_products,
         'categories':serialized_categories,
         'subcategory':serialized_sub_categories,
         'featured_products':serialized_featured_products,
         'page_obj': page_obj,
+        'faq_obj': faq_obj
     }
     return render(request,'api/mens_grooming.html', context)
 
@@ -186,11 +209,14 @@ def mothercare(request):
     serialized_products=ProductSerializer(page_obj.object_list,many=True,context={'request':request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category__type='Baby & Mother Care'), many=True,context={'request':request}).data
+    faq_obj = FAQ.objects.filter(faq_page='baby_and_mother')
+
     context = {
         'products':serialized_products,
         'subcategory':serialized_sub_categories,
         'featured_products':serialized_featured_products,
         'page_obj': page_obj,
+        'faq_obj': faq_obj
     }
     return render(request,'api/mothercare.html', context)
 
@@ -219,13 +245,23 @@ def career_detail(request,job_id):
 def innovation(request):
     customized_products = Product.objects.filter(is_customized=True).order_by('updated_at')
     customized_product_serializers = ProductSerializer(customized_products, many=True, context={'request': request}).data
-    return render(request,'api/formulation_and_customization.html',{'customized_products':customized_product_serializers})
+    faq_obj = FAQ.objects.filter(faq_page='formulation')
+    context = {
+        'customized_products': customized_product_serializers,
+        'faq_obj': faq_obj
+    }
+    return render(request,'api/formulation_and_customization.html', context)
 
 
 def research(request):
     blogs=BlogPost.objects.all()
     serialized_blogs=BlogPostSerializer(blogs,many=True,context={'request':request}).data
-    return render(request,'api/research.html',{'blogs':serialized_blogs})
+    faq_obj = FAQ.objects.filter(faq_page='research')
+    context = {
+        'blogs': serialized_blogs,
+        'faq_obj': faq_obj
+    }
+    return render(request,'api/research.html', context)
 
 
 def medicated(request):
@@ -238,10 +274,13 @@ def medicated(request):
         products = Product.objects.filter(is_medicated=True, category__type='FaceCare').order_by('updated_at')
         category_filter = 'FaceCare'  # Default category if none is selected
     serialized_products = ProductSerializer(products, many=True, context={'request': request}).data
+    faq_obj = FAQ.objects.filter(faq_page='medicated')
+
     context = {
         'products':serialized_products,
         'selected_category':category_filter,
-        'featured_products':serialized_featured_products
+        'featured_products':serialized_featured_products,
+        'faq_obj': faq_obj
     }
     return render(request,'api/medicated.html', context)
 
@@ -261,12 +300,14 @@ def intimatecare(request):
     featured_products = Product.objects.filter(is_featured=True, category__type='Intimate Care').order_by('updated_at')
     serialized_featured_products = ProductSerializer(featured_products, many=True, context={'request': request}).data
     serialized_sub_categories = SubCategorySerializer(SubCategory.objects.all().filter(category__type='Intimate Care'), many=True, context={'request':request}).data
+    faq_obj = FAQ.objects.filter(faq_page='intimate')
 
     context = {
         'products': serialized_products,
         'featured_products': serialized_featured_products,
         'subcategory': serialized_sub_categories,
         'page_obj': page_obj,
+        'faq_obj': faq_obj
     }
     return render(request, 'api/intimatecare.html', context)
 
@@ -288,12 +329,14 @@ def veterinary(request):
         many=True,
         context={'request':request}
     ).data
+    faq_obj = FAQ.objects.filter(faq_page='veterinary')
 
     context = {
         'products' : serialized_products,
         'featured_products' : serialized_featured_products,
         'subcategory' : serialized_sub_categories,
-        'page_obj': page_obj
+        'page_obj': page_obj,
+        'faq_obj': faq_obj,
     }
     return render(request,'api/veterinary.html', context)
 

@@ -236,164 +236,30 @@
   </div>
 </div>
 
-<div class="accordion" id="accordionExample">
+<!-- FAQ -->
+<div class="container-fluid my-5">
   <div class="accordian-heading">
-    <div class="heading h3 mb-5 mt-5 text-center mx-2">Frequently Asked Questions</div>
+    <h5 class="heading mt-5 text-center">Frequently Asked Questions</h5>
   </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button d-flex justify-content-flex-end" type="button" data-bs-toggle="collapse"
-        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-         Do you manufacture medicated products under third-party or private label?
+  <div class="accordion" id="accordionExample">
+
+    {% for faq in faq_obj %}
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button text-start {% if not forloop.counter == 1 %} collapsed{% endif %} " type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapse_{{forloop.counter}}" aria-expanded="true" aria-controls="collapse_{{forloop.counter}}">
+          {{ faq.question }}
           <span class="icon">+</span>
-      </button>
-    </h2>
+        </button>
+      </h2>
 
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-     Yes, Vimson Derma specializes in third-party and private label manufacturing of a wide range of medicated topical
-          products including antifungal creams and powders, antibacterial soaps, scalp treatments, oral gels, wound-healing ointments, intimate hygiene products, and veterinary care solutions.
-
-
+      <div id="collapse_{{forloop.counter}}" class="accordion-collapse collapse {% if forloop.counter == 1 %} show{% endif %} " data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          {{ faq.answer }}
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-        aria-expanded="false" aria-controls="collapseTwo">
-         What active ingredients are commonly used in your medicated range?
-          <span class="icon">+</span>
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-       Some of the key ingredients we use include Ketoconazole, Clotrimazole, Mupirocin, Zinc Oxide, Salicylic Acid,
-          and Chlorhexidine tailored for specific uses like antifungal, antibacterial, wound-healing, and hygiene support.
-
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
-        aria-expanded="false" aria-controls="collapseThree">
-        What types of medicated products do you offer across different categories?
-        <span class="icon">+</span>
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-    We offer a broad spectrum of medicated formulations including antifungal creams, antibacterial lotions, anti-acne gels,
-          medicated dusting powders, anti-dandruff shampoos, oral ulcer gels, intimate washes, and veterinary care products like sprays, ointments, and antifungal shampoos.
-
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFour">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
-        aria-expanded="false" aria-controls="collapseFour">
-        What certifications support your medicated product manufacturing?
- <span class="icon">+</span>
-      </button>
-    </h2>
-    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-We are GMP, GLP, ISO 9001:2015, HALAL certified, with WHO-GMP applied for new plant expansion.
-          All batches undergo strict QA/QC protocols with verified ingredient traceability.
-
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFive">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive"
-        aria-expanded="false" aria-controls="collapseFive">
-        What if I don’t have any branding or formulation ready?
-        <span class="icon">+</span>
-      </button>
-    </h2>
-    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        We support first-time entrepreneurs. From formulation to packaging and brand design, our team will help you
-        launch your men’s grooming brand in India effortlessly.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSix">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix"
-        aria-expanded="false" aria-controls="collapseSix">
-       What is the MOQ for medicated products?
- <span class="icon">+</span>
-      </button>
-    </h2>
-    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-The minimum order quantity (MOQ) is 3,000 units per SKU, whether it’s a single scalp serum,
-          a full veterinary range, or multiple oral care gels.
-      </div>
-    </div>
-
-  </div>
-    <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSeven">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven"
-        aria-expanded="false" aria-controls="collapseSeven">
-     Do you offer samples before bulk production?
-
- <span class="icon">+</span>
-      </button>
-    </h2>
-    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-Yes. We offer free samples of our standard option formulations to evaluate texture, absorption, efficacy,
-          and fragrance before moving into full-scale production.
-      </div>
-    </div>
-
-  </div>
-    <div class="accordion-item">
-    <h2 class="accordion-header" id="headingEight">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight"
-        aria-expanded="false" aria-controls="collapseEight">
- What documents do you provide with every batch?
- <span class="icon">+</span>
-      </button>
-    </h2>
-    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-Each batch includes a GMP, GLP, ISO, Product Permission Certification, Quality Certificate, Certificate of Analysis (COA),
-          MSDS,  and other standard documents.
-      </div>
-    </div>
-
-  </div>
-    <div class="accordion-item">
-    <h2 class="accordion-header" id="headingNine">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine"
-        aria-expanded="false" aria-controls="collapseNine">
- Can these medicated products be exported from India?
- <span class="icon">+</span>
-      </button>
-    </h2>
-    <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-Yes. Our products are suitable for international markets, and we work with clients across Asia, Africa, Middle East,
-          and Europe for compliant export manufacturing.
-      </div>
-    </div>
-
+    {% endfor %}
   </div>
 </div>
 

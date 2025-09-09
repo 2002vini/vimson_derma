@@ -252,107 +252,30 @@
 
 
 
-<div class="accordion overflow-hidden" id="accordionExample">
+<!-- FAQ -->
+<div class="container-fluid my-5">
   <div class="accordian-heading">
-    <div class="heading h3 mb-5 text-center mx-2">Frequently Asked Questions</div>
+    <h5 class="heading mt-5 text-center">Frequently Asked Questions</h5>
   </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button d-flex justify-content-flex-end" type="button" data-bs-toggle="collapse"
-        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        What types of bodycare products do you manufacture?
-        <span class="icon">+</span>
-      </button>
-    </h2>
+  <div class="accordion" id="accordionExample">
 
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        We manufacture body lotions, body butters, body wash, scrubs, bath salts, deodorants, and more tailored to
-        Indian consumers and climates.
+    {% for faq in faq_obj %}
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button text-start {% if not forloop.counter == 1 %} collapsed{% endif %} " type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapse_{{forloop.counter}}" aria-expanded="true" aria-controls="collapse_{{forloop.counter}}">
+          {{ faq.question }}
+          <span class="icon">+</span>
+        </button>
+      </h2>
 
+      <div id="collapse_{{forloop.counter}}" class="accordion-collapse collapse {% if forloop.counter == 1 %} show{% endif %} " data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          {{ faq.answer }}
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-        aria-expanded="false" aria-controls="collapseTwo">
-        Can I customize bodycare products for specific concerns like dryness or pigmentation?
-        <span class="icon">+</span>
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        Yes, you can choose specific ingredients, textures, scents, and target benefits such as hydration, whitening,
-        tan removal, or anti-aging.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
-        aria-expanded="false" aria-controls="collapseThree">
-        Are your bodycare products skin-safe and dermatologically tested?
-        <span class="icon">+</span>
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        Yes. All formulations undergo dermatological checks and are supported by COA reports. Our facility adheres to
-        GMP, GLP, and ISO 9001:2015 standards.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFour">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
-        aria-expanded="false" aria-controls="collapseFour">
-        Do you offer clean-label claims for bodycare products? <span class="icon">+</span>
-      </button>
-    </h2>
-    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        Yes, clients can claim sulphate-free, paraben-free, and cruelty-free depending on the formulation.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFive">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive"
-        aria-expanded="false" aria-controls="collapseFive">
-        Can I launch innovative bodycare products with trending ingredients?
-        <span class="icon">+</span>
-      </button>
-    </h2>
-    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        Absolutely. We bring the latest global trends through market research and formulate products with unique actives
-        like wasabi, marine extracts, and fermented ingredients.
-        <ul class="product-list">
-          <li>Dead skin &amp; Callus remover spray with Lactic acid</li>
-          <li>Body Sunscreen - Mist/lotion</li>
-          <li>Body Wash Exfoliating/Brightening/Detox</li>
-          <li>Body hydrator oil</li>
-          <li>Body Cleansing Milk</li>
-          <li>Underarm brightening and odour Control Roll on</li>
-          <li>Knee elbow brightening roll on</li>
-          <li>Pigmentation removal Cream</li>
-          <li>Cleansing oil to milk</li>
-          <li>Body Butter / Yogurt</li>
-          <li>Hand &amp; Nail Cuticle Softener/Cream</li>
-          <li>Nail &amp; Cuticle Oil</li>
-          <li>Body-scrub/polish</li>
-          <li>Bath Salt</li>
-          <li>Foot scrub/Foot Cream</li>
-          <li>Solid Perfume</li>
-        </ul>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 </div>
 
