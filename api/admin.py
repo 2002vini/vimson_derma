@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Category, JobApplications, Product, Client, FAQ, Testimonial, Tag, BlogPost, SubCategory, Job, \
-    JobPosition, WebsiteImages, FactFigure
+    JobPosition, WebsiteImages, FactFigure, TrustedCompanies
 from tinymce.widgets import TinyMCE
 from import_export import resources, fields
 from import_export.widgets import ForeignKeyWidget, ManyToManyWidget, JSONWidget
@@ -193,6 +193,19 @@ class FactFigureAdmin(admin.ModelAdmin):
         'updated_at',
     )
     list_display_links = ('id', 'figure_text')
+
+
+@admin.register(TrustedCompanies)
+class TrustedCompaniesAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'company_name',
+        'company_logo_alt_text',
+        'slider_direction',
+        'company_logo'
+    )
+    list_display_links = ('id', 'company_name')
+    list_filter = ('company_name',)
 
 
 # admin.site.register(JobPosition, JobPositionAdmin)

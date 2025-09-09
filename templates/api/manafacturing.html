@@ -247,13 +247,9 @@ From serums and sunscreens to scalp treatments and baby care - we manufacture a 
     <div class="clientele-carousel-horizontal w-100" fb-carousel="true" fb-carousel-direction="left"
       fb-carousel-speed="20000" fb-carousel-delay="200" fb-carousel-pauseable="true">
       <div class="clientele-carousel-content mb-5" fb-carousel-content="true">
-        <img class="img-fluid" src="/static/images/logo/24c_derma_labs_logo.jfif" alt="24c Derma Labs" />
-        <img class="img-fluid" src="/static/images/logo/ACME PHARMACEUTICALS.png" alt="ACME" />
-        <img class="img-fluid" src="/static/images/logo/Ajanta Pharma Limited.jfif" alt="Ajanta" />
-        <img class="img-fluid" src="/static/images/logo/Alyxia.png" alt="Alyxia" />
-        <img class="img-fluid" src="/static/images/logo/Ambit Bio Medix.webp" alt="Ambit Bio Medix" />
-        <img class="img-fluid" src="/static/images/logo/AMERICAN PHARMA REMEDIES.png" alt="American Pharma Remedies" />
-        <img class="img-fluid" src="/static/images/logo/Aptus pharma.png" alt="Aptus Pharma" />
+        {% for company in trusted_companies_ltr %}
+        <img class="img-fluid" src="{{ company.company_logo.url }}" alt="{{ company.company_logo_alt_text }}" />
+        {% endfor %}
       </div>
     </div>
 
@@ -261,13 +257,9 @@ From serums and sunscreens to scalp treatments and baby care - we manufacture a 
     <div class="clientele-carousel-horizontal w-100" fb-carousel="true" fb-carousel-direction="right"
       fb-carousel-speed="20000" fb-carousel-delay="200" fb-carousel-pauseable="true">
       <div class="clientele-carousel-content mb-5" fb-carousel-content="true">
-        <img class="img-fluid" src="/static/images/logo/renee.jfif" alt="Derma Essentia" />
-        <img class="img-fluid" src="/static/images/logo/Ardent Life Sciences.png" alt="Ardent Life Sciences" />
-        <img class="img-fluid" src="/static/images/logo/AURA PHARMACEUTICALS PVT LTD.jfif" alt="Aura Pharmaceuticals" />
-        <img class="img-fluid" src="/static/images/logo/Bionova_Brand_Logo.webp"
-          alt="Bionova Pharmaceutical" />
-        <img class="img-fluid" src="/static/images/logo/Cloud Wellness Private Limited (DERMATOUCH).png"
-          alt="Dermatouch" />
+        {% for company in trusted_companies_rtl %}
+        <img class="img-fluid" src="{{ company.company_logo.url }}" alt="{{ company.company_logo_alt_text }}" />
+        {% endfor %}
       </div>
     </div>
   </div>

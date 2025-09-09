@@ -261,5 +261,32 @@ class FactFigure(models.Model):
             self.figure_code = slugify(self.figure_text)
 
         super().save(*args, **kwargs)
+
     def __str__(self):
         return f"{self.figure_text}"
+
+
+class TrustedCompanies(models.Model):
+    class Meta:
+        verbose_name_plural = 'Trusted Companies'
+
+    SLIDER_CHOICES = [
+        ("ltr", "Left to Right"),
+        ("rtl", "Right to Left"),
+    ]
+
+    company_logo = models.FileField(upload_to="trusted_companies_logos/")
+    company_name = models.CharField(max_length=255)
+    company_logo_alt_text = models.CharField(max_length=255, blank=True, null=True)
+    slider_direction = models.CharField(
+        max_length=3,
+        choices=SLIDER_CHOICES,
+        default="ltr",
+        help_text="Select which slider this company will appear in.",
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    objects = models.Manager()
+
+    def __str__(self):
+        return f"{self.company_name}"

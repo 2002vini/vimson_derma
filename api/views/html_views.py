@@ -6,7 +6,8 @@ from django.contrib import messages
 
 
 from api.serializers import CategorySerializer, JobPositionSerializer, JobSerializer, SubCategorySerializer, TagSerializer,TestimonialSerializer,ProductSerializer,BlogPostSerializer
-from ..models import BlogPost, Category, Job, JobPosition, SubCategory, Tag, Testimonial, Product, Category, FactFigure
+from ..models import BlogPost, Category, Job, JobPosition, SubCategory, Tag, Testimonial, Product, Category, FactFigure, \
+    TrustedCompanies
 
 
 def index(request):
@@ -29,7 +30,14 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'api/about.html')
+    trusted_companies_ltr = TrustedCompanies.objects.filter(slider_direction="ltr")
+    trusted_companies_rtl = TrustedCompanies.objects.filter(slider_direction="rtl")
+
+    context = {
+        'trusted_companies_ltr': trusted_companies_ltr,
+        'trusted_companies_rtl': trusted_companies_rtl,
+    }
+    return render(request, 'api/about.html', context)
 
 
 def service(request):
@@ -43,7 +51,17 @@ def manafacturing(request):
     serialized_categories=CategorySerializer(categories, many=True,context={'request':request}).data
     testimonials=Testimonial.objects.all()
     serialized_testimonials = TestimonialSerializer(testimonials, many=True,context={'request':request}).data
-    return render(request,'api/manafacturing.html',{'products':serialized_categories,'testimonials':serialized_testimonials})
+
+    trusted_companies_ltr = TrustedCompanies.objects.filter(slider_direction="ltr")
+    trusted_companies_rtl = TrustedCompanies.objects.filter(slider_direction="rtl")
+
+    context = {
+        'products': serialized_categories,
+        'testimonials':serialized_testimonials,
+        'trusted_companies_ltr': trusted_companies_ltr,
+        'trusted_companies_rtl': trusted_companies_rtl,
+    }
+    return render(request,'api/manafacturing.html', context)
 
 
 def blogs(request):

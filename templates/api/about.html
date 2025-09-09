@@ -78,7 +78,7 @@ At Vimson Derma, we specialize in private label skincare solutions and custom co
   </div>
   <div class="row w-100 p-0 m-0 gx-0">
     <div class="col-md-6 col-sm-12">
-      <div class="one-stop-text" id="AboutUsText">
+      <div class="one-stop-text" id="AboutUs_Text">
         <h6 class="heading mb-5" data-aos="zoom-in">Backed by 50+ years of industry experience, </h6>
         <p class="text">
 Vimson Derma brings together a legacy of healthcare expertise and modern cosmetic innovation. Over the decades, we have built a strong reputation for quality, trust, and advanced formulations that empower brands to thrive in competitive markets. Our focus on research-driven development and global compliance ensures every product meets the highest standards of safety and performance.
@@ -227,14 +227,9 @@ From skincare and haircare to dermatology and cosmeceutical ranges, we provide c
         <div class="clientele-carousel-horizontal" fb-carousel="true" fb-carousel-direction="left"
           fb-carousel-speed="20000" fb-carousel-delay="200" fb-carousel-pauseable="true">
           <div class="clientele-carousel-content" fb-carousel-content="true">
-            <img class="img-fluid" src="/static/images/logo/24c_derma_labs_logo.jfif" alt="24c Derma Labs" />
-            <img class="img-fluid" src="/static/images/logo/ACME PHARMACEUTICALS.png" alt="ACME" />
-            <img class="img-fluid" src="/static/images/logo/Ajanta Pharma Limited.jfif" alt="Ajanta" />
-            <img class="img-fluid" src="/static/images/logo/Alyxia.png" alt="Alyxia" />
-            <img class="img-fluid" src="/static/images/logo/Ambit Bio Medix.webp" alt="Ambit Bio Medix" />
-            <img class="img-fluid" src="/static/images/logo/AMERICAN PHARMA REMEDIES.png"
-              alt="American Pharma Remedies" />
-            <img class="img-fluid" src="/static/images/logo/Aptus pharma.png" alt="Aptus Pharma" />
+            {% for company in trusted_companies_ltr %}
+            <img class="img-fluid" src="{{ company.company_logo.url }}" alt="{{ company.company_logo_alt_text }}" />
+            {% endfor %}
           </div>
         </div>
 
@@ -242,11 +237,9 @@ From skincare and haircare to dermatology and cosmeceutical ranges, we provide c
         <div class="clientele-carousel-horizontal w-100" fb-carousel="true" fb-carousel-direction="right"
           fb-carousel-speed="20000" fb-carousel-delay="200" fb-carousel-pauseable="true">
           <div class="clientele-carousel-content" fb-carousel-content="true">
-            <img src="/static/images/logo/renee.jfif" alt="Derma Essentia" />
-            <img src="/static/images/logo/Ardent Life Sciences.png" alt="Ardent Life Sciences" />
-            <img src="/static/images/logo/AURA PHARMACEUTICALS PVT LTD.jfif" alt="Aura Pharmaceuticals" />
-            <img src="/static/images/logo/Bionova_Brand_Logo.webp" alt="Bionova Pharmaceutical" />
-            <img src="/static/images/logo/Cloud Wellness Private Limited (DERMATOUCH).png" alt="Dermatouch" />
+            {% for company in trusted_companies_rtl %}
+            <img class="img-fluid" src="{{ company.company_logo.url }}" alt="{{ company.company_logo_alt_text }}" />
+            {% endfor %}
           </div>
         </div>
       </div>
