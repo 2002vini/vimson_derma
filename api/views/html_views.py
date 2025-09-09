@@ -78,22 +78,35 @@ def facecare(request):
     serialized_products = ProductSerializer(page_obj.object_list, many=True, context={'request': request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category__type='FaceCare'), many=True,context={'request':request}).data
-    return render(request,'api/facecare.html',{'products':serialized_products,'page_obj':page_obj,'subcategory':serialized_sub_categories,'featured_products':serialized_featured_products})
+    context = {
+        'products':serialized_products,
+        'page_obj':page_obj,
+        'subcategory':serialized_sub_categories,
+        'featured_products':serialized_featured_products
+    }
+    return render(request,'api/facecare.html',context)
 
 
 def haircare(request):
     selected_subcategory = request.GET.get('filter')
     featured_products=Product.objects.all().filter(is_featured=True,category__type='HairCare').order_by('updated_at')
     products=Product.objects.all().filter(is_featured=False,category__type='HairCare').order_by('updated_at')
-    page_number = request.GET.get('page', 1)
+
     if selected_subcategory and selected_subcategory != 'All':
         products = products.filter(subcategory__type=selected_subcategory)
+    page_number = request.GET.get('page', 1)
     paginator = Paginator(products, 30)
     page_obj = paginator.get_page(page_number)
     serialized_products=ProductSerializer(page_obj.object_list,many=True,context={'request':request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category__type='HairCare'), many=True,context={'request':request}).data
-    return render(request,'api/haircare.html',{'products':serialized_products,'featured_products':serialized_featured_products,'subcategory':serialized_sub_categories})
+    context = {
+        'products':serialized_products,
+        'featured_products':serialized_featured_products,
+        'subcategory':serialized_sub_categories,
+        'page_obj': page_obj,
+    }
+    return render(request,'api/haircare.html', context)
 
 
 def bodycare(request):
@@ -108,7 +121,13 @@ def bodycare(request):
     serialized_products=ProductSerializer(page_obj.object_list,many=True,context={'request':request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category__type='BodyCare'), many=True,context={'request':request}).data
-    return render(request,'api/bodycare.html',{'products':serialized_products,'subcategory':serialized_sub_categories,'featured_products':serialized_featured_products})
+    context = {
+        'products': serialized_products,
+        'subcategory':serialized_sub_categories,
+        'featured_products':serialized_featured_products,
+        'page_obj': page_obj,
+    }
+    return render(request,'api/bodycare.html', context)
 
 
 def mens_grooming(request):
@@ -124,7 +143,14 @@ def mens_grooming(request):
     serialized_categories=CategorySerializer(Category.objects.all(), many=True,context={'request':request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category__type="Men's Grooming"), many=True,context={'request':request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
-    return render(request,'api/mens_grooming.html',{'products':serialized_products,'categories':serialized_categories,'subcategory':serialized_sub_categories,'featured_products':serialized_featured_products})
+    context = {
+        'products':serialized_products,
+        'categories':serialized_categories,
+        'subcategory':serialized_sub_categories,
+        'featured_products':serialized_featured_products,
+        'page_obj': page_obj,
+    }
+    return render(request,'api/mens_grooming.html', context)
 
 
 def mothercare(request):
@@ -139,7 +165,13 @@ def mothercare(request):
     serialized_products=ProductSerializer(page_obj.object_list,many=True,context={'request':request}).data
     serialized_featured_products=ProductSerializer(featured_products,many=True,context={'request':request}).data
     serialized_sub_categories=SubCategorySerializer(SubCategory.objects.all().filter(category__type='Baby & Mother Care'), many=True,context={'request':request}).data
-    return render(request,'api/mothercare.html',{'products':serialized_products,'subcategory':serialized_sub_categories,'featured_products':serialized_featured_products})
+    context = {
+        'products':serialized_products,
+        'subcategory':serialized_sub_categories,
+        'featured_products':serialized_featured_products,
+        'page_obj': page_obj,
+    }
+    return render(request,'api/mothercare.html', context)
 
 
 def product_detail(request,product_id):
@@ -185,7 +217,12 @@ def medicated(request):
         products = Product.objects.filter(is_medicated=True, category__type='FaceCare').order_by('updated_at')
         category_filter = 'FaceCare'  # Default category if none is selected
     serialized_products = ProductSerializer(products, many=True, context={'request': request}).data
-    return render(request,'api/medicated.html',{'products':serialized_products,'selected_category':category_filter,'featured_products':serialized_featured_products})
+    context = {
+        'products':serialized_products,
+        'selected_category':category_filter,
+        'featured_products':serialized_featured_products
+    }
+    return render(request,'api/medicated.html', context)
 
 
 def intimatecare(request):
@@ -207,7 +244,8 @@ def intimatecare(request):
     context = {
         'products': serialized_products,
         'featured_products': serialized_featured_products,
-        'subcategory': serialized_sub_categories
+        'subcategory': serialized_sub_categories,
+        'page_obj': page_obj,
     }
     return render(request, 'api/intimatecare.html', context)
 
@@ -233,7 +271,8 @@ def veterinary(request):
     context = {
         'products' : serialized_products,
         'featured_products' : serialized_featured_products,
-        'subcategory' : serialized_sub_categories
+        'subcategory' : serialized_sub_categories,
+        'page_obj': page_obj
     }
     return render(request,'api/veterinary.html', context)
 
