@@ -102,7 +102,7 @@ class FAQ(models.Model):
         ('veterinary', 'Veterinary Care'),
     )
     faq_page = models.CharField(max_length=100, choices=PAGE_CHOICES)
-    question = models.CharField(max_length=200)
+    question = models.TextField()
     answer = models.TextField(null=True, blank=True)
     rank = models.PositiveSmallIntegerField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
