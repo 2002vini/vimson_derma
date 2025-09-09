@@ -47,40 +47,7 @@
   </div>
 </div>
 
-<!--Adding swiper for top formulations-->
-<div class="container my-5">
-  <div class="swiper">
-    <h5 class="heading d-flex justify-content-center pt-4 mb-5 mt-3">Top Formulations</h5>
-
-    <!-- Additional required wrapper -->
-    <div class="swiper-wrapper mb-5 ">
-      <!-- Slides -->
-      {% for product in featured_products %}
-      <div class="swiper-slide">
-        <div class="blog-card">
-          <a href="{% url 'product_detail' product.id %}" class="text-decoration-none">
-            <img src="{{ product.image }}" alt="Skincare Image">
-            <div class="blog-content">
-              <div class="tags">
-                {% for sub in product.subcategory %}
-                <span class="tag">{{ sub }}</span>
-                {% endfor %}
-              </div>
-              <div class="product-card-title">{{ product.name }}</div>
-              <div class="product-card-description">{{ product.tagline }}</div>
-            </div>
-          </a>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-    <!-- If we need pagination -->
-    <div class="swiper-pagination"></div>
-  </div>
-
-</div>
-
-<section class="facecare-section-container container-fluid py-5 position-relative d-md-block d-none">
+<section class="facecare-section-container container-fluid py-5 position-relative d-md-block d-none mt-5">
   <!-- Overlay -->
   <div class="facecare-overlay"></div>
 
@@ -259,6 +226,41 @@
     </div>
   </div>
 </div>
+
+
+<!--Adding swiper for top formulations-->
+<div class="container my-5">
+  <div class="swiper">
+    <h5 class="heading d-flex justify-content-center pt-4 mb-5 mt-3">Top Formulations</h5>
+
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper mb-5 ">
+      <!-- Slides -->
+      {% for product in featured_products %}
+      <div class="swiper-slide">
+        <div class="blog-card">
+          <a href="{% url 'product_detail' product.id %}" class="text-decoration-none">
+            <img src="{{ product.image }}" alt="Skincare Image">
+            <div class="blog-content">
+              <div class="tags">
+                {% for sub in product.subcategory %}
+                <span class="tag">{{ sub }}</span>
+                {% endfor %}
+              </div>
+              <div class="product-card-title">{{ product.name }}</div>
+              <div class="product-card-description">{{ product.tagline }}</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+
+</div>
+
 
 <div class="accordion" id="accordionExample">
    <div class="accordian-heading">

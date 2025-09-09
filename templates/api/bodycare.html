@@ -44,41 +44,8 @@
   </div>
 </div>
 
-<!--Adding swiper for top formulations-->
-<div class="container my-5">
-  <div class="swiper">
-    <h5 class="heading d-flex justify-content-center pt-4 mb-5 mt-3">Top Formulations</h5>
 
-    <!-- Additional required wrapper -->
-    <div class="swiper-wrapper mb-5 ">
-      <!-- Slides -->
-      {% for product in featured_products %}
-      <div class="swiper-slide">
-        <div class="blog-card">
-          <a href="{% url 'product_detail' product.id %}" class="text-decoration-none">
-            <img src="{{ product.image }}" alt="Skincare Image">
-            <div class="blog-content">
-              <div class="tags">
-                {% for sub in product.subcategory %}
-                <span class="tag">{{ sub }}</span>
-                {% endfor %}
-              </div>
-              <div class="product-card-title">{{ product.name }}</div>
-              <div class="product-card-description">{{ product.tagline }}</div>
-            </div>
-          </a>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-    <!-- If we need pagination -->
-    <div class="swiper-pagination"></div>
-  </div>
-
-</div>
-
-
-<section class="facecare-section-container container-fluid py-5 position-relative d-none d-md-block overflow-hidden">
+<section class="facecare-section-container container-fluid py-5 position-relative d-none d-md-block overflow-hidden mt-5">
   <div class="facecare-overlay"></div>
   <div class="container position-relative">
     <div class="row align-items-center">
@@ -87,27 +54,29 @@
         <p>Scalable & Skin-Friendly Solutions for Every Body Type</p>
       </div>
 
-  <div class="facecare-text-right">
-    <p>
-      Vimson Derma is your trusted partner in building high-performance body care products that combine indulgence with
-      real efficacy. As a leading body care manufacturer in India, we specialize in private label and third-party
-      manufacturing, offering brands scalable solutions tailored to diverse skin types and concerns. From nourishing
-      body lotions and butters to clarifying scrubs, hydrating mists, gentle shower gels, and SPF-infused formulas. Our
-      wide-ranging portfolio is designed to meet today’s demands and anticipate tomorrow’s trends.
-    </p>
-    <p>
-      What sets us apart is our commitment to clean, skin-friendly formulations that address real-life issues like dry
-      skin, body acne, rough patches, pigmentation, sensitivity, sun damage, and post-shave irritation. Every product is
-      enriched with clinically backed actives like ceramides, shea butter, plant-based AHAs, botanical extracts, and
-      other trending ingredients, all while being cruelty-free, sulfate-free, and paraben-free. Whether you're catering
-      to the luxury wellness market or need dermatologically tested solutions, Vimson Derma ensures low MOQs, complete
-      formulation support, and products that meet global safety standards through rigorous dermatological and stability
-      testing.
-    </p>
-    <p>
-      Choose Vimson Derma, the No.1 body care manufacturer in India to create skin-smart, market-ready formulations that
-      help your brand lead with confidence and care.
-    </p>
+      <div class="facecare-text-right">
+        <p>
+          Vimson Derma is your trusted partner in building high-performance body care products that combine indulgence with
+          real efficacy. As a leading body care manufacturer in India, we specialize in private label and third-party
+          manufacturing, offering brands scalable solutions tailored to diverse skin types and concerns. From nourishing
+          body lotions and butters to clarifying scrubs, hydrating mists, gentle shower gels, and SPF-infused formulas. Our
+          wide-ranging portfolio is designed to meet today’s demands and anticipate tomorrow’s trends.
+        </p>
+        <p>
+          What sets us apart is our commitment to clean, skin-friendly formulations that address real-life issues like dry
+          skin, body acne, rough patches, pigmentation, sensitivity, sun damage, and post-shave irritation. Every product is
+          enriched with clinically backed actives like ceramides, shea butter, plant-based AHAs, botanical extracts, and
+          other trending ingredients, all while being cruelty-free, sulfate-free, and paraben-free. Whether you're catering
+          to the luxury wellness market or need dermatologically tested solutions, Vimson Derma ensures low MOQs, complete
+          formulation support, and products that meet global safety standards through rigorous dermatological and stability
+          testing.
+        </p>
+        <p>
+          Choose Vimson Derma, the No.1 body care manufacturer in India to create skin-smart, market-ready formulations that
+          help your brand lead with confidence and care.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -246,6 +215,42 @@
     </div>
   </div>
 </div>
+
+
+<!--Adding swiper for top formulations-->
+<div class="container my-5">
+  <div class="swiper">
+    <h5 class="heading d-flex justify-content-center pt-4 mb-5 mt-3">Top Formulations</h5>
+
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper mb-5 ">
+      <!-- Slides -->
+      {% for product in featured_products %}
+      <div class="swiper-slide">
+        <div class="blog-card">
+          <a href="{% url 'product_detail' product.id %}" class="text-decoration-none">
+            <img src="{{ product.image }}" alt="Skincare Image">
+            <div class="blog-content">
+              <div class="tags">
+                {% for sub in product.subcategory %}
+                <span class="tag">{{ sub }}</span>
+                {% endfor %}
+              </div>
+              <div class="product-card-title">{{ product.name }}</div>
+              <div class="product-card-description">{{ product.tagline }}</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+
+</div>
+
+
 
 <div class="accordion overflow-hidden" id="accordionExample">
   <div class="accordian-heading">
