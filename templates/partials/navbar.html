@@ -4,7 +4,7 @@
     <div class="container-fluid p-0">
         <!-- Left Section: Logo -->
         <a class="navbar-brand m-0 h-100 p-0" href="{% url 'index' %}">
-            <img src="{% static 'images/vimson_logo.svg' %}" alt="Logo" class="logo-image h-100">
+            <img src="{% static 'images/navbar-logo-2.png' %}" alt="Logo" class="logo-image" style="max-height:84px ;">
         </a>
 
         <!-- Navbar Toggler (Mobile) -->
@@ -36,21 +36,34 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                        aria-expanded="false" data-bs-auto-close="outside">
                         Products
                     </a>
                     <ul class="dropdown-menu" id="customDropdownProductMenu">
                         <li><a class="dropdown-item" href="{% url 'medicated' %}">Medicated</a></li>
                         <!-- Separator -->
 <!--                        <li><hr class="dropdown-divider"></li>-->
-                        <li><a class="dropdown-item" href="{% url 'facecare' %}">FaceCare</a></li>
+                        <!-- <li><a class="dropdown-item" href="{% url 'facecare' %}">FaceCare</a></li>
                         <li><a class="dropdown-item" href="{% url 'haircare' %}">HairCare</a></li>
                         <li><a class="dropdown-item" href="{% url 'bodycare' %}">BodyCare</a></li>
                         <li><a class="dropdown-item" href="{% url 'mens_grooming' %}">Men's Grooming</a></li>
                         <li><a class="dropdown-item" href="{% url 'intimatecare' %}">Intimate Care</a></li>
                         <li><a class="dropdown-item" href="{% url 'mothercare' %}">Baby & Mother Care</a></li>
-                        <li><a class="dropdown-item" href="{% url 'veterinary' %}">Veterinary Care</a></li>
+                        <li><a class="dropdown-item" href="{% url 'veterinary' %}">Veterinary Care</a></li> -->
+                      <li class="dropdown-submenu">
+                        <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Cosmetics</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{% url 'facecare' %}">FaceCare</a></li>
+                          <li><a class="dropdown-item" href="{% url 'haircare' %}">HairCare</a></li>
+                          <li><a class="dropdown-item" href="{% url 'bodycare' %}">BodyCare</a></li>
+                          <li><a class="dropdown-item" href="{% url 'mens_grooming' %}">Men's Grooming</a></li>
+                          <li><a class="dropdown-item" href="{% url 'intimatecare' %}">Intimate Care</a></li>
+                          <li><a class="dropdown-item" href="{% url 'mothercare' %}">Baby & Mother Care</a></li>
+                          <li><a class="dropdown-item" href="{% url 'veterinary' %}">Veterinary Care</a></li>
+                        </ul>
+                        </li>
                     </ul>
+                    
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{% url 'blogs' %}">Blog</a>

@@ -21,6 +21,14 @@
   .facecare-section-container{
     background: linear-gradient(rgba(20, 32, 97, 0.35), rgba(20, 32, 97, 0.45)), url('{{ website_images.body_care_image_1.url }}');
   }
+  .btn-custom {
+    background-color: #142061;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: rgb(237, 238, 241,0.5) 0.3s ease;
+  }
   @media screen and (max-width: 768px) {
     .products-display {
       background-image: url('/static/images/bodycare (1).webp');
@@ -41,7 +49,12 @@
   <div class="product-text">
     <h4>Premium Body Care Manufacturing for Every Skin Need.</h4>
     <p>Advanced body care manufacturing with custom formulations for lotions, scrubs, washes, and creams that nourish and protect skin.</p>
+      <div class="cta d-flex justify-content-center justify-content-lg-start">
+    <a href="#products-section" class="btn btn-custom" style="width: fit-content;">
+    Explore Products
+    </a>
   </div>
+</div>
 </div>
 
 
@@ -119,7 +132,8 @@
 </section>
 
 
-<div class="container-fluid mt-5 mb-5 p-2 overflow-hidden">
+<div class="container-fluid mt-5 mb-5 p-2 overflow-hidden" id="products-section">
+  {% if products %}
   <div class="row">
     <!-- Left Sidebar (on top for mobile, side for desktop) -->
     <div class="d-md-none text-center mb-3">
@@ -214,6 +228,7 @@
       {% endif %}
     </div>
   </div>
+ {% endif %}
 </div>
 
 

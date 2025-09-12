@@ -18,6 +18,14 @@
      background-size: cover;
     background-repeat: no-repeat;
   }
+  .btn-custom {
+    background-color: #142061;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
   @media  (max-width: 768px) {
     .products-display {
       background-image: url('/static/images/haircare (1).webp');
@@ -26,6 +34,13 @@
       justify-content: flex-start;
       padding-top:1.5rem;
       color: brown;
+      }
+      .btn-custom{
+        background-color: brown;
+      }
+      .btn-custom:hover{
+        background-color: rgb(244, 225, 172);
+        border: 1px solid brown;
       }
     
   }
@@ -38,6 +53,11 @@
   <div class="product-text ">
     <h4>Innovative Hair Care Manufacturing with Customizable Formulas</h4>
     <p>Offering GMP-certified private label and third-party solutions, we create custom formulations from sulphate-free shampoos to premium hair oils and scalp care products.</p>
+     <div class="cta d-flex">
+    <a href="#products-section" class="btn btn-custom" style="width: fit-content;">
+    Explore Products
+    </a>
+  </div>
   </div>
 </div>
 
@@ -85,7 +105,7 @@
   </div>
 </section>
 
-<div class="container-fluid mt-5 mb-5 p-2 overflow-hidden">
+<div class="container-fluid mt-5 mb-5 p-2 overflow-hidden" id="products-section">
   <div class="row">
     <!-- Left Sidebar (on top for mobile, side for desktop) -->
     <div class="d-md-none mb-3">

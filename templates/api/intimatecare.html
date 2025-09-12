@@ -17,6 +17,17 @@
   .facecare-section-container{
     background: linear-gradient(rgba(20, 32, 97, 0.35), rgba(20, 32, 97, 0.45)), url('{{ website_images.intimate_care_image_1.url }}');
   }
+  .btn-custom {
+    background-color: #142061;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+  .btn-custom:hover {
+    background-color: white;
+    border: 1px solid #142061;
+  }
   @media screen and (max-width: 768px) {
     .products-display {
       background-image: url('/static/images/intimate.webp');
@@ -33,6 +44,11 @@
   <div class="product-text">
     <h4>Safe, Gentle, and Effective Intimate Care Solutions</h4>
     <p>We create clinically tested, skin-friendly products for intimate care tailored to your brand’s vision and customer needs.</p>
+      <div class="cta d-flex justify-content-start w-100">
+    <a href="#products-section" class="btn btn-custom" style="width: fit-content;">
+    Explore Products
+    </a>
+  </div>
   </div>
 </div>
 
@@ -87,7 +103,7 @@
   </div>
 </section>
 
-<div class="container-fluid m-0 p-0 mt-5 overflow-hidden">
+<div class="container-fluid m-0 p-0 mt-5 overflow-hidden" id="products-section">
   <div class="row">
     <!-- Left Sidebar (on top for mobile, side for desktop) -->
     <div class="d-md-none text-center mb-3">

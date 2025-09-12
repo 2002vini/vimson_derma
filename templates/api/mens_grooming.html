@@ -30,6 +30,9 @@
     color: white;
     /* or your preferred text color */
   }
+  .btn-custom:hover {
+    background-color: rgba(20, 32, 97, 0.35);
+  }
    @media screen and (max-width: 768px) {
     .products-display {
       background-image: url("/static/images/men's grooming.webp");
@@ -49,6 +52,11 @@
   <div class="product-text w-50">
     <h4>Your Partner in Men’s Grooming Product Manufacturing</h4>
     <p>Private label and third-party manufacturing for men’s grooming, with products formulated for performance, skin health, and style.</p>
+    <div class="cta d-flex justify-content-lg-center w-100">
+    <a href="#products-section" class="btn btn-custom" style="width: fit-content;">
+    Explore Products
+    </a>
+  </div>
   </div>
 </div>
 
@@ -132,7 +140,8 @@
   </div>
 </section>
 
-<div class="container-fluid p-0 m-0 overflow-hidden">
+<div class="container-fluid p-0 m-0 overflow-hidden" id="products-section">
+  {% if products %}
   <div class="row mt-5 mb-5 p-2">
     <!-- Left Sidebar (on top for mobile, side for desktop) -->
     <div class="d-md-none text-center mb-3">
@@ -229,6 +238,7 @@
       {% endif %}
     </div>
   </div>
+  {% endif %}
 </div>
 
 

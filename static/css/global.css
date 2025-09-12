@@ -492,7 +492,6 @@ h6 {
     background-color: white;
   }
   .dropdown-menu {
-    overflow-x: auto; 
     padding:8px;
   }
   .dropdown-item {
@@ -742,7 +741,7 @@ h6 {
   }
   #timeline .timeline-item {
     position: relative;
-    height:250px;
+    max-height:280px;
 
   }
   #timeline .timeline-item .timeline-icon {
@@ -926,4 +925,14 @@ h6 {
 
 .about-animate {
   animation: aboutSlideLeft 3s cubic-bezier(0.77,0,0.175,1) forwards;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
 }
