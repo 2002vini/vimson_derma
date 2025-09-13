@@ -13,8 +13,8 @@ from django.contrib import messages
 from django.views.decorators.http import require_POST
 from django.utils.html import strip_tags
 from django.core.mail import EmailMultiAlternatives
-
-from ..utils import send_contact_mail
+import mimetypes
+from ..utils import send_contact_mail, send_carrier_mail, send_quote_mail
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -150,25 +150,6 @@ class BlogPostViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 
-def send_email_handler(subject, recipient_email, html_content,attachment=None):
-
-    # Fallback plain text version
-    text_content = strip_tags(html_content)
-
-    # Send email
-    email = EmailMultiAlternatives(
-        subject=subject,
-        body=text_content,
-        to=[recipient_email,]
-    )
-    email.attach_alternative(html_content, "text/html")
-    if attachment:
-        filename, content, mimetype = attachment
-        email.attach(filename, content, mimetype)
-    email.send()
-    return f"Email sent to {recipient_email}"
-
-
 @require_POST
 def contact_submit(request):
     name = request.POST.get('name', '').strip()
@@ -196,6 +177,7 @@ def quote_submit(request):
     if request.method == 'POST':
         name = request.POST.get('request-name', '').strip()
         email = request.POST.get('request-email', '').strip()
+        company = request.POST.get('request-company', '').strip()
         contact_no = request.POST.get('request-phone', '').strip()
         message = request.POST.get('request-message', '').strip()
         quantity = request.POST.get('request-quantity', '').strip()
@@ -204,11 +186,17 @@ def quote_submit(request):
         
     
         try:
-            subject="Testing For Contact Us Leads!"
-            text="Congrats for sending test email with Mailtrap! \n\n"
-
-            send_email_handler(subject, settings.EMAIL_HOST_USER, html)
-            messages.success(request, 'Email sent successfully!')
+            send_quote_mail(
+                name = name,
+                email = email,
+                contact_no = contact_no,
+                product_name = product_name,
+                quantity = quantity,
+                customization = customization,
+                company = company,
+                message = message,
+            )
+            messages.success(request, 'Quotation sent successfully!')
             return redirect(request.META.get('HTTP_REFERER', '/'))
             
         except Exception as e:
@@ -222,65 +210,70 @@ def careers_apply(request):
     """Handle the request for a job application."""
     name = request.POST.get('name', '').strip()
     email = request.POST.get('email', '').strip()
+    dob = request.POST.get('dob', '').strip()
     contact_no = request.POST.get('phone', '').strip()
     position = request.POST.get('position', '').strip()
-    dob = request.POST.get('dob', '').strip()
+    job_id = request.POST.get('job_id', '').strip()
     resume = request.FILES.get('resume', None)
-    job_id=JobPosition.objects.get(position=position).id if position else None
 
     if job_id:
-        try:
-            job = Job.objects.get(id=int(job_id))
-        except Job.DoesNotExist:
+
+        job = Job.objects.filter(id=int(job_id))
+        if not job.exists():
             messages.error(request, 'Job not found.')
             return redirect(request.META.get('HTTP_REFERER', '/'))
+        job = job.first()
+
+        job_position = JobPosition.objects.filter(position=position)
+        if not job_position.exists():
+            messages.error(request, 'Job Position not found.')
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+        job_position = job_position.first()
+
 
         # Check for duplicate applications
-        if JobApplications.objects.filter(job_id=job.id, email=email).exists():
+        job_application = JobApplications.objects.filter(job_id__id=job.id, email=email)
+        if job_application.exists():
             messages.error(request, 'You have already applied for this position.')
             return redirect(request.META.get('HTTP_REFERER', '/'))
 
-        try:
-            # Save job application to DB
-            job_application = JobApplications(
-                job_id=job,
-                name=name,
-                email=email,
-                phone=contact_no,
-                dob=dob,
-                resume=resume,
-                job_position=JobPosition.objects.get(position=position)
-            )
-            job_application.save()
+        # Save job application to DB
+        job_application = JobApplications.objects.create(
+            job_id=job,
+            name=name,
+            email=email,
+            phone=contact_no,
+            dob=dob,
+            resume=resume,
+            job_position=job_position
+        )
 
-            # Prepare HTML content for email
+        resume_file = job_application.resume
 
-            # Read file content
-            if resume:
-                attachment = (
-                    resume.name,
-                    resume.read(),
-                    resume.content_type
-                )
-            else:
-                attachment = None
+        with resume_file.open('rb') as f:
+            file_content = f.read()
 
-            # Send email to admin
-            send_email_handler(
-                subject=f"New Job Application: {name} - {position}",
-                recipient_email=settings.EMAIL_HOST_USER,  # Change as needed
-                html_content=html,
-                attachment=attachment
-            )
+        filename = resume_file.name.split('/')[-1]
+        mimetype, _ = mimetypes.guess_type(resume_file.name)
+        mimetype = mimetype or "application/octet-stream"
+        attachment = {
+            'file_name': filename,
+            'file_content': file_content,
+            'content_type': mimetype
+        }
 
-            messages.success(request, 'Your application has been submitted successfully.')
-            return redirect(request.META.get('HTTP_REFERER', '/'))
+        # Send email to Vimson Owners related to Application of Career
+        send_carrier_mail(
+            name = name,
+            email = email,
+            dob = dob,
+            phone_number = contact_no,
+            position = position,
+            file_attachment = attachment,
+        )
 
-        except Exception as e:
-            print(e)
-            messages.error(request, 'An error occurred while submitting your application. Please try again later.')
-            return redirect(request.META.get('HTTP_REFERER', '/'))
-
+        messages.success(request, 'Your application has been submitted successfully.')
+        return redirect(request.META.get('HTTP_REFERER', '/'))
     else:
         messages.error(request, 'Invalid job. Please try again.')
         return redirect(request.META.get('HTTP_REFERER', '/'))

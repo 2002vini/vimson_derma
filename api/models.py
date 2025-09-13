@@ -164,6 +164,9 @@ class BlogPost(models.Model):
 
 class JobApplications(models.Model):
     """Model representing job applications in the system."""
+    class Meta:
+        verbose_name_plural = 'Job Applications'
+
     job_id = models.ForeignKey('Job', on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=200)
     email = models.EmailField()
@@ -183,7 +186,6 @@ class JobApplications(models.Model):
 # Create your models here.
 class Job(models.Model):
     """Model representing job postings in the system."""
-
     title = models.ForeignKey('JobPosition', on_delete=models.CASCADE)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -199,6 +201,8 @@ class Job(models.Model):
 
 class JobPosition(models.Model):
     """Model representing job positions in the system."""
+    class Meta:
+        verbose_name_plural = 'Job Positions'
 
     position = models.CharField(max_length=200)
     objects = models.Manager()
