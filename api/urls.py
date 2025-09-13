@@ -1,5 +1,5 @@
 from django.urls import path,include
-from .views.api_views import CategoryViewSet, ProductViewSet, ClientViewSet, FAQViewSet, SubCategoryViewSet, TestimonialViewSet, TagViewSet, BlogPostViewSet, careers_apply, contact_submit, quote_submit
+from .views.api_views import CategoryViewSet, ProductViewSet, ClientViewSet, FAQViewSet, SubCategoryViewSet, TestimonialViewSet, TagViewSet, BlogPostViewSet, careers_apply, contact_submit, quote_submit,get_products,get_subcategories
 from rest_framework.routers import DefaultRouter
 from .views.html_views import *
 
@@ -38,6 +38,8 @@ urlpatterns = [
     path('mothercare/',mothercare,name='mothercare'),
     path('intimatecare/', intimatecare, name='intimatecare'),
     path('veterinary/',veterinary, name='veterinary'),
+    path("get-subcategories/<int:category_id>/", get_subcategories, name="get_subcategories"),
+    path("get-products/", get_products, name="get_products"),
 
     # path('test_slider/',test_slider, name='test_slider'),
     

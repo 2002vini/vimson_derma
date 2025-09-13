@@ -12,6 +12,51 @@ document.querySelectorAll(".category-item").forEach(item => {
     });
 });
 
+document.getElementById("request-product").addEventListener("change", function() {
+    let categoryId = this.value;
+    console.log("Selected category ID:", categoryId);
+    if (categoryId) {
+        fetch(`/get-subcategories/${categoryId}/`)
+            .then(res => res.json())
+            .then(data => {
+                let subcatSelect = document.getElementById("subcategory");
+                subcatSelect.innerHTML = "<option value=''>Select SubCategory</option>";
+                data.forEach(item => {
+                    console.log("fetced subcategories!");
+                    console.log(item.type);
+                    subcatSelect.innerHTML += `<option value="${item.id}">${item.type}</option>`;
+                });
+                document.getElementById("product").innerHTML = "<option value=''>Select Product</option>";
+                subcatSelect.disabled = false;
+                let prodSelect = document.getElementById("product");
+                prodSelect.innerHTML = "<option value='' disabled selected>Select product</option>";
+                prodSelect.disabled = true;
+            });
+        
+       
+    }
+});
+
+document.getElementById("subcategory").addEventListener("change", function() {
+    let subcatId = this.value;
+    let categoryId = document.getElementById("request-product").value;
+
+    if (subcatId) {
+        fetch(`/get-products/?category_id=${categoryId}&subcategory_id=${subcatId}`)
+            .then(res => res.json())
+            .then(data => {
+                let prodSelect = document.getElementById("product");
+                prodSelect.innerHTML = "<option value=''>Select Product</option>";
+                data.products.forEach(item => {
+                    prodSelect.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+                });
+            prodSelect.disabled = false;
+
+            });
+
+    }
+});
+
 
 
     const dropdownButton = document.getElementById('dropdownMenuButton');

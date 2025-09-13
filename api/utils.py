@@ -78,7 +78,7 @@ def send_carrier_mail(name, email, dob, phone_number, position, file_attachment=
     )
 
 
-def send_quote_mail(name, email, contact_no, product_name, quantity, customization, company, message):
+def send_quote_mail(name, email, contact_no, product_name, quantity, customization, company, message,subcategory_name,category_name):
     subject = f"New Quote Request - {product_name}"
 
     html_content = render_to_string(
@@ -92,6 +92,8 @@ def send_quote_mail(name, email, contact_no, product_name, quantity, customizati
             'customization': customization,
             'company': company,
             'message': message,
+            'subcategory_name': subcategory_name,
+            'category_name': category_name,
         }
     )
     send_email_handler(

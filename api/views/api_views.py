@@ -1,3 +1,4 @@
+from unicodedata import category
 from django.template.loader import render_to_string
 from django.shortcuts import redirect, render
 from django.db.models import Q
@@ -15,6 +16,8 @@ from django.utils.html import strip_tags
 from django.core.mail import EmailMultiAlternatives
 import mimetypes
 from ..utils import send_contact_mail, send_carrier_mail, send_quote_mail
+from django.http import JsonResponse
+
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -182,15 +185,18 @@ def quote_submit(request):
         message = request.POST.get('request-message', '').strip()
         quantity = request.POST.get('request-quantity', '').strip()
         product_name = request.POST.get('request-product', '').strip()
+        subcategory_name = request.POST.get('request-subcategory', '').strip()
+        category_name = request.POST.get('request-category', '').strip()
         customization = request.POST.get('request-customization', '').strip()
-        
-    
+            
         try:
             send_quote_mail(
                 name = name,
                 email = email,
                 contact_no = contact_no,
                 product_name = product_name,
+                subcategory_name = subcategory_name,
+                category_name = category_name,
                 quantity = quantity,
                 customization = customization,
                 company = company,
@@ -277,3 +283,28 @@ def careers_apply(request):
     else:
         messages.error(request, 'Invalid job. Please try again.')
         return redirect(request.META.get('HTTP_REFERER', '/'))
+
+def get_subcategories(request, category_id):
+    subcategories = SubCategory.objects.filter(category_id=category_id).values("id", "type")
+    return JsonResponse(list(subcategories), safe=False)
+
+def get_products(request):
+    category_id = request.GET.get("category_id")
+    subcategory_id = request.GET.get("subcategory_id")
+
+    try:
+        # validate category
+        category = Category.objects.get(id=category_id)
+
+        # validate subcategory belongs to category
+        subcategory = SubCategory.objects.get(id=subcategory_id, category=category)
+
+        # fetch products
+        products = Product.objects.filter(category=category,subcategory=subcategory).values("id", "name")
+        print("filtered products!")
+
+        return JsonResponse({
+            "products": list(products),
+        })
+    except (Category.DoesNotExist, SubCategory.DoesNotExist):
+        return JsonResponse({"error": "Invalid category or subcategory"}, status=400)

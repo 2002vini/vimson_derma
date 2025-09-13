@@ -741,7 +741,7 @@ h6 {
   }
   #timeline .timeline-item {
     position: relative;
-    max-height:280px;
+    max-height:320px;
 
   }
   #timeline .timeline-item .timeline-icon {
@@ -781,6 +781,9 @@ h6 {
     color: #0b1957;
     box-shadow:  0.5rem 1rem rgba(0,0,0,0.1);
     border-radius: 1rem;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
 
 
   }
@@ -804,8 +807,6 @@ h6 {
    
   }
   #timeline .timeline-item .timeline-content p {
-    padding:15px;
-    color: right;
     font-family: 'Be Vietnam Pro';
   }
   /* #timeline .timeline-item .timeline-content:before {
