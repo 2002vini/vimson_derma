@@ -1,0 +1,5 @@
+HR_EMAIL='hr@vimsonderma.com'
+SHRENIK_EMAIL='shrenik@vimsonderma.com'
+KALPESH_EMAIL='kalpesh@vimsonderma.com'
+INFO_EMAIL='info@vimsonderma.com'
+VAIBHAV_EMAIL='vaibhavpaliwal620@gmail.com'

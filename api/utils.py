@@ -2,11 +2,11 @@ from datetime import datetime
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.core.mail import EmailMultiAlternatives
-
+from vimson_derma import constants
 from vimson_derma import settings
 
 
-def send_email_handler(subject, recipient_email, html_content, attachments=None):
+def send_email_handler(subject, recipient_email, html_content, attachments=None, cc=None):
 
     # Fallback plain text version
     text_content = strip_tags(html_content)
@@ -15,7 +15,8 @@ def send_email_handler(subject, recipient_email, html_content, attachments=None)
     email = EmailMultiAlternatives(
         subject=subject,
         body=text_content,
-        to=[recipient_email,]
+        to=[recipient_email,],
+        cc = cc or []
     )
     email.attach_alternative(html_content, "text/html")
 
@@ -47,7 +48,12 @@ def send_contact_mail(name, email, company_name, phone_number, category, message
             'message': message
         }
     )
-    send_email_handler(subject, settings.EMAIL_HOST_USER, html_content)
+    send_email_handler(
+        subject=subject,
+        recipient_email=settings.EMAIL_HOST_USER,
+        html_content=html_content,
+        cc = [constants.SHRENIK_EMAIL, constants.KALPESH_EMAIL]
+    )
 
 
 def send_carrier_mail(name, email, dob, phone_number, position, file_field=None):
