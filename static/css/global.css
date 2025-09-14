@@ -483,7 +483,13 @@ h6 {
   .modal-body .form{
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
+  }
+  @media screen and (max-width: 576px) {
+    .modal-body .form{
+      gap:0px;
+    }
+    
   }
   .modal-backdrop{
     z-index:20;
