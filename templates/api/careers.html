@@ -68,7 +68,7 @@
   <div class="overlay-text">
     <h1 class="hero-heading hero-text p-0">Your Future with Vimson Derma</h1>
     <p class>Explore a workplace that values your growth, ideas, and impact</p>
-    <a href="#job-application-section" class="btn btn-custom mt-3">Apply For Job</a>
+    <a href="#current-openings" class="btn btn-custom mt-3">Apply For Job</a>
 
     </div>
   </div>
@@ -98,7 +98,7 @@
 
 <!-- Job Grid for Desktop (md and up) -->
 <div class="container w-100 d-none d-md-block">
-  <div class="heading h3 text-center mt-5 mb-5">Current Job Openings</div>
+  <div class="heading h3 text-center mt-5 mb-5" id="current-openings">Current Job Openings</div>
   <div class="job-container d-flex flex-wrap justify-content-center gap-4">
     {% for job in jobs %}
     <a href="{% url 'careers_detail' job.id %}" class="text-decoration-none">
