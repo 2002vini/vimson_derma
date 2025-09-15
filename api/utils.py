@@ -94,6 +94,7 @@ def send_quote_mail(name, email, contact_no, product_name, quantity, customizati
             'message': message,
             'subcategory_name': subcategory_name,
             'category_name': category_name,
+            'product_range': product_name
         }
     )
     send_email_handler(

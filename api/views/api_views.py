@@ -184,9 +184,10 @@ def quote_submit(request):
         contact_no = request.POST.get('request-phone', '').strip()
         message = request.POST.get('request-message', '').strip()
         quantity = request.POST.get('request-quantity', '').strip()
-        product_name = request.POST.get('request-product', '').strip()
+        product_range = request.POST.get('product-range', '').strip()
         subcategory_name = request.POST.get('request-subcategory', '').strip()
-        category_name = request.POST.get('request-category', '').strip()
+        category_name = request.POST.get('request-product', '').strip()
+        product_name = request.POST.get('product', '').strip()
         customization = request.POST.get('request-customization', '').strip()
             
         try:
@@ -194,6 +195,7 @@ def quote_submit(request):
                 name = name,
                 email = email,
                 contact_no = contact_no,
+                product_range = product_range,
                 product_name = product_name,
                 subcategory_name = subcategory_name,
                 category_name = category_name,
@@ -201,6 +203,7 @@ def quote_submit(request):
                 customization = customization,
                 company = company,
                 message = message,
+                
             )
             messages.success(request, 'Quotation sent successfully!')
             return redirect(request.META.get('HTTP_REFERER', '/'))
@@ -285,26 +288,27 @@ def careers_apply(request):
         return redirect(request.META.get('HTTP_REFERER', '/'))
 
 def get_subcategories(request, category_id):
-    subcategories = SubCategory.objects.filter(category_id=category_id).values("id", "type")
+    category=Category.objects.get(id=category_id)
+    subcategories = SubCategory.objects.filter(category=category).values("id", "type")
     return JsonResponse(list(subcategories), safe=False)
 
 def get_products(request):
-    category_id = request.GET.get("category_id")
-    subcategory_id = request.GET.get("subcategory_id")
+    category_id = request.GET.get("category")
+    subcategory_id = request.GET.get("subcategory")
+    product_range = request.GET.get("range")  # "Cosmetic" or "Medicated"
+    category=Category.objects.get(id=category_id)
+    subcategory=SubCategory.objects.get(id=subcategory_id) if subcategory_id else None
 
-    try:
-        # validate category
-        category = Category.objects.get(id=category_id)
+     # Start with all products
+    qs = Product.objects.all()
 
-        # validate subcategory belongs to category
-        subcategory = SubCategory.objects.get(id=subcategory_id, category=category)
+    if category_id:
+        qs = qs.filter(category=category)
+    if product_range == "Cosmetic" and subcategory:
+        qs = qs.filter(subcategory=subcategory,is_medicated=False)
+    if product_range == "Medicated":
+        qs = qs.filter(category=category,is_medicated=True)
+    # For Medicated → only category is applied (subcategory ignored)
 
-        # fetch products
-        products = Product.objects.filter(category=category,subcategory=subcategory).values("id", "name")
-        print("filtered products!")
-
-        return JsonResponse({
-            "products": list(products),
-        })
-    except (Category.DoesNotExist, SubCategory.DoesNotExist):
-        return JsonResponse({"error": "Invalid category or subcategory"}, status=400)
+    products = qs.values("id", "name")
+    return JsonResponse(list(products), safe=False)

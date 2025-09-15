@@ -38,8 +38,8 @@ urlpatterns = [
     path('mothercare/',mothercare,name='mothercare'),
     path('intimatecare/', intimatecare, name='intimatecare'),
     path('veterinary/',veterinary, name='veterinary'),
-    path("get-subcategories/<int:category_id>/", get_subcategories, name="get_subcategories"),
-    path("get-products/", get_products, name="get_products"),
+    path("subcategories/<int:category_id>/", get_subcategories, name="get_subcategories"),
+    path("products/", get_products, name="get_products"),
 
     # path('test_slider/',test_slider, name='test_slider'),
     

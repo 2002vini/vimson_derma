@@ -474,6 +474,14 @@ h6 {
     overflow-x: visible !important;
     z-index:1040;
   } 
+  .nav-link.active {
+  font-weight: bold;
+  border-bottom: 2px solid white; /* underline */
+}
+.nav-link.active.dropdown-item{
+  color: white;
+}
+
 
   .modal-content{
     z-index: 1020;

@@ -177,6 +177,11 @@
   }
   .job-card h5{
     font-size: 24px;
+    display: -webkit-box;
+  -webkit-line-clamp: 1;   
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   }
 
   .job-container {
@@ -185,6 +190,10 @@
     align-items: center;
     justify-content: center;
     gap:5px;
+    width: 100%;
+  }
+  .job-container a{
+    width: 100%;
   }
 
   .job-card .icon-box {

@@ -98,29 +98,39 @@
 
 <!-- Job Grid for Desktop (md and up) -->
 <div class="container w-100 d-none d-md-block">
-  <div class="heading h3 text-center mt-5 mb-5" id="current-openings">Current Job Openings</div>
-  <div class="job-container d-flex flex-wrap justify-content-center gap-4">
+  <div class="heading h3 text-center mt-5 mb-5" id="current-openings">
+    Current Job Openings
+  </div>
+  
+  <div class="row gy-4">
     {% for job in jobs %}
-    <a href="{% url 'careers_detail' job.id %}" class="text-decoration-none">
-      <div class="card job-card text-center h-100">
-        <div class="icon-box">
-          <i class="bi bi-person"></i>
+    <div class="col-12 col-sm-6 col-md-4 d-flex">
+      <a href="{% url 'careers_detail' job.id %}" class="text-decoration-none w-100">
+        <div class="card job-card text-center h-100">
+          <div class="icon-box">
+            <i class="bi bi-person"></i>
+          </div>
+          <div class="job-description">
+            <h5 class="heading">{{ job.title }}</h5>
+            <p class="small text-muted">
+              Experience: {{ job.experience }} | No. of Openings: {{ job.openings }}
+            </p>
+          </div>
+          <button class="btn btn-primary apply-btn w-100">Apply</button>
         </div>
-        <div class="job-description">
-          <h5 class="mt-2 heading">{{ job.title }}</h5>
-          <p class="small text-muted">Experience: {{ job.experience }} | No. of Openings: {{ job.openings }}</p>
-        </div>
-        <button class="btn btn-primary apply-btn mt-2">Apply</button>
-      </div>
-    </a>
+      </a>
+    </div>
     {% endfor %}
   </div>
 </div>
 
 <!-- Carousel for Mobile (sm only) -->
 <div class="container d-md-none mt-5 mb-5">
-  <h6 class="heading text-center mb-4">Current Job Openings</h6>
+  <div class="heading h3 text-center mt-5 mb-5" id="current-openings">
+    Current Job Openings
+  </div>  
   <div id="jobCarouselMobile" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-touch="true">
+  
     <div class="carousel-inner">
       {% for job in jobs %}
       <div class="carousel-item {% if forloop.first %}active{% endif %}">

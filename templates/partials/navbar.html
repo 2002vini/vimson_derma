@@ -17,30 +17,30 @@
         <div class="collapse navbar-collapse" id="navbarNav" style="flex-grow: 1;">
             <ul class="navbar-nav justify-content-around">
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{% url 'index' %}">Home</a>
+                    <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %} text-white" href="{% url 'index' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{% url 'about' %}">About Us</a>
+                    <a class="nav-link  {% if request.resolver_match.url_name == 'about' %}active{% endif %} text-white" href="{% url 'about' %}">About Us</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle text-white {% if request.resolver_match.url_name in 'manafacturing,services,innovation,research' %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         Services
                     </a>
                     <ul class="dropdown-menu" id="customDropdownMenu">
-                        <li><a class="dropdown-item" href="{% url 'manafacturing' %}">Third Party Manufacturing</a></li>
-                        <li><a class="dropdown-item" href="{% url 'services'%}">Private Label Manufacturing</a></li>
-                        <li><a class="dropdown-item" href="{% url 'innovation' %}">Formulation & Customization</a></li>
-                        <li><a class="dropdown-item" href="{% url 'research' %}">Research & Development</a></li>
+                        <li><a class="nav-link  {% if request.resolver_match.url_name == 'manafacturing' %}active{% endif %} dropdown-item" href="{% url 'manafacturing' %}">Third Party Manufacturing</a></li>
+                        <li><a class="nav-link  {% if request.resolver_match.url_name == 'services' %}active{% endif %} dropdown-item" href="{% url 'services'%}">Private Label Manufacturing</a></li>
+                        <li><a class="nav-link  {% if request.resolver_match.url_name == 'innovation' %}active{% endif %} dropdown-item" href="{% url 'innovation' %}">Formulation & Customization</a></li>
+                        <li><a class="nav-link  {% if request.resolver_match.url_name == 'research' %}active{% endif %} dropdown-item" href="{% url 'research' %}">Research & Development</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle text-white {% if request.resolver_match.url_name in 'medicated,facecare,haircare,bodycare,mens_grooming,intimatecare,mothercare,veterinary' %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false" data-bs-auto-close="outside">
                         Products
                     </a>
                     <ul class="dropdown-menu" id="customDropdownProductMenu">
-                        <li><a class="dropdown-item" href="{% url 'medicated' %}">Medicated</a></li>
+                        <li><a class="dropdown-item nav-link  {% if request.resolver_match.url_name == 'medicated' %}active{% endif %}" href="{% url 'medicated' %}">Medicated</a></li>
                         <!-- Separator -->
 <!--                        <li><hr class="dropdown-divider"></li>-->
                         <!-- <li><a class="dropdown-item" href="{% url 'facecare' %}">FaceCare</a></li>
@@ -51,25 +51,25 @@
                         <li><a class="dropdown-item" href="{% url 'mothercare' %}">Baby & Mother Care</a></li>
                         <li><a class="dropdown-item" href="{% url 'veterinary' %}">Veterinary Care</a></li> -->
                       <li class="dropdown-submenu">
-                        <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Cosmetics</a>
+                        <a class="dropdown-item dropdown-toggle " href="#" data-bs-toggle="dropdown">Cosmetics</a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="{% url 'facecare' %}">FaceCare</a></li>
-                          <li><a class="dropdown-item" href="{% url 'haircare' %}">HairCare</a></li>
-                          <li><a class="dropdown-item" href="{% url 'bodycare' %}">BodyCare</a></li>
-                          <li><a class="dropdown-item" href="{% url 'mens_grooming' %}">Men's Grooming</a></li>
-                          <li><a class="dropdown-item" href="{% url 'intimatecare' %}">Intimate Care</a></li>
-                          <li><a class="dropdown-item" href="{% url 'mothercare' %}">Baby & Mother Care</a></li>
-                          <li><a class="dropdown-item" href="{% url 'veterinary' %}">Veterinary Care</a></li>
+                          <li><a class="dropdown-item nav-link  {% if request.resolver_match.url_name == 'facecare' %}active{% endif %}" href="{% url 'facecare' %}">FaceCare</a></li>
+                          <li><a class="dropdown-item nav-link  {% if request.resolver_match.url_name == 'haircare' %}active{% endif %}" href="{% url 'haircare' %}">HairCare</a></li>
+                          <li><a class="dropdown-item nav-link  {% if request.resolver_match.url_name == 'bodycare' %}active{% endif %}" href="{% url 'bodycare' %}">BodyCare</a></li>
+                          <li><a class="dropdown-item nav-link  {% if request.resolver_match.url_name == 'mens_grooming' %}active{% endif %}" href="{% url 'mens_grooming' %}">Men's Grooming</a></li>
+                          <li><a class="dropdown-item nav-link  {% if request.resolver_match.url_name == 'intimatecare' %}active{% endif %}" href="{% url 'intimatecare' %}">Intimate Care</a></li>
+                          <li><a class="dropdown-item nav-link  {% if request.resolver_match.url_name == 'mothercare' %}active{% endif %}" href="{% url 'mothercare' %}">Baby & Mother Care</a></li>
+                          <li><a class="dropdown-item nav-link  {% if request.resolver_match.url_name == 'veterinary' %}active{% endif %}" href="{% url 'veterinary' %}">Veterinary Care</a></li>
                         </ul>
                         </li>
                     </ul>
                     
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{% url 'blogs' %}">Blog</a>
+                    <a class="nav-link  {% if request.resolver_match.url_name == 'blogs' %}active{% endif %} text-white" href="{% url 'blogs' %}">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{% url 'careers' %}">Career</a>
+                    <a class="nav-link  {% if request.resolver_match.url_name == 'careers' %}active{% endif %} text-white" href="{% url 'careers' %}">Career</a>
                 </li>
 
                 <!--Mobile view request a quote and contact us icons-->
@@ -197,8 +197,15 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
+                                 <div class="form-group mt-3">
+                                    <select class="form-select" name="product-range" id="product-range" required>
+                                        <option value="" disabled selected>Select product range</option>
+                                        <option value="Cosmetic">Cosmetic</option>
+                                        <option value="Dermatology">Dermatology</option>
+                                    </select>
+                                </div>
                                 <div class="form-group mt-3">
-                                    <select class="form-select" name="request-category" id="request-product" required>
+                                    <select class="form-select" name="request-product" id="request-product" required >
                                         <option value="" disabled selected>Select category</option>
                                         {% for cat in categories %}
                                         <option value="{{ cat.id }}">{{ cat.type }}</option>
@@ -211,7 +218,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <select class="form-select" name="request-product" id="product" required selected>
+                                    <select class="form-select" name="product" id="product" required selected>
                                         <option value="" disabled selected>Select product</option>
                                     </select>
                                 </div>

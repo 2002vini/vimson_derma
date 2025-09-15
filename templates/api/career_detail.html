@@ -60,7 +60,9 @@
 
     <!-- Right Side: Current Job Openings -->
     <div class="current-openings">
-        <h6 class="heading mt-3 mb-3">Current Job Openings</h6>
+        <div class="heading d-flex justify-content-center align-items-center p-2">
+            <h6 class="heading text-center">Current Job Openings</h6>
+        </div>
         <div class="job-container mx-auto">
             {% for job in remaining_top_jobs %}
             <a href="{% url 'careers_detail' job.id %}" class="text-decoration-none">

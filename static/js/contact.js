@@ -1,4 +1,83 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const productRange = document.getElementById("product-range");
+    const category = document.getElementById("request-product");
+    const subcategory = document.getElementById("subcategory");
+    const product = document.getElementById("product");
+
+     function resetDropdowns() {
+        category.disabled = true;
+        category.value = "";
+        subcategory.disabled = true;
+        subcategory.innerHTML = `<option value="" disabled selected>Select sub category</option>`;
+        product.disabled = true;
+        product.innerHTML = `<option value="" disabled selected>Select product</option>`;
+    }
+
+    resetDropdowns(); // initial reset
+
+
+    // Step 1: Product Range selected → enable Category
+    productRange.addEventListener("change", function() {
+        resetDropdowns();
+        category.disabled = false;
+    });
+
+    category.addEventListener("change", function() {
+    const range = productRange.value;
+    const catId = category.value;
+    console.log("Selected Range:", range);
+    console.log("Selected Category ID:", catId);
+
+    product.disabled = true;
+    product.innerHTML = `<option value="" disabled selected>Select product</option>`;
+
+    if (range === "Dermatology") {
+        console.log("Fetching products for Dermatology");
+        subcategory.innerHTML = `<option value="" disabled selected disabled>Select sub category</option>`;
+        // Direct fetch products with category + range
+        fetch(`/products/?category=${catId}&range=Medicated`)
+            .then(res => res.json())
+            .then(data => {
+                product.disabled = false;
+                data.forEach(p => {
+                    product.innerHTML += `<option value="${p.id}">${p.name}</option>`;
+                });
+            });
+    } else if (range === "Cosmetic") {
+        // Fetch subcategories first
+        subcategory.innerHTML = `<option value="" disabled selected>Select sub category</option>`;
+        subcategory.disabled = false;
+
+        fetch(`/subcategories/${catId}/`)
+            .then(res => res.json())
+            .then(data => {
+                subcategory.innerHTML = `<option value="" disabled selected>Select sub category</option>`;
+                data.forEach(sc => {
+                    subcategory.innerHTML += `<option value="${sc.id}">${sc.type}</option>`;
+                });
+            });
+    }
+    });
+
+    subcategory.addEventListener("change", function() {
+    const range = productRange.value;
+    const catId = category.value;
+    const subcatId = subcategory.value;
+
+    product.disabled = true;
+    product.innerHTML = `<option value="" disabled selected>Select product</option>`;
+
+    fetch(`/products/?category=${catId}&subcategory=${subcatId}&range=${range}`)
+        .then(res => res.json())
+        .then(data => {
+            product.disabled = false;
+            data.forEach(p => {
+                product.innerHTML += `<option value="${p.id}">${p.name}</option>`;
+            });
+        });
+    });
+
+
 
 document.querySelectorAll(".category-item").forEach(item => {
     item.addEventListener("click", function () {
@@ -10,51 +89,6 @@ document.querySelectorAll(".category-item").forEach(item => {
         // store value in hidden input for form submission
         document.getElementById("category").value = value;
     });
-});
-
-document.getElementById("request-product").addEventListener("change", function() {
-    let categoryId = this.value;
-    console.log("Selected category ID:", categoryId);
-    if (categoryId) {
-        fetch(`/get-subcategories/${categoryId}/`)
-            .then(res => res.json())
-            .then(data => {
-                let subcatSelect = document.getElementById("subcategory");
-                subcatSelect.innerHTML = "<option value=''>Select SubCategory</option>";
-                data.forEach(item => {
-                    console.log("fetced subcategories!");
-                    console.log(item.type);
-                    subcatSelect.innerHTML += `<option value="${item.id}">${item.type}</option>`;
-                });
-                document.getElementById("product").innerHTML = "<option value=''>Select Product</option>";
-                subcatSelect.disabled = false;
-                let prodSelect = document.getElementById("product");
-                prodSelect.innerHTML = "<option value='' disabled selected>Select product</option>";
-                prodSelect.disabled = true;
-            });
-        
-       
-    }
-});
-
-document.getElementById("subcategory").addEventListener("change", function() {
-    let subcatId = this.value;
-    let categoryId = document.getElementById("request-product").value;
-
-    if (subcatId) {
-        fetch(`/get-products/?category_id=${categoryId}&subcategory_id=${subcatId}`)
-            .then(res => res.json())
-            .then(data => {
-                let prodSelect = document.getElementById("product");
-                prodSelect.innerHTML = "<option value=''>Select Product</option>";
-                data.products.forEach(item => {
-                    prodSelect.innerHTML += `<option value="${item.id}">${item.name}</option>`;
-                });
-            prodSelect.disabled = false;
-
-            });
-
-    }
 });
 
 
