@@ -155,20 +155,20 @@ class BlogPostViewSet(viewsets.ModelViewSet):
 
 @require_POST
 def contact_submit(request):
-    name = request.POST.get('name', '').strip()
-    email = request.POST.get('email', '').strip()
-    contact_no = request.POST.get('phone', '').strip()
-    company = request.POST.get('company', '').strip()
-    category = request.POST.get('category', '').strip()
+    name_input = request.POST.get('name', '').strip()
+    email_input = request.POST.get('email', '').strip()
+    contact_no_input = request.POST.get('phone', '').strip()
+    company_input = request.POST.get('company', '').strip()
+    category_input = request.POST.get('category', '').strip()
     message = request.POST.get('message', '').strip()
 
     # Send email (or process data)
     send_contact_mail(
-        email = email,
-        name = name,
-        company_name = company,
-        phone_number = contact_no,
-        category = category,
+        name = name_input,
+        email = email_input,
+        phone_number = contact_no_input,
+        company_name = company_input,
+        category = category_input,
         message = message
     )
     messages.success(request, 'Form Submitted Successfully')
