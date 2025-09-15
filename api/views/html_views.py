@@ -96,7 +96,7 @@ def blog_detail(request, id):
 
 def facecare(request):
     # Fetch all the products that need to be displayed
-    products=Product.objects.all().filter(is_featured=False,category__type='FaceCare').order_by('updated_at')
+    products=Product.objects.all().filter(is_featured=False,category__type='FaceCare',is_medicated=False).order_by('updated_at')
     selected_tag = request.GET.get('filter')
     if selected_tag and selected_tag != 'All':
         products = products.filter(subcategory__type=selected_tag)  # Assuming 'tags' is a ManyToManyField in Product model
@@ -124,7 +124,7 @@ def facecare(request):
 def haircare(request):
     selected_subcategory = request.GET.get('filter')
     featured_products=Product.objects.all().filter(is_featured=True,category__type='HairCare').order_by('updated_at')
-    products=Product.objects.all().filter(is_featured=False,category__type='HairCare').order_by('updated_at')
+    products=Product.objects.all().filter(is_featured=False,category__type='HairCare',is_medicated=False).order_by('updated_at')
 
     if selected_subcategory and selected_subcategory != 'All':
         products = products.filter(subcategory__type=selected_subcategory)
@@ -150,7 +150,7 @@ def bodycare(request):
     selected_subcategory = request.GET.get('filter')
     page_number = request.GET.get('page', 1)
     featured_products=Product.objects.all().filter(is_featured=True,category__type='BodyCare').order_by('updated_at')
-    products=Product.objects.all().filter(is_featured=False,category__type='BodyCare').order_by('updated_at')
+    products=Product.objects.all().filter(is_featured=False,category__type='BodyCare',is_medicated=False).order_by('updated_at')
     if selected_subcategory and selected_subcategory != 'All':
         products = products.filter(subcategory__type=selected_subcategory)
     paginator = Paginator(products, 30)
@@ -174,7 +174,7 @@ def bodycare(request):
 def mens_grooming(request):
     selected_subcategory = request.GET.get('filter')
     featured_products=Product.objects.all().filter(is_featured=True,category__type="Men's Grooming").order_by('updated_at')
-    products=Product.objects.all().filter(is_featured=False,category__type="Men's Grooming").order_by('updated_at')
+    products=Product.objects.all().filter(is_featured=False,category__type="Men's Grooming",is_medicated=False).order_by('updated_at')
     if selected_subcategory and selected_subcategory != 'All':
         products = products.filter(subcategory__type=selected_subcategory)
     page_number = request.GET.get('page', 1)
@@ -200,7 +200,7 @@ def mens_grooming(request):
 def mothercare(request):
     selected_subcategory = request.GET.get('filter')
     featured_products=Product.objects.all().filter(is_featured=True,category__type='Baby & Mother Care').order_by('updated_at')
-    products=Product.objects.all().filter(is_featured=False,category__type='Baby & Mother Care').order_by('updated_at')
+    products=Product.objects.all().filter(is_featured=False,category__type='Baby & Mother Care',is_medicated=False).order_by('updated_at')
     if selected_subcategory and selected_subcategory != 'All':
         products = Product.objects.filter(is_featured=False, category__type='Baby & Mother Care', subcategory__type=selected_subcategory).order_by('updated_at')
     page_number = request.GET.get('page', 1)
@@ -288,7 +288,7 @@ def medicated(request):
 def intimatecare(request):
     page_number = request.GET.get('page', 1)
     selected_subcategory = request.GET.get('filter')
-    products = Product.objects.filter(category__type='Intimate Care').order_by('updated_at')
+    products = Product.objects.filter(category__type='Intimate Care',is_featured=False,is_medicated=False).order_by('updated_at')
 
     if selected_subcategory and selected_subcategory != 'All':
         products = products.filter(subcategory__type=selected_subcategory)
@@ -316,7 +316,7 @@ def veterinary(request):
     selected_subcategory = request.GET.get('filter')
     page_number = request.GET.get('page', 1)
     featured_products=Product.objects.all().filter(is_featured=True,category__type='Veterinary').order_by('updated_at')
-    products=Product.objects.all().filter(is_featured=False,category__type='Veterinary').order_by('updated_at')
+    products=Product.objects.all().filter(is_featured=False,category__type='Veterinary',is_medicated=False).order_by('updated_at')
     if selected_subcategory and selected_subcategory != 'All':
         products = products.filter(subcategory__type=selected_subcategory)
     paginator = Paginator(products, 30)
@@ -341,5 +341,3 @@ def veterinary(request):
     return render(request,'api/veterinary.html', context)
 
 
-# def test_slider(request):
-#     return render(request, 'api/test_slider.html')
