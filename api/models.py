@@ -44,14 +44,14 @@ def default_subcategories():
 class Product(models.Model):
     """Model representing products in the system."""
     name = models.CharField(max_length=200)
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
     attributes = models.JSONField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     subcategory = ChainedManyToManyField(
         SubCategory,
         chained_field="category",
         chained_model_field="category",
-        blank=False, default=default_subcategories,
+        blank=True, default=default_subcategories,
     )
     
     image = models.ImageField(upload_to="products/", null=True, blank=True, max_length=255)
