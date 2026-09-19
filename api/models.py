@@ -303,3 +303,42 @@ class TrustedCompanies(models.Model):
 
     def __str__(self):
         return f"{self.company_name}"
+
+
+
+class SeoPage(models.Model):
+    """SEO landing page built on the Private Label layout, served at /<slug>/."""
+    class Meta:
+        verbose_name = 'SEO Page'
+        verbose_name_plural = 'SEO Pages'
+
+    slug = models.SlugField(max_length=200, unique=True, help_text="Page URL, e.g. 'private-label-skincare-ahmedabad' → /private-label-skincare-ahmedabad/")
+    h1_heading = models.CharField(max_length=255, help_text="Main heading shown on the hero banner.")
+    meta_title = models.CharField(max_length=255, help_text="Browser tab / search result title.")
+    meta_description = models.TextField(max_length=500, help_text="Search result description (ideally under 160 characters).")
+    about_title = models.CharField(max_length=255, help_text="Replaces the 'About Private Labeling' heading.")
+    about_description = HTMLField(help_text="Shown below the about title; collapses after 6 lines with Read more.")
+    is_published = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    objects = models.Manager()
+
+    def __str__(self):
+        return self.h1_heading
+
+
+class SeoPageFAQ(models.Model):
+    """FAQ entry belonging to a single SEO page."""
+    class Meta:
+        verbose_name = 'FAQ'
+        verbose_name_plural = 'FAQs'
+        ordering = ['rank', 'id']
+
+    page = models.ForeignKey(SeoPage, on_delete=models.CASCADE, related_name='faqs')
+    question = models.TextField()
+    answer = models.TextField()
+    rank = models.PositiveSmallIntegerField(default=0)
+    objects = models.Manager()
+
+    def __str__(self):
+        return self.question

@@ -8,7 +8,7 @@ from api.models import FAQ
 
 from api.serializers import CategorySerializer, JobPositionSerializer, JobSerializer, SubCategorySerializer, TagSerializer,TestimonialSerializer,ProductSerializer,BlogPostSerializer
 from ..models import BlogPost, Category, Job, JobPosition, SubCategory, Tag, Testimonial, Product, Category, FactFigure, \
-    TrustedCompanies
+    TrustedCompanies, SeoPage
 
 
 def index(request):
@@ -341,3 +341,14 @@ def veterinary(request):
     return render(request,'api/veterinary.html', context)
 
 
+
+def seo_page(request, slug):
+    page = get_object_or_404(SeoPage, slug=slug, is_published=True)
+    categories = Category.objects.filter(is_medicated=False)
+    serialized_categories = CategorySerializer(categories, many=True, context={'request': request}).data
+    context = {
+        'page': page,
+        'products': serialized_categories,
+        'faq_obj': page.faqs.all(),
+    }
+    return render(request, 'api/seo_page.html', context)

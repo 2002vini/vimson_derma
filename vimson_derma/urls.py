@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from . views import upload_image
+from api.views.html_views import seo_page
 
 from django.conf.urls.static import static
 
@@ -21,4 +22,7 @@ urlpatterns = [
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Admin-managed SEO pages; keep last so they never shadow a fixed route.
+urlpatterns += [path("<slug:slug>/", seo_page, name="seo_page")]
 

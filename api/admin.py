@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Category, JobApplications, Product, Client, FAQ, Testimonial, Tag, BlogPost, SubCategory, Job, \
-    JobPosition, WebsiteImages, FactFigure, TrustedCompanies
+    JobPosition, WebsiteImages, FactFigure, TrustedCompanies, SeoPage, SeoPageFAQ
 from tinymce.widgets import TinyMCE
 from import_export import resources, fields
 from import_export.widgets import ForeignKeyWidget, ManyToManyWidget, JSONWidget
@@ -208,6 +208,34 @@ class FAQAdmin(admin.ModelAdmin):
     )
     list_display_links = ('id', 'question')
     list_filter = ('faq_page',)
+
+
+class SeoPageFAQInline(admin.StackedInline):
+    model = SeoPageFAQ
+    extra = 1
+    fields = ('rank', 'question', 'answer')
+
+    class Media:
+        js = (
+            'https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js',
+            'js/admin/seo_faq_sortable.js',
+        )
+        css = {'all': ('css/admin/seo_faq_sortable.css',)}
+
+
+@admin.register(SeoPage)
+class SeoPageAdmin(admin.ModelAdmin):
+    list_display = ('id', 'h1_heading', 'slug', 'is_published', 'updated_at')
+    list_display_links = ('id', 'h1_heading')
+    list_filter = ('is_published',)
+    search_fields = ('h1_heading', 'slug', 'meta_title')
+    prepopulated_fields = {'slug': ('h1_heading',)}
+    fieldsets = (
+        ('Page', {'fields': ('slug', 'is_published')}),
+        ('SEO', {'fields': ('h1_heading', 'meta_title', 'meta_description')}),
+        ('About section', {'fields': ('about_title', 'about_description')}),
+    )
+    inlines = [SeoPageFAQInline]
 
 
 # admin.site.register(JobPosition, JobPositionAdmin)

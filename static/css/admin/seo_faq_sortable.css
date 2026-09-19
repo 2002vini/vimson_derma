@@ -1,0 +1,18 @@
+/* Drag-and-drop FAQ ordering on the SEO Page admin form (see js/admin/seo_faq_sortable.js). */
+.faq-sortable .form-row.field-rank {
+  display: none;
+}
+
+.faq-sortable .inline-related h3 {
+  cursor: grab;
+}
+
+.faq-sortable .inline-related h3::before {
+  content: "\2630";
+  margin-right: 8px;
+  opacity: 0.6;
+}
+
+.faq-sortable-ghost {
+  opacity: 0.4;
+}
