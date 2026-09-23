@@ -317,7 +317,7 @@ class SeoPage(models.Model):
     meta_title = models.CharField(max_length=255, help_text="Browser tab / search result title.")
     meta_description = models.TextField(max_length=500, help_text="Search result description (ideally under 160 characters).")
     about_title = models.CharField(max_length=255, help_text="Replaces the 'About Private Labeling' heading.")
-    about_description = HTMLField(help_text="Shown below the about title; collapses after 6 lines with Read more.")
+    about_description = models.TextField(help_text="Plain text shown below the about title; collapses after 7 lines with Read more.")
     is_published = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
