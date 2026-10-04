@@ -210,6 +210,36 @@ class FAQAdmin(admin.ModelAdmin):
     list_filter = ('faq_page',)
 
 
+# Editor for SeoPage.about_description. Overrides TINYMCE_DEFAULT_CONFIG key by key,
+# so the blog editor keeps the global settings. Styles mirror the About section on the site.
+SEO_ABOUT_EDITOR_CONFIG = {
+    'width': '100%',
+    'height': 520,
+    'menubar': False,
+    'branding': False,
+    'promotion': False,
+    'plugins': 'advlist autolink lists link image media table code fullscreen wordcount',
+    'toolbar': 'undo redo | blocks | bold italic underline strikethrough | forecolor | '
+               'alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | '
+               'link image media table blockquote | removeformat | code fullscreen',
+    'toolbar_mode': 'wrap',
+    'block_formats': 'Paragraph=p; Heading 2=h2; Heading 3=h3; Heading 4=h4',
+    'relative_urls': False,
+    'remove_script_host': True,
+    'content_css': 'https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700'
+                   '&family=Inria+Serif:wght@700&display=swap',
+    'content_style': (
+        "body { font-family: 'Be Vietnam Pro', sans-serif; font-size: 16px; line-height: 1.5;"
+        " color: rgb(20, 32, 97); margin: 16px 24px; }"
+        "h2, h3, h4 { font-family: 'Inria Serif', serif; font-weight: 700; color: #0b1957; line-height: 1.3; }"
+        "h2 { font-size: 28px; } h3 { font-size: 24px; } h4 { font-size: 20px; }"
+        "a { color: #0b1957; } img { max-width: 100%; height: auto; }"
+        "blockquote { border-left: 4px solid #0b1957; margin: 0 0 1em; padding: .25em 1em; color: rgba(77, 84, 127, 1); }"
+        "table { border-collapse: collapse; } td, th { border: 1px solid #d0d4e4; padding: 6px 10px; }"
+    ),
+}
+
+
 class SeoPageFAQInline(admin.StackedInline):
     model = SeoPageFAQ
     extra = 1
@@ -236,6 +266,11 @@ class SeoPageAdmin(admin.ModelAdmin):
         ('About section', {'fields': ('about_title', 'about_description')}),
     )
     inlines = [SeoPageFAQInline]
+
+    def formfield_for_dbfield(self, db_field, request, **kwargs):
+        if db_field.name == 'about_description':
+            kwargs['widget'] = TinyMCE(mce_attrs=SEO_ABOUT_EDITOR_CONFIG)
+        return super().formfield_for_dbfield(db_field, request, **kwargs)
 
 
 # admin.site.register(JobPosition, JobPositionAdmin)

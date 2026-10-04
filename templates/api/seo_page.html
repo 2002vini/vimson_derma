@@ -42,17 +42,62 @@
     }
   }
 
-  /* Read more / Read less sits inline at the end of the text (see script below) */
-  .read-more-btn {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font: inherit;
+  /* Rich text from the admin editor. Left-aligned by default (the container centres
+     everything); the editor's own alignment buttons still win via inline styles.
+     Headings are reset because global.css sizes h1-h6 for hero banners. */
+  .about-text.rich-content {
+    width: 100%;
+    text-align: left;
+  }
+
+  .rich-content > :first-child { margin-top: 0; }
+  .rich-content > :last-child { margin-bottom: 0; }
+
+  .rich-content p { margin: 0 0 1em; }
+
+  .rich-content h2,
+  .rich-content h3,
+  .rich-content h4 {
+    font-family: 'Inria Serif', serif;
+    font-weight: 700;
     color: #0b1957;
-    font-weight: 600;
-    text-decoration: underline;
-    cursor: pointer;
+    line-height: 1.3;
+    margin: 1.25em 0 .5em;
+  }
+  .rich-content h2 { font-size: 28px; }
+  .rich-content h3 { font-size: 24px; }
+  .rich-content h4 { font-size: 20px; }
+
+  .rich-content ul,
+  .rich-content ol { margin: 0 0 1em; padding-left: 1.5em; }
+  .rich-content ul { list-style: disc; }
+  .rich-content ol { list-style: decimal; }
+  .rich-content li { margin-bottom: .25em; }
+
+  .rich-content a { color: #0b1957; text-decoration: underline; }
+  .rich-content strong, .rich-content b { font-weight: 700; }
+
+  .rich-content blockquote {
+    border-left: 4px solid #0b1957;
+    margin: 0 0 1em;
+    padding: .25em 1em;
+    color: rgba(77, 84, 127, 1);
+  }
+
+  .rich-content img { max-width: 100%; height: auto; }
+  .rich-content iframe,
+  .rich-content video { max-width: 100%; }
+
+  .rich-content table { width: 100%; border-collapse: collapse; margin: 0 0 1em; }
+  .rich-content td,
+  .rich-content th { border: 1px solid #d0d4e4; padding: 6px 10px; }
+
+  @media (max-width: 768px) {
+    .about-text.rich-content { text-align: left; }
+    .rich-content h2 { font-size: 24px; }
+    .rich-content h3 { font-size: 21px; }
+    .rich-content h4 { font-size: 18px; }
+    .rich-content table { display: block; overflow-x: auto; }
   }
 </style>
 {% endblock %}
@@ -68,7 +113,7 @@
 <div class="container">
   <div class="about-container">
     <h2 class="about-heading">{{ page.about_title }}</h2>
-    <p class="about-text" id="aboutText" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">{{ page.about_description }}</p>
+    <div class="about-text rich-content" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">{{ page.about_description|safe }}</div>
   </div>
 </div>
 
@@ -299,69 +344,6 @@
         });
       });
     });
-
-    // About description: cut at the end of the 7th line, with the toggle inline
-    (function () {
-      var text = document.getElementById("aboutText");
-      if (!text) return;
-
-      var MAX_LINES = 7;
-      var full = text.textContent.trim();
-      var toggle = document.createElement("button");
-      toggle.type = "button";
-      toggle.className = "read-more-btn";
-      var expanded = false;
-
-      function maxHeight() {
-        var styles = window.getComputedStyle(text);
-        var lineHeight = parseFloat(styles.lineHeight);
-        if (isNaN(lineHeight)) lineHeight = parseFloat(styles.fontSize) * 1.5;
-        return lineHeight * MAX_LINES + 1;
-      }
-
-      function fits() {
-        return text.scrollHeight <= maxHeight();
-      }
-
-      function showAll() {
-        text.textContent = full + " ";
-        toggle.textContent = "Read less";
-        text.appendChild(toggle);
-      }
-
-      // Binary search for the longest text that still ends on the 7th line.
-      function showClamped() {
-        toggle.textContent = "Read more";
-        var low = 0, high = full.length, best = 0;
-        while (low <= high) {
-          var mid = (low + high) >> 1;
-          text.textContent = full.slice(0, mid).trim() + "... ";
-          text.appendChild(toggle);
-          if (fits()) { best = mid; low = mid + 1; } else { high = mid - 1; }
-        }
-        text.textContent = full.slice(0, best).trim() + "... ";
-        text.appendChild(toggle);
-      }
-
-      function render() {
-        text.textContent = full;
-        if (fits()) { toggle.remove(); return; }
-        if (expanded) { showAll(); } else { showClamped(); }
-      }
-
-      toggle.addEventListener("click", function () {
-        expanded = !expanded;
-        render();
-      });
-
-      render();
-
-      var resizeTimer;
-      window.addEventListener("resize", function () {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(render, 150);
-      });
-    })();
 
     // Toggle description on step-box click
     document.querySelectorAll(".step-box").forEach((box, index) => {
